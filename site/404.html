@@ -9,25 +9,25 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800&family=Cormorant+Garamond:ital,wght@1,500&family=Inter:wght@500;600&display=swap" rel="stylesheet">
   <style>
-    :root { --smoke: #1c1f23; --ivory: #f5f1ea; --oxblood: #7a1f1f; --brass: #b08d57; }
+    :root { --smoke: #161616; --ivory: #f3f1ec; --orange: #e8741e; --yellow: #f6d31c; }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       min-height: 100svh; display: grid; place-items: center; padding: 2rem 16px;
-      background: var(--smoke); color: var(--ivory); font-family: 'Inter', system-ui, sans-serif; text-align: center;
+      background: var(--smoke); color: var(--ivory); border-top: 10px solid transparent; border-image: repeating-linear-gradient(-45deg, var(--yellow) 0 14px, var(--smoke) 14px 28px) 10; font-family: 'Inter', system-ui, sans-serif; text-align: center;
     }
-    .eyebrow { font-size: .75rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--brass); }
-    .eyebrow::before { content: '✦  '; }
+    .eyebrow { font-size: .75rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--yellow); }
     h1 {
+      color: var(--yellow);
       font-family: 'Big Shoulders Display', 'Arial Narrow', sans-serif; font-weight: 800; text-transform: uppercase;
       font-size: clamp(5rem, 22vw, 14rem); line-height: .85; margin: 1rem 0 1.25rem;
     }
     p { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: clamp(1.3rem, 3vw, 1.7rem); opacity: .85; margin-bottom: 2.25rem; }
     a {
-      display: inline-block; padding: .9rem 1.6rem; border-radius: 999px; background: var(--oxblood); color: var(--ivory);
+      display: inline-block; padding: .9rem 1.6rem; border-radius: 999px; background: var(--orange); color: var(--smoke);
       text-decoration: none; font-size: .8rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase;
     }
-    a:hover { background: #5f1717; }
-    a:focus-visible { outline: 2px solid var(--brass); outline-offset: 3px; }
+    a:hover { background: #f08a3a; }
+    a:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; }
   </style>
 </head>
 <body>

@@ -41,7 +41,8 @@ the initiative names, the address and the stat figures. Also confirm the three c
 ## Design
 The layout is adapted from robertaspizza.com: oversized condensed uppercase headlines, a restrained
 smoke/ivory palette with a single accent, divider bands, a marquee and a cascading title reveal. It's
-tuned for a corporate holding company (oxblood + brass, no mascots, no preloader).
+tuned for a corporate holding company. The colors come from the Quadrozzi truck fleet: orange cabs,
+yellow drums, black lettering and hazard stripes.
 Details are in `plans/03-design-system.md`.
 
 ## Deploy

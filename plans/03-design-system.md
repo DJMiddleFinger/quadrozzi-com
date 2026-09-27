@@ -7,26 +7,34 @@ These values were pulled from the reference site's live CSS in September 2026 an
 |---|---|---|
 | Display headline | "Offset TM", uppercase, h1 7.5rem, line-height .875 | **Big Shoulders Display** 800, uppercase, `clamp(3.4rem, 11vw, 9rem)`, line-height .86 |
 | Serif voice | "Borensa" | **Cormorant Garamond** italic for ledes and pull quotes |
-| Palette | Smoke `#2b2f36`, greys `#111`–`#eee`, **one** accent `#ed2023` | Smoke `#1c1f23`, ivory `#f5f1ea`, **one** accent oxblood `#7a1f1f`, brass `#b08d57` for ornaments |
-| Section dividers | top/bottom "divisor" bands | 1px brass rule plus a scrolling marquee band of venture names |
-| Ornaments | Star icons and illustrated mascots beside titles | A small brass 4-point star (✦) beside eyebrows. **No mascots.** |
+| Palette | Smoke `#2b2f36`, greys `#111`–`#eee`, **one** accent `#ed2023` | Asphalt `#161616`, concrete `#f3f1ec`, fleet orange `#e8741e` and drum yellow `#f6d31c` (see below) |
+| Section dividers | top/bottom "divisor" bands | Hazard-stripe bands framing a scrolling marquee of venture names |
+| Ornaments | Star icons and illustrated mascots beside titles | Hazard-stripe chips and bands taken from the truck bumpers. **No mascots.** |
 | Title reveal | Cascading line-by-line reveal | Kept. Lines slide up with an 80ms stagger. Turned off under `prefers-reduced-motion` |
-| Buttons | 999rem pills in groups of 2–3 | The same pill shape: solid oxblood, or outline ivory/smoke |
+| Buttons | 999rem pills in groups of 2–3 | The same pill shape: solid orange with black text, or outline ivory |
 | Split sections | Large image beside a smaller offset image | Heritage section: large photo plus a small overlapping photo |
 | Preloader | Word-sequence preloader | **Dropped**, because it adds friction on a corporate site |
 
-## Tokens
+## Brand colors — the Quadrozzi fleet
+The palette was re-based (Sep 2026) on the company's concrete-mixer trucks: **orange cabs**, **yellow drums**,
+**black "Quadrozzi" lettering** and **yellow/black hazard-striped bumpers**. The robertaspizza.com *structure*
+(huge condensed headlines, dividers, marquee, pills) stays; the fleet supplies the color.
+
 ```css
---smoke:   #1c1f23;  /* primary dark surface, text on light */
---smoke-2: #2b2f36;  /* raised dark surface (from reference) */
---ivory:   #f5f1ea;  /* page background */
---paper:   #ffffff;  /* cards */
---oxblood: #7a1f1f;  /* single accent: CTAs, active states */
---brass:   #b08d57;  /* rules, ornaments, eyebrows on dark */
---stone:   #6b6660;  /* secondary text on light (AA on ivory) */
---line:    #d9d2c6;  /* hairlines on light */
+--smoke:      #161616;  /* asphalt black — dark sections, text on light */
+--smoke-deep: #0c0c0c;  /* marquee + footer */
+--ivory:      #f3f1ec;  /* poured-concrete white — page background */
+--orange:     #e8741e;  /* truck cab orange — buttons (black text), rules, hovers */
+--orange-ink: #a84b09;  /* orange for small text on light backgrounds */
+--yellow:     #f6d31c;  /* mixer-drum yellow — accents on dark */
+--hazard:     repeating-linear-gradient(-45deg, yellow 0 14px, black 14px 28px);
 ```
-Contrast: ivory on smoke is about 15:1, smoke on ivory about 15:1, ivory on oxblood about 9:1, and stone on ivory about 5.2:1. All pass AA.
+Contrast rules: orange buttons use **black** text (about 7:1); white on orange fails AA. Yellow is only used on
+black. On ivory, small orange text uses `--orange-ink` (about 5:1).
+
+**Brand motifs:**
+- The **hazard stripe** replaces the ✦ ornament. It appears as a chip before eyebrows, as bands above and below the marquee, on the top edge of the footer, and in the logo mark.
+- **Wordmark:** "Quadrozzi" in Archivo 800, mixed case, echoing the black lettering on the trucks, next to a rounded hazard-stripe tile with an orange keyline.
 
 ## Type scale
 | Role | Font | Size | Notes |
