@@ -15,7 +15,7 @@ quadrozzi.com/
 ```
 
 ## Header nav
-`QUADROZZI` wordmark · Holdings · Heritage · Community · Contact · **[Inquiries]** pill (oxblood)
+`Quadrozzi` wordmark (hazard-stripe mark) · Holdings · Heritage · Community · Contact · **[Inquiries]** pill (fleet orange)
 
 On mobile, links collapse into a full-screen overlay menu (large condensed type, same style as the reference site's menu).
 

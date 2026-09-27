@@ -42,7 +42,7 @@ black. On ivory, small orange text uses `--orange-ink` (about 5:1).
 | Hero h1 | Big Shoulders Display 800 | clamp(3.4rem, 11vw, 9rem) | uppercase, lh .86, tracking -0.01em |
 | Section h2 | Big Shoulders Display 800 | clamp(2.6rem, 6.5vw, 5.5rem) | uppercase, lh .9 |
 | Card h3 | Big Shoulders Display 700 | clamp(1.8rem, 3vw, 2.4rem) | uppercase |
-| Eyebrow | Inter 600 | .75rem | uppercase, tracking .18em, brass/oxblood |
+| Eyebrow | Inter 600 | .75rem | uppercase, tracking .18em, orange-ink on light / yellow on dark |
 | Lede / quote | Cormorant Garamond 500 italic | clamp(1.35rem, 2.4vw, 1.85rem) | lh 1.3 |
 | Body | Inter 400 | 1rem–1.0625rem | lh 1.65 |
 
@@ -55,8 +55,8 @@ black. On ivory, small orange text uses `--orange-ink` (about 5:1).
 ## Components
 - **Holding card**: image slot (4:3), eyebrow category, h3 title, one-line description, and a "Visit site ↗" link. On hover the image scales to 1.03 and the arrow nudges. The whole card is clickable.
 - **Marquee band**: venture names separated by ✦ on a smoke background, looping at 40s per cycle and paused under reduced motion.
-- **Stat tile**: big condensed number, brass hairline, small caption.
-- **Pull quote**: Cormorant italic with a large brass opening quote mark.
+- **Stat tile**: big condensed number, 3px orange rule, small caption.
+- **Pull quote**: Cormorant italic with a large orange opening quote mark.
 
 ## Imagery direction
 Documentary black-and-white or muted color: harbor, grain silos, the terminal at dusk, horses in
