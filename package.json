@@ -1,0 +1,15 @@
+{
+  "name": "quadrozzi-com",
+  "version": "0.1.0",
+  "description": "quadrozzi.com — family holding company site (GBX, Brooklyn Equine, Helping Hooves)",
+  "scripts": {
+    "start": "npx http-server site -p 8080 -c-1"
+  },
+  "keywords": ["quadrozzi", "brooklyn", "gbx", "gowanus-bay-terminal", "brooklyn-equine", "helping-hooves"],
+  "author": "Quadrozzi",
+  "license": "UNLICENSED",
+  "private": true,
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}

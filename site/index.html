@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quadrozzi — A Brooklyn Family Enterprise</title>
+  <meta name="description" content="The Quadrozzi family of companies: GBX Gowanus Bay Terminal, Be Brooklyn Equine and the Helping Hooves community initiatives.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Quadrozzi — A Brooklyn Family Enterprise">
+  <meta property="og:description" content="Working waterfront, equestrian heritage and community care — rooted in Brooklyn.">
+  <meta property="og:url" content="https://quadrozzi.com/">
+  <meta property="og:image" content="https://quadrozzi.com/assets/og.jpg">
+  <meta name="theme-color" content="#1c1f23">
+  <script>document.documentElement.classList.add('js');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=Cormorant+Garamond:ital,wght@1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Quadrozzi",
+    "url": "https://quadrozzi.com/",
+    "description": "A Brooklyn family enterprise spanning working waterfront, equestrian heritage and community care.",
+    "subOrganization": [
+      { "@type": "Organization", "name": "GBX — Gowanus Bay Terminal" },
+      { "@type": "Organization", "name": "Be Brooklyn Equine", "url": "https://DJMiddleFinger.github.io/be-brooklyn-equine/" },
+      { "@type": "Organization", "name": "Helping Hooves" }
+    ]
+  }
+  </script>
+  <style>
+    :root {
+      --smoke: #1c1f23;
+      --smoke-2: #2b2f36;
+      --smoke-deep: #131518;
+      --ivory: #f5f1ea;
+      --paper: #ffffff;
+      --oxblood: #7a1f1f;
+      --oxblood-hover: #5f1717;
+      --brass: #b08d57;
+      --stone: #6b6660;
+      --line: #d9d2c6;
+      --line-dark: rgba(245, 241, 234, 0.14);
+
+      --display: 'Big Shoulders Display', 'Arial Narrow', Impact, sans-serif;
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'Inter', system-ui, -apple-system, sans-serif;
+
+      --container: min(1240px, 100% - 32px);
+      --section-y: clamp(4.5rem, 10vw, 8rem);
+      --ease: cubic-bezier(.2, .7, .2, 1);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+    body {
+      font-family: var(--sans);
+      font-size: 1.0625rem;
+      line-height: 1.65;
+      color: var(--smoke);
+      background: var(--ivory);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    :focus-visible { outline: 2px solid var(--brass); outline-offset: 3px; }
+
+    .container { width: var(--container); margin-inline: auto; }
+    .skip {
+      position: absolute; left: 16px; top: -60px; z-index: 200;
+      background: var(--oxblood); color: var(--ivory); padding: .6rem 1rem;
+    }
+    .skip:focus { top: 16px; }
+
+    /* ---------- Type ---------- */
+    .display, h1, h2, h3 {
+      font-family: var(--display);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: -0.005em;
+    }
+    h2 { font-size: clamp(2.6rem, 6.5vw, 5.5rem); line-height: .9; }
+    h3 { font-size: clamp(1.8rem, 3vw, 2.4rem); line-height: .95; font-weight: 700; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: .6rem;
+      font-size: .75rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase;
+      color: var(--oxblood);
+    }
+    .eyebrow::before { content: '✦'; color: var(--brass); font-size: .8rem; letter-spacing: 0; }
+    .on-dark .eyebrow { color: var(--brass); }
+    .lede {
+      font-family: var(--serif); font-style: italic; font-weight: 500;
+      font-size: clamp(1.35rem, 2.4vw, 1.85rem); line-height: 1.3;
+    }
+
+    /* ---------- Buttons ---------- */
+    .btn {
+      display: inline-flex; align-items: center; gap: .55rem;
+      padding: .9rem 1.6rem; border-radius: 999px;
+      font-size: .8rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase;
+      border: 1px solid transparent; transition: background .25s var(--ease), color .25s var(--ease), border-color .25s var(--ease);
+    }
+    .btn-solid { background: var(--oxblood); color: var(--ivory); }
+    .btn-solid:hover { background: var(--oxblood-hover); }
+    .btn-ghost { border-color: rgba(245, 241, 234, .5); color: var(--ivory); }
+    .btn-ghost:hover { background: var(--ivory); color: var(--smoke); }
+    .btn-sm { padding: .6rem 1.15rem; font-size: .72rem; }
+
+    /* ---------- Header ---------- */
+    .site-header {
+      position: fixed; inset: 0 0 auto 0; z-index: 100;
+      color: var(--ivory);
+      transition: background .35s var(--ease), border-color .35s var(--ease);
+      border-bottom: 1px solid transparent;
+    }
+    .site-header.is-solid { background: rgba(28, 31, 35, .96); backdrop-filter: blur(10px); border-color: var(--line-dark); }
+    .nav { display: flex; align-items: center; justify-content: space-between; height: 72px; gap: 1.5rem; }
+    .wordmark {
+      font-family: var(--display); font-weight: 800; font-size: 1.6rem;
+      letter-spacing: .12em; text-transform: uppercase; line-height: 1;
+    }
+    .nav-links { display: flex; align-items: center; gap: 2.25rem; list-style: none; }
+    .nav-links a:not(.btn) {
+      font-size: .78rem; font-weight: 500; letter-spacing: .16em; text-transform: uppercase;
+      position: relative; padding-block: .3rem;
+    }
+    .nav-links a:not(.btn)::after {
+      content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 1px;
+      background: var(--brass); transform: scaleX(0); transform-origin: left; transition: transform .3s var(--ease);
+    }
+    .nav-links a:not(.btn):hover::after { transform: scaleX(1); }
+    .menu-toggle {
+      display: none; background: none; border: 0; color: inherit; cursor: pointer;
+      width: 44px; height: 44px; position: relative;
+    }
+    .menu-toggle span, .menu-toggle span::before {
+      position: absolute; left: 10px; right: 10px; height: 1.5px; background: currentColor; content: '';
+      transition: transform .3s var(--ease);
+    }
+    .menu-toggle span { top: 18px; }
+    .menu-toggle span::before { left: 0; right: 0; top: 8px; }
+    .menu-open .menu-toggle span { transform: translateY(4px) rotate(45deg); }
+    .menu-open .menu-toggle span::before { transform: translateY(-8px) rotate(-90deg); }
+
+    /* ---------- Hero ---------- */
+    .hero {
+      position: relative; min-height: 100svh; display: flex; align-items: flex-end;
+      color: var(--ivory); background: var(--smoke); overflow: hidden;
+      padding: 120px 0 clamp(3rem, 7vw, 5.5rem);
+    }
+    .hero-media {
+      position: absolute; inset: 0; z-index: 0;
+      /* Photo slot: drop assets/hero.jpg in and it layers over the fallback gradient */
+      background:
+        linear-gradient(180deg, rgba(19,21,24,.55) 0%, rgba(19,21,24,.2) 40%, rgba(19,21,24,.92) 100%),
+        url('assets/hero.jpg') center/cover no-repeat,
+        radial-gradient(120% 80% at 75% 20%, #3a3f47 0%, var(--smoke) 55%, var(--smoke-deep) 100%);
+    }
+    .hero-media::after {
+      /* faint architectural linework standing in until photography arrives */
+      content: ''; position: absolute; inset: 0; opacity: .07;
+      background-image: repeating-linear-gradient(90deg, var(--ivory) 0 1px, transparent 1px 120px);
+    }
+    .hero .container { position: relative; z-index: 1; }
+    .hero h1 {
+      font-size: clamp(3.4rem, 13vw, 10.5rem); line-height: .86;
+      margin: 1.25rem 0 2rem;
+    }
+    .hero h1 .line { display: block; overflow: hidden; padding-bottom: .04em; }
+    .hero h1 .line > span { display: block; }
+    .hero h1 .accent { color: var(--brass); }
+    .hero-foot {
+      display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2rem; align-items: end;
+      border-top: 1px solid var(--line-dark); padding-top: 2rem;
+    }
+    .hero-foot .lede { max-width: 34ch; color: rgba(245, 241, 234, .9); }
+    .hero-actions { display: flex; gap: .75rem; flex-wrap: wrap; }
+
+    .js .cascade .line > span { transform: translateY(105%); }
+    .js .cascade.is-in .line > span { transform: none; transition: transform 1s var(--ease); }
+    .js .cascade.is-in .line:nth-child(2) > span { transition-delay: .09s; }
+    .js .cascade.is-in .line:nth-child(3) > span { transition-delay: .18s; }
+
+    /* ---------- Marquee ---------- */
+    .marquee {
+      background: var(--smoke-deep); color: var(--ivory);
+      border-block: 1px solid var(--brass); overflow: hidden; padding: 1.1rem 0;
+    }
+    .marquee-track { display: flex; width: max-content; animation: marquee 44s linear infinite; }
+    .marquee-track ul { display: flex; list-style: none; }
+    .marquee-track li {
+      font-family: var(--display); font-weight: 700; text-transform: uppercase;
+      font-size: clamp(1.25rem, 2.4vw, 1.75rem); letter-spacing: .06em; white-space: nowrap;
+      display: flex; align-items: center;
+    }
+    .marquee-track li::after { content: '✦'; color: var(--brass); font-size: .7em; margin-inline: 2rem; }
+    @keyframes marquee { to { transform: translateX(-50%); } }
+
+    /* ---------- Sections ---------- */
+    section { padding-block: var(--section-y); }
+    .section-head {
+      display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 26rem); gap: 2rem 4rem; align-items: end;
+      margin-bottom: clamp(2.5rem, 5vw, 4rem);
+    }
+    .section-head h2 { margin-top: .9rem; }
+    .section-head p { color: var(--stone); }
+
+    /* ---------- Holdings ---------- */
+    .holdings-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; }
+    .holding {
+      position: relative; background: var(--paper); display: flex; flex-direction: column;
+      border: 1px solid var(--line); transition: border-color .3s var(--ease), transform .4s var(--ease);
+    }
+    .holding:hover { border-color: var(--smoke); }
+    .holding--wide { grid-column: span 2; }
+    .holding-media { aspect-ratio: 4 / 3; overflow: hidden; background: var(--smoke-2); }
+    .holding--wide .holding-media { aspect-ratio: 16 / 8.2; }
+    .holding-media > div {
+      width: 100%; height: 100%; transition: transform .8s var(--ease);
+      background-size: cover; background-position: center;
+    }
+    .holding:hover .holding-media > div { transform: scale(1.035); }
+    .media-gbx   { background-image: url('assets/gbx.jpg'), linear-gradient(135deg, #2b2f36 0%, #4a4f57 45%, #1c1f23 100%); }
+    .media-equine{ background-image: url('assets/equine.jpg'), linear-gradient(160deg, #3b2a1f 0%, #6b4a33 50%, #2a1d15 100%); }
+    .media-hooves{ background-image: url('assets/hooves.jpg'), linear-gradient(150deg, #5a1a1a 0%, #7a1f1f 45%, #2e0f0f 100%); }
+    .holding-body { padding: 1.6rem 1.6rem 1.75rem; display: flex; flex-direction: column; gap: .75rem; flex: 1; }
+    .holding-body p { color: var(--stone); font-size: .98rem; }
+    .holding-link {
+      margin-top: auto; padding-top: 1rem; display: inline-flex; align-items: center; gap: .5rem;
+      font-size: .76rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--oxblood);
+    }
+    .holding-link::after { content: ''; position: absolute; inset: 0; } /* whole card clickable */
+    .holding-link .arrow { transition: transform .3s var(--ease); }
+    .holding:hover .arrow { transform: translate(3px, -3px); }
+    .holding-link[aria-disabled="true"] { color: var(--stone); }
+    .holding-link[aria-disabled="true"] .arrow { display: none; }
+
+    .holding--open {
+      background: transparent; border: 1px dashed var(--stone);
+      justify-content: center; min-height: 260px;
+    }
+    .holding--open .holding-body { justify-content: center; padding: clamp(1.6rem, 4vw, 3.5rem); }
+    .holding--open .holding-link { margin-top: .5rem; }
+    .holding--open p { max-width: 40ch; }
+    .holding--open h3 { font-size: clamp(2rem, 4vw, 3.2rem); }
+
+    /* ---------- Heritage ---------- */
+    .heritage { background: var(--paper); }
+    .split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: clamp(2.5rem, 6vw, 6rem); align-items: center; }
+    .split-copy h2 { margin: .9rem 0 1.75rem; }
+    .split-copy p + p { margin-top: 1.1rem; }
+    .split-copy p { color: #3c3a37; max-width: 52ch; }
+    .signature { margin-top: 2rem !important; font-family: var(--serif); font-style: italic; font-size: 1.4rem; color: var(--smoke) !important; }
+    .split-media { position: relative; padding: 0 0 12% 0; }
+    .split-media .big {
+      aspect-ratio: 4 / 5; width: 82%; margin-left: auto;
+      background: url('assets/heritage-1.jpg') center/cover, linear-gradient(170deg, #4a4f57 0%, #2b2f36 60%, #1c1f23 100%);
+    }
+    .split-media .small {
+      position: absolute; left: 0; bottom: 0; width: 46%; aspect-ratio: 1;
+      border: 10px solid var(--paper);
+      background: url('assets/heritage-2.jpg') center/cover, linear-gradient(140deg, #b08d57 0%, #7d6238 100%);
+    }
+    .split-media .stamp {
+      position: absolute; right: -8px; bottom: 4%;
+      font-family: var(--display); font-weight: 700; text-transform: uppercase; letter-spacing: .2em; font-size: .8rem;
+      writing-mode: vertical-rl; color: var(--stone);
+    }
+
+    /* ---------- Community ---------- */
+    .community-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(2.5rem, 6vw, 6rem); }
+    .community h2 { margin: .9rem 0 2rem; }
+    blockquote {
+      position: relative; font-family: var(--serif); font-style: italic; font-weight: 500;
+      font-size: clamp(1.5rem, 2.8vw, 2.15rem); line-height: 1.25; padding-top: 3.25rem;
+    }
+    blockquote::before {
+      content: '“'; position: absolute; top: -1.2rem; left: -.2rem;
+      font-size: 6rem; line-height: 1; color: var(--brass); font-style: normal;
+    }
+    blockquote cite { display: block; margin-top: 1.25rem; font-family: var(--sans); font-style: normal; font-size: .8rem; letter-spacing: .16em; text-transform: uppercase; color: var(--stone); }
+    .initiatives { list-style: none; border-top: 1px solid var(--smoke); }
+    .initiatives li { border-bottom: 1px solid var(--line); }
+    .initiatives a {
+      display: grid; grid-template-columns: 3rem minmax(0, 1fr) auto; gap: 1rem; align-items: center;
+      padding: 1.6rem 0; transition: padding .35s var(--ease), color .25s;
+    }
+    .initiatives a:hover { padding-left: .75rem; color: var(--oxblood); }
+    .initiatives .num { font-family: var(--display); font-weight: 700; color: var(--brass); font-size: 1.1rem; }
+    .initiatives .title { font-family: var(--display); font-weight: 700; text-transform: uppercase; font-size: clamp(1.4rem, 2.4vw, 1.9rem); line-height: 1; }
+    .initiatives .desc { display: block; font-family: var(--sans); text-transform: none; font-weight: 400; font-size: .92rem; color: var(--stone); margin-top: .35rem; }
+    .initiatives .go { font-size: 1.2rem; }
+    .community-cta { margin-top: 2rem; }
+
+    /* ---------- Figures ---------- */
+    .figures { background: var(--smoke); color: var(--ivory); }
+    .figures-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.25rem; }
+    .figure { border-top: 1px solid var(--brass); padding-top: 1.25rem; }
+    .figure .n { font-family: var(--display); font-weight: 800; font-size: clamp(3.5rem, 7vw, 6rem); line-height: .9; }
+    .figure .n sup { font-size: .4em; color: var(--brass); vertical-align: top; margin-left: .1em; }
+    .figure p { font-size: .8rem; letter-spacing: .14em; text-transform: uppercase; color: rgba(245, 241, 234, .7); margin-top: .75rem; }
+    .figures-note { margin-top: 2.5rem; font-size: .8rem; color: rgba(245,241,234,.45); }
+
+    /* ---------- Contact ---------- */
+    .contact h2 { font-size: clamp(3rem, 10vw, 8.5rem); line-height: .86; margin: .9rem 0 3rem; }
+    .contact-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.25rem; border-top: 1px solid var(--smoke); }
+    .contact-item { padding: 1.5rem 1.5rem 1.5rem 0; }
+    .contact-item + .contact-item { border-left: 1px solid var(--line); padding-left: 1.5rem; }
+    .contact-item h3 { font-family: var(--sans); font-size: .75rem; font-weight: 600; letter-spacing: .18em; color: var(--stone); margin-bottom: .6rem; }
+    .contact-item a, .contact-item address { font-style: normal; font-size: 1.05rem; font-weight: 500; overflow-wrap: anywhere; }
+    .contact-item a { border-bottom: 1px solid var(--line); transition: border-color .25s; }
+    .contact-item a:hover { border-color: var(--oxblood); }
+
+    /* ---------- Footer ---------- */
+    .site-footer { background: var(--smoke-deep); color: var(--ivory); padding-top: clamp(4rem, 8vw, 6rem); overflow: hidden; }
+    .footer-cols { display: grid; grid-template-columns: 1.4fr repeat(3, minmax(0, 1fr)); gap: 2.5rem; }
+    .footer-cols p { color: rgba(245, 241, 234, .65); max-width: 30ch; font-size: .95rem; margin-top: .9rem; }
+    .footer-cols h4 { font-size: .72rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--brass); margin-bottom: 1rem; }
+    .footer-cols ul { list-style: none; display: grid; gap: .55rem; }
+    .footer-cols ul a { color: rgba(245, 241, 234, .85); font-size: .95rem; }
+    .footer-cols ul a:hover { color: var(--ivory); text-decoration: underline; text-underline-offset: 4px; text-decoration-color: var(--brass); }
+    .footer-mark {
+      font-family: var(--display); font-weight: 800; text-transform: uppercase; line-height: .78;
+      font-size: clamp(4rem, 19.5vw, 17.5rem); letter-spacing: .01em; text-align: center;
+      color: transparent; -webkit-text-stroke: 1px rgba(176, 141, 87, .55);
+      margin-top: clamp(3rem, 7vw, 5rem); user-select: none; white-space: nowrap;
+    }
+    .footer-legal {
+      display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+      border-top: 1px solid var(--line-dark); padding-block: 1.5rem; margin-top: 1rem;
+      font-size: .78rem; color: rgba(245, 241, 234, .5);
+    }
+
+    /* ---------- Reveal ---------- */
+    .js .reveal { opacity: 0; transform: translateY(24px); transition: opacity .9s var(--ease), transform .9s var(--ease); }
+    .js .reveal.is-in { opacity: 1; transform: none; }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 960px) {
+      .holdings-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .holding--wide { grid-column: span 2; }
+      .split, .community-grid, .section-head { grid-template-columns: minmax(0, 1fr); }
+      .figures-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 2.5rem; }
+      .contact-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .contact-item:nth-child(3) { border-left: 0; padding-left: 0; }
+      .footer-cols { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .footer-cols > :first-child { grid-column: 1 / -1; }
+    }
+    @media (max-width: 820px) {
+      .menu-toggle { display: block; }
+      .nav-links {
+        position: fixed; inset: 72px 0 0 0; background: var(--smoke);
+        flex-direction: column; align-items: flex-start; justify-content: flex-start; gap: 0;
+        padding: 1.5rem 16px 2rem; transform: translateY(-8px); opacity: 0; visibility: hidden;
+        transition: opacity .3s var(--ease), transform .3s var(--ease), visibility 0s linear .3s;
+      }
+      .menu-open .nav-links { opacity: 1; transform: none; visibility: visible; transition-delay: 0s; }
+      .menu-open .site-header { background: var(--smoke); }
+      .nav-links li { width: 100%; border-bottom: 1px solid var(--line-dark); }
+      .nav-links li:last-child { border: 0; padding-top: 1.75rem; }
+      .nav-links a:not(.btn) {
+        display: block; padding: 1.1rem 0; font-family: var(--display); font-weight: 800;
+        font-size: 2.6rem; letter-spacing: 0; line-height: 1;
+      }
+      .nav-links a:not(.btn)::after { display: none; }
+      .hero-foot { grid-template-columns: minmax(0, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .holdings-grid { grid-template-columns: minmax(0, 1fr); }
+      .holding--wide { grid-column: auto; }
+      .holding--wide .holding-media { aspect-ratio: 4 / 3; }
+      .contact-grid { grid-template-columns: minmax(0, 1fr); }
+      .contact-item + .contact-item { border-left: 0; padding-left: 0; border-top: 1px solid var(--line); }
+      .footer-cols { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .initiatives a { grid-template-columns: 2.25rem minmax(0, 1fr) auto; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .marquee-track { animation: none; }
+      .js .reveal, .js .cascade .line > span { opacity: 1; transform: none; transition: none; }
+      * { transition-duration: 0s !important; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <!-- ================= HEADER ================= -->
+  <header class="site-header" id="header">
+    <nav class="nav container" aria-label="Primary">
+      <a href="#top" class="wordmark" aria-label="Quadrozzi — home">Quadrozzi</a>
+      <button class="menu-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu"><span></span></button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#holdings">Holdings</a></li>
+        <li><a href="#heritage">Heritage</a></li>
+        <li><a href="#community">Community</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#contact" class="btn btn-solid btn-sm">Inquiries</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- ================= HERO ================= -->
+    <section class="hero on-dark" id="top" aria-labelledby="hero-title">
+      <div class="hero-media" role="img" aria-label="The Brooklyn waterfront at Gowanus Bay"></div>
+      <div class="container">
+        <span class="eyebrow">Est. [Year] · Brooklyn, New York</span>
+        <h1 id="hero-title" class="cascade">
+          <span class="line"><span>Built in</span></span>
+          <span class="line"><span class="accent">Brooklyn</span></span>
+        </h1>
+        <div class="hero-foot">
+          <p class="lede">A family enterprise rooted in the working waterfront, the stable and the neighborhood.</p>
+          <div class="hero-actions">
+            <a href="#holdings" class="btn btn-solid">Our Holdings</a>
+            <a href="#contact" class="btn btn-ghost">Get in Touch</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= MARQUEE ================= -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <ul><li>GBX Gowanus Bay Terminal</li><li>Brooklyn Equine</li><li>Helping Hooves</li><li>Red Hook</li><li>Prospect Park</li></ul>
+        <ul><li>GBX Gowanus Bay Terminal</li><li>Brooklyn Equine</li><li>Helping Hooves</li><li>Red Hook</li><li>Prospect Park</li></ul>
+      </div>
+    </div>
+
+    <!-- ================= HOLDINGS ================= -->
+    <section class="holdings" id="holdings" aria-labelledby="holdings-title">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <span class="eyebrow">The Family of Companies</span>
+            <h2 id="holdings-title">Our Holdings</h2>
+          </div>
+          <p class="lede" style="color:var(--stone)">Distinct businesses, one family standard — each run for the long term.</p>
+        </div>
+
+        <div class="holdings-grid">
+          <article class="holding holding--wide reveal">
+            <div class="holding-media"><div class="media-gbx" role="img" aria-label="Grain terminal silos on Gowanus Bay"></div></div>
+            <div class="holding-body">
+              <span class="eyebrow">Maritime &amp; Industrial Property</span>
+              <h3>GBX — Gowanus Bay Terminal</h3>
+              <p>A deep-water grain terminal and industrial waterfront property on Gowanus Bay in Red Hook.</p>
+              <a class="holding-link" data-link="gbx" href="#contact">Visit GBX <span class="arrow" aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+
+          <article class="holding reveal">
+            <div class="holding-media"><div class="media-equine" role="img" aria-label="Riders on the bridle path in Prospect Park"></div></div>
+            <div class="holding-body">
+              <span class="eyebrow">Equestrian</span>
+              <h3>Be™ Brooklyn Equine</h3>
+              <p>Riding lessons, trail rides and pony rides at historic Prospect Park Stable.</p>
+              <a class="holding-link" data-link="brooklynEquine" href="https://DJMiddleFinger.github.io/be-brooklyn-equine/">Visit Brooklyn Equine <span class="arrow" aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+
+          <article class="holding reveal">
+            <div class="holding-media"><div class="media-hooves" role="img" aria-label="A young rider with a horse and instructor"></div></div>
+            <div class="holding-body">
+              <span class="eyebrow">Community Initiatives</span>
+              <h3>Helping Hooves</h3>
+              <p>Programs that bring horses and the people of Brooklyn together.</p>
+              <a class="holding-link" data-link="helpingHooves" href="#community">Visit Helping Hooves <span class="arrow" aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+
+          <article class="holding holding--wide holding--open reveal">
+            <div class="holding-body">
+              <span class="eyebrow">Partnerships</span>
+              <h3>Future Ventures</h3>
+              <p>We welcome conversations with partners who share a long-term view of Brooklyn.</p>
+              <a class="holding-link" href="#contact">Start a conversation <span class="arrow" aria-hidden="true">→</span></a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= HERITAGE ================= -->
+    <section class="heritage" id="heritage" aria-labelledby="heritage-title">
+      <div class="container split">
+        <div class="split-copy reveal">
+          <span class="eyebrow">Heritage</span>
+          <h2 id="heritage-title">A Brooklyn<br>Family</h2>
+          <p>[Placeholder — family origins. Two or three sentences on where the Quadrozzi story begins and what the family has built in Brooklyn.]</p>
+          <p>[Placeholder — the waterfront. How Gowanus Bay Terminal came to the family, and its role in the life of Red Hook's working harbor.]</p>
+          <p>[Placeholder — the next chapter. The move into equestrian and community work through Brooklyn Equine and Helping Hooves.]</p>
+          <p class="signature">— The Quadrozzi Family</p>
+        </div>
+        <div class="split-media reveal" aria-hidden="true">
+          <div class="big"></div>
+          <div class="small"></div>
+          <span class="stamp">Red Hook · Brooklyn</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= COMMUNITY ================= -->
+    <section class="community" id="community" aria-labelledby="community-title">
+      <div class="container community-grid">
+        <div class="reveal">
+          <span class="eyebrow">Community</span>
+          <h2 id="community-title">Helping<br>Hooves</h2>
+          <blockquote>
+            [Placeholder — a short quote from a family member on why community work matters.]
+            <cite>[Name], Quadrozzi Family</cite>
+          </blockquote>
+        </div>
+        <div class="reveal">
+          <ul class="initiatives">
+            <li><a data-link="initiative1" href="#contact"><span class="num">01</span><span class="title">[Initiative One]<span class="desc">e.g. Youth riding scholarships</span></span><span class="go" aria-hidden="true">↗</span></a></li>
+            <li><a data-link="initiative2" href="#contact"><span class="num">02</span><span class="title">[Initiative Two]<span class="desc">e.g. Equine-assisted programs</span></span><span class="go" aria-hidden="true">↗</span></a></li>
+            <li><a data-link="initiative3" href="#contact"><span class="num">03</span><span class="title">[Initiative Three]<span class="desc">e.g. Neighborhood partnerships</span></span><span class="go" aria-hidden="true">↗</span></a></li>
+          </ul>
+          <div class="community-cta">
+            <a class="btn btn-solid" data-link="helpingHooves" href="#contact">Visit Helping Hooves</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= FIGURES ================= -->
+    <section class="figures on-dark" id="figures" aria-labelledby="figures-title">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <span class="eyebrow">By the Numbers</span>
+            <h2 id="figures-title">Rooted Here</h2>
+          </div>
+        </div>
+        <div class="figures-grid reveal">
+          <div class="figure"><div class="n">00<sup>+</sup></div><p>Acres of waterfront</p></div>
+          <div class="figure"><div class="n">00</div><p>Years in Brooklyn</p></div>
+          <div class="figure"><div class="n">00</div><p>Horses in our care</p></div>
+          <div class="figure"><div class="n">00</div><p>Community programs</p></div>
+        </div>
+        <p class="figures-note">Figures are placeholders pending verification.</p>
+      </div>
+    </section>
+
+    <!-- ================= CONTACT ================= -->
+    <section class="contact" id="contact" aria-labelledby="contact-title">
+      <div class="container">
+        <span class="eyebrow">Contact</span>
+        <h2 id="contact-title" class="reveal">Get in<br>Touch</h2>
+        <div class="contact-grid reveal">
+          <div class="contact-item"><h3>General</h3><a data-email="general" href="mailto:info@quadrozzi.com">info@quadrozzi.com</a></div>
+          <div class="contact-item"><h3>Press</h3><a data-email="press" href="mailto:press@quadrozzi.com">press@quadrozzi.com</a></div>
+          <div class="contact-item"><h3>Leasing &amp; Terminal</h3><a data-email="leasing" href="mailto:gbx@quadrozzi.com">gbx@quadrozzi.com</a></div>
+          <div class="contact-item"><h3>Office</h3><address>[Street Address]<br>Brooklyn, NY [ZIP]</address></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-cols">
+        <div>
+          <a href="#top" class="wordmark">Quadrozzi</a>
+          <p>A Brooklyn family enterprise spanning working waterfront, equestrian heritage and community care.</p>
+        </div>
+        <div>
+          <h4>Holdings</h4>
+          <ul>
+            <li><a data-link="gbx" href="#contact">GBX Gowanus Bay Terminal</a></li>
+            <li><a data-link="brooklynEquine" href="https://DJMiddleFinger.github.io/be-brooklyn-equine/">Brooklyn Equine</a></li>
+            <li><a data-link="helpingHooves" href="#community">Helping Hooves</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#heritage">Heritage</a></li>
+            <li><a href="#community">Community</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Connect</h4>
+          <ul>
+            <li><a data-link="linkedin" href="#contact">LinkedIn</a></li>
+            <li><a data-link="instagram" href="#contact">Instagram</a></li>
+            <li><a href="mailto:info@quadrozzi.com">Email</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-mark" aria-hidden="true">Quadrozzi</div>
+      <div class="footer-legal">
+        <span>© <span id="year">2026</span> Quadrozzi. All rights reserved.</span>
+        <span>Brooklyn, New York</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    /* =====================================================================
+       LINKS — edit this block to connect the holdings.
+       Any element with data-link="key" gets its href from here.
+       Leave a value empty ('') to show "Link coming soon" on the card and
+       keep the link pointing at an on-page section instead.
+       ===================================================================== */
+    const LINKS = {
+      gbx:            '',   // GBX — Gowanus Bay Terminal website
+      brooklynEquine: 'https://DJMiddleFinger.github.io/be-brooklyn-equine/',
+      helpingHooves:  '',   // Helping Hooves website
+      initiative1:    '',   // Helping Hooves initiative #1
+      initiative2:    '',   // Helping Hooves initiative #2
+      initiative3:    '',   // Helping Hooves initiative #3
+      linkedin:       '',
+      instagram:      ''
+    };
+
+    document.querySelectorAll('[data-link]').forEach(function (a) {
+      const url = LINKS[a.dataset.link];
+      if (url) {
+        a.href = url;
+        a.target = '_blank';
+        a.rel = 'noopener';
+      } else if (a.classList.contains('holding-link')) {
+        a.setAttribute('aria-disabled', 'true');
+        a.firstChild.textContent = 'Link coming soon ';
+      }
+    });
+
+    // Header: solid after leaving the hero
+    const header = document.getElementById('header');
+    const onScroll = function () { header.classList.toggle('is-solid', window.scrollY > 40); };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    // Mobile menu
+    const toggle = document.querySelector('.menu-toggle');
+    const setMenu = function (open) {
+      document.body.classList.toggle('menu-open', open);
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    };
+    toggle.addEventListener('click', function () { setMenu(!document.body.classList.contains('menu-open')); });
+    document.querySelectorAll('.nav-links a').forEach(function (a) { a.addEventListener('click', function () { setMenu(false); }); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
+
+    // Hero cascade + scroll reveals
+    requestAnimationFrame(function () { requestAnimationFrame(function () { document.querySelector('.cascade').classList.add('is-in'); }); });
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } });
+      }, { rootMargin: '0px 0px -8% 0px' });
+      document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+    } else {
+      document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('is-in'); });
+    }
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
