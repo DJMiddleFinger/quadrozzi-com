@@ -11,6 +11,14 @@ quadrozzi.com/
 ├── #community    Helping Hooves spotlight + initiative links
 ├── #figures      By the numbers (stat tiles)
 ├── #contact      General / press / leasing inquiries
+├── gbx/          GBX Gowanus Bay Terminal — info + booking page
+│   ├── #terminal   The terminal today (working waterfront)
+│   ├── #spaces     Spaces & settings (terminal, details, open ground, piers)
+│   ├── #film       Film & photo
+│   ├── #events     Events
+│   ├── #history    Timeline 1922 → today + archival photos
+│   └── #inquire    Inquiry form (mailto or form service) + map
+├── credits.html  Photo credits and licenses
 └── 404.html      Branded not-found page
 ```
 
@@ -27,6 +35,6 @@ On mobile, links collapse into a full-screen overlay menu (large condensed type,
 - Legal line: © 2026 Quadrozzi. All rights reserved.
 
 ## Possible phase-2 pages
-- `/gbx`: a property overview page if GBX has no site of its own
+- ~~`/gbx`: a property overview page~~ — built (Sep 2026)
 - `/community`: the full Helping Hooves program list
 - `/press`: press kit, logos and approved photos

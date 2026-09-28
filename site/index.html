@@ -23,384 +23,13 @@
     "url": "https://quadrozzi.com/",
     "description": "A Brooklyn family enterprise spanning working waterfront, equestrian heritage and community care.",
     "subOrganization": [
-      { "@type": "Organization", "name": "GBX — Gowanus Bay Terminal" },
+      { "@type": "Organization", "name": "GBX — Gowanus Bay Terminal", "url": "https://quadrozzi.com/gbx/" },
       { "@type": "Organization", "name": "Be Brooklyn Equine", "url": "https://DJMiddleFinger.github.io/be-brooklyn-equine/" },
       { "@type": "Organization", "name": "Helping Hooves" }
     ]
   }
   </script>
-  <style>
-    :root {
-      /* Quadrozzi fleet colors — orange cabs, yellow drums, black lettering, hazard stripes */
-      --smoke: #161616;       /* asphalt black */
-      --smoke-2: #262626;
-      --smoke-deep: #0c0c0c;
-      --ivory: #f3f1ec;       /* poured-concrete white */
-      --paper: #ffffff;
-      --orange: #e8741e;      /* truck cab orange */
-      --orange-hover: #f08a3a;
-      --orange-ink: #a84b09;  /* orange for small text on light backgrounds (AA) */
-      --yellow: #f6d31c;      /* mixer drum yellow */
-      --stone: #5f5b55;
-      --line: #dcd8d0;
-      --line-dark: rgba(243, 241, 236, 0.14);
-      --hazard: repeating-linear-gradient(-45deg, var(--yellow) 0 14px, var(--smoke) 14px 28px);
-
-      --logo: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
-      --display: 'Big Shoulders Display', 'Arial Narrow', Impact, sans-serif;
-      --serif: 'Cormorant Garamond', Georgia, serif;
-      --sans: 'Inter', system-ui, -apple-system, sans-serif;
-
-      --container: min(1240px, 100% - 32px);
-      --section-y: clamp(4.5rem, 10vw, 8rem);
-      --ease: cubic-bezier(.2, .7, .2, 1);
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; scroll-padding-top: 72px; }
-    body {
-      font-family: var(--sans);
-      font-size: 1.0625rem;
-      line-height: 1.65;
-      color: var(--smoke);
-      background: var(--ivory);
-      overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
-    }
-    img { max-width: 100%; display: block; }
-    a { color: inherit; text-decoration: none; }
-    :focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; }
-
-    .container { width: var(--container); margin-inline: auto; }
-    .skip {
-      position: absolute; left: 16px; top: -60px; z-index: 200;
-      background: var(--orange); color: var(--smoke); padding: .6rem 1rem;
-    }
-    .skip:focus { top: 16px; }
-
-    /* ---------- Type ---------- */
-    .display, h1, h2, h3 {
-      font-family: var(--display);
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: -0.005em;
-    }
-    h2 { font-size: clamp(2.6rem, 6.5vw, 5.5rem); line-height: .9; }
-    h3 { font-size: clamp(1.8rem, 3vw, 2.4rem); line-height: .95; font-weight: 700; }
-    .eyebrow {
-      display: inline-flex; align-items: center; gap: .6rem;
-      font-size: .75rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase;
-      color: var(--orange-ink);
-    }
-    .eyebrow::before {
-      content: ''; flex: none; width: 22px; height: 8px;
-      background: repeating-linear-gradient(-45deg, var(--yellow) 0 3px, var(--smoke) 3px 6px);
-    }
-    .on-dark .eyebrow { color: var(--yellow); }
-    .lede {
-      font-family: var(--serif); font-style: italic; font-weight: 500;
-      font-size: clamp(1.35rem, 2.4vw, 1.85rem); line-height: 1.3;
-    }
-
-    /* ---------- Buttons ---------- */
-    .btn {
-      display: inline-flex; align-items: center; gap: .55rem;
-      padding: .9rem 1.6rem; border-radius: 999px;
-      font-size: .8rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase;
-      border: 1px solid transparent; transition: background .25s var(--ease), color .25s var(--ease), border-color .25s var(--ease);
-    }
-    .btn-solid { background: var(--orange); color: var(--smoke); }
-    .btn-solid:hover { background: var(--orange-hover); }
-    .btn-ghost { border-color: rgba(243, 241, 236, .5); color: var(--ivory); }
-    .btn-ghost:hover { background: var(--ivory); color: var(--smoke); }
-    .btn-sm { padding: .6rem 1.15rem; font-size: .72rem; }
-
-    /* ---------- Header ---------- */
-    .site-header {
-      position: fixed; inset: 0 0 auto 0; z-index: 100;
-      color: var(--ivory);
-      transition: background .35s var(--ease), border-color .35s var(--ease);
-      border-bottom: 1px solid transparent;
-    }
-    .site-header.is-solid { background: rgba(22, 22, 22, .96); backdrop-filter: blur(10px); border-color: var(--line-dark); }
-    .nav { display: flex; align-items: center; justify-content: space-between; height: 72px; gap: 1.5rem; }
-    .wordmark {
-      font-family: var(--logo); font-weight: 800; font-size: 1.55rem;
-      letter-spacing: -0.02em; line-height: 1;
-      display: inline-flex; align-items: center; gap: .6rem;
-    }
-    .wordmark .mark {
-      width: 26px; height: 26px; border-radius: 4px; flex: none;
-      background: repeating-linear-gradient(-45deg, var(--yellow) 0 5px, var(--smoke) 5px 10px);
-      box-shadow: inset 0 0 0 2px var(--orange);
-    }
-    .nav-links { display: flex; align-items: center; gap: 2.25rem; list-style: none; }
-    .nav-links a:not(.btn) {
-      font-size: .78rem; font-weight: 500; letter-spacing: .16em; text-transform: uppercase;
-      position: relative; padding-block: .3rem;
-    }
-    .nav-links a:not(.btn)::after {
-      content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 1px;
-      background: var(--orange); transform: scaleX(0); transform-origin: left; transition: transform .3s var(--ease);
-    }
-    .nav-links a:not(.btn):hover::after { transform: scaleX(1); }
-    .menu-toggle {
-      display: none; background: none; border: 0; color: inherit; cursor: pointer;
-      width: 44px; height: 44px; position: relative;
-    }
-    .menu-toggle span, .menu-toggle span::before {
-      position: absolute; left: 10px; right: 10px; height: 1.5px; background: currentColor; content: '';
-      transition: transform .3s var(--ease);
-    }
-    .menu-toggle span { top: 18px; }
-    .menu-toggle span::before { left: 0; right: 0; top: 8px; }
-    .menu-open .menu-toggle span { transform: translateY(4px) rotate(45deg); }
-    .menu-open .menu-toggle span::before { transform: translateY(-8px) rotate(-90deg); }
-
-    /* ---------- Hero ---------- */
-    .hero {
-      position: relative; min-height: 100svh; display: flex; align-items: flex-end;
-      color: var(--ivory); background: var(--smoke); overflow: hidden;
-      padding: 120px 0 clamp(3rem, 7vw, 5.5rem);
-    }
-    .hero-media {
-      position: absolute; inset: 0; z-index: 0;
-      /* Photo slot: drop assets/hero.jpg in and it layers over the fallback gradient */
-      background:
-        linear-gradient(180deg, rgba(12,12,12,.55) 0%, rgba(12,12,12,.2) 40%, rgba(12,12,12,.92) 100%),
-        url('assets/hero.jpg') center/cover no-repeat,
-        radial-gradient(120% 80% at 75% 20%, #3a3a3a 0%, var(--smoke) 55%, var(--smoke-deep) 100%);
-    }
-    .hero-media::after {
-      /* faint architectural linework standing in until photography arrives */
-      content: ''; position: absolute; inset: 0; opacity: .07;
-      background-image: repeating-linear-gradient(90deg, var(--ivory) 0 1px, transparent 1px 120px);
-    }
-    .hero .container { position: relative; z-index: 1; }
-    .hero h1 {
-      font-size: clamp(3.4rem, 13vw, 10.5rem); line-height: .86;
-      margin: 1.25rem 0 2rem;
-    }
-    .hero h1 .line { display: block; overflow: hidden; padding-bottom: .04em; }
-    .hero h1 .line > span { display: block; }
-    .hero h1 .accent { color: var(--yellow); }
-    .hero-foot {
-      display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2rem; align-items: end;
-      border-top: 1px solid var(--line-dark); padding-top: 2rem;
-    }
-    .hero-foot .lede { max-width: 34ch; color: rgba(243, 241, 236, .9); }
-    .hero-actions { display: flex; gap: .75rem; flex-wrap: wrap; }
-
-    .js .cascade .line > span { transform: translateY(105%); }
-    .js .cascade.is-in .line > span { transform: none; transition: transform 1s var(--ease); }
-    .js .cascade.is-in .line:nth-child(2) > span { transition-delay: .09s; }
-    .js .cascade.is-in .line:nth-child(3) > span { transition-delay: .18s; }
-
-    /* ---------- Marquee ---------- */
-    .marquee {
-      position: relative; background: var(--smoke-deep); color: var(--ivory);
-      overflow: hidden; padding: calc(1.1rem + 8px) 0;
-    }
-    .marquee::before, .marquee::after {
-      content: ''; position: absolute; left: 0; right: 0; height: 8px; background: var(--hazard);
-    }
-    .marquee::before { top: 0; }
-    .marquee::after { bottom: 0; }
-    .marquee-track { display: flex; width: max-content; animation: marquee 44s linear infinite; }
-    .marquee-track ul { display: flex; list-style: none; }
-    .marquee-track li {
-      font-family: var(--display); font-weight: 700; text-transform: uppercase;
-      font-size: clamp(1.25rem, 2.4vw, 1.75rem); letter-spacing: .06em; white-space: nowrap;
-      display: flex; align-items: center;
-    }
-    .marquee-track li::after { content: '●'; color: var(--orange); font-size: .45em; font-size: .7em; margin-inline: 2rem; }
-    @keyframes marquee { to { transform: translateX(-50%); } }
-
-    /* ---------- Sections ---------- */
-    section { padding-block: var(--section-y); }
-    .section-head {
-      display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 26rem); gap: 2rem 4rem; align-items: end;
-      margin-bottom: clamp(2.5rem, 5vw, 4rem);
-    }
-    .section-head h2 { margin-top: .9rem; }
-    .section-head p { color: var(--stone); }
-
-    /* ---------- Holdings ---------- */
-    .holdings-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; }
-    .holding {
-      position: relative; background: var(--paper); display: flex; flex-direction: column;
-      border: 1px solid var(--line); transition: border-color .3s var(--ease), transform .4s var(--ease);
-    }
-    .holding:hover { border-color: var(--smoke); }
-    .holding--wide { grid-column: span 2; }
-    .holding-media { aspect-ratio: 4 / 3; overflow: hidden; background: var(--smoke-2); }
-    .holding--wide .holding-media { aspect-ratio: 16 / 8.2; }
-    .holding-media > div {
-      width: 100%; height: 100%; transition: transform .8s var(--ease);
-      background-size: cover; background-position: center;
-    }
-    .holding:hover .holding-media > div { transform: scale(1.035); }
-    .media-gbx   { background-image: url('assets/gbx.jpg'), linear-gradient(135deg, #262626 0%, #4a4a4a 45%, #161616 100%); }
-    .media-equine{ background-image: url('assets/equine.jpg'), linear-gradient(160deg, #3b2a1f 0%, #6b4a33 50%, #2a1d15 100%); }
-    .media-hooves{ background-image: url('assets/hooves.jpg'), linear-gradient(150deg, #f08a3a 0%, #e8741e 45%, #a84b09 100%); }
-    .holding-body { padding: 1.6rem 1.6rem 1.75rem; display: flex; flex-direction: column; gap: .75rem; flex: 1; }
-    .holding-body p { color: var(--stone); font-size: .98rem; }
-    .holding-link {
-      margin-top: auto; padding-top: 1rem; display: inline-flex; align-items: center; gap: .5rem;
-      font-size: .76rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--orange-ink);
-    }
-    .holding-link::after { content: ''; position: absolute; inset: 0; } /* whole card clickable */
-    .holding-link .arrow { transition: transform .3s var(--ease); }
-    .holding:hover .arrow { transform: translate(3px, -3px); }
-    .holding-link[aria-disabled="true"] { color: var(--stone); }
-    .holding-link[aria-disabled="true"] .arrow { display: none; }
-
-    .holding--open {
-      background: transparent; border: 1px dashed var(--stone);
-      justify-content: center; min-height: 260px;
-    }
-    .holding--open .holding-body { justify-content: center; padding: clamp(1.6rem, 4vw, 3.5rem); }
-    .holding--open .holding-link { margin-top: .5rem; }
-    .holding--open p { max-width: 40ch; }
-    .holding--open h3 { font-size: clamp(2rem, 4vw, 3.2rem); }
-
-    /* ---------- Heritage ---------- */
-    .heritage { background: var(--paper); }
-    .split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: clamp(2.5rem, 6vw, 6rem); align-items: center; }
-    .split-copy h2 { margin: .9rem 0 1.75rem; }
-    .split-copy p + p { margin-top: 1.1rem; }
-    .split-copy p { color: #3c3a37; max-width: 52ch; }
-    .signature { margin-top: 2rem !important; font-family: var(--serif); font-style: italic; font-size: 1.4rem; color: var(--smoke) !important; }
-    .split-media { position: relative; padding: 0 0 12% 0; }
-    .split-media .big {
-      aspect-ratio: 4 / 5; width: 82%; margin-left: auto;
-      background: url('assets/heritage-1.jpg') center/cover, linear-gradient(170deg, #4a4a4a 0%, #262626 60%, #161616 100%);
-    }
-    .split-media .small {
-      position: absolute; left: 0; bottom: 0; width: 46%; aspect-ratio: 1;
-      border: 10px solid var(--paper);
-      background: url('assets/heritage-2.jpg') center/cover, linear-gradient(140deg, #f6d31c 0%, #e8a41e 100%);
-    }
-    .split-media .stamp {
-      position: absolute; right: -8px; bottom: 4%;
-      font-family: var(--display); font-weight: 700; text-transform: uppercase; letter-spacing: .2em; font-size: .8rem;
-      writing-mode: vertical-rl; color: var(--stone);
-    }
-
-    /* ---------- Community ---------- */
-    .community-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(2.5rem, 6vw, 6rem); }
-    .community h2 { margin: .9rem 0 2rem; }
-    blockquote {
-      position: relative; font-family: var(--serif); font-style: italic; font-weight: 500;
-      font-size: clamp(1.5rem, 2.8vw, 2.15rem); line-height: 1.25; padding-top: 3.25rem;
-    }
-    blockquote::before {
-      content: '“'; position: absolute; top: -1.2rem; left: -.2rem;
-      font-size: 6rem; line-height: 1; color: var(--orange); font-style: normal;
-    }
-    blockquote cite { display: block; margin-top: 1.25rem; font-family: var(--sans); font-style: normal; font-size: .8rem; letter-spacing: .16em; text-transform: uppercase; color: var(--stone); }
-    .initiatives { list-style: none; border-top: 1px solid var(--smoke); }
-    .initiatives li { border-bottom: 1px solid var(--line); }
-    .initiatives a {
-      display: grid; grid-template-columns: 3rem minmax(0, 1fr) auto; gap: 1rem; align-items: center;
-      padding: 1.6rem 0; transition: padding .35s var(--ease), color .25s;
-    }
-    .initiatives a:hover { padding-left: .75rem; color: var(--orange-ink); }
-    .initiatives .num { font-family: var(--display); font-weight: 700; color: var(--orange-ink); font-size: 1.1rem; }
-    .initiatives .title { font-family: var(--display); font-weight: 700; text-transform: uppercase; font-size: clamp(1.4rem, 2.4vw, 1.9rem); line-height: 1; }
-    .initiatives .desc { display: block; font-family: var(--sans); text-transform: none; font-weight: 400; font-size: .92rem; color: var(--stone); margin-top: .35rem; }
-    .initiatives .go { font-size: 1.2rem; }
-    .community-cta { margin-top: 2rem; }
-
-    /* ---------- Figures ---------- */
-    .figures { background: var(--smoke); color: var(--ivory); }
-    .figures-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.25rem; }
-    .figure { border-top: 3px solid var(--orange); padding-top: 1.25rem; }
-    .figure .n { font-family: var(--display); font-weight: 800; font-size: clamp(3.5rem, 7vw, 6rem); line-height: .9; }
-    .figure .n sup { font-size: .4em; color: var(--yellow); vertical-align: top; margin-left: .1em; }
-    .figure p { font-size: .8rem; letter-spacing: .14em; text-transform: uppercase; color: rgba(243, 241, 236, .7); margin-top: .75rem; }
-    .figures-note { margin-top: 2.5rem; font-size: .8rem; color: rgba(243,241,236,.5); }
-
-    /* ---------- Contact ---------- */
-    .contact h2 { font-size: clamp(3rem, 10vw, 8.5rem); line-height: .86; margin: .9rem 0 3rem; }
-    .contact-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.25rem; border-top: 1px solid var(--smoke); }
-    .contact-item { padding: 1.5rem 1.5rem 1.5rem 0; }
-    .contact-item + .contact-item { border-left: 1px solid var(--line); padding-left: 1.5rem; }
-    .contact-item h3 { font-family: var(--sans); font-size: .75rem; font-weight: 600; letter-spacing: .18em; color: var(--stone); margin-bottom: .6rem; }
-    .contact-item a, .contact-item address { font-style: normal; font-size: 1.05rem; font-weight: 500; overflow-wrap: anywhere; }
-    .contact-item a { border-bottom: 1px solid var(--line); transition: border-color .25s; }
-    .contact-item a:hover { border-color: var(--orange); }
-
-    /* ---------- Footer ---------- */
-    .site-footer { background: var(--smoke-deep); color: var(--ivory); padding-top: clamp(4rem, 8vw, 6rem); overflow: hidden; border-top: 10px solid transparent; border-image: var(--hazard) 10; }
-    .footer-cols { display: grid; grid-template-columns: 1.4fr repeat(3, minmax(0, 1fr)); gap: 2.5rem; }
-    .footer-cols p { color: rgba(243, 241, 236, .65); max-width: 30ch; font-size: .95rem; margin-top: .9rem; }
-    .footer-cols h4 { font-size: .72rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--yellow); margin-bottom: 1rem; }
-    .footer-cols ul { list-style: none; display: grid; gap: .55rem; }
-    .footer-cols ul a { color: rgba(243, 241, 236, .85); font-size: .95rem; }
-    .footer-cols ul a:hover { color: var(--ivory); text-decoration: underline; text-underline-offset: 4px; text-decoration-color: var(--orange); }
-    .footer-mark {
-      font-family: var(--logo); font-weight: 800; line-height: .9; padding-bottom: .08em;
-      font-size: clamp(3.4rem, 16.5vw, 15rem); letter-spacing: -0.035em; text-align: center;
-      color: transparent; -webkit-text-stroke: 1px rgba(232, 116, 30, .6);
-      margin-top: clamp(3rem, 7vw, 5rem); user-select: none; white-space: nowrap;
-    }
-    .footer-legal {
-      display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
-      border-top: 1px solid var(--line-dark); padding-block: 1.5rem; margin-top: 1rem;
-      font-size: .78rem; color: rgba(243, 241, 236, .5);
-    }
-
-    /* ---------- Reveal ---------- */
-    .js .reveal { opacity: 0; transform: translateY(24px); transition: opacity .9s var(--ease), transform .9s var(--ease); }
-    .js .reveal.is-in { opacity: 1; transform: none; }
-
-    /* ---------- Responsive ---------- */
-    @media (max-width: 960px) {
-      .holdings-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .holding--wide { grid-column: span 2; }
-      .split, .community-grid, .section-head { grid-template-columns: minmax(0, 1fr); }
-      .figures-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 2.5rem; }
-      .contact-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .contact-item:nth-child(3) { border-left: 0; padding-left: 0; }
-      .footer-cols { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-      .footer-cols > :first-child { grid-column: 1 / -1; }
-    }
-    @media (max-width: 820px) {
-      .menu-toggle { display: block; }
-      .nav-links {
-        position: fixed; inset: 72px 0 0 0; background: var(--smoke);
-        flex-direction: column; align-items: flex-start; justify-content: flex-start; gap: 0;
-        padding: 1.5rem 16px 2rem; transform: translateY(-8px); opacity: 0; visibility: hidden;
-        transition: opacity .3s var(--ease), transform .3s var(--ease), visibility 0s linear .3s;
-      }
-      .menu-open .nav-links { opacity: 1; transform: none; visibility: visible; transition-delay: 0s; }
-      .menu-open .site-header { background: var(--smoke); }
-      .nav-links li { width: 100%; border-bottom: 1px solid var(--line-dark); }
-      .nav-links li:last-child { border: 0; padding-top: 1.75rem; }
-      .nav-links a:not(.btn) {
-        display: block; padding: 1.1rem 0; font-family: var(--display); font-weight: 800;
-        font-size: 2.6rem; letter-spacing: 0; line-height: 1;
-      }
-      .nav-links a:not(.btn)::after { display: none; }
-      .hero-foot { grid-template-columns: minmax(0, 1fr); }
-    }
-    @media (max-width: 600px) {
-      .holdings-grid { grid-template-columns: minmax(0, 1fr); }
-      .holding--wide { grid-column: auto; }
-      .holding--wide .holding-media { aspect-ratio: 4 / 3; }
-      .contact-grid { grid-template-columns: minmax(0, 1fr); }
-      .contact-item + .contact-item { border-left: 0; padding-left: 0; border-top: 1px solid var(--line); }
-      .footer-cols { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .initiatives a { grid-template-columns: 2.25rem minmax(0, 1fr) auto; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      .marquee-track { animation: none; }
-      .js .reveal, .js .cascade .line > span { opacity: 1; transform: none; transition: none; }
-      * { transition-duration: 0s !important; }
-    }
-  </style>
+  <link rel="stylesheet" href="assets/css/site.css">
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -412,6 +41,7 @@
       <button class="menu-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu"><span></span></button>
       <ul class="nav-links" id="nav-links">
         <li><a href="#holdings">Holdings</a></li>
+        <li><a href="gbx/">GBX</a></li>
         <li><a href="#heritage">Heritage</a></li>
         <li><a href="#community">Community</a></li>
         <li><a href="#contact">Contact</a></li>
@@ -423,7 +53,7 @@
   <main id="main">
     <!-- ================= HERO ================= -->
     <section class="hero on-dark" id="top" aria-labelledby="hero-title">
-      <div class="hero-media" role="img" aria-label="The Brooklyn waterfront at Gowanus Bay"></div>
+      <div class="hero-media" role="img" aria-label="The Red Hook Grain Terminal seen across the water of Gowanus Bay"></div>
       <div class="container">
         <span class="eyebrow">Est. [Year] · Brooklyn, New York</span>
         <h1 id="hero-title" class="cascade">
@@ -461,12 +91,12 @@
 
         <div class="holdings-grid">
           <article class="holding holding--wide reveal">
-            <div class="holding-media"><div class="media-gbx" role="img" aria-label="Grain terminal silos on Gowanus Bay"></div></div>
+            <div class="holding-media"><div class="media-gbx" role="img" aria-label="The concrete towers of the Red Hook Grain Terminal"></div></div>
             <div class="holding-body">
               <span class="eyebrow">Maritime &amp; Industrial Property</span>
               <h3>GBX — Gowanus Bay Terminal</h3>
-              <p>A deep-water grain terminal and industrial waterfront property on Gowanus Bay in Red Hook.</p>
-              <a class="holding-link" data-link="gbx" href="#contact">Visit GBX <span class="arrow" aria-hidden="true">↗</span></a>
+              <p>The 1922 Red Hook Grain Terminal and a working waterfront on Gowanus Bay — available for film, photo shoots and events.</p>
+              <a class="holding-link" data-link="gbx" href="gbx/">Explore GBX <span class="arrow" aria-hidden="true">→</span></a>
             </div>
           </article>
 
@@ -481,7 +111,7 @@
           </article>
 
           <article class="holding reveal">
-            <div class="holding-media"><div class="media-hooves" role="img" aria-label="A young rider with a horse and instructor"></div></div>
+            <div class="holding-media"><div class="media-hooves" role="img" aria-label="A young rider in a helmet greeting a horse"></div></div>
             <div class="holding-body">
               <span class="eyebrow">Community Initiatives</span>
               <h3>Helping Hooves</h3>
@@ -509,11 +139,12 @@
           <span class="eyebrow">Heritage</span>
           <h2 id="heritage-title">A Brooklyn<br>Family</h2>
           <p>[Placeholder — family origins. Two or three sentences on where the Quadrozzi story begins and what the family has built in Brooklyn.]</p>
-          <p>[Placeholder — the waterfront. How Gowanus Bay Terminal came to the family, and its role in the life of Red Hook's working harbor.]</p>
+          <p>In 1997, John Quadrozzi Sr., president of Quadrozzi Concrete, purchased the Red Hook Grain Terminal and the surrounding 46 acres at the mouth of the Gowanus Canal. The terminal was a 1922 landmark of New York's Barge Canal era that had stood idle since 1965.</p>
+          <p>After his passing in 2004, his son John Quadrozzi Jr. took the helm and built the property into Gowanus Bay Terminal (GBX), which today is home to maritime and industrial tenants, productions and events.</p>
           <p>[Placeholder — the next chapter. The move into equestrian and community work through Brooklyn Equine and Helping Hooves.]</p>
           <p class="signature">— The Quadrozzi Family</p>
         </div>
-        <div class="split-media reveal" aria-hidden="true">
+        <div class="split-media reveal" role="img" aria-label="The grain terminal today, and an archival view of the elevator">
           <div class="big"></div>
           <div class="small"></div>
           <span class="stamp">Red Hook · Brooklyn</span>
@@ -555,12 +186,12 @@
           </div>
         </div>
         <div class="figures-grid reveal">
-          <div class="figure"><div class="n">00<sup>+</sup></div><p>Acres of waterfront</p></div>
-          <div class="figure"><div class="n">00</div><p>Years in Brooklyn</p></div>
+          <div class="figure"><div class="n">46</div><p>Acres at Gowanus Bay Terminal</p></div>
+          <div class="figure"><div class="n">1922</div><p>Year the Grain Terminal opened</p></div>
           <div class="figure"><div class="n">00</div><p>Horses in our care</p></div>
           <div class="figure"><div class="n">00</div><p>Community programs</p></div>
         </div>
-        <p class="figures-note">Figures are placeholders pending verification.</p>
+        <p class="figures-note">Figures shown as 00 are placeholders pending verification.</p>
       </div>
     </section>
 
@@ -572,7 +203,7 @@
         <div class="contact-grid reveal">
           <div class="contact-item"><h3>General</h3><a data-email="general" href="mailto:info@quadrozzi.com">info@quadrozzi.com</a></div>
           <div class="contact-item"><h3>Press</h3><a data-email="press" href="mailto:press@quadrozzi.com">press@quadrozzi.com</a></div>
-          <div class="contact-item"><h3>Leasing &amp; Terminal</h3><a data-email="leasing" href="mailto:gbx@quadrozzi.com">gbx@quadrozzi.com</a></div>
+          <div class="contact-item"><h3>GBX — Film, Events &amp; Leasing</h3><a href="gbx/#inquire">Book the property →</a></div>
           <div class="contact-item"><h3>Office</h3><address>[Street Address]<br>Brooklyn, NY [ZIP]</address></div>
         </div>
       </div>
@@ -590,7 +221,8 @@
         <div>
           <h4>Holdings</h4>
           <ul>
-            <li><a data-link="gbx" href="#contact">GBX Gowanus Bay Terminal</a></li>
+            <li><a data-link="gbx" href="gbx/">GBX Gowanus Bay Terminal</a></li>
+            <li><a href="gbx/#film">Film &amp; Events at GBX</a></li>
             <li><a data-link="brooklynEquine" href="https://DJMiddleFinger.github.io/be-brooklyn-equine/">Brooklyn Equine</a></li>
             <li><a data-link="helpingHooves" href="#community">Helping Hooves</a></li>
           </ul>
@@ -615,7 +247,7 @@
       <div class="footer-mark" aria-hidden="true">Quadrozzi</div>
       <div class="footer-legal">
         <span>© <span id="year">2026</span> Quadrozzi. All rights reserved.</span>
-        <span>Brooklyn, New York</span>
+        <span><a href="credits.html">Photo credits</a> · Brooklyn, New York</span>
       </div>
     </div>
   </footer>
@@ -628,7 +260,7 @@
        keep the link pointing at an on-page section instead.
        ===================================================================== */
     const LINKS = {
-      gbx:            '',   // GBX — Gowanus Bay Terminal website
+      gbx:            'gbx/',   // GBX — Gowanus Bay Terminal page on this site
       brooklynEquine: 'https://DJMiddleFinger.github.io/be-brooklyn-equine/',
       helpingHooves:  '',   // Helping Hooves website
       initiative1:    '',   // Helping Hooves initiative #1
@@ -642,43 +274,16 @@
       const url = LINKS[a.dataset.link];
       if (url) {
         a.href = url;
-        a.target = '_blank';
-        a.rel = 'noopener';
+        if (/^https?:/.test(url)) {   // outside sites open in a new tab
+          a.target = '_blank';
+          a.rel = 'noopener';
+        }
       } else if (a.classList.contains('holding-link')) {
         a.setAttribute('aria-disabled', 'true');
         a.firstChild.textContent = 'Link coming soon ';
       }
     });
-
-    // Header: solid after leaving the hero
-    const header = document.getElementById('header');
-    const onScroll = function () { header.classList.toggle('is-solid', window.scrollY > 40); };
-    onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
-
-    // Mobile menu
-    const toggle = document.querySelector('.menu-toggle');
-    const setMenu = function (open) {
-      document.body.classList.toggle('menu-open', open);
-      toggle.setAttribute('aria-expanded', String(open));
-      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
-    };
-    toggle.addEventListener('click', function () { setMenu(!document.body.classList.contains('menu-open')); });
-    document.querySelectorAll('.nav-links a').forEach(function (a) { a.addEventListener('click', function () { setMenu(false); }); });
-    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
-
-    // Hero cascade + scroll reveals
-    requestAnimationFrame(function () { requestAnimationFrame(function () { document.querySelector('.cascade').classList.add('is-in'); }); });
-    if ('IntersectionObserver' in window) {
-      const io = new IntersectionObserver(function (entries) {
-        entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } });
-      }, { rootMargin: '0px 0px -8% 0px' });
-      document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
-    } else {
-      document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('is-in'); });
-    }
-
-    document.getElementById('year').textContent = new Date().getFullYear();
   </script>
+  <script src="assets/js/site.js"></script>
 </body>
 </html>

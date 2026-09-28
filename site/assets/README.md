@@ -1,17 +1,21 @@
-# Photo slots
+# Site images
 
-Drop JPGs with these exact names into this folder. Each one layers over a styled gradient placeholder,
-so the page looks finished before the photos exist.
+All photos are in place. Licenses and authors are listed on the public **Photo credits** page
+(`site/credits.html`). Keep that page up to date whenever you add or replace a photo.
 
-| File | Where it appears | Suggested size |
+| File | Where it appears | Source |
 |---|---|---|
-| `hero.jpg` | Full-screen hero (harbor / terminal at dusk) | 2400×1600 |
-| `gbx.jpg` | GBX holding card (wide) | 1800×920 |
-| `equine.jpg` | Brooklyn Equine card | 1200×900 |
-| `hooves.jpg` | Helping Hooves card | 1200×900 |
-| `heritage-1.jpg` | Heritage, large portrait image | 1200×1500 |
-| `heritage-2.jpg` | Heritage, small square overlay | 800×800 |
-| `og.jpg` | Social share preview | 1200×630 |
+| `hero.jpg` | Home hero, GBX events block | Wikimedia Commons, Oliver Kienzi, CC BY-SA 4.0 |
+| `og.jpg` | Social share preview (crop of `hero.jpg`) | same as above |
+| `gbx.jpg` | Home GBX card, GBX intro | Wikimedia Commons, MikeBurnsPhotos, CC0 |
+| `equine.jpg` | Home Brooklyn Equine card | Be Brooklyn Equine site photo (`hero-ride.jpg`) |
+| `hooves.jpg` | Home Helping Hooves card | Wikimedia Commons, U.S. Army, public domain |
+| `heritage-1.jpg` | Home heritage (large), GBX film block | Wikimedia Commons, MikeBurnsPhotos, CC0 |
+| `heritage-2.jpg` | Home heritage (small), GBX history | HAER / Library of Congress, public domain |
+| `gbx/hero.jpg` | GBX hero | Wikimedia Commons, MikeBurnsPhotos, CC0 |
+| `gbx/towers.jpg`, `gbx/interior-arch.jpg`, `gbx/loujaine.jpg` | GBX spaces | Wikimedia Commons, MikeBurnsPhotos, CC0 |
+| `gbx/park-view.jpg` | GBX spaces | Wikimedia Commons, Jim Henderson, public domain |
+| `gbx/1922-galleries.jpg`, `gbx/pier-view.jpg` | GBX history | HAER / Library of Congress, public domain |
 
-Tip: muted or black-and-white documentary photos suit the palette best. You can reuse
-`hero-ride.jpg` / `stables.jpg` from the Brooklyn Equine repo for `equine.jpg`.
+To swap in the family's own photography, replace a file with a same-named JPEG (about 1400–2000px wide)
+and update `credits.html`.

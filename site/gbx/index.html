@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GBX Gowanus Bay Terminal — Film, Events &amp; Waterfront | Quadrozzi</title>
+  <meta name="description" content="GBX Gowanus Bay Terminal: the 1922 Red Hook Grain Terminal and working waterfront in Brooklyn. Book the property for film and TV, photo shoots, events and maritime use.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="GBX Gowanus Bay Terminal — Red Hook, Brooklyn">
+  <meta property="og:description" content="A 1922 landmark on the Brooklyn waterfront. Film, photo, events and maritime inquiries.">
+  <meta property="og:url" content="https://quadrozzi.com/gbx/">
+  <meta property="og:image" content="https://quadrozzi.com/assets/gbx/hero.jpg">
+  <meta name="theme-color" content="#161616">
+  <script>document.documentElement.classList.add('js');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@800&family=Big+Shoulders+Display:wght@700;800&family=Cormorant+Garamond:ital,wght@1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/site.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": ["Place", "LandmarksOrHistoricalBuildings"],
+    "name": "GBX — Gowanus Bay Terminal",
+    "alternateName": "Red Hook Grain Terminal",
+    "url": "https://quadrozzi.com/gbx/",
+    "address": { "@type": "PostalAddress", "streetAddress": "699 Columbia Street", "addressLocality": "Brooklyn", "addressRegion": "NY", "postalCode": "11231", "addressCountry": "US" },
+    "geo": { "@type": "GeoCoordinates", "latitude": 40.66944, "longitude": -74.00611 },
+    "parentOrganization": { "@type": "Organization", "name": "Quadrozzi", "url": "https://quadrozzi.com/" }
+  }
+  </script>
+  <style>
+    /* ---------- GBX page ---------- */
+    .hero-media {
+      background:
+        linear-gradient(90deg, rgba(12,12,12,.6) 0%, rgba(12,12,12,.2) 55%, rgba(12,12,12,0) 100%),
+        linear-gradient(180deg, rgba(12,12,12,.45) 0%, rgba(12,12,12,.05) 38%, rgba(12,12,12,.9) 100%),
+        url('../assets/gbx/hero.jpg') center 30%/cover no-repeat,
+        var(--smoke);
+    }
+    .wordmark .sub {
+      font-family: var(--display); font-weight: 800; font-size: .95rem; letter-spacing: .12em;
+      color: var(--smoke); background: var(--yellow); padding: .28rem .5rem .22rem; border-radius: 3px; margin-left: .15rem;
+    }
+    
+    /* Fact strip */
+    .facts { background: var(--smoke-deep); color: var(--ivory); padding-block: clamp(2.5rem, 5vw, 3.5rem); }
+    .facts .figures-grid { gap: 1.25rem 2rem; }
+    .facts .figure .n { font-size: clamp(2.8rem, 5.5vw, 4.5rem); }
+    .facts .figure .n small { font-size: .45em; color: var(--yellow); margin-left: .15em; }
+
+    /* Intro split image */
+    .photo { position: relative; margin: 0; }
+    .photo img { width: 100%; height: 100%; object-fit: cover; }
+    .photo figcaption {
+      margin-top: .7rem; font-size: .78rem; letter-spacing: .06em; color: var(--stone);
+    }
+    .intro .photo img { aspect-ratio: 4 / 3; }
+    .lead-p { font-size: 1.15rem; color: var(--smoke) !important; }
+
+    /* Spaces */
+    .spaces { background: var(--paper); }
+    .space-grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 1.25rem; }
+    .space { position: relative; overflow: hidden; background: var(--smoke); color: var(--ivory); min-height: 360px; display: flex; align-items: flex-end; }
+    .space img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .9s var(--ease); }
+    .space:hover img { transform: scale(1.04); }
+    .space::before { content: ''; position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, rgba(12,12,12,0) 35%, rgba(12,12,12,.88) 100%); }
+    .space-body { position: relative; z-index: 2; padding: 1.5rem 1.5rem 1.6rem; }
+    .space-body .num { font-family: var(--display); font-weight: 800; color: var(--yellow); letter-spacing: .1em; font-size: .95rem; }
+    .space-body h3 { margin: .35rem 0 .5rem; }
+    .space-body p { color: rgba(243, 241, 236, .85); font-size: .95rem; max-width: 44ch; }
+    .space--a { grid-column: span 7; min-height: 480px; }
+    .space--b { grid-column: span 5; min-height: 480px; }
+    .space--c { grid-column: span 5; }
+    .space--d { grid-column: span 7; }
+
+    /* Uses (film / events) */
+    .use { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(2.5rem, 6vw, 6rem); align-items: center; }
+    .use + .use { margin-top: clamp(4rem, 9vw, 7rem); }
+    .use--flip .use-media { order: 2; }
+    .use-media { position: relative; }
+    .use-media img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
+    .use-media .tag {
+      position: absolute; left: 0; top: 1.25rem; background: var(--orange); color: var(--smoke);
+      font-family: var(--display); font-weight: 800; text-transform: uppercase; letter-spacing: .08em;
+      padding: .45rem .9rem .4rem; font-size: 1rem;
+    }
+    .use h2 { margin: .9rem 0 1.5rem; }
+    .use p { color: #3c3a37; max-width: 52ch; }
+    .use p + p { margin-top: 1rem; }
+    .ticks { list-style: none; margin: 1.75rem 0 2rem; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .1rem 1.5rem; border-top: 1px solid var(--line); }
+    .ticks li {
+      display: flex; align-items: center; gap: .65rem; padding: .8rem 0; border-bottom: 1px solid var(--line);
+      font-weight: 500; font-size: .95rem;
+    }
+    .ticks li::before { content: ''; width: 10px; height: 10px; background: var(--orange); flex: none; }
+    .fineprint { font-size: .85rem !important; color: var(--stone) !important; }
+
+    /* History timeline */
+    .history { background: var(--smoke); color: var(--ivory); }
+    .history .section-head p { color: rgba(243, 241, 236, .7); }
+    .timeline { list-style: none; position: relative; }
+    .timeline::before { content: ''; position: absolute; left: 7.5rem; top: .6rem; bottom: .6rem; width: 2px; background: rgba(243, 241, 236, .14); }
+    .timeline li { display: grid; grid-template-columns: 6.5rem minmax(0, 1fr); gap: 0 3rem; padding: 1.4rem 0; position: relative; }
+    .timeline li::before {
+      content: ''; position: absolute; left: calc(7.5rem - 5px); top: 1.9rem; width: 12px; height: 12px;
+      background: var(--orange); box-shadow: 0 0 0 4px var(--smoke);
+    }
+    .timeline .yr { font-family: var(--display); font-weight: 800; font-size: 2.2rem; line-height: 1; color: var(--yellow); text-align: right; }
+    .timeline h3 { font-size: clamp(1.4rem, 2.2vw, 1.8rem); margin-bottom: .4rem; }
+    .timeline p { color: rgba(243, 241, 236, .78); max-width: 60ch; }
+    .archive { display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 1.25rem; margin-top: clamp(3rem, 6vw, 4.5rem); }
+    .archive img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; filter: grayscale(1) contrast(1.05); }
+    .archive figcaption { color: rgba(243, 241, 236, .6); }
+
+    /* Process */
+    .steps { list-style: none; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.25rem; counter-reset: step; }
+    .steps li { border-top: 3px solid var(--smoke); padding-top: 1.25rem; counter-increment: step; }
+    .steps li::before {
+      content: counter(step, decimal-leading-zero); display: block;
+      font-family: var(--display); font-weight: 800; font-size: 3rem; line-height: 1; color: var(--orange-ink); margin-bottom: .75rem;
+    }
+    .steps h3 { font-size: 1.6rem; margin-bottom: .5rem; }
+    .steps p { color: var(--stone); font-size: .95rem; }
+
+    /* Inquiry */
+    .inquire { background: var(--paper); border-top: 10px solid transparent; border-image: var(--hazard) 10; }
+    .inquire-grid { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.4fr); gap: clamp(2.5rem, 6vw, 5.5rem); }
+    .inquire h2 { font-size: clamp(3rem, 8vw, 6.5rem); line-height: .86; margin: .9rem 0 1.5rem; }
+    .inquire-aside p { color: #3c3a37; }
+    .direct { margin-top: 2rem; display: grid; gap: 1.25rem; border-top: 1px solid var(--smoke); padding-top: 1.5rem; }
+    .direct h3 { font-family: var(--sans); font-size: .72rem; font-weight: 600; letter-spacing: .18em; color: var(--stone); margin-bottom: .3rem; }
+    .direct a, .direct address { font-style: normal; font-weight: 500; font-size: 1.05rem; }
+    .direct a { border-bottom: 1px solid var(--line); }
+    .direct a:hover { border-color: var(--orange); }
+    .map { margin-top: 1.75rem; border: 1px solid var(--line); }
+    .map iframe { display: block; width: 100%; height: 260px; border: 0; filter: grayscale(.4); }
+    .map a { display: block; padding: .7rem 1rem; font-size: .78rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--orange-ink); border-top: 1px solid var(--line); }
+
+    .form { background: var(--ivory); padding: clamp(1.5rem, 4vw, 2.75rem); border: 1px solid var(--line); }
+    .form fieldset { border: 0; min-width: 0; }
+    .form legend, .form label, .field-label {
+      display: block; font-size: .72rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--smoke); margin-bottom: .55rem;
+    }
+    .req { color: var(--orange-ink); }
+    .form-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; }
+    .form-row + .form-row, .form fieldset + .form-row, .form-row + fieldset, .form fieldset + fieldset, .field + .field { margin-top: 1.4rem; }
+    .form input[type="text"], .form input[type="email"], .form input[type="tel"], .form input[type="date"], .form select, .form textarea {
+      width: 100%; font: inherit; font-size: 1rem; color: var(--smoke); background: var(--paper);
+      border: 1px solid #cfc9bd; border-radius: 0; padding: .8rem .9rem; transition: border-color .2s, box-shadow .2s;
+    }
+    .form textarea { min-height: 150px; resize: vertical; }
+    .form input:focus, .form select:focus, .form textarea:focus { outline: none; border-color: var(--orange); box-shadow: 0 0 0 3px rgba(232, 116, 30, .25); }
+    .chips { display: flex; flex-wrap: wrap; gap: .5rem; }
+    .form .chip { position: relative; display: inline-block; margin: 0; text-transform: none; letter-spacing: 0; font-size: inherit; font-weight: 500; }
+    .chip input { position: absolute; opacity: 0; inset: 0; cursor: pointer; }
+    .chip span {
+      display: inline-block; padding: .55rem 1rem; border: 1px solid #cfc9bd; border-radius: 999px; background: var(--paper);
+      font-size: .85rem; font-weight: 500; transition: background .2s, border-color .2s, color .2s;
+    }
+    .chip input:checked + span { background: var(--smoke); border-color: var(--smoke); color: var(--ivory); }
+    .chip input:focus-visible + span { outline: 2px solid var(--orange); outline-offset: 2px; }
+    .chip input[type="radio"]:checked + span { background: var(--orange); border-color: var(--orange); color: var(--smoke); }
+    .form-foot { margin-top: 1.75rem; display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.5rem; }
+    .form-foot .btn { border: 0; cursor: pointer; font-family: inherit; }
+    .form-foot p { font-size: .82rem; color: var(--stone); max-width: 42ch; }
+    .form-status { margin-top: 1.25rem; padding: 1rem 1.1rem; border-left: 4px solid var(--orange); background: var(--paper); font-size: .95rem; display: none; }
+    .form-status.is-shown { display: block; }
+
+    @media (max-width: 960px) {
+      .space--a, .space--b, .space--c, .space--d { grid-column: span 12; min-height: 340px; }
+      .use, .inquire-grid { grid-template-columns: minmax(0, 1fr); }
+      .use--flip .use-media { order: 0; }
+      .use-media img { aspect-ratio: 16 / 10; }
+      .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 2rem; }
+      .archive { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+      .archive figure:first-child { grid-column: 1 / -1; }
+    }
+    @media (max-width: 600px) {
+      .form-row, .ticks { grid-template-columns: minmax(0, 1fr); }
+      .steps { grid-template-columns: minmax(0, 1fr); }
+      .timeline::before { left: .35rem; }
+      .timeline li { grid-template-columns: minmax(0, 1fr); padding-left: 2rem; gap: .5rem; }
+      .timeline li::before { left: 0; top: 1.65rem; }
+      .timeline .yr { text-align: left; font-size: 1.9rem; }
+      .archive { grid-template-columns: minmax(0, 1fr); }
+      .wordmark .sub { font-size: .8rem; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <!-- ================= HEADER ================= -->
+  <header class="site-header" id="header">
+    <nav class="nav container" aria-label="Primary">
+      <a href="../" class="wordmark" aria-label="Quadrozzi — home"><span class="mark" aria-hidden="true"></span>Quadrozzi <span class="sub">GBX</span></a>
+      <button class="menu-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu"><span></span></button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#terminal">The Terminal</a></li>
+        <li><a href="#film">Film &amp; Photo</a></li>
+        <li><a href="#events">Events</a></li>
+        <li><a href="#history">History</a></li>
+        <li><a href="#inquire" class="btn btn-solid btn-sm">Book the Property</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- ================= HERO ================= -->
+    <section class="hero on-dark" id="top" aria-labelledby="hero-title">
+      <div class="hero-media" role="img" aria-label="The Red Hook Grain Terminal against a blue sky"></div>
+      <div class="container">
+        <span class="eyebrow">Gowanus Bay Terminal · Red Hook, Brooklyn</span>
+        <h1 id="hero-title" class="cascade">
+          <span class="line"><span>The Grain</span></span>
+          <span class="line"><span class="accent">Terminal</span></span>
+        </h1>
+        <div class="hero-foot">
+          <p class="lede">A 1922 landmark on the Brooklyn waterfront — and today a working terminal, film location and event site.</p>
+          <div class="hero-actions">
+            <a href="#inquire" class="btn btn-solid">Book the Property</a>
+            <a href="#spaces" class="btn btn-ghost">Explore the Site</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= FACTS ================= -->
+    <div class="facts on-dark" aria-label="Terminal facts">
+      <div class="container figures-grid">
+        <div class="figure"><div class="n">1922</div><p>Opened September 1</p></div>
+        <div class="figure"><div class="n">12</div><p>Stories of reinforced concrete</p></div>
+        <div class="figure"><div class="n">429<small>FT</small></div><p>Length of the grain elevator</p></div>
+        <div class="figure"><div class="n">46</div><p>Acres acquired by the family in 1997</p></div>
+      </div>
+    </div>
+
+    <!-- ================= TERMINAL TODAY ================= -->
+    <section class="intro" id="terminal" aria-labelledby="terminal-title">
+      <div class="container split">
+        <div class="split-copy reveal">
+          <span class="eyebrow">The Terminal Today</span>
+          <h2 id="terminal-title">Working<br>Waterfront</h2>
+          <p class="lead-p">Gowanus Bay Terminal — GBX — sits at the foot of Columbia Street in Red Hook, between the mouth of the Gowanus Canal and Erie Basin.</p>
+          <p>At its center stands the Red Hook Grain Terminal, the neighborhood's tallest structure and one of Brooklyn's most recognizable silhouettes, visible from the Gowanus Expressway and the elevated F and G trains.</p>
+          <p>Today GBX is a multi-user maritime and industrial facility. Its piers and yards serve working tenants, while the terminal's monumental concrete draws filmmakers, photographers, artists and event producers.</p>
+          <div class="hero-actions" style="margin-top:2rem">
+            <a href="#inquire" class="btn btn-solid">Check Availability</a>
+          </div>
+        </div>
+        <figure class="photo reveal">
+          <img src="../assets/gbx.jpg" alt="The rooftop towers of the Red Hook Grain Terminal against a blue sky" loading="lazy" width="1400" height="1050">
+          <figcaption>The Red Hook Grain Terminal, 2025.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ================= SPACES ================= -->
+    <section class="spaces" id="spaces" aria-labelledby="spaces-title">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <span class="eyebrow">The Property</span>
+            <h2 id="spaces-title">Spaces &amp; Settings</h2>
+          </div>
+          <p>Raw scale that can't be built on a stage. Every request is reviewed against terminal operations and safety requirements.</p>
+        </div>
+        <div class="space-grid">
+          <article class="space space--a reveal">
+            <img src="../assets/gbx/towers.jpg" alt="Weathered concrete towers of the grain terminal" loading="lazy">
+            <div class="space-body">
+              <span class="num">01</span>
+              <h3>The Grain Terminal</h3>
+              <p>Twelve stories of weathered concrete behind a 429-foot façade — built for exteriors, wide shots and large-scale projection.</p>
+            </div>
+          </article>
+          <article class="space space--b reveal">
+            <img src="../assets/gbx/interior-arch.jpg" alt="Arched steel-framed windows high on the terminal" loading="lazy">
+            <div class="space-body">
+              <span class="num">02</span>
+              <h3>Industrial Details</h3>
+              <p>Steel, glass and concrete with nearly a century of texture. Interior access is by site review only.</p>
+            </div>
+          </article>
+          <article class="space space--c reveal">
+            <img src="../assets/gbx/park-view.jpg" alt="The full length of the grain terminal seen from across an open field" loading="lazy">
+            <div class="space-body">
+              <span class="num">03</span>
+              <h3>Open Ground</h3>
+              <p>Wide, level yard space for staging, base camp, parking and large builds, subject to availability.</p>
+            </div>
+          </article>
+          <article class="space space--d reveal">
+            <img src="../assets/gbx/loujaine.jpg" alt="A large ship moored at the terminal pier" loading="lazy">
+            <div class="space-body">
+              <span class="num">04</span>
+              <h3>Waterfront &amp; Piers</h3>
+              <p>Bay frontage and working piers, with vessels, tugs and the open harbor as a backdrop.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= FILM + EVENTS ================= -->
+    <section class="uses" aria-label="Film and events">
+      <div class="container">
+        <div class="use" id="film">
+          <div class="use-media reveal">
+            <img src="../assets/heritage-1.jpg" alt="Low-angle view of the grain terminal's concrete tower with graffiti" loading="lazy">
+            <span class="tag">Film · TV · Photo</span>
+          </div>
+          <div class="reveal">
+            <span class="eyebrow">On Location</span>
+            <h2>Film &amp; Photo</h2>
+            <p>The terminal's scale and texture have made it a sought-after New York location. It has appeared in music videos for Lorde's <em>Team</em> and David Bowie's <em>Valentine's Day</em>.</p>
+            <p>Tell us what the production needs — base camp, parking, power, water access or specific angles — and we'll confirm what's available for your dates.</p>
+            <ul class="ticks">
+              <li>Feature film &amp; television</li>
+              <li>Commercials &amp; branded content</li>
+              <li>Music videos</li>
+              <li>Editorial &amp; fashion photography</li>
+              <li>Documentary &amp; stills</li>
+              <li>Location scouts</li>
+            </ul>
+            <a href="#inquire" class="btn btn-solid" data-type="Film / TV">Start a Film Inquiry</a>
+          </div>
+        </div>
+
+        <div class="use use--flip" id="events">
+          <div class="use-media reveal">
+            <img src="../assets/hero.jpg" alt="The grain terminal seen across the water of Gowanus Bay" loading="lazy">
+            <span class="tag">Events</span>
+          </div>
+          <div class="reveal">
+            <span class="eyebrow">Gatherings at Scale</span>
+            <h2>Events</h2>
+            <p>GBX offers a setting no ballroom can match. In 2002, Zacho Dance Theater staged an aerial performance here — dancers scaled the building while 100-foot video images of Red Hook were projected across its walls.</p>
+            <p>From private events to cultural programs, we'll work with you on a plan that fits the site.</p>
+            <ul class="ticks">
+              <li>Private &amp; corporate events</li>
+              <li>Brand activations &amp; launches</li>
+              <li>Performances &amp; installations</li>
+              <li>Community &amp; cultural programs</li>
+            </ul>
+            <p class="fineprint">All events are subject to site review, and to the permits and insurance that apply.</p>
+            <div style="margin-top:1.5rem"><a href="#inquire" class="btn btn-solid" data-type="Event">Plan an Event</a></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= HISTORY ================= -->
+    <section class="history on-dark" id="history" aria-labelledby="history-title">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <span class="eyebrow">A Century on Gowanus Bay</span>
+            <h2 id="history-title">History</h2>
+          </div>
+          <p>Built by New York State for the Barge Canal era, the terminal has watched a hundred years of the harbor change around it.</p>
+        </div>
+        <ol class="timeline reveal">
+          <li><span class="yr">1922</span><div><h3>Built by New York State</h3><p>Designed by the Office of the State Engineer to serve the State Barge Canal, the reinforced-concrete grain elevator took 16 months to build, cost $2.5 million and opened on September 1, 1922.</p></div></li>
+          <li><span class="yr">1944</span><div><h3>The Port Authority Era</h3><p>Control of the terminal passes to the Port Authority of New York and New Jersey.</p></div></li>
+          <li><span class="yr">1965</span><div><h3>Grain Operations End</h3><p>As grain shipping shifts to other ports, the elevator is deactivated.</p></div></li>
+          <li><span class="yr">1997</span><div><h3>The Quadrozzi Family</h3><p>John Quadrozzi Sr., president of Quadrozzi Concrete, purchases the terminal and the surrounding 46 acres.</p></div></li>
+          <li><span class="yr">2004</span><div><h3>Gowanus Bay Terminal</h3><p>John Quadrozzi Jr. takes the helm and leads the property as Gowanus Bay Terminal — GBX.</p></div></li>
+          <li><span class="yr">Today</span><div><h3>A Working Landmark</h3><p>Maritime and industrial tenants, film and photo productions, and events share one of Brooklyn's most storied waterfront sites.</p></div></li>
+        </ol>
+        <div class="archive reveal">
+          <figure class="photo"><img src="../assets/heritage-2.jpg" alt="Archival photo of the grain elevator seen from the northeast" loading="lazy"><figcaption>The grain elevator from the northeast. Historic American Engineering Record.</figcaption></figure>
+          <figure class="photo"><img src="../assets/gbx/1922-galleries.jpg" alt="Steel conveyor galleries under construction, 1922" loading="lazy"><figcaption>Conveyor galleries, July 17, 1922.</figcaption></figure>
+          <figure class="photo"><img src="../assets/gbx/pier-view.jpg" alt="Archival view southwest from the top of the grain elevator over the terminal pier" loading="lazy"><figcaption>Looking southwest from the elevator. Thomas R. Flagg, HAER.</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= PROCESS ================= -->
+    <section class="process" aria-labelledby="process-title">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <span class="eyebrow">How Booking Works</span>
+            <h2 id="process-title">Four Steps</h2>
+          </div>
+          <p>A straightforward process, built around the realities of a working terminal.</p>
+        </div>
+        <ol class="steps reveal">
+          <li><h3>Inquire</h3><p>Send your dates, crew or guest count, and the areas you're interested in.</p></li>
+          <li><h3>Scout</h3><p>We'll arrange a site visit so your team can walk the property.</p></li>
+          <li><h3>Confirm</h3><p>Agree terms and schedule, and provide insurance certificates and any permits that apply.</p></li>
+          <li><h3>Arrive</h3><p>We coordinate access on the day around terminal operations.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ================= INQUIRE ================= -->
+    <section class="inquire" id="inquire" aria-labelledby="inquire-title">
+      <div class="container inquire-grid">
+        <div class="inquire-aside reveal">
+          <span class="eyebrow">Book the Property</span>
+          <h2 id="inquire-title">Let's<br>Talk</h2>
+          <p>Film and photo shoots, events, and maritime or industrial use. Tell us about your project and we'll reply with availability and next steps.</p>
+          <div class="direct">
+            <div><h3>Email</h3><a id="gbx-email" href="mailto:gbx@quadrozzi.com">gbx@quadrozzi.com</a></div>
+            <div><h3>Phone</h3><span>[Phone number]</span></div>
+            <div><h3>Location</h3><address>699 Columbia Street<br>Red Hook, Brooklyn, NY 11231</address></div>
+          </div>
+          <div class="map">
+            <iframe title="Map showing Gowanus Bay Terminal in Red Hook, Brooklyn" loading="lazy" referrerpolicy="no-referrer"
+              src="https://www.openstreetmap.org/export/embed.html?bbox=-74.0145%2C40.6645%2C-73.9977%2C40.6745&amp;layer=mapnik&amp;marker=40.66944%2C-74.00611"></iframe>
+            <a href="https://www.openstreetmap.org/?mlat=40.66944&amp;mlon=-74.00611#map=16/40.66944/-74.00611" target="_blank" rel="noopener">Open larger map ↗</a>
+          </div>
+        </div>
+
+        <form class="form reveal" id="inquiry-form" novalidate>
+          <fieldset>
+            <legend>What are you planning? <span class="req">*</span></legend>
+            <div class="chips">
+              <label class="chip"><input type="radio" name="type" value="Film / TV" required><span>Film / TV</span></label>
+              <label class="chip"><input type="radio" name="type" value="Commercial / Photo"><span>Commercial / Photo</span></label>
+              <label class="chip"><input type="radio" name="type" value="Music video"><span>Music video</span></label>
+              <label class="chip"><input type="radio" name="type" value="Event"><span>Event</span></label>
+              <label class="chip"><input type="radio" name="type" value="Maritime / Leasing"><span>Maritime / Leasing</span></label>
+              <label class="chip"><input type="radio" name="type" value="Other"><span>Other</span></label>
+            </div>
+          </fieldset>
+
+          <div class="form-row">
+            <div><label for="f-name">Name <span class="req">*</span></label><input id="f-name" name="name" type="text" autocomplete="name" required></div>
+            <div><label for="f-company">Company / Production</label><input id="f-company" name="company" type="text" autocomplete="organization"></div>
+          </div>
+          <div class="form-row">
+            <div><label for="f-email">Email <span class="req">*</span></label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
+            <div><label for="f-phone">Phone</label><input id="f-phone" name="phone" type="tel" autocomplete="tel"></div>
+          </div>
+          <div class="form-row">
+            <div><label for="f-start">Preferred start date</label><input id="f-start" name="start" type="date"></div>
+            <div><label for="f-end">End date</label><input id="f-end" name="end" type="date"></div>
+          </div>
+          <div class="form-row">
+            <div>
+              <label for="f-size">Crew / guest count</label>
+              <select id="f-size" name="size">
+                <option value="">Select…</option>
+                <option>Under 25</option>
+                <option>25–75</option>
+                <option>75–150</option>
+                <option>150–300</option>
+                <option>300+</option>
+              </select>
+            </div>
+            <div><label for="f-hear">How did you hear about GBX?</label><input id="f-hear" name="source" type="text"></div>
+          </div>
+
+          <fieldset>
+            <legend>Areas of interest</legend>
+            <div class="chips">
+              <label class="chip"><input type="checkbox" name="areas" value="Grain Terminal exterior"><span>Grain Terminal exterior</span></label>
+              <label class="chip"><input type="checkbox" name="areas" value="Industrial details / interiors"><span>Industrial details / interiors</span></label>
+              <label class="chip"><input type="checkbox" name="areas" value="Waterfront & piers"><span>Waterfront &amp; piers</span></label>
+              <label class="chip"><input type="checkbox" name="areas" value="Open ground / base camp"><span>Open ground / base camp</span></label>
+            </div>
+          </fieldset>
+
+          <div class="field" style="margin-top:1.4rem">
+            <label for="f-details">Tell us about the project <span class="req">*</span></label>
+            <textarea id="f-details" name="details" required placeholder="Scope, schedule, load-in/out, equipment, anything we should know."></textarea>
+          </div>
+
+          <div class="form-foot">
+            <button type="submit" class="btn btn-solid">Send Inquiry</button>
+            <p id="form-note">Sending opens your email app with the details filled in, addressed to the GBX team.</p>
+          </div>
+          <div class="form-status" id="form-status" role="status" aria-live="polite"></div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-cols">
+        <div>
+          <a href="../" class="wordmark"><span class="mark" aria-hidden="true"></span>Quadrozzi</a>
+          <p>GBX Gowanus Bay Terminal is part of the Quadrozzi family of companies.</p>
+        </div>
+        <div>
+          <h4>GBX</h4>
+          <ul>
+            <li><a href="#terminal">The Terminal</a></li>
+            <li><a href="#film">Film &amp; Photo</a></li>
+            <li><a href="#events">Events</a></li>
+            <li><a href="#inquire">Book the Property</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Quadrozzi</h4>
+          <ul>
+            <li><a href="../#holdings">Holdings</a></li>
+            <li><a href="https://DJMiddleFinger.github.io/be-brooklyn-equine/" target="_blank" rel="noopener">Brooklyn Equine</a></li>
+            <li><a href="../#community">Helping Hooves</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="mailto:gbx@quadrozzi.com">gbx@quadrozzi.com</a></li>
+            <li><a href="../#contact">All contacts</a></li>
+            <li><a href="../credits.html">Photo credits</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-mark" aria-hidden="true">GBX</div>
+      <div class="footer-legal">
+        <span>© <span id="year">2026</span> Quadrozzi. All rights reserved.</span>
+        <span>Red Hook, Brooklyn</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    /* =====================================================================
+       INQUIRY FORM — where submissions go.
+       email:    the inbox that receives inquiries.
+       endpoint: optional form service URL (e.g. a Formspree form endpoint).
+                 Leave '' to open the visitor's email app with the details
+                 filled in. Set it to post the form directly instead.
+       ===================================================================== */
+    const GBX_INQUIRY = {
+      email:    'gbx@quadrozzi.com',
+      endpoint: ''
+    };
+
+    (function () {
+      const form = document.getElementById('inquiry-form');
+      const status = document.getElementById('form-status');
+      document.getElementById('gbx-email').href = 'mailto:' + GBX_INQUIRY.email;
+      document.getElementById('gbx-email').textContent = GBX_INQUIRY.email;
+      if (GBX_INQUIRY.endpoint) document.getElementById('form-note').textContent = 'We reply to every inquiry, usually within two business days.';
+
+      // "Start a Film Inquiry" / "Plan an Event" buttons preselect the type
+      document.querySelectorAll('a[data-type]').forEach(function (a) {
+        a.addEventListener('click', function () {
+          const r = form.querySelector('input[name="type"][value="' + a.dataset.type + '"]');
+          if (r) r.checked = true;
+        });
+      });
+
+      const show = function (msg) { status.textContent = msg; status.classList.add('is-shown'); };
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (!form.checkValidity()) {
+          form.reportValidity();
+          return;
+        }
+        const d = new FormData(form);
+        const areas = d.getAll('areas').join(', ');
+        const dates = [d.get('start'), d.get('end')].filter(Boolean).join(' to ');
+        const lines = [
+          'Inquiry type: ' + d.get('type'),
+          'Name: ' + d.get('name'),
+          'Company / production: ' + (d.get('company') || '—'),
+          'Email: ' + d.get('email'),
+          'Phone: ' + (d.get('phone') || '—'),
+          'Dates: ' + (dates || '—'),
+          'Crew / guest count: ' + (d.get('size') || '—'),
+          'Areas of interest: ' + (areas || '—'),
+          'Heard about GBX: ' + (d.get('source') || '—'),
+          '',
+          d.get('details')
+        ];
+
+        if (GBX_INQUIRY.endpoint) {
+          d.set('areas', areas);
+          fetch(GBX_INQUIRY.endpoint, { method: 'POST', body: d, headers: { Accept: 'application/json' } })
+            .then(function (r) {
+              if (!r.ok) throw new Error(r.status);
+              form.reset();
+              show('Thank you. Your inquiry has been sent, and the GBX team will be in touch.');
+            })
+            .catch(function () {
+              show('Something went wrong sending the form. Please email ' + GBX_INQUIRY.email + ' directly.');
+            });
+          return;
+        }
+
+        const subject = 'GBX inquiry — ' + d.get('type') + ' — ' + d.get('name');
+        window.location.href = 'mailto:' + GBX_INQUIRY.email +
+          '?subject=' + encodeURIComponent(subject) +
+          '&body=' + encodeURIComponent(lines.join('\n'));
+        show('Your email app should now be open with the inquiry filled in. Just press send. If nothing opened, email ' + GBX_INQUIRY.email + '.');
+      });
+    })();
+  </script>
+  <script src="../assets/js/site.js"></script>
+</body>
+</html>
