@@ -37,154 +37,6 @@
         url('../assets/gbx/hero.jpg') center 30%/cover no-repeat,
         var(--smoke);
     }
-    .wordmark .sub {
-      font-family: var(--display); font-weight: 800; font-size: .95rem; letter-spacing: .12em;
-      color: var(--smoke); background: var(--yellow); padding: .28rem .5rem .22rem; border-radius: 3px; margin-left: .15rem;
-    }
-    
-    /* Fact strip */
-    .facts { background: var(--smoke-deep); color: var(--ivory); padding-block: clamp(2.5rem, 5vw, 3.5rem); }
-    .facts .figures-grid { gap: 1.25rem 2rem; }
-    .facts .figure .n { font-size: clamp(2.8rem, 5.5vw, 4.5rem); }
-    .facts .figure .n small { font-size: .45em; color: var(--yellow); margin-left: .15em; }
-
-    /* Intro split image */
-    .photo { position: relative; margin: 0; }
-    .photo img { width: 100%; height: 100%; object-fit: cover; }
-    .photo figcaption {
-      margin-top: .7rem; font-size: .78rem; letter-spacing: .06em; color: var(--stone);
-    }
-    .intro .photo img { aspect-ratio: 4 / 3; }
-    .lead-p { font-size: 1.15rem; color: var(--smoke) !important; }
-
-    /* Spaces */
-    .spaces { background: var(--paper); }
-    .space-grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 1.25rem; }
-    .space { position: relative; overflow: hidden; background: var(--smoke); color: var(--ivory); min-height: 360px; display: flex; align-items: flex-end; }
-    .space img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .9s var(--ease); }
-    .space:hover img { transform: scale(1.04); }
-    .space::before { content: ''; position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, rgba(12,12,12,0) 35%, rgba(12,12,12,.88) 100%); }
-    .space-body { position: relative; z-index: 2; padding: 1.5rem 1.5rem 1.6rem; }
-    .space-body .num { font-family: var(--display); font-weight: 800; color: var(--yellow); letter-spacing: .1em; font-size: .95rem; }
-    .space-body h3 { margin: .35rem 0 .5rem; }
-    .space-body p { color: rgba(243, 241, 236, .85); font-size: .95rem; max-width: 44ch; }
-    .space--a { grid-column: span 7; min-height: 480px; }
-    .space--b { grid-column: span 5; min-height: 480px; }
-    .space--c { grid-column: span 5; }
-    .space--d { grid-column: span 7; }
-
-    /* Uses (film / events) */
-    .use { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(2.5rem, 6vw, 6rem); align-items: center; }
-    .use + .use { margin-top: clamp(4rem, 9vw, 7rem); }
-    .use--flip .use-media { order: 2; }
-    .use-media { position: relative; }
-    .use-media img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
-    .use-media .tag {
-      position: absolute; left: 0; top: 1.25rem; background: var(--orange); color: var(--smoke);
-      font-family: var(--display); font-weight: 800; text-transform: uppercase; letter-spacing: .08em;
-      padding: .45rem .9rem .4rem; font-size: 1rem;
-    }
-    .use h2 { margin: .9rem 0 1.5rem; }
-    .use p { color: #3c3a37; max-width: 52ch; }
-    .use p + p { margin-top: 1rem; }
-    .ticks { list-style: none; margin: 1.75rem 0 2rem; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .1rem 1.5rem; border-top: 1px solid var(--line); }
-    .ticks li {
-      display: flex; align-items: center; gap: .65rem; padding: .8rem 0; border-bottom: 1px solid var(--line);
-      font-weight: 500; font-size: .95rem;
-    }
-    .ticks li::before { content: ''; width: 10px; height: 10px; background: var(--orange); flex: none; }
-    .fineprint { font-size: .85rem !important; color: var(--stone) !important; }
-
-    /* History timeline */
-    .history { background: var(--smoke); color: var(--ivory); }
-    .history .section-head p { color: rgba(243, 241, 236, .7); }
-    .timeline { list-style: none; position: relative; }
-    .timeline::before { content: ''; position: absolute; left: 7.5rem; top: .6rem; bottom: .6rem; width: 2px; background: rgba(243, 241, 236, .14); }
-    .timeline li { display: grid; grid-template-columns: 6.5rem minmax(0, 1fr); gap: 0 3rem; padding: 1.4rem 0; position: relative; }
-    .timeline li::before {
-      content: ''; position: absolute; left: calc(7.5rem - 5px); top: 1.9rem; width: 12px; height: 12px;
-      background: var(--orange); box-shadow: 0 0 0 4px var(--smoke);
-    }
-    .timeline .yr { font-family: var(--display); font-weight: 800; font-size: 2.2rem; line-height: 1; color: var(--yellow); text-align: right; }
-    .timeline h3 { font-size: clamp(1.4rem, 2.2vw, 1.8rem); margin-bottom: .4rem; }
-    .timeline p { color: rgba(243, 241, 236, .78); max-width: 60ch; }
-    .archive { display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 1.25rem; margin-top: clamp(3rem, 6vw, 4.5rem); }
-    .archive img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; filter: grayscale(1) contrast(1.05); }
-    .archive figcaption { color: rgba(243, 241, 236, .6); }
-
-    /* Process */
-    .steps { list-style: none; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.25rem; counter-reset: step; }
-    .steps li { border-top: 3px solid var(--smoke); padding-top: 1.25rem; counter-increment: step; }
-    .steps li::before {
-      content: counter(step, decimal-leading-zero); display: block;
-      font-family: var(--display); font-weight: 800; font-size: 3rem; line-height: 1; color: var(--orange-ink); margin-bottom: .75rem;
-    }
-    .steps h3 { font-size: 1.6rem; margin-bottom: .5rem; }
-    .steps p { color: var(--stone); font-size: .95rem; }
-
-    /* Inquiry */
-    .inquire { background: var(--paper); border-top: 10px solid transparent; border-image: var(--hazard) 10; }
-    .inquire-grid { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.4fr); gap: clamp(2.5rem, 6vw, 5.5rem); }
-    .inquire h2 { font-size: clamp(3rem, 8vw, 6.5rem); line-height: .86; margin: .9rem 0 1.5rem; }
-    .inquire-aside p { color: #3c3a37; }
-    .direct { margin-top: 2rem; display: grid; gap: 1.25rem; border-top: 1px solid var(--smoke); padding-top: 1.5rem; }
-    .direct h3 { font-family: var(--sans); font-size: .72rem; font-weight: 600; letter-spacing: .18em; color: var(--stone); margin-bottom: .3rem; }
-    .direct a, .direct address { font-style: normal; font-weight: 500; font-size: 1.05rem; }
-    .direct a { border-bottom: 1px solid var(--line); }
-    .direct a:hover { border-color: var(--orange); }
-    .map { margin-top: 1.75rem; border: 1px solid var(--line); }
-    .map iframe { display: block; width: 100%; height: 260px; border: 0; filter: grayscale(.4); }
-    .map a { display: block; padding: .7rem 1rem; font-size: .78rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--orange-ink); border-top: 1px solid var(--line); }
-
-    .form { background: var(--ivory); padding: clamp(1.5rem, 4vw, 2.75rem); border: 1px solid var(--line); }
-    .form fieldset { border: 0; min-width: 0; }
-    .form legend, .form label, .field-label {
-      display: block; font-size: .72rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--smoke); margin-bottom: .55rem;
-    }
-    .req { color: var(--orange-ink); }
-    .form-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; }
-    .form-row + .form-row, .form fieldset + .form-row, .form-row + fieldset, .form fieldset + fieldset, .field + .field { margin-top: 1.4rem; }
-    .form input[type="text"], .form input[type="email"], .form input[type="tel"], .form input[type="date"], .form select, .form textarea {
-      width: 100%; font: inherit; font-size: 1rem; color: var(--smoke); background: var(--paper);
-      border: 1px solid #cfc9bd; border-radius: 0; padding: .8rem .9rem; transition: border-color .2s, box-shadow .2s;
-    }
-    .form textarea { min-height: 150px; resize: vertical; }
-    .form input:focus, .form select:focus, .form textarea:focus { outline: none; border-color: var(--orange); box-shadow: 0 0 0 3px rgba(232, 116, 30, .25); }
-    .chips { display: flex; flex-wrap: wrap; gap: .5rem; }
-    .form .chip { position: relative; display: inline-block; margin: 0; text-transform: none; letter-spacing: 0; font-size: inherit; font-weight: 500; }
-    .chip input { position: absolute; opacity: 0; inset: 0; cursor: pointer; }
-    .chip span {
-      display: inline-block; padding: .55rem 1rem; border: 1px solid #cfc9bd; border-radius: 999px; background: var(--paper);
-      font-size: .85rem; font-weight: 500; transition: background .2s, border-color .2s, color .2s;
-    }
-    .chip input:checked + span { background: var(--smoke); border-color: var(--smoke); color: var(--ivory); }
-    .chip input:focus-visible + span { outline: 2px solid var(--orange); outline-offset: 2px; }
-    .chip input[type="radio"]:checked + span { background: var(--orange); border-color: var(--orange); color: var(--smoke); }
-    .form-foot { margin-top: 1.75rem; display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.5rem; }
-    .form-foot .btn { border: 0; cursor: pointer; font-family: inherit; }
-    .form-foot p { font-size: .82rem; color: var(--stone); max-width: 42ch; }
-    .form-status { margin-top: 1.25rem; padding: 1rem 1.1rem; border-left: 4px solid var(--orange); background: var(--paper); font-size: .95rem; display: none; }
-    .form-status.is-shown { display: block; }
-
-    @media (max-width: 960px) {
-      .space--a, .space--b, .space--c, .space--d { grid-column: span 12; min-height: 340px; }
-      .use, .inquire-grid { grid-template-columns: minmax(0, 1fr); }
-      .use--flip .use-media { order: 0; }
-      .use-media img { aspect-ratio: 16 / 10; }
-      .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 2rem; }
-      .archive { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
-      .archive figure:first-child { grid-column: 1 / -1; }
-    }
-    @media (max-width: 600px) {
-      .form-row, .ticks { grid-template-columns: minmax(0, 1fr); }
-      .steps { grid-template-columns: minmax(0, 1fr); }
-      .timeline::before { left: .35rem; }
-      .timeline li { grid-template-columns: minmax(0, 1fr); padding-left: 2rem; gap: .5rem; }
-      .timeline li::before { left: 0; top: 1.65rem; }
-      .timeline .yr { text-align: left; font-size: 1.9rem; }
-      .archive { grid-template-columns: minmax(0, 1fr); }
-      .wordmark .sub { font-size: .8rem; }
-    }
   </style>
 </head>
 <body>
@@ -403,7 +255,7 @@
           <h2 id="inquire-title">Let's<br>Talk</h2>
           <p>Film and photo shoots, events, and maritime or industrial use. Tell us about your project and we'll reply with availability and next steps.</p>
           <div class="direct">
-            <div><h3>Email</h3><a id="gbx-email" href="mailto:gbx@quadrozzi.com">gbx@quadrozzi.com</a></div>
+            <div><h3>Email</h3><a data-inquiry-email href="mailto:gbx@quadrozzi.com">gbx@quadrozzi.com</a></div>
             <div><h3>Phone</h3><span>[Phone number]</span></div>
             <div><h3>Location</h3><address>699 Columbia Street<br>Red Hook, Brooklyn, NY 11231</address></div>
           </div>
@@ -414,7 +266,7 @@
           </div>
         </div>
 
-        <form class="form reveal" id="inquiry-form" novalidate>
+        <form class="form reveal" id="inquiry-form" data-inquiry novalidate>
           <fieldset>
             <legend>What are you planning? <span class="req">*</span></legend>
             <div class="chips">
@@ -471,9 +323,9 @@
 
           <div class="form-foot">
             <button type="submit" class="btn btn-solid">Send Inquiry</button>
-            <p id="form-note">Sending opens your email app with the details filled in, addressed to the GBX team.</p>
+            <p class="form-note">Sending opens your email app with the details filled in, addressed to the GBX team.</p>
           </div>
-          <div class="form-status" id="form-status" role="status" aria-live="polite"></div>
+          <div class="form-status" role="status" aria-live="polite"></div>
         </form>
       </div>
     </section>
@@ -523,78 +375,17 @@
 
   <script>
     /* =====================================================================
-       INQUIRY FORM — where submissions go.
+       INQUIRY FORM — where GBX booking inquiries go.
        email:    the inbox that receives inquiries.
        endpoint: optional form service URL (e.g. a Formspree form endpoint).
                  Leave '' to open the visitor's email app with the details
                  filled in. Set it to post the form directly instead.
        ===================================================================== */
-    const GBX_INQUIRY = {
+    window.INQUIRY = {
       email:    'gbx@quadrozzi.com',
-      endpoint: ''
+      endpoint: '',
+      subject:  'GBX inquiry'
     };
-
-    (function () {
-      const form = document.getElementById('inquiry-form');
-      const status = document.getElementById('form-status');
-      document.getElementById('gbx-email').href = 'mailto:' + GBX_INQUIRY.email;
-      document.getElementById('gbx-email').textContent = GBX_INQUIRY.email;
-      if (GBX_INQUIRY.endpoint) document.getElementById('form-note').textContent = 'We reply to every inquiry, usually within two business days.';
-
-      // "Start a Film Inquiry" / "Plan an Event" buttons preselect the type
-      document.querySelectorAll('a[data-type]').forEach(function (a) {
-        a.addEventListener('click', function () {
-          const r = form.querySelector('input[name="type"][value="' + a.dataset.type + '"]');
-          if (r) r.checked = true;
-        });
-      });
-
-      const show = function (msg) { status.textContent = msg; status.classList.add('is-shown'); };
-
-      form.addEventListener('submit', function (e) {
-        e.preventDefault();
-        if (!form.checkValidity()) {
-          form.reportValidity();
-          return;
-        }
-        const d = new FormData(form);
-        const areas = d.getAll('areas').join(', ');
-        const dates = [d.get('start'), d.get('end')].filter(Boolean).join(' to ');
-        const lines = [
-          'Inquiry type: ' + d.get('type'),
-          'Name: ' + d.get('name'),
-          'Company / production: ' + (d.get('company') || '—'),
-          'Email: ' + d.get('email'),
-          'Phone: ' + (d.get('phone') || '—'),
-          'Dates: ' + (dates || '—'),
-          'Crew / guest count: ' + (d.get('size') || '—'),
-          'Areas of interest: ' + (areas || '—'),
-          'Heard about GBX: ' + (d.get('source') || '—'),
-          '',
-          d.get('details')
-        ];
-
-        if (GBX_INQUIRY.endpoint) {
-          d.set('areas', areas);
-          fetch(GBX_INQUIRY.endpoint, { method: 'POST', body: d, headers: { Accept: 'application/json' } })
-            .then(function (r) {
-              if (!r.ok) throw new Error(r.status);
-              form.reset();
-              show('Thank you. Your inquiry has been sent, and the GBX team will be in touch.');
-            })
-            .catch(function () {
-              show('Something went wrong sending the form. Please email ' + GBX_INQUIRY.email + ' directly.');
-            });
-          return;
-        }
-
-        const subject = 'GBX inquiry — ' + d.get('type') + ' — ' + d.get('name');
-        window.location.href = 'mailto:' + GBX_INQUIRY.email +
-          '?subject=' + encodeURIComponent(subject) +
-          '&body=' + encodeURIComponent(lines.join('\n'));
-        show('Your email app should now be open with the inquiry filled in. Just press send. If nothing opened, email ' + GBX_INQUIRY.email + '.');
-      });
-    })();
   </script>
   <script src="../assets/js/site.js"></script>
 </body>

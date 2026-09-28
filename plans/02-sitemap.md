@@ -18,6 +18,11 @@ quadrozzi.com/
 │   ├── #events     Events
 │   ├── #history    Timeline 1922 → today + archival photos
 │   └── #inquire    Inquiry form (mailto or form service) + map
+├── helping-hooves/  Helping Hooves — community work with horses (run by Helping Hoof, Inc., 501(c)(3))
+│   ├── #mission        Four-part mission (second-career horses, therapy, access, safe infrastructure)
+│   ├── #programs       Second careers · therapeutic riding (GallopNYC) · youth programs · community stories
+│   ├── #heritage       Timeline 1917 → today + archival photos
+│   └── #involved       Ways to help + get-involved form (volunteer, donate, partner, enroll)
 ├── credits.html  Photo credits and licenses
 └── 404.html      Branded not-found page
 ```
@@ -36,5 +41,5 @@ On mobile, links collapse into a full-screen overlay menu (large condensed type,
 
 ## Possible phase-2 pages
 - ~~`/gbx`: a property overview page~~ — built (Sep 2026)
-- `/community`: the full Helping Hooves program list
+- ~~`/community`: the full Helping Hooves program list~~ — built as `/helping-hooves/` (Sep 2026)
 - `/press`: press kit, logos and approved photos

@@ -30,6 +30,7 @@ GBX Gowanus Bay Terminal ✦ Brooklyn Equine ✦ Helping Hooves ✦ Red Hook ✦
 - Signature line: *— The Quadrozzi Family*
 
 ## Community — Helping Hooves
+> Built out as its own page at `/helping-hooves/` (Sep 2026). The home section now links to it, with a verified quote and three initiatives. The notes below are the original draft.
 - H2: **HELPING HOOVES**
 - Pull quote: *"[Quote from a family member about why community work matters.]"*
 - Initiative links (3 slots):

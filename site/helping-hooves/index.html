@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Helping Hooves — Horses &amp; Community in Brooklyn | Quadrozzi</title>
+  <meta name="description" content="Helping Hooves is the Quadrozzi family's community work with horses: second-career horses, therapeutic riding, youth programs and a greener, horse-friendly Brooklyn. Run by Helping Hoof, Inc., a 501(c)(3) nonprofit.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Helping Hooves — Horses &amp; Community in Brooklyn">
+  <meta property="og:description" content="Second careers for horses, and a way into riding for Brooklynites of every background and ability.">
+  <meta property="og:url" content="https://quadrozzi.com/helping-hooves/">
+  <meta property="og:image" content="https://quadrozzi.com/assets/hooves/hero.jpg">
+  <meta name="theme-color" content="#161616">
+  <script>document.documentElement.classList.add('js');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@800&family=Big+Shoulders+Display:wght@700;800&family=Cormorant+Garamond:ital,wght@1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/site.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "NGO",
+    "name": "Helping Hoof, Inc.",
+    "alternateName": "Helping Hooves",
+    "url": "https://quadrozzi.com/helping-hooves/",
+    "nonprofitStatus": "Nonprofit501c3",
+    "taxID": "88-3328025",
+    "address": { "@type": "PostalAddress", "streetAddress": "691 Columbia Street", "addressLocality": "Brooklyn", "addressRegion": "NY", "postalCode": "11231", "addressCountry": "US" },
+    "parentOrganization": { "@type": "Organization", "name": "Quadrozzi", "url": "https://quadrozzi.com/" }
+  }
+  </script>
+  <style>
+    /* ---------- Helping Hooves page ---------- */
+    .hero-media {
+      background:
+        linear-gradient(90deg, rgba(12,12,12,.66) 0%, rgba(12,12,12,.22) 55%, rgba(12,12,12,0) 100%),
+        linear-gradient(180deg, rgba(12,12,12,.5) 0%, rgba(12,12,12,.05) 40%, rgba(12,12,12,.8) 100%),
+        url('../assets/hooves/hero.jpg') center 72%/cover no-repeat,
+        var(--smoke);
+    }
+    .facts .figure .n.sm { font-size: clamp(2.2rem, 4.2vw, 3.4rem); padding-top: .35em; }
+
+    .mission-intro { max-width: 60ch; }
+    .mission-intro p { color: #3c3a37; }
+    .mission-intro p + p { margin-top: 1rem; }
+    .source-note { margin-top: 1.5rem; font-size: .8rem; color: var(--stone); }
+    .source-note a { text-decoration: underline; text-underline-offset: 3px; }
+
+    .quote-band {
+      display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(2rem, 6vw, 5rem); align-items: center;
+      background: var(--paper); border: 1px solid var(--line); padding: clamp(1.75rem, 5vw, 4rem);
+      margin-bottom: clamp(4rem, 9vw, 7rem);
+    }
+    .quote-band h2 { margin: .9rem 0 1.5rem; }
+    .quote-band p { color: #3c3a37; max-width: 52ch; }
+
+    /* Community stories */
+    .stories { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; margin-top: clamp(4rem, 9vw, 7rem); }
+    .story { background: var(--paper); border: 1px solid var(--line); display: flex; flex-direction: column; }
+    .story img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+    .story-body { padding: 1.5rem 1.5rem 1.7rem; display: flex; flex-direction: column; gap: .7rem; flex: 1; }
+    .story-body p { color: var(--stone); font-size: .96rem; }
+    .story-body .when { font-family: var(--display); font-weight: 800; color: var(--orange-ink); letter-spacing: .08em; font-size: .95rem; text-transform: uppercase; }
+    .story-body a.more { margin-top: auto; padding-top: .6rem; font-size: .76rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--orange-ink); }
+    .story--dark { background: var(--smoke); color: var(--ivory); border-color: var(--smoke); position: relative; overflow: hidden; }
+    .story--dark::before { content: ''; display: block; height: 10px; background: var(--hazard); }
+    .story--dark .story-body { justify-content: center; padding: 2rem 1.75rem; }
+    .story--dark .story-body p { color: rgba(243, 241, 236, .8); }
+    .story--dark .when { color: var(--yellow); }
+    .story--dark h3 { font-size: clamp(2rem, 3.4vw, 2.8rem); }
+
+    .archive--two { grid-template-columns: 1.3fr 1fr; }
+
+    /* Ways to help */
+    .ways li a { display: inline-block; margin-top: .9rem; font-size: .76rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--orange-ink); }
+    .ways li a:hover { color: var(--smoke); }
+    .nonprofit { margin-top: 1.75rem; padding: 1.1rem 1.25rem; background: var(--ivory); border-left: 4px solid var(--orange); font-size: .9rem; color: #3c3a37; }
+
+    @media (max-width: 960px) {
+      .stories { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+      .quote-band { grid-template-columns: minmax(0, 1fr); }
+      .story--dark { grid-column: 1 / -1; }
+    }
+    @media (max-width: 600px) {
+      .stories { grid-template-columns: minmax(0, 1fr); }
+      .archive--two { grid-template-columns: minmax(0, 1fr); }
+    }
+    @media (max-width: 440px) {
+      .wordmark .sub { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <!-- ================= HEADER ================= -->
+  <header class="site-header" id="header">
+    <nav class="nav container" aria-label="Primary">
+      <a href="../" class="wordmark" aria-label="Quadrozzi — home"><span class="mark" aria-hidden="true"></span>Quadrozzi <span class="sub">Helping Hooves</span></a>
+      <button class="menu-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu"><span></span></button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#mission">Mission</a></li>
+        <li><a href="#programs">Programs</a></li>
+        <li><a href="#heritage">Heritage</a></li>
+        <li><a href="#involved" class="btn btn-solid btn-sm">Get Involved</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- ================= HERO ================= -->
+    <section class="hero on-dark" id="top" aria-labelledby="hero-title">
+      <div class="hero-media" role="img" aria-label="Riders on horseback on a tree-lined path in Prospect Park"></div>
+      <div class="container">
+        <span class="eyebrow">Prospect Park Stable · Brooklyn</span>
+        <h1 id="hero-title" class="cascade">
+          <span class="line"><span>Helping</span></span>
+          <span class="line"><span class="accent">Hooves</span></span>
+        </h1>
+        <div class="hero-foot">
+          <p class="lede">Second careers for horses, and a way into riding for Brooklynites of every background and ability.</p>
+          <div class="hero-actions">
+            <a href="#involved" class="btn btn-solid">Get Involved</a>
+            <a href="#mission" class="btn btn-ghost">Our Mission</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= FACTS ================= -->
+    <div class="facts on-dark" aria-label="Helping Hooves at a glance">
+      <div class="container figures-grid">
+        <div class="figure"><div class="n">1917</div><p>Prospect Park Stable founded</p></div>
+        <div class="figure"><div class="n">2018</div><p>Restored by the Quadrozzi family</p></div>
+        <div class="figure"><div class="n">3.5<small>MI</small></div><p>Bridle path through Prospect Park</p></div>
+        <div class="figure"><div class="n sm">501(c)(3)</div><p>Helping Hoof, Inc. nonprofit</p></div>
+      </div>
+    </div>
+
+    <!-- ================= MISSION ================= -->
+    <section class="spaces" id="mission" aria-labelledby="mission-title">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <span class="eyebrow">Our Mission</span>
+            <h2 id="mission-title">Horses &amp; People,<br>Better Together</h2>
+          </div>
+          <div class="mission-intro">
+            <p>Helping Hooves is the Quadrozzi family's community work with horses. It is carried out by Helping Hoof, Inc., a 501(c)(3) nonprofit, alongside Be•Brooklyn Equine at Prospect Park Stable.</p>
+            <p>The mission has four parts:</p>
+          </div>
+        </div>
+
+        <div class="space-grid">
+          <article class="space space--a reveal">
+            <img src="../assets/hooves/second-career.jpg" alt="A child's hand offering hay to horses through a gate" loading="lazy">
+            <div class="space-body">
+              <span class="num">01</span>
+              <h3>Second-Career Horses</h3>
+              <p>Giving horses whose first careers didn't work out a new start in "healthy, nurturing, loving environments."</p>
+            </div>
+          </article>
+          <article class="space space--b reveal">
+            <img src="../assets/hooves/hands-on.jpg" alt="Close-up of a calm horse in a teal halter" loading="lazy">
+            <div class="space-body">
+              <span class="num">02</span>
+              <h3>Therapy &amp; Learning</h3>
+              <p>Promoting equine-assisted therapy and assisted learning.</p>
+            </div>
+          </article>
+          <article class="space space--c reveal">
+            <img src="../assets/hooves.jpg" alt="A young rider in a helmet greeting a horse" loading="lazy">
+            <div class="space-body">
+              <span class="num">03</span>
+              <h3>Riding for Everyone</h3>
+              <p>Making riding accessible to people "with physical, emotional, social, or economic challenges."</p>
+            </div>
+          </article>
+          <article class="space space--d reveal">
+            <img src="../assets/hooves/park-1911.jpg" alt="Archival photo of a tree-lined drive in Prospect Park, 1911" loading="lazy">
+            <div class="space-body">
+              <span class="num">04</span>
+              <h3>Safe Streets &amp; Trails</h3>
+              <p>Promoting public infrastructure that lets urban horses live and thrive, safely for horses and people alike.</p>
+            </div>
+          </article>
+        </div>
+        <p class="source-note reveal">Mission as published by Helping Hoof (<a href="https://www.6sqft.com/where-to-go-horseback-riding-in-nyc/" target="_blank" rel="noopener">6sqft, 2023</a>).</p>
+      </div>
+    </section>
+
+    <!-- ================= PROGRAMS ================= -->
+    <section class="uses" id="programs" aria-labelledby="programs-title">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <span class="eyebrow">In the Community</span>
+            <h2 id="programs-title">What We Do</h2>
+          </div>
+          <p>From the riding ring to Red Hook's community gardens, the work reaches well beyond the barn.</p>
+        </div>
+
+        <div class="quote-band reveal" id="second-careers">
+          <div>
+            <span class="eyebrow">A Fresh Start</span>
+            <h2>Second-Career Horses</h2>
+            <p>Many of the stable's horses didn't work out in their first jobs and were resold or rehomed before arriving in Brooklyn. With retraining, focused healthcare and plenty of time with other horses and the people who care for them, each one finds a role that suits its mind and body.</p>
+          </div>
+          <blockquote>
+            Some become loyal student horses, some trusty trail horses, and most enjoy both jobs.
+            <cite>Xiana Quadrozzi, Program Director, Be•Brooklyn Equine</cite>
+          </blockquote>
+        </div>
+
+        <div class="use" id="therapy">
+          <div class="use-media reveal">
+            <img src="../assets/hooves/therapy-riding.jpg" alt="A horse and handlers during a therapeutic riding session on Prospect Park's Bowling Green" loading="lazy">
+            <span class="tag">Therapeutic Riding</span>
+          </div>
+          <div class="reveal">
+            <span class="eyebrow">Partners in Therapy</span>
+            <h2>Therapeutic Riding</h2>
+            <p>In 2019, Prospect Park Stable began providing horses to GallopNYC, the New York therapeutic riding nonprofit, for sessions on Prospect Park's Bowling Green. The horses had a month of specialized training to prepare for the program, which serves children and adults with disabilities, including autism.</p>
+            <ul class="ticks">
+              <li>Therapeutic riding</li>
+              <li>Specially trained horses</li>
+              <li>Children &amp; adults</li>
+              <li>Bowling Green, Prospect Park</li>
+            </ul>
+            <a href="#involved" class="btn btn-solid" data-type="Partner">Partner With Us</a>
+          </div>
+        </div>
+
+        <div class="use use--flip" id="youth">
+          <div class="use-media reveal">
+            <img src="../assets/hooves/youth.jpg" alt="A young rider on a pony led by stable staff" loading="lazy">
+            <span class="tag">Youth Programs</span>
+          </div>
+          <div class="reveal">
+            <span class="eyebrow">Young Riders</span>
+            <h2>Youth Programs</h2>
+            <p>In the summer immersion program, riders ages 6 to 15 spend the whole day at the stable. They get their horse ready, ride in the park, and then learn a different part of horse history, behavior and healthcare each week.</p>
+            <p>After-school and weekend programs teach both riding and complete horse care, from grooming to groundwork.</p>
+            <ul class="ticks">
+              <li>Summer immersion, ages 6–15</li>
+              <li>After-school &amp; weekend programs</li>
+              <li>Horse care &amp; safety</li>
+              <li>Lessons in Prospect Park</li>
+            </ul>
+            <a href="https://DJMiddleFinger.github.io/be-brooklyn-equine/" class="btn btn-solid" target="_blank" rel="noopener">Enroll With Brooklyn Equine ↗</a>
+          </div>
+        </div>
+
+        <div class="stories">
+          <article class="story reveal">
+            <img src="../assets/hooves/garden.jpg" alt="A brick path through a Brooklyn community garden with red tulips" loading="lazy">
+            <div class="story-body">
+              <span class="when">Since 2019</span>
+              <h3>From Stable to Garden</h3>
+              <p>The stable's manure is composted at the family's GBX terminal, under the mentorship of the nonprofit Red Hook Farms, and given to Red Hook community gardens. Bedding comes from wood shavings donated by local Brooklyn woodworkers.</p>
+              <a class="more" href="../gbx/">About GBX →</a>
+            </div>
+          </article>
+          <article class="story reveal">
+            <img src="../assets/hooves/horse-tamers.jpg" alt="The Horse Tamers sculptures at Park Circle, Prospect Park" loading="lazy">
+            <div class="story-body">
+              <span class="when">June 2019</span>
+              <h3>The Horse Parade Returns</h3>
+              <p>The Prospect Park Equine Rally rode from the Horse Tamers statues along the Bridle Path to the riding circle known as "the Q." It was Brooklyn's first equestrian parade since the 1930s, with free pony rides for kids.</p>
+            </div>
+          </article>
+          <article class="story story--dark reveal">
+            <div class="story-body">
+              <span class="when">May 2020</span>
+              <h3>Neighbors in Need</h3>
+              <p>During the pandemic, stable horses pulled carts delivering food and supplies in Red Hook, with stops at Red Hook Farm, Red Hook Houses and the Joseph Miccio Community Center.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= HERITAGE ================= -->
+    <section class="history on-dark" id="heritage" aria-labelledby="heritage-title">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <span class="eyebrow">Heritage</span>
+            <h2 id="heritage-title">A Park Built<br>for Horses</h2>
+          </div>
+          <p>Prospect Park was designed with a bridle path, and Brooklyn once held horse parades hundreds strong. Helping Hooves carries that tradition forward.</p>
+        </div>
+        <ol class="timeline reveal">
+          <li><span class="yr">1917</span><div><h3>Prospect Park Stable</h3><p>Prospect Park Stable is founded. It's the name the family would restore a century later.</p></div></li>
+          <li><span class="yr">1935</span><div><h3>A Parade Hundreds Strong</h3><p>A parade sponsored by the Brooklyn Daily Eagle and the ASPCA draws 252 horses, some 500 dogs, and a goat pulling a cart.</p></div></li>
+          <li><span class="yr">2018</span><div><h3>A Name Restored</h3><p>John Quadrozzi Jr. buys the former Kensington Stables and restores its 1917 name, Prospect Park Stable. His daughter Xiana, who took her first riding lessons there at age five, joins as program director.</p></div></li>
+          <li><span class="yr">2019</span><div><h3>Back in the Park</h3><p>The Equine Rally revives Brooklyn's horse parade, compost from the stable reaches Red Hook's gardens, and the GallopNYC therapeutic riding partnership begins.</p></div></li>
+          <li><span class="yr">2020</span><div><h3>Neighbors &amp; New Riders</h3><p>Horse-drawn deliveries reach Red Hook neighbors during the pandemic, and young riders fill the summer immersion program.</p></div></li>
+          <li><span class="yr">Today</span><div><h3>Helping Hooves</h3><p>Helping Hoof, Inc., a registered 501(c)(3) nonprofit, carries the mission forward alongside Be•Brooklyn Equine.</p></div></li>
+        </ol>
+        <div class="archive archive--two reveal">
+          <figure class="photo"><img src="../assets/hooves/wallabout.jpg" alt="Archival photo of trucks and horse-drawn carts crowding Brooklyn's Wallabout Market" loading="lazy"><figcaption>Trucks and horse-drawn carts at Brooklyn's Wallabout Market, 1940. Library of Congress.</figcaption></figure>
+          <figure class="photo"><img src="../assets/hooves/stable.jpg" alt="Riders on horseback outside the stable on Caton Place" loading="lazy"><figcaption>The stable on Caton Place, then called Kensington Stables, in 2011.</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= WAYS TO HELP ================= -->
+    <section class="process" aria-labelledby="ways-title">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <span class="eyebrow">Support the Work</span>
+            <h2 id="ways-title">Ways to Help</h2>
+          </div>
+          <p>Every contribution of time, funds or partnership helps horses and riders across Brooklyn.</p>
+        </div>
+        <ol class="steps ways reveal">
+          <li><h3>Volunteer</h3><p>Lend a hand at the stable or at community events. Tell us a little about yourself.</p><a href="#involved" data-type="Volunteer">Volunteer →</a></li>
+          <li><h3>Donate</h3><p>Support second-career horses and access to riding for people facing challenges.</p><a href="#involved" data-type="Donate" data-donate>Donate →</a></li>
+          <li><h3>Partner</h3><p>Schools, therapy programs and community gardens: let's work together.</p><a href="#involved" data-type="Partner">Partner →</a></li>
+          <li><h3>Ride &amp; Learn</h3><p>Lessons, trail rides and youth programs with Be•Brooklyn Equine.</p><a href="https://DJMiddleFinger.github.io/be-brooklyn-equine/" target="_blank" rel="noopener">Brooklyn Equine ↗</a></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ================= GET INVOLVED ================= -->
+    <section class="inquire" id="involved" aria-labelledby="involved-title">
+      <div class="container inquire-grid">
+        <div class="inquire-aside reveal">
+          <span class="eyebrow">Get Involved</span>
+          <h2 id="involved-title">Join<br>Us</h2>
+          <p>Volunteer, donate, partner, or enroll a rider. Tell us how you'd like to help and we'll be in touch.</p>
+          <div class="direct">
+            <div><h3>Email</h3><a data-inquiry-email href="mailto:Be@Quadrozzi.com">Be@Quadrozzi.com</a></div>
+            <div><h3>The Stable</h3><address>Prospect Park Stable<br>51–55 Caton Place, Brooklyn, NY 11218</address></div>
+            <div><a href="https://www.google.com/maps/search/?api=1&amp;query=Prospect+Park+Stable+51+Caton+Place+Brooklyn+NY" target="_blank" rel="noopener">Get directions ↗</a></div>
+          </div>
+          <p class="nonprofit">Helping Hoof, Inc. is a 501(c)(3) nonprofit organization (EIN 88-3328025), 691 Columbia Street, Brooklyn, NY 11231. Donations are tax-deductible to the extent allowed by law.</p>
+        </div>
+
+        <form class="form reveal" id="involve-form" data-inquiry novalidate>
+          <fieldset>
+            <legend>I'd like to… <span class="req">*</span></legend>
+            <div class="chips">
+              <label class="chip"><input type="radio" name="type" value="Volunteer" required><span>Volunteer</span></label>
+              <label class="chip"><input type="radio" name="type" value="Donate"><span>Donate</span></label>
+              <label class="chip"><input type="radio" name="type" value="Partner"><span>Partner</span></label>
+              <label class="chip"><input type="radio" name="type" value="Enroll a rider"><span>Enroll a rider</span></label>
+              <label class="chip"><input type="radio" name="type" value="Other"><span>Other</span></label>
+            </div>
+          </fieldset>
+
+          <div class="form-row">
+            <div><label for="h-name">Name <span class="req">*</span></label><input id="h-name" name="name" type="text" autocomplete="name" required></div>
+            <div><label for="h-org">Organization (optional)</label><input id="h-org" name="organization" type="text" autocomplete="organization"></div>
+          </div>
+          <div class="form-row">
+            <div><label for="h-email">Email <span class="req">*</span></label><input id="h-email" name="email" type="email" autocomplete="email" required></div>
+            <div><label for="h-phone">Phone</label><input id="h-phone" name="phone" type="tel" autocomplete="tel"></div>
+          </div>
+
+          <div class="field" style="margin-top:1.4rem">
+            <label for="h-message">How would you like to help? <span class="req">*</span></label>
+            <textarea id="h-message" name="message" required placeholder="A few lines about you, your organization or the rider you'd like to enroll."></textarea>
+          </div>
+
+          <div class="form-foot">
+            <button type="submit" class="btn btn-solid">Send Message</button>
+            <p class="form-note">Sending opens your email app with your message filled in.</p>
+          </div>
+          <div class="form-status" role="status" aria-live="polite"></div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-cols">
+        <div>
+          <a href="../" class="wordmark"><span class="mark" aria-hidden="true"></span>Quadrozzi</a>
+          <p>Helping Hooves is the Quadrozzi family's community work with horses, run by Helping Hoof, Inc., a 501(c)(3) nonprofit.</p>
+        </div>
+        <div>
+          <h4>Helping Hooves</h4>
+          <ul>
+            <li><a href="#mission">Mission</a></li>
+            <li><a href="#programs">Programs</a></li>
+            <li><a href="#heritage">Heritage</a></li>
+            <li><a href="#involved">Get Involved</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Quadrozzi</h4>
+          <ul>
+            <li><a href="../#holdings">Holdings</a></li>
+            <li><a href="../gbx/">GBX Gowanus Bay Terminal</a></li>
+            <li><a href="https://DJMiddleFinger.github.io/be-brooklyn-equine/" target="_blank" rel="noopener">Brooklyn Equine</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Connect</h4>
+          <ul>
+            <li><a data-inquiry-email href="mailto:Be@Quadrozzi.com">Be@Quadrozzi.com</a></li>
+            <li><a href="../#contact">All contacts</a></li>
+            <li><a href="../credits.html">Photo credits</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-mark" aria-hidden="true">Hooves</div>
+      <div class="footer-legal">
+        <span>© <span id="year">2026</span> Quadrozzi. All rights reserved.</span>
+        <span>Prospect Park · Red Hook, Brooklyn</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    /* =====================================================================
+       GET INVOLVED — where messages and donations go.
+       email:    inbox for volunteer, donation and partnership messages
+                 (currently the stable's published address).
+       endpoint: optional form service URL (e.g. a Formspree form endpoint).
+                 Leave '' to open the visitor's email app instead.
+       donate:   optional online donation page (e.g. a PayPal, Givebutter or
+                 Stripe link). Leave '' and "Donate" opens the form instead.
+       ===================================================================== */
+    window.INQUIRY = {
+      email:    'Be@Quadrozzi.com',
+      endpoint: '',
+      subject:  'Helping Hooves'
+    };
+    const HOOVES = {
+      donate: ''
+    };
+
+    if (HOOVES.donate) {
+      document.querySelectorAll('[data-donate]').forEach(function (a) {
+        a.href = HOOVES.donate;
+        a.target = '_blank';
+        a.rel = 'noopener';
+        a.removeAttribute('data-type');
+      });
+    }
+  </script>
+  <script src="../assets/js/site.js"></script>
+</body>
+</html>
