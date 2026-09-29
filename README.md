@@ -1,5 +1,18 @@
 # quadrozzi.com
 
+### 👉 [Visit the live site: djmiddlefinger.github.io/quadrozzi-com](https://djmiddlefinger.github.io/quadrozzi-com/)
+
+| Page | Link |
+|---|---|
+| **Quadrozzi home** | https://djmiddlefinger.github.io/quadrozzi-com/ |
+| GBX Gowanus Bay Terminal | https://djmiddlefinger.github.io/quadrozzi-com/gbx/ |
+| Helping Hooves | https://djmiddlefinger.github.io/quadrozzi-com/helping-hooves/ |
+| Be™ Brooklyn Equine | https://DJMiddleFinger.github.io/be-brooklyn-equine/ |
+
+Once the custom domain is connected, the home page will be at **https://quadrozzi.com**.
+
+---
+
 Plans and a static site for **quadrozzi.com**, the home of the Quadrozzi family of companies:
 
 - **GBX — Gowanus Bay Terminal**: its own page at `/gbx/`, with the terminal's history and a booking inquiry form for film, photo, events and maritime use
