@@ -37,6 +37,10 @@
         url('../assets/gbx/hero.jpg') center 30%/cover no-repeat,
         var(--smoke);
     }
+    .archive-notes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2rem; margin-top: clamp(3rem, 7vw, 5rem); }
+    .archive-notes h3 { font-size: 1.6rem; margin-bottom: .6rem; }
+    .archive-notes p { color: var(--stone); }
+    @media (max-width: 960px) { .archive-notes { grid-template-columns: minmax(0, 1fr); } }
   </style>
 </head>
 <body>
@@ -228,6 +232,42 @@
       </div>
     </section>
 
+    <!-- ================= ARCHIVE (from the 2013 quadrozzi.com, via the Wayback Machine) ================= -->
+    <section class="spaces" id="archive" aria-labelledby="archive-title">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <span class="eyebrow">From the Archive · Quadrozzi Enterprises, 2013</span>
+            <h2 id="archive-title">The Wider<br>Waterfront</h2>
+          </div>
+          <p>In 2013, Quadrozzi Enterprises represented seven multi-user waterfront terminals in Brooklyn and Queens: more than 30 acres of industrial land, with a focus on expansion and "an emphasis on sustainability &amp; community."</p>
+        </div>
+        <ol class="steps reveal">
+          <li><h3>GBX</h3><p>Gowanus Bay Terminal, Red Hook. Home of the 1922 Grain Terminal.</p></li>
+          <li><h3>GCX</h3><p>Gowanus Canal Terminal, at Smith &amp; Ninth Street beneath the F train station. It appears in a scene from <em>Goodfellas</em>.</p></li>
+          <li><h3>NCX</h3><p>Newtown Creek Terminal, Long Island City, along the LIRR tracks, with a large bulk silo for cement and fly ash.</p></li>
+          <li><h3>CICX</h3><p>Coney Island Creek Terminal, 3068 Cropsey Avenue. The first property you see entering Coney Island, marked by its tall coal silos.</p></li>
+          <li><h3>BBX</h3><p>Barbados Basin Terminal, Rockaway Beach, on Jamaica Bay. Once home to the famed Brooklyn Day Camp.</p></li>
+          <li><h3>VBX</h3><p>Vernon Basin Terminal, Jamaica Bay, across from the Barbados Basin Reserve, with open bay, bridge and Manhattan views.</p></li>
+          <li><h3>Metropolitan Ave</h3><p>46-73 Metropolitan Avenue, Ridgewood: 3.69 acres along Newtown Creek, ready for almost anything.</p></li>
+        </ol>
+        <div class="archive-notes reveal">
+          <div>
+            <h3>Land &amp; Sea</h3>
+            <p>With decades of sea-freight experience, Quadrozzi representatives moved bulk cargo from Europe, South America and Mexico up the Eastern Seaboard into New York. On land, trucking skills passed down through generations moved concrete, sand and stone, rubble, rock salt, bulk powders and specialty equipment throughout the city.</p>
+          </div>
+          <div>
+            <h3>After Sandy</h3>
+            <p>After Hurricane Sandy in 2012, the company called for rebuilding smarter in flood zones: keep living space and mechanicals above the flood plain, build with concrete for strength and fire resistance, and replace wooden boardwalks with concrete ones that double as sea walls.</p>
+          </div>
+          <div>
+            <h3>Our Approach</h3>
+            <p>"We do not promote our name using persuasive language or trickery, but rather use our natural creative talents and diverse experience in finding the simplest solutions to each objective."</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ================= PROCESS ================= -->
     <section class="process" aria-labelledby="process-title">
       <div class="container">
@@ -351,17 +391,17 @@
         <div>
           <h4>Quadrozzi</h4>
           <ul>
-            <li><a href="../#holdings">Holdings</a></li>
+            <li><a href="../">Quadrozzi Home</a></li>
             <li><a href="https://DJMiddleFinger.github.io/be-brooklyn-equine/" target="_blank" rel="noopener">Brooklyn Equine</a></li>
-            <li><a href="../#community">Helping Hooves</a></li>
+            <li><a href="#archive">From the Archive</a></li>
           </ul>
         </div>
         <div>
           <h4>Connect</h4>
           <ul>
             <li><a href="mailto:gbx@quadrozzi.com">gbx@quadrozzi.com</a></li>
-            <li><a href="../#contact">All contacts</a></li>
-            <li><a href="../credits.html">Photo credits</a></li>
+            <li><a href="mailto:info@quadrozzi.com">info@quadrozzi.com</a></li>
+            <li><a href="credits.html">Photo credits</a></li>
           </ul>
         </div>
       </div>

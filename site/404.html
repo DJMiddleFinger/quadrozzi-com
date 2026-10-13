@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Page Not Found — Quadrozzi</title>
+  <title>Page Not Found</title>
   <meta name="robots" content="noindex">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -32,14 +32,14 @@
 </head>
 <body>
   <main>
-    <span class="eyebrow">Quadrozzi</span>
+    <span class="eyebrow">Page not found</span>
     <h1>404</h1>
     <p>This page has moved on — the harbor hasn't.</p>
     <a href="/" id="home">Return Home</a>
   </main>
   <script>
     // On a GitHub project site (user.github.io/repo/) the home page lives under the repo folder;
-    // on the custom domain (quadrozzi.com) it is the root.
+    // on a custom domain it is the root.
     if (location.hostname.endsWith('github.io')) {
       var repo = location.pathname.split('/')[1];
       if (repo) document.getElementById('home').href = '/' + repo + '/';

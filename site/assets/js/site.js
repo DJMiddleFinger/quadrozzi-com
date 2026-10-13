@@ -1,4 +1,4 @@
-/* Quadrozzi — shared page behavior: sticky header, mobile menu, reveals, footer year */
+/* Shared page behavior: sticky header, mobile menu, reveals, footer year */
 (function () {
   // Header: solid after leaving the hero
   const header = document.getElementById('header');
@@ -35,7 +35,7 @@
   const year = document.getElementById('year');
   if (year) year.textContent = new Date().getFullYear();
 
-  // Inquiry forms (GBX booking, Helping Hooves get-involved).
+  // Inquiry forms.
   // The page sets window.INQUIRY = { email, endpoint, subject } before loading this file.
   // With no endpoint, submitting opens the visitor's email app with every answer filled in.
   const form = document.querySelector('form[data-inquiry]');

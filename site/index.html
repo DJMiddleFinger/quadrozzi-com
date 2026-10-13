@@ -3,286 +3,41 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Quadrozzi — A Brooklyn Family Enterprise</title>
-  <meta name="description" content="The Quadrozzi family of companies: GBX Gowanus Bay Terminal, Be Brooklyn Equine and the Helping Hooves community initiatives.">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Quadrozzi — A Brooklyn Family Enterprise">
-  <meta property="og:description" content="Working waterfront, equestrian heritage and community care — rooted in Brooklyn.">
-  <meta property="og:url" content="https://quadrozzi.com/">
-  <meta property="og:image" content="https://quadrozzi.com/assets/og.jpg">
-  <meta name="theme-color" content="#161616">
-  <script>document.documentElement.classList.add('js');</script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@800&family=Big+Shoulders+Display:wght@700;800&family=Cormorant+Garamond:ital,wght@1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Quadrozzi",
-    "url": "https://quadrozzi.com/",
-    "description": "A Brooklyn family enterprise spanning working waterfront, equestrian heritage and community care.",
-    "subOrganization": [
-      { "@type": "Organization", "name": "GBX — Gowanus Bay Terminal", "url": "https://quadrozzi.com/gbx/" },
-      { "@type": "Organization", "name": "Be Brooklyn Equine", "url": "https://DJMiddleFinger.github.io/be-brooklyn-equine/" },
-      { "@type": "Organization", "name": "Helping Hooves" }
-    ]
-  }
-  </script>
-  <link rel="stylesheet" href="assets/css/site.css">
+  <title>Quadrozzi</title>
+  <meta name="description" content="Quadrozzi, Brooklyn, New York: GBX Gowanus Bay Terminal and Be Brooklyn Equine.">
+  <meta name="theme-color" content="#ffe843">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      min-height: 100svh; display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 2.5rem; padding: 3rem 16px; background: #fff; color: #161616; text-align: center;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    }
+    h1 img { display: block; width: min(220px, 50vw); height: auto; }
+    nav { display: flex; flex-direction: column; gap: .75rem; width: min(360px, 100%); }
+    nav a {
+      display: block; padding: 1rem 1.5rem; border: 2px solid #161616; border-radius: 999px;
+      color: inherit; text-decoration: none; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; font-size: .9rem;
+    }
+    nav a:hover, nav a:focus-visible { background: #ffe843; outline: none; }
+    footer { font-size: .85rem; line-height: 1.7; color: #5f5b55; }
+    footer em { display: block; margin-bottom: .5rem; color: #161616; }
+    footer a { color: inherit; }
+  </style>
 </head>
 <body>
-  <a class="skip" href="#main">Skip to content</a>
+  <h1><img src="assets/q-logo.jpg" alt="Quadrozzi" width="1455" height="2000"></h1>
 
-  <!-- ================= HEADER ================= -->
-  <header class="site-header" id="header">
-    <nav class="nav container" aria-label="Primary">
-      <a href="#top" class="wordmark" aria-label="Quadrozzi — home"><span class="mark" aria-hidden="true"></span>Quadrozzi</a>
-      <button class="menu-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu"><span></span></button>
-      <ul class="nav-links" id="nav-links">
-        <li><a href="#holdings">Holdings</a></li>
-        <li><a href="gbx/">GBX</a></li>
-        <li><a href="#heritage">Heritage</a></li>
-        <li><a href="#community">Community</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li><a href="#contact" class="btn btn-solid btn-sm">Inquiries</a></li>
-      </ul>
-    </nav>
-  </header>
+  <nav aria-label="Our sites">
+    <a href="gbx/" target="_blank" rel="noopener">GBX Gowanus Bay Terminal</a>
+    <a href="https://djmiddlefinger.github.io/be-brooklyn-equine/" target="_blank" rel="noopener">Be™ Brooklyn Equine</a>
+    <a href="helping-hooves/" target="_blank" rel="noopener">Helping Hooves</a>
+  </nav>
 
-  <main id="main">
-    <!-- ================= HERO ================= -->
-    <section class="hero on-dark" id="top" aria-labelledby="hero-title">
-      <div class="hero-media" role="img" aria-label="The Red Hook Grain Terminal seen across the water of Gowanus Bay"></div>
-      <div class="container">
-        <span class="eyebrow">Est. [Year] · Brooklyn, New York</span>
-        <h1 id="hero-title" class="cascade">
-          <span class="line"><span>Built in</span></span>
-          <span class="line"><span class="accent">Brooklyn</span></span>
-        </h1>
-        <div class="hero-foot">
-          <p class="lede">A family enterprise rooted in the working waterfront, the stable and the neighborhood.</p>
-          <div class="hero-actions">
-            <a href="#holdings" class="btn btn-solid">Our Holdings</a>
-            <a href="#contact" class="btn btn-ghost">Get in Touch</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ================= MARQUEE ================= -->
-    <div class="marquee" aria-hidden="true">
-      <div class="marquee-track">
-        <ul><li>GBX Gowanus Bay Terminal</li><li>Brooklyn Equine</li><li>Helping Hooves</li><li>Red Hook</li><li>Prospect Park</li></ul>
-        <ul><li>GBX Gowanus Bay Terminal</li><li>Brooklyn Equine</li><li>Helping Hooves</li><li>Red Hook</li><li>Prospect Park</li></ul>
-      </div>
-    </div>
-
-    <!-- ================= HOLDINGS ================= -->
-    <section class="holdings" id="holdings" aria-labelledby="holdings-title">
-      <div class="container">
-        <div class="section-head reveal">
-          <div>
-            <span class="eyebrow">The Family of Companies</span>
-            <h2 id="holdings-title">Our Holdings</h2>
-          </div>
-          <p class="lede" style="color:var(--stone)">Distinct businesses, one family standard — each run for the long term.</p>
-        </div>
-
-        <div class="holdings-grid">
-          <article class="holding holding--wide reveal">
-            <div class="holding-media"><div class="media-gbx" role="img" aria-label="The concrete towers of the Red Hook Grain Terminal"></div></div>
-            <div class="holding-body">
-              <span class="eyebrow">Maritime &amp; Industrial Property</span>
-              <h3>GBX — Gowanus Bay Terminal</h3>
-              <p>The 1922 Red Hook Grain Terminal and a working waterfront on Gowanus Bay — available for film, photo shoots and events.</p>
-              <a class="holding-link" data-link="gbx" href="gbx/">Explore GBX <span class="arrow" aria-hidden="true">→</span></a>
-            </div>
-          </article>
-
-          <article class="holding reveal">
-            <div class="holding-media"><div class="media-equine" role="img" aria-label="Riders on the bridle path in Prospect Park"></div></div>
-            <div class="holding-body">
-              <span class="eyebrow">Equestrian</span>
-              <h3>Be™ Brooklyn Equine</h3>
-              <p>Riding lessons, trail rides and pony rides at historic Prospect Park Stable.</p>
-              <a class="holding-link" data-link="brooklynEquine" href="https://DJMiddleFinger.github.io/be-brooklyn-equine/">Visit Brooklyn Equine <span class="arrow" aria-hidden="true">↗</span></a>
-            </div>
-          </article>
-
-          <article class="holding reveal">
-            <div class="holding-media"><div class="media-hooves" role="img" aria-label="A young rider in a helmet greeting a horse"></div></div>
-            <div class="holding-body">
-              <span class="eyebrow">Community Initiatives</span>
-              <h3>Helping Hooves</h3>
-              <p>Second-career horses, therapeutic riding and youth programs at Prospect Park Stable, run by the nonprofit Helping Hoof, Inc.</p>
-              <a class="holding-link" data-link="helpingHooves" href="helping-hooves/">Explore Helping Hooves <span class="arrow" aria-hidden="true">→</span></a>
-            </div>
-          </article>
-
-          <article class="holding holding--wide holding--open reveal">
-            <div class="holding-body">
-              <span class="eyebrow">Partnerships</span>
-              <h3>Future Ventures</h3>
-              <p>We welcome conversations with partners who share a long-term view of Brooklyn.</p>
-              <a class="holding-link" href="#contact">Start a conversation <span class="arrow" aria-hidden="true">→</span></a>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- ================= HERITAGE ================= -->
-    <section class="heritage" id="heritage" aria-labelledby="heritage-title">
-      <div class="container split">
-        <div class="split-copy reveal">
-          <span class="eyebrow">Heritage</span>
-          <h2 id="heritage-title">A Brooklyn<br>Family</h2>
-          <p>[Placeholder — family origins. Two or three sentences on where the Quadrozzi story begins and what the family has built in Brooklyn.]</p>
-          <p>In 1997, John Quadrozzi Sr., president of Quadrozzi Concrete, purchased the Red Hook Grain Terminal and the surrounding 46 acres at the mouth of the Gowanus Canal. The terminal was a 1922 landmark of New York's Barge Canal era that had stood idle since 1965.</p>
-          <p>After his passing in 2004, his son John Quadrozzi Jr. took the helm and built the property into Gowanus Bay Terminal (GBX), which today is home to maritime and industrial tenants, productions and events.</p>
-          <p>In 2018, the family bought the former Kensington Stables beside Prospect Park and restored its 1917 name, Prospect Park Stable. It is home today to Be•Brooklyn Equine and to Helping Hooves, the family's community work with horses.</p>
-          <p class="signature">— The Quadrozzi Family</p>
-        </div>
-        <div class="split-media reveal" role="img" aria-label="The grain terminal today, and an archival view of the elevator">
-          <div class="big"></div>
-          <div class="small"></div>
-          <span class="stamp">Red Hook · Brooklyn</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- ================= COMMUNITY ================= -->
-    <section class="community" id="community" aria-labelledby="community-title">
-      <div class="container community-grid">
-        <div class="reveal">
-          <span class="eyebrow">Community</span>
-          <h2 id="community-title">Helping<br>Hooves</h2>
-          <blockquote>
-            …the revival of the urban horse in Prospect Park, a park built for horses.
-            <cite>John Quadrozzi Jr., on the 2019 Prospect Park Equine Rally</cite>
-          </blockquote>
-        </div>
-        <div class="reveal">
-          <ul class="initiatives">
-            <li><a data-link="initiative1" href="helping-hooves/#second-careers"><span class="num">01</span><span class="title">Second-Career Horses<span class="desc">Retraining and care that give horses a fresh start</span></span><span class="go" aria-hidden="true">→</span></a></li>
-            <li><a data-link="initiative2" href="helping-hooves/#therapy"><span class="num">02</span><span class="title">Therapeutic Riding<span class="desc">Horses for GallopNYC sessions in Prospect Park</span></span><span class="go" aria-hidden="true">→</span></a></li>
-            <li><a data-link="initiative3" href="helping-hooves/#programs"><span class="num">03</span><span class="title">Youth &amp; Community<span class="desc">Young riders, compost for Red Hook gardens, and more</span></span><span class="go" aria-hidden="true">→</span></a></li>
-          </ul>
-          <div class="community-cta">
-            <a class="btn btn-solid" data-link="helpingHooves" href="helping-hooves/">Explore Helping Hooves</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ================= FIGURES ================= -->
-    <section class="figures on-dark" id="figures" aria-labelledby="figures-title">
-      <div class="container">
-        <div class="section-head reveal">
-          <div>
-            <span class="eyebrow">By the Numbers</span>
-            <h2 id="figures-title">Rooted Here</h2>
-          </div>
-        </div>
-        <div class="figures-grid reveal">
-          <div class="figure"><div class="n">46</div><p>Acres at Gowanus Bay Terminal</p></div>
-          <div class="figure"><div class="n">1922</div><p>Year the Grain Terminal opened</p></div>
-          <div class="figure"><div class="n">1917</div><p>Prospect Park Stable founded</p></div>
-          <div class="figure"><div class="n">3.5<sup>MI</sup></div><p>Bridle path at the stable's door</p></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ================= CONTACT ================= -->
-    <section class="contact" id="contact" aria-labelledby="contact-title">
-      <div class="container">
-        <span class="eyebrow">Contact</span>
-        <h2 id="contact-title" class="reveal">Get in<br>Touch</h2>
-        <div class="contact-grid reveal">
-          <div class="contact-item"><h3>General</h3><a data-email="general" href="mailto:info@quadrozzi.com">info@quadrozzi.com</a></div>
-          <div class="contact-item"><h3>Press</h3><a data-email="press" href="mailto:press@quadrozzi.com">press@quadrozzi.com</a></div>
-          <div class="contact-item"><h3>GBX — Film, Events &amp; Leasing</h3><a href="gbx/#inquire">Book the property →</a></div>
-          <div class="contact-item"><h3>Office</h3><address>[Street Address]<br>Brooklyn, NY [ZIP]</address></div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- ================= FOOTER ================= -->
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-cols">
-        <div>
-          <a href="#top" class="wordmark"><span class="mark" aria-hidden="true"></span>Quadrozzi</a>
-          <p>A Brooklyn family enterprise spanning working waterfront, equestrian heritage and community care.</p>
-        </div>
-        <div>
-          <h4>Holdings</h4>
-          <ul>
-            <li><a data-link="gbx" href="gbx/">GBX Gowanus Bay Terminal</a></li>
-            <li><a href="gbx/#film">Film &amp; Events at GBX</a></li>
-            <li><a data-link="brooklynEquine" href="https://DJMiddleFinger.github.io/be-brooklyn-equine/">Brooklyn Equine</a></li>
-            <li><a data-link="helpingHooves" href="helping-hooves/">Helping Hooves</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4>Company</h4>
-          <ul>
-            <li><a href="#heritage">Heritage</a></li>
-            <li><a href="#community">Community</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4>Connect</h4>
-          <ul>
-            <li><a data-link="linkedin" href="#contact">LinkedIn</a></li>
-            <li><a data-link="instagram" href="#contact">Instagram</a></li>
-            <li><a href="mailto:info@quadrozzi.com">Email</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-mark" aria-hidden="true">Quadrozzi</div>
-      <div class="footer-legal">
-        <span>© <span id="year">2026</span> Quadrozzi. All rights reserved.</span>
-        <span><a href="credits.html">Photo credits</a> · Brooklyn, New York</span>
-      </div>
-    </div>
+  <footer>
+    <em>“We don’t mean business, we make it.”</em>
+    699 Columbia St., Brooklyn, NY 11231<br>
+    <a href="tel:+18777823769">877-QUADRO-Z (782-3769)</a> · <a href="mailto:info@quadrozzi.com">info@quadrozzi.com</a>
   </footer>
-
-  <script>
-    /* =====================================================================
-       LINKS — edit this block to connect the holdings.
-       Any element with data-link="key" gets its href from here.
-       Leave a value empty ('') to show "Link coming soon" on the card and
-       keep the link pointing at an on-page section instead.
-       ===================================================================== */
-    const LINKS = {
-      gbx:            'gbx/',   // GBX — Gowanus Bay Terminal page on this site
-      brooklynEquine: 'https://DJMiddleFinger.github.io/be-brooklyn-equine/',
-      helpingHooves:  'helping-hooves/',   // Helping Hooves page on this site
-      initiative1:    'helping-hooves/#second-careers',
-      initiative2:    'helping-hooves/#therapy',
-      initiative3:    'helping-hooves/#programs',
-      linkedin:       '',
-      instagram:      ''
-    };
-
-    document.querySelectorAll('[data-link]').forEach(function (a) {
-      const url = LINKS[a.dataset.link];
-      if (url) {
-        a.href = url;
-        if (/^https?:/.test(url)) {   // outside sites open in a new tab
-          a.target = '_blank';
-          a.rel = 'noopener';
-        }
-      } else if (a.classList.contains('holding-link')) {
-        a.setAttribute('aria-disabled', 'true');
-        a.firstChild.textContent = 'Link coming soon ';
-      }
-    });
-  </script>
-  <script src="assets/js/site.js"></script>
 </body>
 </html>

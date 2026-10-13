@@ -1,6 +1,6 @@
-/* Quadrozzi — shared site styles (home, GBX, credits). Colors: see plans/03-design-system.md */
+/* Shared site styles (GBX, Helping Hooves, credits). Colors: see plans/03-design-system.md */
 :root {
-  /* Quadrozzi fleet colors — orange cabs, yellow drums, black lettering, hazard stripes */
+  /* Fleet colors — orange cabs, yellow drums, black lettering, hazard stripes */
   --smoke: #161616;       /* asphalt black */
   --smoke-2: #262626;
   --smoke-deep: #0c0c0c;

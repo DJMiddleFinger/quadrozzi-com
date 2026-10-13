@@ -2,30 +2,25 @@
 
 ### 👉 [Visit the live site: djmiddlefinger.github.io/quadrozzi-com](https://djmiddlefinger.github.io/quadrozzi-com/)
 
-| Page | Link |
+| Site | Link |
 |---|---|
-| **Quadrozzi home** | https://djmiddlefinger.github.io/quadrozzi-com/ |
+| **Home** (Q logo + links) | https://djmiddlefinger.github.io/quadrozzi-com/ |
 | GBX Gowanus Bay Terminal | https://djmiddlefinger.github.io/quadrozzi-com/gbx/ |
-| Helping Hooves | https://djmiddlefinger.github.io/quadrozzi-com/helping-hooves/ |
 | Be™ Brooklyn Equine | https://DJMiddleFinger.github.io/be-brooklyn-equine/ |
+| Helping Hooves | https://djmiddlefinger.github.io/quadrozzi-com/helping-hooves/ |
 
-Once the custom domain is connected, the home page will be at **https://quadrozzi.com**.
-
----
-
-Plans and a static site for **quadrozzi.com**, the home of the Quadrozzi family of companies:
-
-- **GBX — Gowanus Bay Terminal**: its own page at `/gbx/`, with the terminal's history and a booking inquiry form for film, photo, events and maritime use
-- **Be™ Brooklyn Equine**: https://DJMiddleFinger.github.io/be-brooklyn-equine/
-- **Helping Hooves**: its own page at `/helping-hooves/`, covering the family's community work with horses (second-career horses, therapeutic riding, youth programs, compost for Red Hook gardens), with a get-involved form. It's run by **Helping Hoof, Inc.**, a 501(c)(3) nonprofit (EIN 88-3328025).
+The home page is just the Q logo, three links (each opens its site in a new tab) and the contact line
+from the archived 2013 quadrozzi.com. GBX and Helping Hooves are standalone sites that live in this repo;
+they share `site/assets/` (styles, script, photos) but each has its own nav, footer and photo credits.
+Helping Hooves deliberately carries no Quadrozzi branding or affiliation wording; its only contact is
+info@quadrozzi.com. Check with `grep -i quadrozzi site/helping-hooves/*.html` before publishing changes.
 
 ## What's here
 ```
 plans/      01-brief · 02-sitemap · 03-design-system · 04-content-outline · 05-launch-checklist
-site/       index.html (home), gbx/ (GBX page), helping-hooves/ (Helping Hooves page),
-            credits.html (photo licenses), 404.html
-            assets/css/site.css + assets/js/site.js (shared by every page), photos in assets/ (see assets/README.md)
-tools/      credits.json + build_credits.py (rebuilds credits.html)
+site/       index.html (home), gbx/ and helping-hooves/ (each with its own credits.html), 404.html
+            assets/q-logo.jpg (home), assets/css/site.css + assets/js/site.js + photos (GBX & Helping Hooves)
+tools/      credits.json + build_credits.py (rebuilds both credits pages)
 .github/    GitHub Pages deploy workflow (publishes the site/ folder)
 ```
 
@@ -35,11 +30,6 @@ npm start
 ```
 Then open http://localhost:8080.
 
-## Links on the home page
-In `site/index.html`, scroll to the bottom `<script>` and edit the `LINKS` object. Any element with
-`data-link="key"` picks up its address from there. Addresses on this site (like `gbx/`) open in the same tab,
-and outside sites open in a new tab. An empty value shows "Link coming soon" on its card.
-
 ## Forms (GBX booking, Helping Hooves get-involved)
 The site has no server, so by default pressing **Send** opens the visitor's email app with every answer
 filled in. Each page sets where its messages go in a `window.INQUIRY` block near the bottom of the file:
@@ -47,7 +37,7 @@ filled in. Each page sets where its messages go in a `window.INQUIRY` block near
 | Page | File | Default inbox |
 |---|---|---|
 | GBX booking | `site/gbx/index.html` | gbx@quadrozzi.com (placeholder, confirm) |
-| Helping Hooves | `site/helping-hooves/index.html` | Be@Quadrozzi.com (the stable's published address) |
+| Helping Hooves | `site/helping-hooves/index.html` | info@quadrozzi.com |
 
 ```js
 window.INQUIRY = {
@@ -69,13 +59,13 @@ and license in `tools/credits.json`. After adding or replacing a photo, update t
 ```bash
 python3 tools/build_credits.py
 ```
-This rewrites `site/credits.html`, which is linked from every page's footer and meets the attribution
+This rewrites `site/gbx/credits.html` and `site/helping-hooves/credits.html` (photos with "hooves" in their
+path go on the Helping Hooves page), which are linked from each site's footer and meet the attribution
 requirement of the CC BY-SA photos.
 
 ## Placeholders still to fill
-- **Home:** the founding year in the hero ("Est. [Year]"), the family-origins heritage paragraph, the office address, and confirmation of the info@ / press@ addresses
 - **GBX:** the phone number, the GBX email, and the street address (699 Columbia Street, taken from press coverage)
-- **Helping Hooves:** confirm the inbox, add a donation link, and swap stand-in photos for the stable's own (see `plans/05-launch-checklist.md`)
+- **Helping Hooves:** add a donation link, and swap stand-in photos for the stable's own (see `plans/05-launch-checklist.md`)
 
 ## Design
 The layout is adapted from robertaspizza.com: oversized condensed uppercase headlines, a restrained

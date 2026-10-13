@@ -1,16 +1,7 @@
 [
   {
-    "file": "assets/equine.jpg",
-    "used": "Home — Brooklyn Equine card",
-    "title": "Trail ride, Prospect Park",
-    "artist": "Be Brooklyn Equine",
-    "license": "Courtesy of Be Brooklyn Equine (site photo)",
-    "license_url": "",
-    "source": "https://DJMiddleFinger.github.io/be-brooklyn-equine/"
-  },
-  {
     "file": "assets/gbx.jpg",
-    "used": "Home — GBX card · GBX — intro",
+    "used": "GBX — intro",
     "title": "Red Hook Grain Terminal (May 2025) (5).jpg",
     "artist": "MikeBurnsPhotos",
     "license": "CC0",
@@ -19,7 +10,7 @@
   },
   {
     "file": "assets/heritage-1.jpg",
-    "used": "Home — heritage · GBX — film & photo",
+    "used": "GBX — film & photo",
     "title": "Red Hook Grain Terminal (May 2025) (3).jpg",
     "artist": "MikeBurnsPhotos",
     "license": "CC0",
@@ -28,7 +19,7 @@
   },
   {
     "file": "assets/heritage-2.jpg",
-    "used": "Home — heritage · GBX — history",
+    "used": "GBX — history",
     "title": "GENERAL VIEW OF GRAIN ELEVATOR FROM NORTHEAST. - New York State Barge Canal, Grain Elevator Terminal, Henry Street Basin, Brooklyn, Kings County, NY HAER NY,24-BROK,51B-1.tif",
     "artist": "Historic American Engineering Record (Library of Congress)",
     "license": "Public domain",
@@ -37,7 +28,7 @@
   },
   {
     "file": "assets/hero.jpg",
-    "used": "Home — hero · GBX — events",
+    "used": "GBX — events",
     "title": "GBX Gowanus Bay Terminal OK2.jpg",
     "artist": "Oliver Kienzi",
     "license": "CC BY-SA 4.0",
@@ -46,7 +37,7 @@
   },
   {
     "file": "assets/hooves.jpg",
-    "used": "Home — Helping Hooves card · Helping Hooves — mission",
+    "used": "Helping Hooves — mission",
     "title": "A horse, friend 170318-A-ZG886-251.jpg",
     "artist": "Maj. Michelle Lunato",
     "license": "Public domain",
