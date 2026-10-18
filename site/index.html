@@ -2,42 +2,253 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Quadrozzi</title>
-  <meta name="description" content="Quadrozzi, Brooklyn, New York: GBX Gowanus Bay Terminal and Be Brooklyn Equine.">
-  <meta name="theme-color" content="#ffe843">
+  <meta name="description" content="Quadrozzi, Brooklyn, New York.">
+  <meta name="theme-color" content="#ffe641">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=Inter:wght@500;600&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --yellow: #ffe641;      /* matches the Q logo tile */
+      --smoke: #161616;
+      --ivory: #f3f1ec;
+      --stone: rgba(243, 241, 236, .5);
+      --line: rgba(243, 241, 236, .16);
+      --display: 'Big Shoulders Display', 'Arial Narrow', Impact, sans-serif;
+      --sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      --ease: cubic-bezier(.2, .7, .2, 1);
+    }
     * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; }
     body {
-      min-height: 100svh; display: flex; flex-direction: column; align-items: center; justify-content: center;
-      gap: 2.5rem; padding: 3rem 16px; background: #fff; color: #161616; text-align: center;
-      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      overflow: hidden; background: var(--yellow); color: var(--smoke);
+      font-family: var(--sans); -webkit-font-smoothing: antialiased;
     }
-    h1 img { display: block; width: min(220px, 50vw); height: auto; }
-    nav { display: flex; flex-direction: column; gap: .75rem; width: min(360px, 100%); }
-    nav a {
-      display: block; padding: 1rem 1.5rem; border: 2px solid #161616; border-radius: 999px;
-      color: inherit; text-decoration: none; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; font-size: .9rem;
+
+    /* ---------- Face page: the logo, nothing else ---------- */
+    .face { position: fixed; inset: 0; display: grid; place-items: center; }
+    .face figure { position: relative; height: 100svh; max-width: 100vw; aspect-ratio: 1455 / 2000; }
+    .face img { display: block; width: 100%; height: 100%; object-fit: contain; }
+    /* The logo file has white rounded bottom corners; paint them yellow so the page is one flat field */
+    .face figure::before, .face figure::after {
+      content: ''; position: absolute; bottom: 0; width: 15%; height: 11.5%; background: var(--yellow);
     }
-    nav a:hover, nav a:focus-visible { background: #ffe843; outline: none; }
-    footer { font-size: .85rem; line-height: 1.7; color: #5f5b55; }
-    footer em { display: block; margin-bottom: .5rem; color: #161616; }
-    footer a { color: inherit; }
+    .face figure::before { left: 0; }
+    .face figure::after { right: 0; }
+
+    /* ---------- Menu button: four bars ---------- */
+    .menu-toggle {
+      position: fixed; z-index: 30; top: max(10px, env(safe-area-inset-top)); right: max(10px, env(safe-area-inset-right));
+      width: 56px; height: 56px; border: 0; background: none; color: var(--smoke); cursor: pointer;
+    }
+    .menu-toggle i {
+      position: absolute; left: 12px; right: 12px; height: 3px; border-radius: 2px; background: currentColor;
+      transition: transform .35s var(--ease), opacity .2s, background .3s;
+    }
+    .menu-toggle i:nth-child(1) { top: 14px; }
+    .menu-toggle i:nth-child(2) { top: 22px; }
+    .menu-toggle i:nth-child(3) { top: 30px; }
+    .menu-toggle i:nth-child(4) { top: 38px; }
+    .menu-toggle:focus-visible { outline: 3px solid currentColor; outline-offset: -4px; border-radius: 6px; }
+    .menu-open .menu-toggle { color: var(--ivory); }
+    .menu-open .menu-toggle i:nth-child(1), .menu-open .menu-toggle i:nth-child(4) { opacity: 0; }
+    .menu-open .menu-toggle i:nth-child(2) { transform: translateY(5px) rotate(45deg); }
+    .menu-open .menu-toggle i:nth-child(3) { transform: translateY(-5px) rotate(-45deg); }
+
+    /* ---------- Menu ---------- */
+    .menu {
+      position: fixed; inset: 0; z-index: 20; overflow-y: auto; overscroll-behavior: contain;
+      background: var(--smoke); color: var(--ivory);
+      padding: 84px 24px calc(2rem + env(safe-area-inset-bottom));
+      opacity: 0; visibility: hidden; transform: translateY(-10px);
+      transition: opacity .3s var(--ease), transform .3s var(--ease), visibility 0s linear .3s;
+    }
+    .menu-open .menu { opacity: 1; visibility: visible; transform: none; transition-delay: 0s; }
+    .menu-inner { width: min(640px, 100%); margin-inline: auto; }
+    .menu-title {
+      font-family: var(--display); font-weight: 800; font-size: 1rem; letter-spacing: .2em;
+      text-transform: uppercase; color: var(--yellow); margin-bottom: 1rem;
+    }
+
+    .menu details { border-bottom: 1px solid var(--line); }
+    .menu summary, .menu .row { list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 1rem; cursor: pointer; }
+    .menu summary::-webkit-details-marker { display: none; }
+    .menu summary::after {
+      content: '+'; flex: none; font-family: var(--sans); font-weight: 500; font-size: 1.6rem; line-height: 1;
+      color: var(--yellow); transition: transform .3s var(--ease);
+    }
+    .menu details[open] > summary::after { transform: rotate(45deg); }
+    .menu summary:focus-visible, .menu a:focus-visible { outline: 2px solid var(--yellow); outline-offset: 3px; }
+
+    .l1 > summary, .l1 > .row {
+      padding: 1.05rem 0; font-family: var(--display); font-weight: 800; text-transform: uppercase;
+      font-size: clamp(2rem, 7vw, 2.8rem); line-height: 1; letter-spacing: .005em;
+    }
+    .l1 > summary:hover { color: var(--yellow); }
+    .l1 > .row { border-bottom: 1px solid var(--line); }
+    .panel { padding: 0 0 1.1rem .1rem; }
+
+    .l2 { border-bottom: 0 !important; }
+    .l2 > summary {
+      padding: .7rem 0 .7rem 1rem; font-weight: 600; font-size: .78rem; letter-spacing: .18em; text-transform: uppercase;
+      border-left: 3px solid var(--yellow);
+    }
+    .l2 > summary::after { font-size: 1.25rem; }
+    .l2 > summary:hover { color: var(--yellow); }
+    .l2 > .panel { padding: 0 0 .5rem 1rem; }
+
+    .items { list-style: none; border-left: 3px solid var(--line); margin: 0 0 .5rem; }
+    .items li { padding: .5rem 0 .5rem 1rem; font-size: 1.05rem; line-height: 1.35; }
+    .items a { border-bottom: 1px solid var(--yellow); }
+    .items a:hover { color: var(--yellow); }
+    .items .soon { color: var(--stone); }
+    .menu a { color: inherit; text-decoration: none; }
+    .menu .go::after { content: ' \2197'; color: var(--yellow); }
+
+    .menu-foot { margin-top: 2.5rem; font-size: .85rem; line-height: 1.8; color: var(--stone); }
+    .menu-foot em { display: block; margin-bottom: .5rem; color: var(--ivory); font-style: italic; }
+    .menu-foot a { text-decoration: underline; text-underline-offset: 3px; }
+
+    @media (prefers-reduced-motion: reduce) { * { transition-duration: 0s !important; } }
   </style>
 </head>
 <body>
-  <h1><img src="assets/q-logo.jpg" alt="Quadrozzi" width="1455" height="2000"></h1>
+  <main class="face" id="main">
+    <h1>
+      <figure><img src="assets/q-logo.jpg" alt="Quadrozzi" width="1455" height="2000"></figure>
+    </h1>
+  </main>
 
-  <nav aria-label="Our sites">
-    <a href="gbx/" target="_blank" rel="noopener">GBX Gowanus Bay Terminal</a>
-    <a href="https://djmiddlefinger.github.io/be-brooklyn-equine/" target="_blank" rel="noopener">Be™ Brooklyn Equine</a>
-    <a href="helping-hooves/" target="_blank" rel="noopener">Helping Hooves</a>
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Open menu">
+    <i></i><i></i><i></i><i></i>
+  </button>
+
+  <nav class="menu" id="menu" aria-label="Quadrozzi" inert>
+    <div class="menu-inner">
+      <p class="menu-title">Q™</p>
+
+      <details class="l1">
+        <summary>Real Estate</summary>
+        <div class="panel">
+          <details class="l2">
+            <summary>Industrial</summary>
+            <div class="panel"><ul class="items">
+              <li class="soon">BBX™ ~ Barbados Basin Terminal</li>
+              <li><a class="go" href="gbx/" target="_blank" rel="noopener">GBX™ ~ Gowanus Bay Terminal</a></li>
+              <li class="soon">VBX™ ~ Vernam Basin Terminal</li>
+            </ul></div>
+          </details>
+          <details class="l2">
+            <summary>Commercial</summary>
+            <div class="panel"><ul class="items">
+              <li class="soon">PPS Prospect Park Stable™</li>
+            </ul></div>
+          </details>
+          <details class="l2">
+            <summary>Residential</summary>
+            <div class="panel"><ul class="items">
+              <li class="soon">(tbn)</li>
+            </ul></div>
+          </details>
+        </div>
+      </details>
+
+      <details class="l1">
+        <summary>Operations</summary>
+        <div class="panel">
+          <details class="l2">
+            <summary>Cement &amp; Cementitious Materials</summary>
+            <div class="panel"><ul class="items"><li class="soon">Quadrocem™ aka NYCEMCO</li></ul></div>
+          </details>
+          <details class="l2">
+            <summary>Concrete</summary>
+            <div class="panel"><ul class="items"><li class="soon">Quadrozzi™ Concrete</li></ul></div>
+          </details>
+          <details class="l2">
+            <summary>Rock Salt</summary>
+            <div class="panel"><ul class="items"><li class="soon">Quadrosalt™</li></ul></div>
+          </details>
+          <details class="l2">
+            <summary>Studios</summary>
+            <div class="panel"><ul class="items"><li class="soon">Quadrozzi™ Studios</li></ul></div>
+          </details>
+          <details class="l2">
+            <summary>Transportation</summary>
+            <div class="panel"><ul class="items"><li class="soon">Quadrotrax™</li></ul></div>
+          </details>
+          <details class="l2">
+            <summary>Design</summary>
+            <div class="panel"><ul class="items"><li class="soon">Quadrozzi™ disegno</li></ul></div>
+          </details>
+        </div>
+      </details>
+
+      <details class="l1">
+        <summary>Recreational</summary>
+        <div class="panel">
+          <details class="l2">
+            <summary>Horse Care &amp; Riding</summary>
+            <div class="panel"><ul class="items">
+              <li><a class="go" href="https://djmiddlefinger.github.io/be-brooklyn-equine/" target="_blank" rel="noopener">Be™ • Brooklyn Equine™</a></li>
+              <li class="soon">PPS Prospect Park Stable™</li>
+            </ul></div>
+          </details>
+        </div>
+      </details>
+
+      <details class="l1">
+        <summary>Not-for-Profit</summary>
+        <div class="panel">
+          <details class="l2">
+            <summary>Equine</summary>
+            <div class="panel"><ul class="items">
+              <li><a class="go" href="helping-hooves/" target="_blank" rel="noopener">hhi™ • Helping Hoof Initiative • 501(c)(3)</a></li>
+            </ul></div>
+          </details>
+        </div>
+      </details>
+
+      <details class="l1">
+        <summary>Sponsorships</summary>
+        <div class="panel">
+          <ul class="items">
+            <li class="soon">Environmental</li>
+            <li class="soon">Arts • Theater • Film</li>
+          </ul>
+        </div>
+      </details>
+
+      <div class="l1"><div class="row">In the News</div></div>
+      <div class="l1"><div class="row">Special</div></div>
+
+      <footer class="menu-foot">
+        <em>“We don’t mean business, we make it.”</em>
+        699 Columbia St., Brooklyn, NY 11231<br>
+        <a href="tel:+18777823769">877-QUADRO-Z (782-3769)</a> · <a href="mailto:info@quadrozzi.com">info@quadrozzi.com</a>
+      </footer>
+    </div>
   </nav>
 
-  <footer>
-    <em>“We don’t mean business, we make it.”</em>
-    699 Columbia St., Brooklyn, NY 11231<br>
-    <a href="tel:+18777823769">877-QUADRO-Z (782-3769)</a> · <a href="mailto:info@quadrozzi.com">info@quadrozzi.com</a>
-  </footer>
+  <script>
+    (function () {
+      var toggle = document.querySelector('.menu-toggle');
+      var menu = document.getElementById('menu');
+      var face = document.getElementById('main');
+      function setMenu(open) {
+        document.body.classList.toggle('menu-open', open);
+        toggle.setAttribute('aria-expanded', String(open));
+        toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+        menu.inert = !open;
+        face.inert = open;
+      }
+      toggle.addEventListener('click', function () { setMenu(!document.body.classList.contains('menu-open')); });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && document.body.classList.contains('menu-open')) { setMenu(false); toggle.focus(); }
+      });
+      // Sections are independent: opening one leaves the others as they are; only its own header closes it.
+    })();
+  </script>
 </body>
 </html>

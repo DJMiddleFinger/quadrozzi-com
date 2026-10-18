@@ -4,13 +4,14 @@
 
 | Site | Link |
 |---|---|
-| **Home** (Q logo + links) | https://djmiddlefinger.github.io/quadrozzi-com/ |
+| **Home** (Q logo face page + menu) | https://djmiddlefinger.github.io/quadrozzi-com/ |
 | GBX Gowanus Bay Terminal | https://djmiddlefinger.github.io/quadrozzi-com/gbx/ |
 | Be™ Brooklyn Equine | https://DJMiddleFinger.github.io/be-brooklyn-equine/ |
 | Helping Hooves | https://djmiddlefinger.github.io/quadrozzi-com/helping-hooves/ |
 
-The home page is just the Q logo, three links (each opens its site in a new tab) and the contact line
-from the archived 2013 quadrozzi.com. GBX and Helping Hooves are standalone sites that live in this repo;
+The home page is a single no-scroll face page: the Q logo, plus a four-bar menu button that opens the
+full company menu (independent expand/collapse sections; live sites open in a new tab; the contact line
+lives at the bottom of the menu). GBX and Helping Hooves are standalone sites that live in this repo;
 they share `site/assets/` (styles, script, photos) but each has its own nav, footer and photo credits.
 Helping Hooves deliberately carries no Quadrozzi branding or affiliation wording; its only contact is
 info@quadrozzi.com. Check with `grep -i quadrozzi site/helping-hooves/*.html` before publishing changes.
