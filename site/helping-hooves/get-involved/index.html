@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Get involved | Helping Hoof Initiative</title>
+  <meta name="description" content="Volunteer, donate, partner with or enroll a rider in the Helping Hoof Initiative.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Get involved | Helping Hoof Initiative">
+  <meta property="og:description" content="Volunteer, donate, partner with or enroll a rider in the Helping Hoof Initiative.">
+  <meta name="theme-color" content="#161616">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/site.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="sidebar" aria-label="Open menu"><i></i><i></i><i></i><i></i></button>
+  <aside class="sidebar" id="sidebar" aria-label="Helping Hoof Initiative">
+    <a class="side-brand" href="../">Helping Hoof Initiative<small>A program of Helping Hoof, Inc., a 501(c)(3) nonprofit</small></a>
+    <nav aria-label="Pages">
+      <ul class="side-nav">
+        <li><a href="../">Overview</a></li>
+        <li><a href="../programs/">Programs</a></li>
+        <li><a href="../heritage/">Heritage</a></li>
+        <li><a href="../get-involved/" aria-current="page">Get Involved</a></li>
+      </ul>
+    </nav>
+  </aside>
+  <div class="content" id="content">
+    <header class="bar">
+      <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="../">Helping Hoof Initiative</a></li><li><span aria-current="page">Get Involved</span></li></ol></nav>
+    </header>
+    <main class="page" id="main">
+      <h1>Get involved</h1>
+      <p class="lead">Volunteer, donate, partner, or enroll a rider. Choose how you’d like to help and tell us a little about yourself.</p>
+      <nav class="levers" aria-label="Ways to help">
+        <a class="lever" href="./?type=Volunteer#form"><span><b>Volunteer</b><small>Lend a hand at the stable or at community events.</small></span></a>
+        <a class="lever" href="./?type=Donate#form" data-donate><span><b>Donate</b><small>Support second-career horses and access to riding.</small></span></a>
+        <a class="lever" href="./?type=Partner#form"><span><b>Partner</b><small>Schools, therapy programs and community gardens.</small></span></a>
+        <a class="lever" href="https://DJMiddleFinger.github.io/be-brooklyn-equine/" target="_blank" rel="noopener"><span><b>Ride &amp; learn ↗</b><small>Lessons, trail rides and youth programs with Be•Brooklyn Equine.</small></span></a>
+      </nav>
+      <div class="split" id="form">
+        <div class="aside">
+          <div class="direct">
+            <div><h3>Email</h3><a data-inquiry-email href="mailto:info@quadrozzi.com">info@quadrozzi.com</a></div>
+            <div><h3>The stable</h3><address>Prospect Park Stable<br>51–55 Caton Place, Brooklyn, NY 11218</address></div>
+            <div><a href="https://www.google.com/maps/search/?api=1&amp;query=Prospect+Park+Stable+51+Caton+Place+Brooklyn+NY" target="_blank" rel="noopener">Get directions ↗</a></div>
+          </div>
+          <p class="nonprofit">Helping Hoof, Inc. is a 501(c)(3) nonprofit organization (EIN 88-3328025). Donations are tax-deductible to the extent allowed by law.</p>
+        </div>
+
+        <form class="form" data-inquiry novalidate>
+          <fieldset>
+            <legend>I’d like to… <span class="req">*</span></legend>
+            <div class="chips">
+              <label class="chip"><input type="radio" name="type" value="Volunteer" required><span>Volunteer</span></label>
+              <label class="chip"><input type="radio" name="type" value="Donate"><span>Donate</span></label>
+              <label class="chip"><input type="radio" name="type" value="Partner"><span>Partner</span></label>
+              <label class="chip"><input type="radio" name="type" value="Enroll a rider"><span>Enroll a rider</span></label>
+              <label class="chip"><input type="radio" name="type" value="Other"><span>Other</span></label>
+            </div>
+          </fieldset>
+
+          <div class="form-row">
+            <div><label for="h-name">Name <span class="req">*</span></label><input id="h-name" name="name" type="text" autocomplete="name" required></div>
+            <div><label for="h-org">Organization (optional)</label><input id="h-org" name="organization" type="text" autocomplete="organization"></div>
+          </div>
+          <div class="form-row">
+            <div><label for="h-email">Email <span class="req">*</span></label><input id="h-email" name="email" type="email" autocomplete="email" required></div>
+            <div><label for="h-phone">Phone</label><input id="h-phone" name="phone" type="tel" autocomplete="tel"></div>
+          </div>
+
+          <div class="field">
+            <label for="h-message">How would you like to help? <span class="req">*</span></label>
+            <textarea id="h-message" name="message" required placeholder="A few lines about you, your organization or the rider you’d like to enroll."></textarea>
+          </div>
+
+          <div class="form-foot">
+            <button type="submit" class="btn">Send message</button>
+            <p class="form-note">Sending opens your email app with your message filled in.</p>
+          </div>
+          <div class="form-status" role="status" aria-live="polite"></div>
+        </form>
+      </div>
+    </main>
+    <footer class="page-foot">
+      <a href="mailto:info@quadrozzi.com">info@quadrozzi.com</a>
+      <a href="../credits/">Photo credits</a>
+      <span>© 2026 Helping Hoof, Inc.</span>
+    </footer>
+  </div>
+  <script>
+    window.INQUIRY = {
+      email:    'info@quadrozzi.com',
+      endpoint: '',
+      subject:  'Helping Hoof Initiative'
+    };
+    // donate: optional online donation page (PayPal, Givebutter, Stripe…). Leave '' and "Donate" opens the form instead.
+    const HOOVES = { donate: '' };
+    if (HOOVES.donate) {
+      document.querySelectorAll('[data-donate]').forEach(function (a) {
+        a.href = HOOVES.donate;
+        a.target = '_blank';
+        a.rel = 'noopener';
+      });
+    }
+  </script>
+  <script src="../../assets/js/site.js"></script>
+</body>
+</html>

@@ -1,7 +1,7 @@
 [
   {
     "file": "assets/gbx.jpg",
-    "used": "GBX — intro",
+    "used": "GBX — overview",
     "title": "Red Hook Grain Terminal (May 2025) (5).jpg",
     "artist": "MikeBurnsPhotos",
     "license": "CC0",
@@ -37,7 +37,7 @@
   },
   {
     "file": "assets/hooves.jpg",
-    "used": "Helping Hooves — mission",
+    "used": "Helping Hoof Initiative — overview (riding for everyone)",
     "title": "A horse, friend 170318-A-ZG886-251.jpg",
     "artist": "Maj. Michelle Lunato",
     "license": "Public domain",
@@ -55,7 +55,7 @@
   },
   {
     "file": "assets/gbx/hero.jpg",
-    "used": "GBX — hero",
+    "used": "GBX — overview",
     "title": "Red Hook Grain Terminal (May 2025) (1).jpg",
     "artist": "MikeBurnsPhotos",
     "license": "CC0",
@@ -64,7 +64,7 @@
   },
   {
     "file": "assets/gbx/interior-arch.jpg",
-    "used": "GBX — locations",
+    "used": "GBX — spaces",
     "title": "Red Hook Grain Terminal (May 2025) (2).jpg",
     "artist": "MikeBurnsPhotos",
     "license": "CC0",
@@ -73,7 +73,7 @@
   },
   {
     "file": "assets/gbx/loujaine.jpg",
-    "used": "GBX — waterfront",
+    "used": "GBX — spaces",
     "title": "Loujaine at Red Hook Grain Terminal (May 2025).jpg",
     "artist": "MikeBurnsPhotos",
     "license": "CC0",
@@ -82,7 +82,7 @@
   },
   {
     "file": "assets/gbx/park-view.jpg",
-    "used": "GBX — locations",
+    "used": "GBX — spaces",
     "title": "PA Grains Red Hook jeh.JPG",
     "artist": "Jim.henderson",
     "license": "Public domain",
@@ -100,7 +100,7 @@
   },
   {
     "file": "assets/gbx/towers.jpg",
-    "used": "GBX — locations",
+    "used": "GBX — spaces",
     "title": "Red Hook Grain Terminal (May 2025) (4).jpg",
     "artist": "MikeBurnsPhotos",
     "license": "CC0",
@@ -109,7 +109,7 @@
   },
   {
     "file": "assets/hooves/garden.jpg",
-    "used": "Helping Hooves — stable to garden",
+    "used": "Helping Hoof Initiative — programs (stable to garden)",
     "title": "Brooklyn Bears Community Garden5.jpg",
     "artist": "Wil540 art",
     "license": "CC BY-SA 4.0",
@@ -118,7 +118,7 @@
   },
   {
     "file": "assets/hooves/hands-on.jpg",
-    "used": "Helping Hooves — mission (therapy & learning)",
+    "used": "Helping Hoof Initiative — overview (therapy & learning)",
     "title": "Veterans build resiliency through equine assisted therapy (4244875).jpg",
     "artist": "U.S. Air Force 310SW by Staff Sgt. Laura Turner",
     "license": "Public domain",
@@ -127,7 +127,7 @@
   },
   {
     "file": "assets/hooves/hero.jpg",
-    "used": "Helping Hooves — hero",
+    "used": "Helping Hoof Initiative — overview",
     "title": "Horses Walking Prospect Park 2021.jpg",
     "artist": "Wil540 art",
     "license": "CC BY-SA 4.0",
@@ -136,7 +136,7 @@
   },
   {
     "file": "assets/hooves/horse-tamers.jpg",
-    "used": "Helping Hooves — horse parade",
+    "used": "Helping Hoof Initiative — programs (horse parade)",
     "title": "Prospect Park td (2019-01-27) 003 - Park Circle, Horse Tamers.jpg",
     "artist": "Tdorante10",
     "license": "CC BY-SA 4.0",
@@ -145,7 +145,7 @@
   },
   {
     "file": "assets/hooves/park-1911.jpg",
-    "used": "Helping Hooves — mission (safe streets & trails)",
+    "used": "Helping Hoof Initiative — overview (safe streets & trails)",
     "title": "A view in Prospect Park, Brooklyn, New York City LCCN96512472.jpg",
     "artist": "Library of Congress Prints and Photographs Division",
     "license": "Public domain",
@@ -154,7 +154,7 @@
   },
   {
     "file": "assets/hooves/second-career.jpg",
-    "used": "Helping Hooves — mission (second-career horses)",
+    "used": "Helping Hoof Initiative — overview (second-career horses)",
     "title": "-mypubliclandsroadtrip 2016- Get Outdoors Baby, Meadowood Special Recreation Area (28782293480).jpg",
     "artist": "mypubliclands",
     "license": "Public domain",
@@ -163,7 +163,7 @@
   },
   {
     "file": "assets/hooves/stable.jpg",
-    "used": "Helping Hooves — heritage",
+    "used": "Helping Hoof Initiative — heritage",
     "title": "Kensington Stables riders jeh.jpg",
     "artist": "Jim.henderson",
     "license": "CC0",
@@ -172,7 +172,7 @@
   },
   {
     "file": "assets/hooves/therapy-riding.jpg",
-    "used": "Helping Hooves — therapeutic riding",
+    "used": "Helping Hoof Initiative — programs (therapeutic riding)",
     "title": "05 01 2022 horseback riding Gallop NYC Bowling Green and Cottage Brooklyn.jpg",
     "artist": "Wil540 art",
     "license": "CC BY-SA 4.0",
@@ -181,7 +181,7 @@
   },
   {
     "file": "assets/hooves/wallabout.jpg",
-    "used": "Helping Hooves — heritage",
+    "used": "Helping Hoof Initiative — heritage",
     "title": "Vast crowd of trucks and horse-drawn carts at the Wallabout Market, Brooklyn, N.Y..jpg",
     "artist": "Al Aumuller, New York World-Telegram & Sun (Library of Congress)",
     "license": "Public domain",
@@ -190,7 +190,7 @@
   },
   {
     "file": "assets/hooves/youth.jpg",
-    "used": "Helping Hooves — youth programs",
+    "used": "Helping Hoof Initiative — programs (youth programs)",
     "title": "Pony ride at Prospect Park Stable",
     "artist": "Be Brooklyn Equine",
     "license": "Courtesy of Be Brooklyn Equine (site photo)",

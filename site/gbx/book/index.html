@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book the site | GBX Gowanus Bay Terminal</title>
+  <meta name="description" content="Book GBX Gowanus Bay Terminal for film and photo shoots, events, and maritime or industrial use.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Book the site | GBX Gowanus Bay Terminal">
+  <meta property="og:description" content="Book GBX Gowanus Bay Terminal for film and photo shoots, events, and maritime or industrial use.">
+  <meta name="theme-color" content="#161616">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/site.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="sidebar" aria-label="Open menu"><i></i><i></i><i></i><i></i></button>
+  <aside class="sidebar" id="sidebar" aria-label="GBX Gowanus Bay Terminal">
+    <a class="side-brand" href="../">GBX<small>Gowanus Bay Terminal, Red Hook</small></a>
+    <nav aria-label="Pages">
+      <ul class="side-nav">
+        <li><a href="../">Overview</a></li>
+        <li><a href="../spaces/">Spaces</a></li>
+        <li><a href="../film/">Film &amp; Photo</a></li>
+        <li><a href="../events/">Events</a></li>
+        <li><a href="../history/">History</a></li>
+        <li><a href="../terminals/">Terminals</a></li>
+        <li><a href="../book/" aria-current="page">Book</a></li>
+      </ul>
+    </nav>
+  </aside>
+  <div class="content" id="content">
+    <header class="bar">
+      <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="../../">Quadrozzi</a></li><li><a href="../">GBX</a></li><li><span aria-current="page">Book</span></li></ol></nav>
+    </header>
+    <main class="page" id="main">
+      <h1>Book the site</h1>
+      <p class="lead">Film and photo shoots, events, and maritime or industrial use. Tell us about your project and we’ll reply with availability and next steps.</p>
+      <ol class="steps">
+        <li><h3>Inquire</h3><p>Send your dates, crew or guest count, and the areas you’re interested in.</p></li>
+        <li><h3>Scout</h3><p>We’ll arrange a site visit so your team can walk the property.</p></li>
+        <li><h3>Confirm</h3><p>Agree terms and schedule, and provide insurance certificates and any permits that apply.</p></li>
+        <li><h3>Arrive</h3><p>We coordinate access on the day around terminal operations.</p></li>
+      </ol>
+      <div class="split" id="form">
+        <div class="aside">
+          <div class="direct">
+            <div><h3>Email</h3><a data-inquiry-email href="mailto:fedor.shot@quadrozzi.com">fedor.shot@quadrozzi.com</a></div>
+          </div>
+          <div class="map">
+            <iframe title="Map showing Gowanus Bay Terminal in Red Hook, Brooklyn" loading="lazy" referrerpolicy="no-referrer"
+              src="https://www.openstreetmap.org/export/embed.html?bbox=-74.0145%2C40.6645%2C-73.9977%2C40.6745&amp;layer=mapnik&amp;marker=40.66944%2C-74.00611"></iframe>
+            <a href="https://www.openstreetmap.org/?mlat=40.66944&amp;mlon=-74.00611#map=16/40.66944/-74.00611" target="_blank" rel="noopener">Open larger map ↗</a>
+          </div>
+        </div>
+
+        <form class="form" data-inquiry novalidate>
+          <fieldset>
+            <legend>What are you planning? <span class="req">*</span></legend>
+            <div class="chips">
+              <label class="chip"><input type="radio" name="type" value="Film / TV" required><span>Film / TV</span></label>
+              <label class="chip"><input type="radio" name="type" value="Commercial / Photo"><span>Commercial / Photo</span></label>
+              <label class="chip"><input type="radio" name="type" value="Music video"><span>Music video</span></label>
+              <label class="chip"><input type="radio" name="type" value="Event"><span>Event</span></label>
+              <label class="chip"><input type="radio" name="type" value="Maritime / Leasing"><span>Maritime / Leasing</span></label>
+              <label class="chip"><input type="radio" name="type" value="Other"><span>Other</span></label>
+            </div>
+          </fieldset>
+
+          <div class="form-row">
+            <div><label for="f-name">Name <span class="req">*</span></label><input id="f-name" name="name" type="text" autocomplete="name" required></div>
+            <div><label for="f-company">Company / production</label><input id="f-company" name="company" type="text" autocomplete="organization"></div>
+          </div>
+          <div class="form-row">
+            <div><label for="f-email">Email <span class="req">*</span></label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
+            <div><label for="f-phone">Phone</label><input id="f-phone" name="phone" type="tel" autocomplete="tel"></div>
+          </div>
+          <div class="form-row">
+            <div><label for="f-start">Preferred start date</label><input id="f-start" name="start" type="date"></div>
+            <div><label for="f-end">End date</label><input id="f-end" name="end" type="date"></div>
+          </div>
+          <div class="form-row">
+            <div>
+              <label for="f-size">Crew / guest count</label>
+              <select id="f-size" name="size">
+                <option value="">Select…</option>
+                <option>Under 25</option>
+                <option>25–75</option>
+                <option>75–150</option>
+                <option>150–300</option>
+                <option>300+</option>
+              </select>
+            </div>
+            <div><label for="f-hear">How did you hear about GBX?</label><input id="f-hear" name="source" type="text"></div>
+          </div>
+
+          <fieldset>
+            <legend>Areas of interest</legend>
+            <div class="chips">
+              <label class="chip"><input type="checkbox" name="areas" value="Grain Terminal exterior"><span>Grain Terminal exterior</span></label>
+              <label class="chip"><input type="checkbox" name="areas" value="Industrial details / interiors"><span>Industrial details / interiors</span></label>
+              <label class="chip"><input type="checkbox" name="areas" value="Waterfront &amp; piers"><span>Waterfront &amp; piers</span></label>
+              <label class="chip"><input type="checkbox" name="areas" value="Open ground / base camp"><span>Open ground / base camp</span></label>
+            </div>
+          </fieldset>
+
+          <div class="field">
+            <label for="f-details">Tell us about the project <span class="req">*</span></label>
+            <textarea id="f-details" name="details" required placeholder="Scope, schedule, load-in/out, equipment, anything we should know."></textarea>
+          </div>
+
+          <div class="form-foot">
+            <button type="submit" class="btn">Send inquiry</button>
+            <p class="form-note">Sending opens your email app with the details filled in, addressed to the GBX team.</p>
+          </div>
+          <div class="form-status" role="status" aria-live="polite"></div>
+        </form>
+      </div>
+    </main>
+    <footer class="page-foot">
+      <a href="mailto:fedor.shot@quadrozzi.com">fedor.shot@quadrozzi.com</a>
+      <a href="../credits/">Photo credits</a>
+      <span>© 2026 Quadrozzi</span>
+    </footer>
+  </div>
+  <script>
+    window.INQUIRY = {
+      email:    'fedor.shot@quadrozzi.com',
+      endpoint: '',
+      subject:  'GBX inquiry'
+    };
+  </script>
+  <script src="../../assets/js/site.js"></script>
+</body>
+</html>

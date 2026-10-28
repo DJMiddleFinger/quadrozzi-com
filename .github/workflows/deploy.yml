@@ -24,7 +24,6 @@ jobs:
         run: |
           mkdir -p _site
           cp -R site/. _site/
-          rm -f _site/assets/README.md
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
