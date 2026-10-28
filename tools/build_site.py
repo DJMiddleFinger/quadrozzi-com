@@ -192,7 +192,6 @@ GBX_LD = '''
     "@type": ["Place", "LandmarksOrHistoricalBuildings"],
     "name": "GBX — Gowanus Bay Terminal",
     "alternateName": "Red Hook Grain Terminal",
-    "address": { "@type": "PostalAddress", "streetAddress": "699 Columbia Street", "addressLocality": "Brooklyn", "addressRegion": "NY", "postalCode": "11231", "addressCountry": "US" },
     "geo": { "@type": "GeoCoordinates", "latitude": 40.66944, "longitude": -74.00611 },
     "parentOrganization": { "@type": "Organization", "name": "Quadrozzi" }
   }
@@ -206,8 +205,7 @@ HHI_LD = '''
     "name": "Helping Hoof, Inc.",
     "alternateName": "Helping Hoof Initiative",
     "nonprofitStatus": "Nonprofit501c3",
-    "taxID": "88-3328025",
-    "address": { "@type": "PostalAddress", "streetAddress": "691 Columbia Street", "addressLocality": "Brooklyn", "addressRegion": "NY", "postalCode": "11231", "addressCountry": "US" }
+    "taxID": "88-3328025"
   }
   </script>'''
 
