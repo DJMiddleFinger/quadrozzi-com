@@ -232,7 +232,7 @@ def terminal(path, label, name, text):
 
 GBX = dict(
     folder='gbx', name='GBX Gowanus Bay Terminal', short='GBX', tagline='Gowanus Bay Terminal, Red Hook',
-    above=[('Quadrozzi', '../')], owner='Quadrozzi', email='fedor.shot@quadrozzi.com',
+    above=[('Quadrozzi', '../')], owner='Quadrozzi', emails=['fedor.shot@quadrozzi.com', 'info@quadrozzi.com'],
     pages=[
         dict(path='', nav='Overview', h1='Gowanus Bay Terminal', head=GBX_LD,
              title='GBX Gowanus Bay Terminal | Film, events and waterfront in Red Hook',
@@ -358,7 +358,7 @@ GBX = dict(
 HHI = dict(
     folder='helping-hooves', name='Helping Hoof Initiative', short='Helping Hoof Initiative',
     tagline='A program of Helping Hoof, Inc., a 501(c)(3) nonprofit',
-    above=[], owner='Helping Hoof, Inc.', email='info@quadrozzi.com',
+    above=[], owner='Helping Hoof, Inc.', emails=['info@quadrozzi.com'],
     pages=[
         dict(path='', nav='Overview', h1='Helping Hoof Initiative', head=HHI_LD,
              title='Helping Hoof Initiative | Horses and community in Brooklyn',
@@ -487,6 +487,7 @@ def build(site, credits):
         body = page['body'].replace('{LEVERS}', levers or '').replace('{R}', R).replace('{A}', A)
 
         title = page.get('title') or f'{page["h1"]} | {site["name"]}'
+        mail = '\n'.join(f'      <a href="mailto:{m}">{m}</a>' for m in site['emails'])
         out = f'''<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -522,7 +523,7 @@ def build(site, credits):
       <h1>{e(page['h1'])}</h1>{body}
     </main>
     <footer class="page-foot">
-      <a href="mailto:{site['email']}">{site['email']}</a>
+{mail}
       <a href="{href('credits')}">Photo credits</a>
       <span>© {YEAR} {e(site['owner'])}</span>
     </footer>

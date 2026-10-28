@@ -41,7 +41,7 @@
     /* ---------- Face page: the logo, nothing else ---------- */
     .face { position: fixed; inset: 0; display: grid; place-items: center; overflow: hidden; }
     .face h1 { display: contents; }
-    .face figure { position: relative; height: 100svh; max-width: 100vw; aspect-ratio: 1455 / 2000; }
+    .face figure { position: relative; z-index: 1; height: min(100svh, 100vw * 2000 / 1455); aspect-ratio: 1455 / 2000; }
     .face img { display: block; width: 100%; height: 100%; object-fit: contain; }
     /* The logo file has white rounded bottom corners; paint them yellow so the page is one flat field */
     .face figure::before, .face figure::after {
@@ -50,20 +50,21 @@
     .face figure::before { left: 0; }
     .face figure::after { right: 0; }
 
-    /* Crusher drop: the Q falls from above the screen, gathering speed, and lands hard with a short rebound */
-    .drop .face figure { transform-origin: 50% 100%; animation: crush 1.15s .35s both; }
-    @keyframes crush {
-      0%   { transform: translateY(-102%); animation-timing-function: cubic-bezier(.65, 0, 1, .55); }
-      58%  { transform: translateY(0) scaleY(.985); animation-timing-function: cubic-bezier(.2, .7, .3, 1); }
-      72%  { transform: translateY(-1.8%) scaleY(1); animation-timing-function: cubic-bezier(.6, 0, 1, .6); }
-      82%  { transform: translateY(0) scaleY(.995); animation-timing-function: ease-out; }
-      100% { transform: none; }
+    /* Intro: the page starts black; the Q, cut out as a chamfered block, drops through the black and tears it
+       open in a V. The motion is simulated in the script at the bottom; these rules only set the starting state. */
+    .drop .face { background: #000; }
+    .drop .face figure {
+      transform: translateY(-150vh); transform-origin: 50% 96.5%;
+      clip-path: polygon(27% 35%, 73% 35%, 78% 38.6%, 78% 92.9%, 73% 96.5%, 27% 96.5%, 22% 92.9%, 22% 38.6%);
     }
+    .drop .menu-toggle { opacity: 0; pointer-events: none; }
+    .fx { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
 
     /* ---------- Menu button: four bars, top left ---------- */
     .menu-toggle {
       position: fixed; z-index: 30; top: max(10px, env(safe-area-inset-top)); left: max(10px, env(safe-area-inset-left));
       width: 56px; height: 56px; border: 0; background: none; color: var(--smoke); cursor: pointer;
+      transition: opacity .5s var(--ease);
     }
     .menu-toggle i {
       position: absolute; left: 12px; right: 12px; height: 3px; border-radius: 2px; background: currentColor;
@@ -138,11 +139,189 @@
     </ul>
     <p class="menu-foot">
       <em>“We don’t mean business, we make it.”</em>
-      <a href="mailto:info@quadrozzi.com">info@quadrozzi.com</a>
+      <a href="mailto:info@quadrozzi.com">info@quadrozzi.com</a><br>
+      <a href="mailto:fedor.shot@quadrozzi.com">fedor.shot@quadrozzi.com</a>
     </p>
   </nav>
 
   <script>
+    // ---------- Intro: the Q block drops through a black sheet, tearing it open in a V ----------
+    // Gravity, tearing drag, a heavy low bounce, then the two torn halves fall away and shed crumbs.
+    (function () {
+      var root = document.documentElement;
+      if (!root.classList.contains('drop')) return;
+      var face = document.getElementById('main');
+      var fig = face.querySelector('figure');
+      function finish() {
+        face.querySelectorAll('.fx').forEach(function (c) { c.remove(); });
+        face.style.background = '';
+        fig.style.transform = '';
+        root.classList.remove('drop');
+      }
+      try {
+        var W = face.clientWidth, H = face.clientHeight, dpr = Math.min(window.devicePixelRatio || 1, 2);
+        var layer = function (z) {
+          var c = document.createElement('canvas');
+          c.className = 'fx'; c.style.zIndex = z;
+          c.width = W * dpr; c.height = H * dpr;
+          face.appendChild(c);
+          return c.getContext('2d');
+        };
+        var sheet = layer(0), dust = layer(2);   // black sheet behind the Q, crumbs in front of it
+
+        // The block, in px; fractions match the CSS clip-path
+        var fx = fig.offsetLeft, fy = fig.offsetTop, fw = fig.offsetWidth, fh = fig.offsetHeight;
+        var cx = fx + fw / 2, half = .28 * fw, chx = .05 * fw, chy = .036 * fh;
+        var topOf = function (o) { return fy + .35 * fh + o; };
+        var botOf = function (o) { return fy + .965 * fh + o; };
+
+        var g = 3.4 * H;          // gravity, scaled to the screen so the fall takes about 0.8s anywhere
+        var SPREAD = .32;         // how far the torn flaps spring open above the block, per px of height
+        var o = -botOf(0) - 4, v = 0, landed = false, settled = false, squash = 0;
+        var crackY = 0, pieces = null;
+
+        // Jagged edges: fixed random offsets every 14px down each tear, interpolated into a saw-tooth
+        var STEP = 14;
+        var jag = function () {
+          var a = [];
+          for (var i = 0; i <= H / STEP + 2; i++) a.push((Math.random() * 2 - 1) * (Math.random() < .15 ? 15 : 6));
+          return a;
+        };
+        var nL = jag(), nR = jag(), nC = jag();
+        var noise = function (a, y) {
+          var i = Math.max(0, y / STEP), k = Math.min(Math.floor(i), a.length - 2), f = i - k;
+          return a[k] * (1 - f) + a[k + 1] * f;
+        };
+
+        // One torn edge, top of the screen to the bottom of the crack. s: -1 left, 1 right.
+        var vEdgeX = function (s, y, top) { return cx + s * (half + 3 + (top - y) * SPREAD) + noise(s < 0 ? nL : nR, y); };
+        var edge = function (s, o, crackEnd) {
+          var top = topOf(o), bot = botOf(o), pts = [], y;
+          for (y = 0; y < top; y += 8) pts.push([vEdgeX(s, y, top), y]);
+          pts.push([cx + s * (half + 2), Math.max(top, 0)]);
+          pts.push([cx + s * (half + 2), bot - chy]);
+          pts.push([cx + s * (half - chx + 1), bot + 1]);
+          // Below the block both halves share one crack line, so the black stays whole until they come apart
+          for (y = bot + 18; y < crackEnd; y += 9) pts.push([cx + noise(nC, y) * .7, y]);
+          pts.push([cx, crackEnd]);
+          return pts;
+        };
+        var trace = function (ctx, s, pts) {
+          ctx.moveTo(s < 0 ? 0 : W, 0);
+          pts.forEach(function (p) { ctx.lineTo(p[0], p[1]); });
+          ctx.lineTo(cx, H + 2); ctx.lineTo(s < 0 ? 0 : W, H + 2); ctx.closePath();
+        };
+
+        var crumbs = [];
+        var spawn = function (x, y, n, vx, vy, jitter) {
+          for (var i = 0; i < n; i++) {
+            var big = Math.random() < .08, fine = !big && Math.random() < .4;
+            crumbs.push({
+              x: x, y: y, r: Math.random() * 6, vr: (Math.random() - .5) * 14,
+              vx: vx + (Math.random() - .5) * jitter, vy: vy + (Math.random() - .5) * jitter,
+              size: big ? 4 + Math.random() * 5 : fine ? .8 + Math.random() : 1.4 + Math.random() * 2.6,
+              alpha: fine ? .55 : 1
+            });
+          }
+        };
+
+        var draw = function () {
+          sheet.setTransform(dpr, 0, 0, dpr, 0, 0);
+          sheet.clearRect(0, 0, W, H);
+          sheet.fillStyle = '#000';
+          if (pieces) {
+            pieces.forEach(function (p) {
+              sheet.save();
+              sheet.translate(p.px + p.dx, p.py + p.dy); sheet.rotate(p.a); sheet.translate(-p.px, -p.py);
+              sheet.beginPath(); trace(sheet, p.s, p.pts); sheet.fill();
+              sheet.restore();
+            });
+          } else if (botOf(o) <= 0) {
+            sheet.fillRect(0, 0, W, H);
+          } else {
+            var end = Math.max(botOf(o) + 26, crackY);
+            sheet.beginPath(); trace(sheet, -1, edge(-1, o, end)); trace(sheet, 1, edge(1, o, end)); sheet.fill();
+          }
+          dust.setTransform(dpr, 0, 0, dpr, 0, 0);
+          dust.clearRect(0, 0, W, H);
+          dust.fillStyle = '#000';
+          crumbs.forEach(function (c) {
+            dust.globalAlpha = c.alpha * Math.max(0, Math.min(1, (H - c.y) / (H * .2)));
+            dust.setTransform(dpr, 0, 0, dpr, c.x * dpr, c.y * dpr);
+            dust.rotate(c.r);
+            dust.fillRect(-c.size / 2, -c.size / 3, c.size, c.size * .7);
+          });
+          dust.globalAlpha = 1;
+          fig.style.transform = 'translateY(' + o + 'px) scaleY(' + (1 - .02 * squash) + ')';
+        };
+
+        var start = performance.now(), last = start, DELAY = 350;
+        var frame = function (now) {
+          var dt = Math.min((now - last) / 1000, 1 / 30);
+          last = now;
+          if (now - start > DELAY) {
+            // The block: free fall, slowed a little while it tears, then a heavy bounce or two
+            if (!settled) {
+              var tearing = !landed && botOf(o) > 0;
+              v += g * (tearing ? .82 : 1) * dt;
+              o += v * dt;
+              if (tearing && Math.random() < .9) {
+                var side = Math.random() < .5 ? -1 : 1, top = topOf(o), y = Math.random() * Math.max(top, 0);
+                spawn(top > 0 ? vEdgeX(side, y, top) : cx + side * half, top > 0 ? y : 0, 2, side * 40, 30, 80);
+              }
+              if (o >= 0) {
+                o = 0;
+                if (!landed) {
+                  landed = true; squash = 1; crackY = botOf(0) + 26;
+                  spawn(cx - half + chx, botOf(0), 45, -160, -220, 380);
+                  spawn(cx + half - chx, botOf(0), 45, 160, -220, 380);
+                }
+                if (v < 90) { v = 0; settled = true; } else v = -v * .12;
+              }
+            }
+            squash *= Math.exp(-dt * 16);
+
+            // The crack runs to the bottom of the screen, then the two halves come loose and fall away
+            if (landed && !pieces) {
+              crackY += 9000 * dt;
+              spawn(cx, crackY - Math.random() * 60, 2, 0, 40, 160);
+              if (crackY >= H) {
+                pieces = [-1, 1].map(function (s) {
+                  return { s: s, pts: edge(s, 0, H + 2), px: s < 0 ? cx / 2 : (cx + W) / 2, py: H / 2, dx: 0, dy: 0, a: 0,
+                           vx: s * (120 + Math.random() * 90), vy: -90, va: s * (.3 + Math.random() * .25) };
+                });
+                for (var i = 0; i < 30; i++) spawn(cx + (Math.random() - .5) * 8, Math.random() * H, 1, 0, 0, 180);
+              }
+            }
+            if (pieces) {
+              pieces.forEach(function (p) {
+                p.vy += g * dt; p.dx += p.vx * dt; p.dy += p.vy * dt; p.a += p.va * dt;
+                if (p.dy < H * .5 && Math.random() < .7) {
+                  var y = Math.random() * H;
+                  spawn(cx + p.dx + p.s * (half + (H - y) * .1), y + p.dy, 1, p.vx * .5, p.vy * .5, 90);
+                }
+              });
+            }
+
+            // Crumbs: gravity with air drag, gone once they reach the bottom
+            crumbs = crumbs.filter(function (c) {
+              c.vx *= 1 - 1.5 * dt; c.vy += g * .8 * dt; c.vy *= 1 - .6 * dt;
+              c.x += c.vx * dt; c.y += c.vy * dt; c.r += c.vr * dt;
+              return c.y < H;
+            });
+          }
+          draw();
+          face.style.background = 'none';
+          var gone = pieces && pieces.every(function (p) { return p.dy > H * 1.2; });
+          if (settled && gone && !crumbs.length) finish();
+          else requestAnimationFrame(frame);
+        };
+        requestAnimationFrame(frame);
+      } catch (e) {
+        finish();
+      }
+    })();
+
     (function () {
       var toggle = document.querySelector('.menu-toggle');
       var menu = document.getElementById('menu');
