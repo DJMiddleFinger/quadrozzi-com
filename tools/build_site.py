@@ -43,7 +43,7 @@ GBX_FORM = '''
       <div class="split" id="form">
         <div class="aside">
           <div class="direct">
-            <div><h3>Email</h3><a data-inquiry-email href="mailto:fedor.shot@quadrozzi.com">fedor.shot@quadrozzi.com</a></div>
+            <div><h3>Email</h3><a data-inquiry-email href="mailto:info@quadrozzi.com">info@quadrozzi.com</a></div>
           </div>
           <div class="map">
             <iframe title="Map showing Gowanus Bay Terminal in Red Hook, Brooklyn" loading="lazy" referrerpolicy="no-referrer"
@@ -232,9 +232,10 @@ def terminal(path, label, name, text):
 
 GBX = dict(
     folder='gbx', name='GBX Gowanus Bay Terminal', short='GBX', tagline='Gowanus Bay Terminal, Red Hook',
-    above=[('Quadrozzi', '../')], owner='Quadrozzi', emails=['fedor.shot@quadrozzi.com', 'info@quadrozzi.com'],
+    above=[('Quadrozzi', '../')], owner='Quadrozzi', emails=['info@quadrozzi.com'],
     pages=[
         dict(path='', nav='Overview', h1='Gowanus Bay Terminal', head=GBX_LD,
+             emails=['info@quadrozzi.com', 'fedor.shot@quadrozzi.com'],
              title='GBX Gowanus Bay Terminal | Film, events and waterfront in Red Hook',
              desc='GBX Gowanus Bay Terminal: the 1922 Red Hook Grain Terminal and working waterfront in Brooklyn. Book the property for film and TV, photo shoots, events and maritime use.',
              body='''
@@ -342,7 +343,7 @@ GBX = dict(
         terminal('metropolitan-ave', 'Metropolitan Ave', 'Ridgewood, Queens',
                  '3.69 acres along Newtown Creek, ready for almost anything.'),
 
-        dict(path='book', nav='Book', h1='Book the site', foot=inquiry_config('fedor.shot@quadrozzi.com', 'GBX inquiry'),
+        dict(path='book', nav='Book', h1='Book the site', foot=inquiry_config('info@quadrozzi.com', 'GBX inquiry'),
              desc='Book GBX Gowanus Bay Terminal for film and photo shoots, events, and maritime or industrial use.',
              body='''
       <p class="lead">Film and photo shoots, events, and maritime or industrial use. Tell us about your project and we’ll reply with availability and next steps.</p>
@@ -487,7 +488,7 @@ def build(site, credits):
         body = page['body'].replace('{LEVERS}', levers or '').replace('{R}', R).replace('{A}', A)
 
         title = page.get('title') or f'{page["h1"]} | {site["name"]}'
-        mail = '\n'.join(f'      <a href="mailto:{m}">{m}</a>' for m in site['emails'])
+        mail = '\n'.join(f'      <a href="mailto:{m}">{m}</a>' for m in page.get('emails', site['emails']))
         out = f'''<!DOCTYPE html>
 <html lang="en">
 <head>

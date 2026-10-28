@@ -9,7 +9,7 @@
 - [ ] Family approval of the positioning line and the pull quote
 
 ## GBX pages
-- [x] GBX contact: fedor.shot@quadrozzi.com; phone and street address removed from the page
+- [x] GBX contact: info@quadrozzi.com (fedor.shot@quadrozzi.com in the GBX overview footer); phone and street address removed from the page
 - [ ] Decide how inquiries arrive: the email-app default, or a form service set in the `endpoint` in `inquiry_config` (`tools/build_site.py`)
 - [ ] Review the "Spaces & Settings" descriptions against what's actually offered (interiors, base camp, piers)
 - [ ] Optional: replace Commons photos with the family's own photography and update `tools/credits.json`

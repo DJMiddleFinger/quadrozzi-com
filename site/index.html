@@ -175,8 +175,10 @@
         var topOf = function (o) { return fy + .35 * fh + o; };
         var botOf = function (o) { return fy + .965 * fh + o; };
 
+        var halfB = half - chx;   // half-width of the block's flat bottom
         var g = 3.4 * H;          // gravity, scaled to the screen so the fall takes about 0.8s anywhere
-        var SPREAD = .32;         // how far the torn flaps spring open above the block, per px of height
+        var SPREAD = .26;         // how far the torn flaps spring open behind the block's bottom, per px of height
+        var LEAD = .1 * H;        // how far the tear runs ahead of the block
         var o = -botOf(0) - 4, v = 0, landed = false, settled = false, squash = 0;
         var crackY = 0, pieces = null;
 
@@ -193,17 +195,23 @@
           return a[k] * (1 - f) + a[k + 1] * f;
         };
 
-        // One torn edge, top of the screen to the bottom of the crack. s: -1 left, 1 right.
-        var vEdgeX = function (s, y, top) { return cx + s * (half + 3 + (top - y) * SPREAD) + noise(s < 0 ? nL : nR, y); };
-        var edge = function (s, o, crackEnd) {
-          var top = topOf(o), bot = botOf(o), pts = [], y;
-          for (y = 0; y < top; y += 8) pts.push([vEdgeX(s, y, top), y]);
-          pts.push([cx + s * (half + 2), Math.max(top, 0)]);
-          pts.push([cx + s * (half + 2), bot - chy]);
-          pts.push([cx + s * (half - chx + 1), bot + 1]);
-          // Below the block both halves share one crack line, so the black stays whole until they come apart
-          for (y = bot + 18; y < crackEnd; y += 9) pts.push([cx + noise(nC, y) * .7, y]);
-          pts.push([cx, crackEnd]);
+        // One torn edge, top of the screen to the tip of the tear. s: -1 left, 1 right.
+        // The V opens from the block's bottom corners, so yellow shows beside the block as soon as it enters,
+        // and its tip runs LEAD px ahead of the block.
+        var vEdgeX = function (s, y, bot) { return cx + s * (halfB + 3 + (bot - y) * SPREAD) + noise(s < 0 ? nL : nR, y); };
+        var blockHalf = function (y, bot) { return y > bot - chy ? halfB + chx * (bot - y) / chy : half; };
+        var edge = function (s, o, tip) {
+          var top = topOf(o), bot = botOf(o), pts = [], y, x;
+          for (y = 0; y < bot; y += 8) {
+            x = vEdgeX(s, y, bot);
+            if (y > top - 2) x = s * Math.max(s * (x - cx), blockHalf(y, bot) + 2) + cx;   // the block pushes the flap at least this far
+            pts.push([x, y]);
+          }
+          for (y = bot; y < tip; y += 8) {
+            var w = halfB * Math.pow(1 - (y - bot) / (tip - bot), 1.6);
+            pts.push([cx + s * w + noise(nC, y) * .7, y]);
+          }
+          pts.push([cx, tip]);
           return pts;
         };
         var trace = function (ctx, s, pts) {
@@ -236,10 +244,10 @@
               sheet.beginPath(); trace(sheet, p.s, p.pts); sheet.fill();
               sheet.restore();
             });
-          } else if (botOf(o) <= 0) {
+          } else if (botOf(o) + LEAD <= 0) {
             sheet.fillRect(0, 0, W, H);
           } else {
-            var end = Math.max(botOf(o) + 26, crackY);
+            var end = Math.max(botOf(o) + LEAD, crackY);
             sheet.beginPath(); trace(sheet, -1, edge(-1, o, end)); trace(sheet, 1, edge(1, o, end)); sheet.fill();
           }
           dust.setTransform(dpr, 0, 0, dpr, 0, 0);
@@ -262,19 +270,25 @@
           if (now - start > DELAY) {
             // The block: free fall, slowed a little while it tears, then a heavy bounce or two
             if (!settled) {
-              var tearing = !landed && botOf(o) > 0;
+              var tearing = !landed && botOf(o) + LEAD > 0;
               v += g * (tearing ? .82 : 1) * dt;
               o += v * dt;
-              if (tearing && Math.random() < .9) {
-                var side = Math.random() < .5 ? -1 : 1, top = topOf(o), y = Math.random() * Math.max(top, 0);
-                spawn(top > 0 ? vEdgeX(side, y, top) : cx + side * half, top > 0 ? y : 0, 2, side * 40, 30, 80);
+              if (tearing) {
+                // Crumbs break off all along both torn edges, more the faster the block tears
+                var bot = botOf(o), n = Math.ceil(v * dt / 6);
+                for (var k = 0; k < n; k++) {
+                  var side = Math.random() < .5 ? -1 : 1, y = Math.random() * Math.max(bot, 1);
+                  spawn(vEdgeX(side, y, bot), y, 1, -side * 30, 20, 140);
+                }
               }
               if (o >= 0) {
                 o = 0;
                 if (!landed) {
-                  landed = true; squash = 1; crackY = botOf(0) + 26;
-                  spawn(cx - half + chx, botOf(0), 45, -160, -220, 380);
-                  spawn(cx + half - chx, botOf(0), 45, 160, -220, 380);
+                  landed = true; squash = 1; crackY = botOf(0) + LEAD;
+                  for (var b = 0; b < 90; b++) {
+                    var bx = (Math.random() * 2 - 1) * halfB;
+                    spawn(cx + bx, botOf(0), 1, bx * 1.6, -120 - Math.random() * 220, 260);
+                  }
                 }
                 if (v < 90) { v = 0; settled = true; } else v = -v * .12;
               }
@@ -290,22 +304,26 @@
                   return { s: s, pts: edge(s, 0, H + 2), px: s < 0 ? cx / 2 : (cx + W) / 2, py: H / 2, dx: 0, dy: 0, a: 0,
                            vx: s * (120 + Math.random() * 90), vy: -90, va: s * (.3 + Math.random() * .25) };
                 });
-                for (var i = 0; i < 30; i++) spawn(cx + (Math.random() - .5) * 8, Math.random() * H, 1, 0, 0, 180);
+                for (var i = 0; i < 60; i++) {
+                  var rs = i % 2 ? 1 : -1, ry = Math.random() * botOf(0);
+                  spawn(vEdgeX(rs, ry, botOf(0)), ry, 1, rs * 60, 0, 200);
+                }
               }
             }
             if (pieces) {
               pieces.forEach(function (p) {
                 p.vy += g * dt; p.dx += p.vx * dt; p.dy += p.vy * dt; p.a += p.va * dt;
                 if (p.dy < H * .5 && Math.random() < .7) {
-                  var y = Math.random() * H;
-                  spawn(cx + p.dx + p.s * (half + (H - y) * .1), y + p.dy, 1, p.vx * .5, p.vy * .5, 90);
+                  var y = Math.random() * botOf(0);
+                  spawn(vEdgeX(p.s, y, botOf(0)) + p.dx, y + p.dy, 1, p.vx * .5, p.vy * .5, 120);
                 }
               });
             }
 
-            // Crumbs: gravity with air drag, gone once they reach the bottom
+            // Crumbs: gravity, air drag and a little turbulence that scatters them sideways; gone at the bottom
             crumbs = crumbs.filter(function (c) {
-              c.vx *= 1 - 1.5 * dt; c.vy += g * .8 * dt; c.vy *= 1 - .6 * dt;
+              c.vx += (Math.random() - .5) * 1400 * dt;
+              c.vx *= 1 - 1.2 * dt; c.vy += g * .8 * dt; c.vy *= 1 - .6 * dt;
               c.x += c.vx * dt; c.y += c.vy * dt; c.r += c.vr * dt;
               return c.y < H;
             });

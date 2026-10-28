@@ -46,7 +46,7 @@ filled in. Where messages go is set by `inquiry_config(...)` in `tools/build_sit
 
 | Page | Inbox |
 |---|---|
-| GBX › Book | fedor.shot@quadrozzi.com |
+| GBX › Book | info@quadrozzi.com |
 | Helping Hoof Initiative › Get involved | info@quadrozzi.com |
 
 Each config also takes an `endpoint`: a form service URL (e.g. Formspree) that receives submissions directly,
