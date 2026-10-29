@@ -1,7 +1,7 @@
-# 01 — Creative Brief: quadrozzi.com
+# 01 — Creative Brief: Quadrozzi.com
 
 ## Positioning
-quadrozzi.com is the corporate home of the Quadrozzi family and its holdings. It acts as a
+Quadrozzi.com is the corporate home of the Quadrozzi family and its holdings. It acts as a
 **front door**: a calm, authoritative page that explains who the family is and sends each visitor to the
 right venture.
 

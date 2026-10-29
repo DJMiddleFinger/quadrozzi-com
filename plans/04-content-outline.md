@@ -46,9 +46,9 @@ GBX Gowanus Bay Terminal ✦ Brooklyn Equine ✦ Helping Hooves ✦ Red Hook ✦
 
 ## Contact
 - H2: **GET IN TOUCH**
-- General: `[info@quadrozzi.com]`
-- Press: `[press@quadrozzi.com]`
-- Leasing & terminal: `[gbx@quadrozzi.com]`
+- General: `[info@Quadrozzi.com]`
+- Press: `[press@Quadrozzi.com]`
+- Leasing & terminal: `[gbx@Quadrozzi.com]`
 - Address: `[Street], Brooklyn, NY [ZIP]`
 
 ## Meta / SEO

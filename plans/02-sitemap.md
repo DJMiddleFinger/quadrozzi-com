@@ -4,7 +4,7 @@ v1 is a **single long page** with anchor navigation, like robertaspizza.com's ho
 come later without changing the nav labels.
 
 ```
-quadrozzi.com/
+Quadrozzi.com/
 ├── #top          Hero — "Built in Brooklyn"
 ├── #holdings     Holdings grid  →  GBX · Brooklyn Equine · Helping Hooves · Future ventures
 ├── #heritage     Family & Red Hook story (split image block)

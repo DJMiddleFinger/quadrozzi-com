@@ -9,14 +9,14 @@
 - [ ] Family approval of the positioning line and the pull quote
 
 ## GBX pages
-- [x] GBX contact: info@quadrozzi.com (fedor.shot@quadrozzi.com in the GBX overview footer); phone and street address removed from the page
+- [x] GBX contact: info@Quadrozzi.com (fedor.shot@Quadrozzi.com in the GBX overview footer); phone and street address removed from the page
 - [ ] Decide how inquiries arrive: the email-app default, or a form service set in the `endpoint` in `inquiry_config` (`tools/build_site.py`)
 - [ ] Review the "Spaces & Settings" descriptions against what's actually offered (interiors, base camp, piers)
 - [ ] Optional: replace Commons photos with the family's own photography and update `tools/credits.json`
 
 ## Helping Hoof Initiative pages
 - [ ] Family review of the page copy, quotes and timeline
-- [x] Inbox for Helping Hoof Initiative messages: info@quadrozzi.com
+- [x] Inbox for Helping Hoof Initiative messages: info@Quadrozzi.com
 - [ ] Add an online donation link in `HOOVES.donate` (or keep donations by email)
 - [ ] Replace stand-in photos (therapy, mission tiles) with the stable's own photos, with consent from anyone pictured, and update `tools/credits.json`
 - [ ] Confirm whether the GallopNYC partnership is still active; the page describes it as starting in 2019
@@ -28,7 +28,7 @@
 
 ## Hosting (GitHub Pages, the same setup as Brooklyn Equine)
 - [x] GitHub repo created (DJMiddleFinger/quadrozzi-com), Pages source: **GitHub Actions**
-- [ ] Add `site/CNAME` containing `quadrozzi.com`
+- [ ] Add `site/CNAME` containing `Quadrozzi.com`
 - [ ] DNS at the registrar: four `A` records for the apex pointing to 185.199.108.153 / .109.153 / .110.153 / .111.153, plus `CNAME www → <user>.github.io`
 - [ ] Turn on "Enforce HTTPS" once the certificate is issued
 

@@ -1,4 +1,4 @@
-# quadrozzi.com
+# Quadrozzi.com
 
 ### 👉 [Visit the live site: djmiddlefinger.github.io/quadrozzi-com](https://djmiddlefinger.github.io/quadrozzi-com/)
 
@@ -16,7 +16,7 @@ Hoof Initiative.
 GBX and the Helping Hoof Initiative are multi-page sites that share `site/assets/` (styles, script, photos).
 Each page has a sidebar for the top-level pages, a breadcrumb bar showing where you are, and buttons to the
 pages one level down. GBX breadcrumbs start at Quadrozzi; the Helping Hoof Initiative's start at its own home
-and carry no Quadrozzi branding. Email addresses appear only on contact pages (`contact/` on each site), reached from every "Contact us" button; the inquiry forms send to info@quadrozzi.com.
+and carry no Quadrozzi branding. Email addresses appear only on contact pages (`contact/` on each site), reached from every "Contact us" button; the inquiry forms send to info@Quadrozzi.com.
 
 ## What's here
 ```
@@ -46,8 +46,8 @@ filled in. Where messages go is set by `inquiry_config(...)` in `tools/build_sit
 
 | Page | Inbox |
 |---|---|
-| GBX › Book | info@quadrozzi.com |
-| Helping Hoof Initiative › Get involved | info@quadrozzi.com |
+| GBX › Book | info@Quadrozzi.com |
+| Helping Hoof Initiative › Get involved | info@Quadrozzi.com |
 
 Each config also takes an `endpoint`: a form service URL (e.g. Formspree) that receives submissions directly,
 with no email app involved. You'll need to create the service account yourself. Links such as

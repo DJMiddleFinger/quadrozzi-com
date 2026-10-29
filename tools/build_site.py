@@ -230,7 +230,7 @@ def terminal(path, label, name, text):
 
 GBX = dict(
     folder='gbx', name='GBX Gowanus Bay Terminal', short='GBX', tagline='Gowanus Bay Terminal, Red Hook',
-    above=[('Quadrozzi', '../')], owner='Quadrozzi', emails=['info@quadrozzi.com', 'fedor.shot@quadrozzi.com'],
+    above=[('Quadrozzi', '../')], owner='Quadrozzi', emails=['info@Quadrozzi.com', 'fedor.shot@Quadrozzi.com'],
     contact_note='Booking the site for a shoot or an event? <a href="{R}book/">Use the booking form</a> so we get your dates and details in one message.',
     pages=[
         dict(path='', nav='Overview', h1='Gowanus Bay Terminal', head=GBX_LD,
@@ -341,7 +341,7 @@ GBX = dict(
         terminal('metropolitan-ave', 'Metropolitan Ave', 'Ridgewood, Queens',
                  '3.69 acres along Newtown Creek, ready for almost anything.'),
 
-        dict(path='book', nav='Book', h1='Book the site', foot=inquiry_config('info@quadrozzi.com', 'GBX inquiry'),
+        dict(path='book', nav='Book', h1='Book the site', foot=inquiry_config('info@Quadrozzi.com', 'GBX inquiry'),
              desc='Book GBX Gowanus Bay Terminal for film and photo shoots, events, and maritime or industrial use.',
              body='''
       <p class="lead">Film and photo shoots, events, and maritime or industrial use. Tell us about your project and we’ll reply with availability and next steps.</p>
@@ -357,7 +357,7 @@ GBX = dict(
 HHI = dict(
     folder='helping-hooves', name='Helping Hoof Initiative', short='Helping Hoof Initiative',
     tagline='A program of Helping Hoof, Inc., a 501(c)(3) nonprofit',
-    above=[], owner='Helping Hoof, Inc.', emails=['info@quadrozzi.com'],
+    above=[], owner='Helping Hoof, Inc.', emails=['info@Quadrozzi.com'],
     contact_note='Want to volunteer, donate, partner or enroll a rider? <a href="{R}get-involved/">Use the Get involved form</a>. Riding lessons are at Prospect Park Stable, 51–55 Caton Place, Brooklyn, NY 11218.',
     pages=[
         dict(path='', nav='Overview', h1='Helping Hoof Initiative', head=HHI_LD,
@@ -426,7 +426,7 @@ HHI = dict(
       </div>'''),
 
         dict(path='get-involved', nav='Get Involved', h1='Get involved',
-             foot=inquiry_config('info@quadrozzi.com', 'Helping Hoof Initiative', DONATE),
+             foot=inquiry_config('info@Quadrozzi.com', 'Helping Hoof Initiative', DONATE),
              desc='Volunteer, donate, partner with or enroll a rider in the Helping Hoof Initiative.',
              body='''
       <p class="lead">Volunteer, donate, partner, or enroll a rider. Choose how you’d like to help and tell us a little about yourself.</p>
