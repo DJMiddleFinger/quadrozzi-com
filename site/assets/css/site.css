@@ -153,6 +153,11 @@ blockquote cite { display: block; margin-top: .9rem; font-style: normal; font-si
 .steps p { color: var(--stone); font-size: .95rem; }
 
 /* ---------- Contact + form ---------- */
+.aside > * + * { margin-top: 1.75rem; }
+.contacts { list-style: none; max-width: 36rem; border-top: 3px solid var(--asphalt); }
+.contacts li { border-bottom: 1px solid var(--line); }
+.contacts a { display: block; padding: 1rem 0; font-size: clamp(1.15rem, 2.4vw, 1.5rem); font-weight: 600; text-underline-offset: 4px; overflow-wrap: anywhere; }
+.contacts a:hover { color: var(--orange-ink); }
 .split { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.4fr); gap: clamp(2rem, 5vw, 4rem); scroll-margin-top: 72px; }
 .direct { display: grid; gap: 1.25rem; border-top: 3px solid var(--asphalt); padding-top: 1.25rem; }
 .direct h3 { font-family: var(--sans); text-transform: none; font-size: .85rem; font-weight: 600; color: var(--stone); margin-bottom: .2rem; }
@@ -201,7 +206,9 @@ blockquote cite { display: block; margin-top: .9rem; font-style: normal; font-si
   background: var(--asphalt); color: rgba(243, 241, 236, .65); font-size: .85rem;
   border-top: 8px solid transparent; border-image: var(--hazard) 8;
 }
+.page-foot { align-items: center; }
 .page-foot a { color: var(--concrete); text-underline-offset: 3px; }
+.page-foot .btn { color: var(--asphalt); padding: .6rem 1.1rem; font-size: .85rem; }
 .page-foot span { margin-left: auto; }
 
 /* ---------- Menu button (phones): four bars, top left ---------- */

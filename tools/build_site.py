@@ -42,9 +42,7 @@ def involve(label, kind):
 GBX_FORM = '''
       <div class="split" id="form">
         <div class="aside">
-          <div class="direct">
-            <div><h3>Email</h3><a data-inquiry-email href="mailto:info@quadrozzi.com">info@quadrozzi.com</a></div>
-          </div>
+          <p><a class="btn" href="{R}contact/">Contact us</a></p>
           <div class="map">
             <iframe title="Map showing Gowanus Bay Terminal in Red Hook, Brooklyn" loading="lazy" referrerpolicy="no-referrer"
               src="https://www.openstreetmap.org/export/embed.html?bbox=-74.0145%2C40.6645%2C-73.9977%2C40.6745&amp;layer=mapnik&amp;marker=40.66944%2C-74.00611"></iframe>
@@ -118,8 +116,8 @@ GBX_FORM = '''
 HHI_FORM = '''
       <div class="split" id="form">
         <div class="aside">
+          <p><a class="btn" href="{R}contact/">Contact us</a></p>
           <div class="direct">
-            <div><h3>Email</h3><a data-inquiry-email href="mailto:info@quadrozzi.com">info@quadrozzi.com</a></div>
             <div><h3>The stable</h3><address>Prospect Park Stable<br>51–55 Caton Place, Brooklyn, NY 11218</address></div>
             <div><a href="https://www.google.com/maps/search/?api=1&amp;query=Prospect+Park+Stable+51+Caton+Place+Brooklyn+NY" target="_blank" rel="noopener">Get directions ↗</a></div>
           </div>
@@ -232,10 +230,10 @@ def terminal(path, label, name, text):
 
 GBX = dict(
     folder='gbx', name='GBX Gowanus Bay Terminal', short='GBX', tagline='Gowanus Bay Terminal, Red Hook',
-    above=[('Quadrozzi', '../')], owner='Quadrozzi', emails=['info@quadrozzi.com'],
+    above=[('Quadrozzi', '../')], owner='Quadrozzi', emails=['info@quadrozzi.com', 'fedor.shot@quadrozzi.com'],
+    contact_note='Booking the site for a shoot or an event? <a href="{R}book/">Use the booking form</a> so we get your dates and details in one message.',
     pages=[
         dict(path='', nav='Overview', h1='Gowanus Bay Terminal', head=GBX_LD,
-             emails=['info@quadrozzi.com', 'fedor.shot@quadrozzi.com'],
              title='GBX Gowanus Bay Terminal | Film, events and waterfront in Red Hook',
              desc='GBX Gowanus Bay Terminal: the 1922 Red Hook Grain Terminal and working waterfront in Brooklyn. Book the property for film and TV, photo shoots, events and maritime use.',
              body='''
@@ -360,6 +358,7 @@ HHI = dict(
     folder='helping-hooves', name='Helping Hoof Initiative', short='Helping Hoof Initiative',
     tagline='A program of Helping Hoof, Inc., a 501(c)(3) nonprofit',
     above=[], owner='Helping Hoof, Inc.', emails=['info@quadrozzi.com'],
+    contact_note='Want to volunteer, donate, partner or enroll a rider? <a href="{R}get-involved/">Use the Get involved form</a>. Riding lessons are at Prospect Park Stable, 51–55 Caton Place, Brooklyn, NY 11218.',
     pages=[
         dict(path='', nav='Overview', h1='Helping Hoof Initiative', head=HHI_LD,
              title='Helping Hoof Initiative | Horses and community in Brooklyn',
@@ -442,7 +441,7 @@ HHI = dict(
 
 
 def build(site, credits):
-    pages = site['pages'] + [credits_page(site, credits)]
+    pages = site['pages'] + [contact_page(site), credits_page(site, credits)]
     by_path = {p['path']: p for p in pages}
 
     def kids(parent):
@@ -459,7 +458,7 @@ def build(site, credits):
 
         side = []
         for p in pages:
-            if '/' in p['path'] or p['path'] == 'credits':
+            if '/' in p['path'] or p['path'] in ('contact', 'credits'):
                 continue
             if p['path'] == path:
                 attr = ' aria-current="page"'
@@ -488,7 +487,6 @@ def build(site, credits):
         body = page['body'].replace('{LEVERS}', levers or '').replace('{R}', R).replace('{A}', A)
 
         title = page.get('title') or f'{page["h1"]} | {site["name"]}'
-        mail = '\n'.join(f'      <a href="mailto:{m}">{m}</a>' for m in page.get('emails', site['emails']))
         out = f'''<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -524,7 +522,7 @@ def build(site, credits):
       <h1>{e(page['h1'])}</h1>{body}
     </main>
     <footer class="page-foot">
-{mail}
+      <a class="btn" href="{href('contact')}">Contact us</a>
       <a href="{href('credits')}">Photo credits</a>
       <span>© {YEAR} {e(site['owner'])}</span>
     </footer>
@@ -542,6 +540,17 @@ def build(site, credits):
 def display_title(title):
     stem, dot, ext = title.rpartition('.')
     return stem if dot and ext.lower() in ('jpg', 'jpeg', 'png', 'tif', 'tiff') else title
+
+
+def contact_page(site):
+    # The only place a site lists its email addresses; every Contact us button leads here.
+    emails = ''.join(f'<li><a href="mailto:{m}">{m}</a></li>' for m in site['emails'])
+    return dict(path='contact', nav='Contact', h1='Contact us',
+                desc=f'How to reach {site["name"]}.',
+                body=f'''
+      <p class="lead">Email us and we’ll get back to you, usually within two business days.</p>
+      <ul class="contacts">{emails}</ul>
+      <div class="prose"><p>{site["contact_note"]}</p></div>''')
 
 
 def credits_page(site, credits):

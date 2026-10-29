@@ -16,7 +16,7 @@ Hoof Initiative.
 GBX and the Helping Hoof Initiative are multi-page sites that share `site/assets/` (styles, script, photos).
 Each page has a sidebar for the top-level pages, a breadcrumb bar showing where you are, and buttons to the
 pages one level down. GBX breadcrumbs start at Quadrozzi; the Helping Hoof Initiative's start at its own home
-and carry no Quadrozzi branding (its only contact is info@quadrozzi.com).
+and carry no Quadrozzi branding. Email addresses appear only on contact pages (`contact/` on each site), reached from every "Contact us" button; the inquiry forms send to info@quadrozzi.com.
 
 ## What's here
 ```

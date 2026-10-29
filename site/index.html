@@ -115,6 +115,11 @@
     .menu-foot em { display: block; color: var(--ivory); }
     .menu-foot a { color: var(--ivory); text-underline-offset: 3px; }
     .menu-foot a:focus-visible { outline: 2px solid var(--yellow); outline-offset: 3px; }
+    .menu-foot .contact {
+      display: inline-block; margin-top: 1rem; padding: .85rem 1.4rem;
+      background: var(--yellow); color: var(--smoke); text-decoration: none; font-weight: 600;
+    }
+    .menu-foot .contact:hover { background: #fff; }
 
     @media (prefers-reduced-motion: reduce) { * { transition-duration: 0s !important; } }
   </style>
@@ -139,8 +144,7 @@
     </ul>
     <p class="menu-foot">
       <em>“We don’t mean business, we make it.”</em>
-      <a href="mailto:info@quadrozzi.com">info@quadrozzi.com</a><br>
-      <a href="mailto:fedor.shot@quadrozzi.com">fedor.shot@quadrozzi.com</a>
+      <a class="contact" href="contact/">Contact us</a>
     </p>
   </nav>
 

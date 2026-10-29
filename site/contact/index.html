@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact us | Quadrozzi</title>
+  <meta name="description" content="How to reach Quadrozzi.">
+  <meta name="theme-color" content="#ffe641">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    /* The only Quadrozzi page that lists email addresses; every Contact us button on the home page leads here. */
+    :root { --yellow: #ffe641; --smoke: #161616; --hazard: repeating-linear-gradient(-45deg, #f6d31c 0 14px, #161616 14px 28px); }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      min-height: 100svh; display: grid; place-items: center; padding: 3rem 16px;
+      background: var(--yellow); color: var(--smoke); font-family: 'Inter', system-ui, sans-serif; text-align: center;
+    }
+    body::before, body::after { content: ''; position: fixed; left: 0; right: 0; height: 14px; background: var(--hazard); }
+    body::before { top: 0; }
+    body::after { bottom: 0; }
+    main { width: min(36rem, 100%); }
+    h1 {
+      font-family: 'Big Shoulders Display', 'Arial Narrow', Impact, sans-serif; font-weight: 800; text-transform: uppercase;
+      font-size: clamp(3.5rem, 14vw, 9rem); line-height: .85; margin-bottom: 1.25rem;
+    }
+    p { font-size: clamp(1.05rem, 2.2vw, 1.25rem); }
+    ul { list-style: none; margin: 2rem 0 2.5rem; border-top: 3px solid var(--smoke); }
+    li { border-bottom: 1px solid rgba(22, 22, 22, .25); }
+    ul a { display: block; padding: 1rem 0; font-size: clamp(1.15rem, 3.4vw, 1.6rem); font-weight: 600; color: inherit; text-underline-offset: 4px; overflow-wrap: anywhere; }
+    .back { display: inline-block; padding: .9rem 1.6rem; background: var(--smoke); color: var(--yellow); text-decoration: none; font-weight: 600; }
+    .back:hover { background: #000; }
+    a:focus-visible { outline: 3px solid var(--smoke); outline-offset: 3px; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Contact us</h1>
+    <p>Email us and we’ll get back to you, usually within two business days.</p>
+    <ul>
+      <li><a href="mailto:info@quadrozzi.com">info@quadrozzi.com</a></li>
+      <li><a href="mailto:fedor.shot@quadrozzi.com">fedor.shot@quadrozzi.com</a></li>
+    </ul>
+    <a class="back" href="../">Back to Quadrozzi</a>
+  </main>
+</body>
+</html>
