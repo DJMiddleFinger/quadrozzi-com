@@ -72,5 +72,12 @@ Colors come from the Quadrozzi truck fleet: orange cabs, yellow drums, black let
 Type is Big Shoulders Display for headings and Inter for text. Details are in `plans/03-design-system.md`.
 
 ## Deploy
-Every push to `main` republishes the site through GitHub Pages (Actions). See `plans/05-launch-checklist.md`
-for the custom domain and DNS steps.
+Every push to `main` republishes the site through GitHub Pages (Actions).
+
+Quadrozzi.com is hosted at Network Solutions, which needs a manual upload. Build the packages with:
+```bash
+python3 tools/package_zips.py
+```
+It writes `Quadrozzi-site-upload.zip` (the whole site) and `Quadrozzi-under-construction.zip` (home page only,
+every menu item opens an "Under construction" page), then deletes any older zips so only the latest 2 remain.
+Extract one into the hosting's `htdocs` folder.

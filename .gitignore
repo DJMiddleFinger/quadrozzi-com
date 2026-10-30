@@ -48,3 +48,6 @@ _site/
 
 # Local tooling
 .claude/
+
+# Upload packages (tools/package_zips.py)
+*.zip

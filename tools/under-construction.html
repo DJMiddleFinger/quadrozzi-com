@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Under Construction | Quadrozzi</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#ffe641">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800&family=Inter:wght@500;600&display=swap" rel="stylesheet">
+  <style>
+    :root { --yellow: #ffe641; --smoke: #161616; --hazard: repeating-linear-gradient(-45deg, #f6d31c 0 14px, #161616 14px 28px); }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      min-height: 100svh; display: grid; place-items: center; padding: 3rem 16px;
+      background: var(--yellow); color: var(--smoke); font-family: 'Inter', system-ui, sans-serif; text-align: center;
+    }
+    body::before, body::after { content: ''; position: fixed; left: 0; right: 0; height: 14px; background: var(--hazard); }
+    body::before { top: 0; }
+    body::after { bottom: 0; }
+    h1 {
+      font-family: 'Big Shoulders Display', 'Arial Narrow', Impact, sans-serif; font-weight: 800; text-transform: uppercase;
+      font-size: clamp(3.5rem, 14vw, 10rem); line-height: .85; margin-bottom: 1.5rem;
+    }
+    p { font-size: clamp(1.05rem, 2.2vw, 1.3rem); max-width: 34ch; margin: 0 auto 2.25rem; }
+    a { color: inherit; }
+    .back {
+      display: inline-block; padding: .9rem 1.6rem; background: var(--smoke); color: var(--yellow);
+      text-decoration: none; font-weight: 600;
+    }
+    .back:hover { background: #000; }
+    a:focus-visible { outline: 3px solid var(--smoke); outline-offset: 3px; }
+    .mail { margin: 1.75rem auto 0; font-size: .95rem; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Under<br>construction</h1>
+    <p><span id="name">This site</span> is being built. Check back soon.</p>
+    <a class="back" href="./">Back to Quadrozzi</a>
+    <p class="mail"><a class="back" href="contact/">Contact us</a></p>
+  </main>
+  <script>
+    // Menu links pass ?site=GBX etc.; only known names are shown
+    var names = { gbx: 'GBX', be: 'BE', hhi: 'The Helping Hoof Initiative' };
+    var site = names[new URLSearchParams(location.search).get('site')];
+    if (site) document.getElementById('name').textContent = site;
+  </script>
+</body>
+</html>
