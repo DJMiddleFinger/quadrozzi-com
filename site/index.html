@@ -107,6 +107,7 @@
       font-size: clamp(3.2rem, 10vw, 6.75rem); line-height: .86; letter-spacing: -.005em;
       transition: color .2s;
     }
+    .ventures .keep-case { text-transform: none; }   /* "Be" is always written Be, never uppercased */
     .ventures .what { display: block; margin-top: .55rem; font-size: .95rem; color: var(--stone); }
     .ventures a:hover .name { color: var(--yellow); }
     .ventures a:focus-visible { outline: 2px solid var(--yellow); outline-offset: 4px; }
@@ -139,7 +140,7 @@
   <nav class="menu" id="menu" aria-label="Quadrozzi companies" inert>
     <ul class="ventures">
       <li><a href="gbx/"><span class="name">GBX</span><span class="what">Gowanus Bay Terminal</span></a></li>
-      <li><a href="https://djmiddlefinger.github.io/be-brooklyn-equine/" target="_blank" rel="noopener"><span class="name">BE</span><span class="what">Brooklyn Equine ↗<span class="sr-only"> (opens in a new tab)</span></span></a></li>
+      <li><a href="https://djmiddlefinger.github.io/be-brooklyn-equine/" target="_blank" rel="noopener"><span class="name keep-case">Be</span><span class="what">Brooklyn Equine ↗<span class="sr-only"> (opens in a new tab)</span></span></a></li>
       <li><a href="helping-hooves/"><span class="name">Helping Hoof Initiative</span><span class="what">Horses and community in Brooklyn</span></a></li>
     </ul>
     <p class="menu-foot">

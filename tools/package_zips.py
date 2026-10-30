@@ -5,7 +5,7 @@
 
 Quadrozzi-site-upload.zip          the whole site/ folder (committed files only)
 Quadrozzi-under-construction.zip   the home page, its contact page and 404; every menu item opens
-                                   tools/under-construction.html instead of GBX, BE or Helping Hoof Initiative
+                                   tools/under-construction.html instead of GBX, Be or Helping Hoof Initiative
 Both carry an .htaccess so the host serves the site's own 404 page.
 Only the 2 newest zips in the project folder are kept; any older zip there is deleted.
 """

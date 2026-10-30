@@ -10,12 +10,12 @@
 | Helping Hoof Initiative | https://djmiddlefinger.github.io/quadrozzi-com/helping-hooves/ |
 
 The home page is a single no-scroll face page: the Q logo drops in from the top of the screen (once per
-browser session), and a four-bar button in the top left opens a side panel with GBX, BE and the Helping
+browser session), and a four-bar button in the top left opens a side panel with GBX, Be and the Helping
 Hoof Initiative.
 
-GBX and the Helping Hoof Initiative are multi-page sites that share `site/assets/` (styles, script, photos).
+GBX and Helping Hoof Initiative are multi-page sites that share `site/assets/` (styles, script, photos).
 Each page has a sidebar for the top-level pages, a breadcrumb bar showing where you are, and buttons to the
-pages one level down. GBX breadcrumbs start at Quadrozzi; the Helping Hoof Initiative's start at its own home
+pages one level down. GBX breadcrumbs start at Quadrozzi; Helping Hoof Initiative's start at its own home
 and carry no Quadrozzi branding. Email addresses appear only on contact pages (`contact/` on each site), reached from every "Contact us" button; the inquiry forms send to info@Quadrozzi.com.
 
 ## What's here
@@ -60,7 +60,7 @@ it's empty, "Donate" opens the form with Donate selected.
 
 ## Photo credits
 Most photos come from Wikimedia Commons (CC0, public domain or CC BY-SA). Each one is listed with its author
-and license in `tools/credits.json`; photos with "hooves" in their path go on the Helping Hoof Initiative's
+and license in `tools/credits.json`; photos with "hooves" in their path go on Helping Hoof Initiative's
 credits page, the rest on GBX's. After adding or replacing a photo, update that file and rebuild. The credits
 pages are linked from every page footer and meet the attribution requirement of the CC BY-SA photos.
 

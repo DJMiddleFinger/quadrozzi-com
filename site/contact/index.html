@@ -26,10 +26,16 @@
       font-size: clamp(3.5rem, 14vw, 9rem); line-height: .85; margin-bottom: 1.25rem;
     }
     p { font-size: clamp(1.05rem, 2.2vw, 1.25rem); }
-    ul { list-style: none; margin: 2rem 0 2.5rem; border-top: 3px solid var(--smoke); }
+    ul { list-style: none; margin-top: 1rem; border-top: 3px solid var(--smoke); }
+    p + ul { margin-top: 2rem; }
+    h2 {
+      margin-top: 2.25rem; font-family: 'Big Shoulders Display', 'Arial Narrow', Impact, sans-serif; font-weight: 800;
+      text-transform: uppercase; font-size: clamp(1.5rem, 4vw, 2rem); line-height: 1;
+    }
+    .keep-case { text-transform: none; }   /* "Be" is always written Be, never uppercased */
     li { border-bottom: 1px solid rgba(22, 22, 22, .25); }
     ul a { display: block; padding: 1rem 0; font-size: clamp(1.15rem, 3.4vw, 1.6rem); font-weight: 600; color: inherit; text-underline-offset: 4px; overflow-wrap: anywhere; }
-    .back { display: inline-block; padding: .9rem 1.6rem; background: var(--smoke); color: var(--yellow); text-decoration: none; font-weight: 600; }
+    .back { display: inline-block; margin-top: 2.75rem; padding: .9rem 1.6rem; background: var(--smoke); color: var(--yellow); text-decoration: none; font-weight: 600; }
     .back:hover { background: #000; }
     a:focus-visible { outline: 3px solid var(--smoke); outline-offset: 3px; }
   </style>
@@ -40,6 +46,13 @@
     <p>Email us and we’ll get back to you, usually within two business days.</p>
     <ul>
       <li><a href="mailto:info@Quadrozzi.com">info@Quadrozzi.com</a></li>
+    </ul>
+    <h2 class="keep-case">Be</h2>
+    <ul>
+      <li><a href="mailto:Be@Quadrozzi.com">Be@Quadrozzi.com</a></li>
+    </ul>
+    <h2>CTO GBX</h2>
+    <ul>
       <li><a href="mailto:fedor.shot@Quadrozzi.com">fedor.shot@Quadrozzi.com</a></li>
     </ul>
     <a class="back" href="../">Back to Quadrozzi</a>

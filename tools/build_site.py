@@ -230,7 +230,7 @@ def terminal(path, label, name, text):
 
 GBX = dict(
     folder='gbx', name='GBX Gowanus Bay Terminal', short='GBX', tagline='Gowanus Bay Terminal, Red Hook',
-    above=[('Quadrozzi', '../')], owner='Quadrozzi', emails=['info@Quadrozzi.com', 'fedor.shot@Quadrozzi.com'],
+    above=[('Quadrozzi', '../')], owner='Quadrozzi', contacts=[('', 'info@Quadrozzi.com'), ('CTO GBX', 'fedor.shot@Quadrozzi.com')],
     contact_note='Booking the site for a shoot or an event? <a href="{R}book/">Use the booking form</a> so we get your dates and details in one message.',
     pages=[
         dict(path='', nav='Overview', h1='Gowanus Bay Terminal', head=GBX_LD,
@@ -357,12 +357,12 @@ GBX = dict(
 HHI = dict(
     folder='helping-hooves', name='Helping Hoof Initiative', short='Helping Hoof Initiative',
     tagline='A program of Helping Hoof, Inc., a 501(c)(3) nonprofit',
-    above=[], owner='Helping Hoof, Inc.', emails=['info@Quadrozzi.com'],
+    above=[], owner='Helping Hoof, Inc.', contacts=[('', 'info@hhi.horse')],
     contact_note='Want to volunteer, donate, partner or enroll a rider? <a href="{R}get-involved/">Use the Get involved form</a>. Riding lessons are at Prospect Park Stable, 51–55 Caton Place, Brooklyn, NY 11218.',
     pages=[
         dict(path='', nav='Overview', h1='Helping Hoof Initiative', head=HHI_LD,
              title='Helping Hoof Initiative | Horses and community in Brooklyn',
-             desc='The Helping Hoof Initiative is a community program for horses and people in Brooklyn: second-career horses, therapeutic riding, youth programs and a greener, horse-friendly Brooklyn. Run by Helping Hoof, Inc., a 501(c)(3) nonprofit.',
+             desc='Helping Hoof Initiative is a community program for horses and people in Brooklyn: second-career horses, therapeutic riding, youth programs and a greener, horse-friendly Brooklyn. Run by Helping Hoof, Inc., a 501(c)(3) nonprofit.',
              body='''
       <p class="lead">Second careers for horses, and a way into riding for Brooklynites of every background and ability.</p>
       ''' + plate('hooves/hero.jpg', 'Riders on horseback on a tree-lined path in Prospect Park') + '''
@@ -373,7 +373,7 @@ HHI = dict(
         <div><dt>501(c)(3)</dt><dd>Helping Hoof, Inc. nonprofit</dd></div>
       </dl>
       <h2>Our mission</h2>
-      <div class="prose"><p>The Helping Hoof Initiative is a community program for horses and people. It is carried out by Helping Hoof, Inc., a 501(c)(3) nonprofit, alongside Be•Brooklyn Equine at Prospect Park Stable. The mission has four parts.</p></div>
+      <div class="prose"><p>Helping Hoof Initiative is a community program for horses and people. It is carried out by Helping Hoof, Inc., a 501(c)(3) nonprofit, alongside Be•Brooklyn Equine at Prospect Park Stable. The mission has four parts.</p></div>
       <div class="cards">
         <article class="card"><img src="{A}hooves/second-career.jpg" alt="A child’s hand offering hay to horses through a gate" loading="lazy"><div><h3>Second-career horses</h3><p>Giving horses whose first careers didn’t work out a new start in “healthy, nurturing, loving environments.”</p></div></article>
         <article class="card"><img src="{A}hooves/hands-on.jpg" alt="Close-up of a calm horse in a teal halter" loading="lazy"><div><h3>Therapy &amp; learning</h3><p>Promoting equine-assisted therapy and assisted learning.</p></div></article>
@@ -384,7 +384,7 @@ HHI = dict(
       <p><a class="btn" href="{R}get-involved/">Get involved</a></p>'''),
 
         dict(path='programs', nav='Programs', h1='Programs',
-             desc='Second-career horses, therapeutic riding, youth programs and community work from the Helping Hoof Initiative.',
+             desc='Second-career horses, therapeutic riding, youth programs and community work from Helping Hoof Initiative.',
              body='''
       <p class="lead">From the riding ring to Red Hook’s community gardens, the work reaches well beyond the barn.</p>
       <h2>Second-career horses</h2>
@@ -411,7 +411,7 @@ HHI = dict(
         dict(path='heritage', nav='Heritage', h1='Heritage',
              desc='Prospect Park was designed with a bridle path, and Brooklyn once held horse parades hundreds strong.',
              body='''
-      <p class="lead">Prospect Park was designed with a bridle path, and Brooklyn once held horse parades hundreds strong. The Helping Hoof Initiative carries that tradition forward.</p>
+      <p class="lead">Prospect Park was designed with a bridle path, and Brooklyn once held horse parades hundreds strong. Helping Hoof Initiative carries that tradition forward.</p>
       <ol class="timeline">
         <li><span class="yr">1917</span><div><h3>Prospect Park Stable</h3><p>Prospect Park Stable is founded. It’s the name the stable would get back a century later.</p></div></li>
         <li><span class="yr">1935</span><div><h3>A parade hundreds strong</h3><p>A parade sponsored by the Brooklyn Daily Eagle and the ASPCA draws 252 horses, some 500 dogs, and a goat pulling a cart.</p></div></li>
@@ -426,8 +426,8 @@ HHI = dict(
       </div>'''),
 
         dict(path='get-involved', nav='Get Involved', h1='Get involved',
-             foot=inquiry_config('info@Quadrozzi.com', 'Helping Hoof Initiative', DONATE),
-             desc='Volunteer, donate, partner with or enroll a rider in the Helping Hoof Initiative.',
+             foot=inquiry_config('info@hhi.horse', 'Helping Hoof Initiative', DONATE),
+             desc='Volunteer, donate, partner with or enroll a rider in Helping Hoof Initiative.',
              body='''
       <p class="lead">Volunteer, donate, partner, or enroll a rider. Choose how you’d like to help and tell us a little about yourself.</p>
       <nav class="levers" aria-label="Ways to help">
@@ -544,17 +544,20 @@ def display_title(title):
 
 def contact_page(site):
     # The only place a site lists its email addresses; every Contact us button leads here.
-    emails = ''.join(f'<li><a href="mailto:{m}">{m}</a></li>' for m in site['emails'])
+    # contacts: (heading, email) pairs; the unheaded one comes first, headed ones form sections at the bottom.
+    mail = lambda m: f'<ul class="contacts"><li><a href="mailto:{m}">{m}</a></li></ul>'
+    main = ''.join(mail(m) for h, m in site['contacts'] if not h)
+    sections = ''.join(f'\n      <h2>{e(h)}</h2>\n      {mail(m)}' for h, m in site['contacts'] if h)
     return dict(path='contact', nav='Contact', h1='Contact us',
                 desc=f'How to reach {site["name"]}.',
                 body=f'''
       <p class="lead">Email us and we’ll get back to you, usually within two business days.</p>
-      <ul class="contacts">{emails}</ul>
-      <div class="prose"><p>{site["contact_note"]}</p></div>''')
+      {main}
+      <div class="prose"><p>{site["contact_note"]}</p></div>{sections}''')
 
 
 def credits_page(site, credits):
-    # Photos with "hooves" in their path belong to the Helping Hoof Initiative site.
+    # Photos with "hooves" in their path belong to Helping Hoof Initiative site.
     mine = [c for c in credits if ('hooves' in c['file']) == (site is HHI)]
     rows = []
     for c in mine:

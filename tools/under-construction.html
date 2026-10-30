@@ -43,7 +43,7 @@
   </main>
   <script>
     // Menu links pass ?site=GBX etc.; only known names are shown
-    var names = { gbx: 'GBX', be: 'BE', hhi: 'The Helping Hoof Initiative' };
+    var names = { gbx: 'GBX', be: 'Be', hhi: 'Helping Hoof Initiative' };
     var site = names[new URLSearchParams(location.search).get('site')];
     if (site) document.getElementById('name').textContent = site;
   </script>
