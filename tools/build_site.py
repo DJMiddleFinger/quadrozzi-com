@@ -544,16 +544,17 @@ def display_title(title):
 
 def contact_page(site):
     # The only place a site lists its email addresses; every Contact us button leads here.
-    # contacts: (heading, email) pairs; the unheaded one comes first, headed ones form sections at the bottom.
-    mail = lambda m: f'<ul class="contacts"><li><a href="mailto:{m}">{m}</a></li></ul>'
-    main = ''.join(mail(m) for h, m in site['contacts'] if not h)
-    sections = ''.join(f'\n      <h2>{e(h)}</h2>\n      {mail(m)}' for h, m in site['contacts'] if h)
+    # contacts: (heading, email) pairs. The unheaded one is the site's main address, shown large;
+    # headed ones are smaller and sit lower, under .more.
+    main = ''.join(f'<p class="main-email"><a href="mailto:{m}">{m}</a></p>' for h, m in site['contacts'] if not h)
+    more = ''.join(f'<div><h2>{e(h)}</h2><a href="mailto:{m}">{m}</a></div>' for h, m in site['contacts'] if h)
+    more = f'\n      <div class="more">{more}</div>' if more else ''
     return dict(path='contact', nav='Contact', h1='Contact us',
                 desc=f'How to reach {site["name"]}.',
                 body=f'''
       <p class="lead">Email us and we’ll get back to you, usually within two business days.</p>
       {main}
-      <div class="prose"><p>{site["contact_note"]}</p></div>{sections}''')
+      <div class="prose"><p>{site["contact_note"]}</p></div>{more}''')
 
 
 def credits_page(site, credits):

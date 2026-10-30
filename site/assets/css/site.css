@@ -154,10 +154,16 @@ blockquote cite { display: block; margin-top: .9rem; font-style: normal; font-si
 
 /* ---------- Contact + form ---------- */
 .aside > * + * { margin-top: 1.75rem; }
-.contacts { list-style: none; max-width: 36rem; border-top: 3px solid var(--asphalt); }
-.contacts li { border-bottom: 1px solid var(--line); }
-.contacts a { display: block; padding: 1rem 0; font-size: clamp(1.15rem, 2.4vw, 1.5rem); font-weight: 600; text-underline-offset: 4px; overflow-wrap: anywhere; }
-.contacts a:hover { color: var(--orange-ink); }
+/* Contact page: the main address large and first; other contacts smaller and further down */
+.page > .main-email { margin-top: clamp(2.5rem, 6vw, 3.5rem); }
+.main-email a {
+  font-size: clamp(1.7rem, 5vw, 3rem); font-weight: 700; letter-spacing: -.01em; overflow-wrap: anywhere;
+  text-decoration-thickness: 3px; text-underline-offset: 8px;
+}
+.page > .more { margin-top: clamp(4rem, 9vw, 5.5rem); display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr)); gap: 2rem; max-width: 40rem; }
+.page .more h2 { margin: 0 0 .4rem; font-size: 1.2rem; letter-spacing: .02em; }
+.more a { font-weight: 500; overflow-wrap: anywhere; text-underline-offset: 3px; }
+.main-email a:hover, .more a:hover { color: var(--orange-ink); }
 .split { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.4fr); gap: clamp(2rem, 5vw, 4rem); scroll-margin-top: 72px; }
 .direct { display: grid; gap: 1.25rem; border-top: 3px solid var(--asphalt); padding-top: 1.25rem; }
 .direct h3 { font-family: var(--sans); text-transform: none; font-size: .85rem; font-weight: 600; color: var(--stone); margin-bottom: .2rem; }

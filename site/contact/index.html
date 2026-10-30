@@ -25,17 +25,26 @@
       font-family: 'Big Shoulders Display', 'Arial Narrow', Impact, sans-serif; font-weight: 800; text-transform: uppercase;
       font-size: clamp(3.5rem, 14vw, 9rem); line-height: .85; margin-bottom: 1.25rem;
     }
-    p { font-size: clamp(1.05rem, 2.2vw, 1.25rem); }
-    ul { list-style: none; margin-top: 1rem; border-top: 3px solid var(--smoke); }
-    p + ul { margin-top: 2rem; }
+    p { font-size: clamp(1.05rem, 2.2vw, 1.25rem); line-height: 1.5; }
+    a { color: inherit; overflow-wrap: anywhere; }
+
+    /* The site's main address: big and first */
+    .main-email { margin-top: clamp(2.5rem, 6vw, 3.5rem); }
+    .main-email a {
+      font-size: clamp(1.7rem, 6vw, 3rem); font-weight: 700; letter-spacing: -.01em;
+      text-decoration-thickness: 3px; text-underline-offset: 8px;
+    }
+
+    /* Other contacts: smaller, quieter, further down */
+    .more { margin-top: clamp(4rem, 10vw, 6rem); display: grid; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); gap: 2rem; }
     h2 {
-      margin-top: 2.25rem; font-family: 'Big Shoulders Display', 'Arial Narrow', Impact, sans-serif; font-weight: 800;
-      text-transform: uppercase; font-size: clamp(1.5rem, 4vw, 2rem); line-height: 1;
+      margin-bottom: .4rem; font-family: 'Big Shoulders Display', 'Arial Narrow', Impact, sans-serif; font-weight: 800;
+      text-transform: uppercase; font-size: 1.2rem; line-height: 1; letter-spacing: .02em;
     }
     .keep-case { text-transform: none; }   /* "Be" is always written Be, never uppercased */
-    li { border-bottom: 1px solid rgba(22, 22, 22, .25); }
-    ul a { display: block; padding: 1rem 0; font-size: clamp(1.15rem, 3.4vw, 1.6rem); font-weight: 600; color: inherit; text-underline-offset: 4px; overflow-wrap: anywhere; }
-    .back { display: inline-block; margin-top: 2.75rem; padding: .9rem 1.6rem; background: var(--smoke); color: var(--yellow); text-decoration: none; font-weight: 600; }
+    .more a { font-size: 1.05rem; font-weight: 500; text-underline-offset: 3px; }
+
+    .back { display: inline-block; margin-top: clamp(3.5rem, 8vw, 4.5rem); padding: .9rem 1.6rem; background: var(--smoke); color: var(--yellow); text-decoration: none; font-weight: 600; }
     .back:hover { background: #000; }
     a:focus-visible { outline: 3px solid var(--smoke); outline-offset: 3px; }
   </style>
@@ -44,17 +53,11 @@
   <main>
     <h1>Contact us</h1>
     <p>Email us and we’ll get back to you, usually within two business days.</p>
-    <ul>
-      <li><a href="mailto:info@Quadrozzi.com">info@Quadrozzi.com</a></li>
-    </ul>
-    <h2 class="keep-case">Be</h2>
-    <ul>
-      <li><a href="mailto:Be@Quadrozzi.com">Be@Quadrozzi.com</a></li>
-    </ul>
-    <h2>CTO GBX</h2>
-    <ul>
-      <li><a href="mailto:fedor.shot@Quadrozzi.com">fedor.shot@Quadrozzi.com</a></li>
-    </ul>
+    <p class="main-email"><a href="mailto:info@Quadrozzi.com">info@Quadrozzi.com</a></p>
+    <div class="more">
+      <div><h2 class="keep-case">Be</h2><a href="mailto:Be@Quadrozzi.com">Be@Quadrozzi.com</a></div>
+      <div><h2>CTO GBX</h2><a href="mailto:fedor.shot@Quadrozzi.com">fedor.shot@Quadrozzi.com</a></div>
+    </div>
     <a class="back" href="../">Back to Quadrozzi</a>
   </main>
 </body>
