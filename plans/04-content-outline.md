@@ -10,7 +10,7 @@ avoids specific facts (dates, acreage, figures) until they're verified.
 - Buttons: `Our Holdings` → #holdings · `Get in Touch` → #contact
 
 ## Marquee
-GBX Gowanus Bay Terminal ✦ Brooklyn Equine ✦ Helping Hooves ✦ Red Hook ✦ Prospect Park ✦
+GBX Gowanus Bay Terminal ✦ Brooklyn Equine ✦ Helping Hoof Initiative ✦ Red Hook ✦ Prospect Park ✦
 
 ## Holdings
 - H2: **OUR HOLDINGS**
@@ -19,7 +19,7 @@ GBX Gowanus Bay Terminal ✦ Brooklyn Equine ✦ Helping Hooves ✦ Red Hook ✦
    "A deep-water grain terminal and industrial waterfront property on Gowanus Bay in Red Hook." → `[GBX URL]`
 2. **Be™ Brooklyn Equine** · Eyebrow: Equestrian
    "Riding lessons, trail rides and pony rides at Prospect Park Stable." → https://DJMiddleFinger.github.io/be-brooklyn-equine/
-3. **Helping Hooves** · Eyebrow: Community Initiatives
+3. **Helping Hoof Initiative** · Eyebrow: Community Initiatives
    "Programs that bring horses and the people of Brooklyn together." → `[HELPING HOOVES URL]`
 4. **Future Ventures** · Eyebrow: Partnerships
    "We're always open to conversations with partners who share a long-term view." → #contact
@@ -29,7 +29,7 @@ GBX Gowanus Bay Terminal ✦ Brooklyn Equine ✦ Helping Hooves ✦ Red Hook ✦
 - Body: `[2–3 short paragraphs: family origins, how the waterfront property came to the family, the move into equestrian and community work. To be written with the family.]`
 - Signature line: *— The Quadrozzi Family*
 
-## Community — Helping Hooves
+## Community — Helping Hoof Initiative
 > Built out as its own page at `/helping-hooves/` (Sep 2026). The home section now links to it, with a verified quote and three initiatives. The notes below are the original draft.
 - H2: **HELPING HOOVES**
 - Pull quote: *"[Quote from a family member about why community work matters.]"*
@@ -53,4 +53,4 @@ GBX Gowanus Bay Terminal ✦ Brooklyn Equine ✦ Helping Hooves ✦ Red Hook ✦
 
 ## Meta / SEO
 - Title: `Quadrozzi — A Brooklyn Family Enterprise`
-- Description: `The Quadrozzi family of companies: GBX Gowanus Bay Terminal, Be Brooklyn Equine and the Helping Hooves community initiatives.`
+- Description: `The Quadrozzi family of companies: GBX Gowanus Bay Terminal, Be Brooklyn Equine and the Helping Hoof Initiative community initiatives.`

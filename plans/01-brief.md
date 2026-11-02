@@ -13,13 +13,13 @@ right venture.
 |---|---|---|
 | **GBX — Gowanus Bay Terminal** | Flagship property: grain terminal / industrial waterfront | URL needed |
 | **Be™ Brooklyn Equine** | Equestrian venture at Prospect Park Stable | Live: https://DJMiddleFinger.github.io/be-brooklyn-equine/ |
-| **Helping Hooves** | Community and philanthropic initiatives | URL(s) needed |
+| **Helping Hoof Initiative** | Community and philanthropic initiatives | URL(s) needed |
 | *Future ventures* | An open slot for new holdings or partnerships | Add later |
 
 ## Audiences, in priority order
 1. **Business partners, tenants and port / logistics contacts** who need credibility, a contact route and the GBX link.
 2. **Press, civic and community stakeholders** who need heritage, community work and a press contact.
-3. **Families and riders** who are looking for Brooklyn Equine or Helping Hooves and should get there in one click.
+3. **Families and riders** who are looking for Brooklyn Equine or Helping Hoof Initiative and should get there in one click.
 
 ## Tone
 - Assured, understated, New York. Reads like an established firm, not a startup.
@@ -33,4 +33,4 @@ right venture.
 
 ## Out of scope for v1
 - A CMS, a blog, or contact forms with a backend (mailto links only).
-- Separate sub-pages for each venture. Each venture keeps its own site; this one links out.
+- ~~Separate sub-pages for each venture~~: GBX and Helping Hoof Initiative are now sub-sites (`/gbx/`, `/helping-hooves/`); Be keeps its own site.

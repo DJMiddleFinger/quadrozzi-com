@@ -2,10 +2,10 @@
 
 ## Content to collect
 - [x] GBX page built at `/gbx/`
-- [x] Helping Hooves page built at `/helping-hooves/` from published sources (6sqft, Brooklyn Eagle, Brooklyn Reporter, Patch, IRS/ProPublica)
+- [x] Helping Hoof Initiative page built at `/helping-hooves/` from published sources (6sqft, Brooklyn Eagle, Brooklyn Reporter, Patch, IRS/ProPublica)
 - [ ] Contact emails (general, press, leasing) and a mailing address
 - [ ] Verified heritage copy and figures for the stat tiles
-- [x] Photos: hero, GBX, Brooklyn Equine, Helping Hooves, heritage (Commons + Brooklyn Equine; swap for family photography when available)
+- [x] Photos: hero, GBX, Brooklyn Equine, Helping Hoof Initiative, heritage (Commons + Brooklyn Equine; swap for family photography when available)
 - [ ] Family approval of the positioning line and the pull quote
 
 ## GBX pages
@@ -22,8 +22,8 @@
 - [ ] Confirm whether the GallopNYC partnership is still active; the page describes it as starting in 2019
 
 ## Build
-- [x] Photos in place (Wikimedia Commons, credited on `credits.html`)
-- [x] 1200×630 Open Graph image (`site/assets/og.jpg`)
+- [x] Photos in place (Wikimedia Commons, credited on each site's `credits/` page)
+- [ ] 1200×630 Open Graph image (`site/assets/og.jpg`) and `og:image` tags (neither exists yet)
 - [ ] Add a favicon
 
 ## Hosting (GitHub Pages, the same setup as Brooklyn Equine)
