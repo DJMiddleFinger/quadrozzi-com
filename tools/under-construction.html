@@ -6,22 +6,22 @@
   <title>Under Construction | Quadrozzi</title>
   <meta name="robots" content="noindex">
   <meta name="theme-color" content="#ffe641">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800&family=Inter:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://api.fontshare.com">
+  <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,401,500,700,900&display=swap" rel="stylesheet">
   <style>
     :root { --yellow: #ffe641; --smoke: #161616; --hazard: repeating-linear-gradient(-45deg, #f6d31c 0 14px, #161616 14px 28px); }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       min-height: 100svh; display: grid; place-items: center; padding: 3rem 16px;
-      background: var(--yellow); color: var(--smoke); font-family: 'Inter', system-ui, sans-serif; text-align: center;
+      background: var(--yellow); color: var(--smoke); font-family: 'Satoshi', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; text-align: center;
     }
     body::before, body::after { content: ''; position: fixed; left: 0; right: 0; height: 14px; background: var(--hazard); }
     body::before { top: 0; }
     body::after { bottom: 0; }
     h1 {
-      font-family: 'Big Shoulders Display', 'Arial Narrow', Impact, sans-serif; font-weight: 800; text-transform: uppercase;
-      font-size: clamp(3.5rem, 14vw, 10rem); line-height: .85; margin-bottom: 1.5rem;
+      font-weight: 900; text-transform: uppercase; letter-spacing: -.02em;
+      font-size: clamp(2.6rem, 10vw, 6.5rem); line-height: .95; margin-bottom: 1.5rem;
     }
     p { font-size: clamp(1.05rem, 2.2vw, 1.3rem); max-width: 34ch; margin: 0 auto 2.25rem; }
     a { color: inherit; }
@@ -43,7 +43,7 @@
   </main>
   <script>
     // Menu links pass ?site=GBX etc.; only known names are shown
-    var names = { gbx: 'GBX', be: 'Be', hhi: 'Helping Hoof Initiative' };
+    var names = { bbx: 'BBX', gbx: 'GBX', vbx: 'VBX', be: 'Be', hhi: 'Helping Hoof Initiative', sponsorships: 'Sponsorships', news: 'In the News', special: 'Special' };
     var site = names[new URLSearchParams(location.search).get('site')];
     if (site) document.getElementById('name').textContent = site;
   </script>

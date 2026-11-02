@@ -1,5 +1,7 @@
 # 03 — Design System
 
+> **Type update (Nov 2026):** the whole site now uses **Satoshi** (Fontshare): Black (900) for headings and names, Regular and Medium for text. Big Shoulders Display, Inter and Cormorant Garamond below are superseded.
+
 ## What we took from robertaspizza.com
 These values were pulled from the reference site's live CSS in September 2026 and then adapted.
 

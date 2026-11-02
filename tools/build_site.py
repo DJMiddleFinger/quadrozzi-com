@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""Build the GBX and Helping Hoof Initiative sites (site/gbx/, site/helping-hooves/).
+"""Build the GBX and Helping Hoof Initiative sites (site/gbx/, site/helping-hooves/) and the
+search pages (site/sponsorships/, site/news/, site/special/).
 
 Every page shares one shell: a sidebar listing the top-level pages, a breadcrumb bar,
 and a row of buttons ("levers") linking a page to its sub-pages. The page tree and copy
@@ -230,7 +231,7 @@ def terminal(path, label, name, text):
 
 GBX = dict(
     folder='gbx', name='GBX Gowanus Bay Terminal', short='GBX', tagline='Gowanus Bay Terminal, Red Hook',
-    above=[('Quadrozzi', '../')], owner='Quadrozzi', contacts=[('', 'info@Quadrozzi.com')],
+    above=[('Quadrozzi', '../'), ('Real Estate', None), ('Industrial', None)], owner='Quadrozzi', contacts=[('', 'info@Quadrozzi.com')],
     contact_note='Booking the site for a shoot or an event? <a href="{R}book/">Use the booking form</a> so we get your dates and details in one message.',
     pages=[
         dict(path='', nav='Overview', h1='Gowanus Bay Terminal', head=GBX_LD,
@@ -468,10 +469,10 @@ def build(site, credits):
                 attr = ''
             side.append(f'        <li><a href="{href(p["path"])}"{attr}>{e(p["nav"])}</a></li>')
 
-        trail = [(label, R + link) for label, link in site['above']] + [(site['short'], href(''))]
+        trail = [(label, link and R + link) for label, link in site['above']] + [(site['short'], href(''))]
         parts = path.split('/') if path else []
         trail += [(by_path['/'.join(parts[:i + 1])]['nav'], href('/'.join(parts[:i + 1]))) for i in range(len(parts))]
-        crumbs = ''.join(f'<li><a href="{link}">{e(label)}</a></li>' for label, link in trail[:-1])
+        crumbs = ''.join(f'<li><a href="{link}">{e(label)}</a></li>' if link else f'<li>{e(label)}</li>' for label, link in trail[:-1])
         crumbs += f'<li><span aria-current="page">{e(trail[-1][0])}</span></li>'
 
         # Levers: a parent page shows its sub-pages; a sub-page shows its siblings, itself highlighted.
@@ -498,9 +499,9 @@ def build(site, credits):
   <meta property="og:title" content="{e(title)}">
   <meta property="og:description" content="{e(page['desc'])}">
   <meta name="theme-color" content="#161616">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://api.fontshare.com">
+  <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,401,500,700,900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{A}css/site.css">{page.get('head', '')}
 </head>
 <body>
@@ -581,7 +582,95 @@ def credits_page(site, credits):
       </ul>''')
 
 
+COMPANIES = ['BBX™', 'GBX™', 'VBX™', 'PPS▪Prospect Park Stable™', 'Quadro▪cem™', 'Quadrozzi™Concrete', 'Quadro▪salt™',
+             'Quadrozzi™Studios', 'Quadro▪trax™', 'Quadrozzi™disegno', 'Be™•Brooklyn equine™', 'hhi™•helpinghoof initiative']
+CATEGORIES = ['Industrial', 'Commercial', 'Residential', 'Cement & cementitious materials', 'Concrete', 'Rock salt', 'Studios',
+              'Transportation', 'Design', 'Horse care & riding', 'Equine', 'Environmental', 'Arts • Theater • Film']
+# folder and data file, page heading, label of the "name" field, categories
+LISTS = [
+    ('sponsorships', 'Sponsorships', 'Organization', ['Environmental', 'Arts • Theater • Film']),
+    ('news', 'In the News', 'Media', CATEGORIES),
+    ('special', 'Special', 'Organization', CATEGORIES),
+]
+
+
+def options(values):
+    return ''.join(f'<option>{e(v)}</option>' for v in values)
+
+
+def build_lists():
+    # The searchable pages; their entries are in site/assets/data/ and the search is assets/js/lists.js.
+    for folder, h1, name_label, categories in LISTS:
+        out = f'''<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{e(h1)} | Quadrozzi</title>
+  <meta name="description" content="{e(h1)} from Quadrozzi, searchable by date, {name_label.lower()}, category and company.">
+  <meta name="theme-color" content="#ffe641">
+  <link rel="preconnect" href="https://api.fontshare.com">
+  <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,401,500,700,900&display=swap" rel="stylesheet">
+  <style>
+    :root {{ --yellow: #ffe641; --smoke: #161616; --hazard: repeating-linear-gradient(-45deg, #f6d31c 0 14px, #161616 14px 28px); }}
+    * {{ box-sizing: border-box; margin: 0; padding: 0; }}
+    body {{
+      min-height: 100svh; padding: 4rem 16px;
+      background: var(--yellow); color: var(--smoke); font-family: 'Satoshi', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    }}
+    body::before, body::after {{ content: ''; position: fixed; z-index: 1; left: 0; right: 0; height: 14px; background: var(--hazard); }}
+    body::before {{ top: 0; }}
+    body::after {{ bottom: 0; }}
+    main {{ width: min(60rem, 100%); margin: 0 auto; }}
+    h1 {{ font-weight: 900; text-transform: uppercase; letter-spacing: -.02em; font-size: clamp(2.6rem, 10vw, 6.5rem); line-height: .95; margin-bottom: 2rem; overflow-wrap: anywhere; }}
+    a {{ color: inherit; }}
+    a:focus-visible, input:focus-visible, select:focus-visible, button:focus-visible {{ outline: 3px solid var(--smoke); outline-offset: 2px; }}
+
+    form {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr)); gap: 1rem; align-items: end; }}
+    label {{ display: grid; gap: .3rem; font-size: .85rem; font-weight: 700; }}
+    input, select, button {{ width: 100%; min-height: 2.75rem; padding: .5rem .6rem; font: inherit; font-weight: 500; font-size: 1rem; color: inherit; background: #fff; border: 2px solid var(--smoke); border-radius: 0; }}
+    button {{ background: none; font-weight: 700; cursor: pointer; }}
+    button:hover {{ background: var(--smoke); color: var(--yellow); }}
+
+    #status:not(:empty) {{ margin-top: 2.5rem; font-size: 1.25rem; font-weight: 700; }}
+    #results {{ list-style: none; margin-top: 2.5rem; border-top: 2px solid var(--smoke); }}
+    #results:empty {{ display: none; }}
+    #results li {{ padding: 1rem 0; border-bottom: 1px solid var(--smoke); }}
+    #results b {{ display: block; font-weight: 900; font-size: 1.25rem; line-height: 1.25; overflow-wrap: anywhere; }}
+    #results small {{ display: block; margin-top: .3rem; font-size: .95rem; }}
+
+    .back {{ display: inline-block; margin-top: 3rem; padding: .9rem 1.6rem; background: var(--smoke); color: var(--yellow); text-decoration: none; font-weight: 700; }}
+    .back:hover {{ background: #000; }}
+  </style>
+</head>
+<body>
+  <main>
+    <h1>{e(h1)}</h1>
+    <form id="filters" data-src="../assets/data/{folder}.json" aria-label="Search {e(h1)}">
+      <label>From <input type="date" name="from"></label>
+      <label>To <input type="date" name="to"></label>
+      <label>{name_label} <select name="name"><option value="">All</option></select></label>
+      <label>Category <select name="category"><option value="">All</option>{options(categories)}</select></label>
+      <label>Company <select name="company"><option value="">All</option>{options(COMPANIES)}</select></label>
+      <button type="reset">Clear</button>
+    </form>
+    <p id="status" role="status"></p>
+    <ul id="results"></ul>
+    <a class="back" href="../">Back to Quadrozzi</a>
+  </main>
+  <script src="../assets/js/lists.js"></script>
+</body>
+</html>
+'''
+        target = ROOT / 'site' / folder / 'index.html'
+        target.parent.mkdir(exist_ok=True)
+        target.write_text(out, encoding='utf-8')
+    print(f'Wrote {len(LISTS)} search pages')
+
+
 if __name__ == '__main__':
     all_credits = json.loads((ROOT / 'tools' / 'credits.json').read_text(encoding='utf-8'))
     for s in (GBX, HHI):
         build(s, all_credits)
+    build_lists()

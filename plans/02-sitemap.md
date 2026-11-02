@@ -1,5 +1,7 @@
 # 02 — Sitemap & Navigation
 
+> **Update (Nov 2026):** the home menu now follows the 8-division structure in the "Q website v.03.2 categories" brief; see `README.md`. Search pages: `/sponsorships/`, `/news/`, `/special/`.
+
 v1 is a **single long page** with anchor navigation, like robertaspizza.com's home page. Sub-pages can
 come later without changing the nav labels.
 

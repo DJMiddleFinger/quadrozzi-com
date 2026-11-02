@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sponsorships | Quadrozzi</title>
+  <meta name="description" content="Sponsorships from Quadrozzi, searchable by date, organization, category and company.">
+  <meta name="theme-color" content="#ffe641">
+  <link rel="preconnect" href="https://api.fontshare.com">
+  <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,401,500,700,900&display=swap" rel="stylesheet">
+  <style>
+    :root { --yellow: #ffe641; --smoke: #161616; --hazard: repeating-linear-gradient(-45deg, #f6d31c 0 14px, #161616 14px 28px); }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      min-height: 100svh; padding: 4rem 16px;
+      background: var(--yellow); color: var(--smoke); font-family: 'Satoshi', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    }
+    body::before, body::after { content: ''; position: fixed; z-index: 1; left: 0; right: 0; height: 14px; background: var(--hazard); }
+    body::before { top: 0; }
+    body::after { bottom: 0; }
+    main { width: min(60rem, 100%); margin: 0 auto; }
+    h1 { font-weight: 900; text-transform: uppercase; letter-spacing: -.02em; font-size: clamp(2.6rem, 10vw, 6.5rem); line-height: .95; margin-bottom: 2rem; overflow-wrap: anywhere; }
+    a { color: inherit; }
+    a:focus-visible, input:focus-visible, select:focus-visible, button:focus-visible { outline: 3px solid var(--smoke); outline-offset: 2px; }
+
+    form { display: grid; grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr)); gap: 1rem; align-items: end; }
+    label { display: grid; gap: .3rem; font-size: .85rem; font-weight: 700; }
+    input, select, button { width: 100%; min-height: 2.75rem; padding: .5rem .6rem; font: inherit; font-weight: 500; font-size: 1rem; color: inherit; background: #fff; border: 2px solid var(--smoke); border-radius: 0; }
+    button { background: none; font-weight: 700; cursor: pointer; }
+    button:hover { background: var(--smoke); color: var(--yellow); }
+
+    #status:not(:empty) { margin-top: 2.5rem; font-size: 1.25rem; font-weight: 700; }
+    #results { list-style: none; margin-top: 2.5rem; border-top: 2px solid var(--smoke); }
+    #results:empty { display: none; }
+    #results li { padding: 1rem 0; border-bottom: 1px solid var(--smoke); }
+    #results b { display: block; font-weight: 900; font-size: 1.25rem; line-height: 1.25; overflow-wrap: anywhere; }
+    #results small { display: block; margin-top: .3rem; font-size: .95rem; }
+
+    .back { display: inline-block; margin-top: 3rem; padding: .9rem 1.6rem; background: var(--smoke); color: var(--yellow); text-decoration: none; font-weight: 700; }
+    .back:hover { background: #000; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Sponsorships</h1>
+    <form id="filters" data-src="../assets/data/sponsorships.json" aria-label="Search Sponsorships">
+      <label>From <input type="date" name="from"></label>
+      <label>To <input type="date" name="to"></label>
+      <label>Organization <select name="name"><option value="">All</option></select></label>
+      <label>Category <select name="category"><option value="">All</option><option>Environmental</option><option>Arts • Theater • Film</option></select></label>
+      <label>Company <select name="company"><option value="">All</option><option>BBX™</option><option>GBX™</option><option>VBX™</option><option>PPS▪Prospect Park Stable™</option><option>Quadro▪cem™</option><option>Quadrozzi™Concrete</option><option>Quadro▪salt™</option><option>Quadrozzi™Studios</option><option>Quadro▪trax™</option><option>Quadrozzi™disegno</option><option>Be™•Brooklyn equine™</option><option>hhi™•helpinghoof initiative</option></select></label>
+      <button type="reset">Clear</button>
+    </form>
+    <p id="status" role="status"></p>
+    <ul id="results"></ul>
+    <a class="back" href="../">Back to Quadrozzi</a>
+  </main>
+  <script src="../assets/js/lists.js"></script>
+</body>
+</html>

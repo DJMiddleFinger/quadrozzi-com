@@ -4,8 +4,8 @@
     python3 tools/package_zips.py
 
 Quadrozzi-site-upload.zip          the whole site/ folder (committed files only)
-Quadrozzi-under-construction.zip   the home page, its contact page and 404; every menu item opens
-                                   tools/under-construction.html instead of GBX, Be or Helping Hoof Initiative
+Quadrozzi-under-construction.zip   the home page, its contact page and 404; every menu link opens
+                                   tools/under-construction.html
 Both carry an .htaccess so the host serves the site's own 404 page.
 Only the 2 newest zips in the project folder are kept; any older zip there is deleted.
 """
@@ -29,10 +29,17 @@ def site_zip():
 def under_construction_zip():
     home = (SITE / 'index.html').read_text(encoding='utf-8')
     swaps = {
+        '<a href="gbx/terminals/bbx/">': '<a href="under-construction.html?site=bbx">',
         '<a href="gbx/">': '<a href="under-construction.html?site=gbx">',
+        '<a href="gbx/terminals/vbx/">': '<a href="under-construction.html?site=vbx">',
         '<a href="https://djmiddlefinger.github.io/be-brooklyn-equine/" target="_blank" rel="noopener">': '<a href="under-construction.html?site=be">',
-        'Brooklyn Equine ↗<span class="sr-only"> (opens in a new tab)</span>': 'Brooklyn Equine',
+        ' ↗<span class="sr-only"> (opens in a new tab)</span>': '',
         '<a href="helping-hooves/">': '<a href="under-construction.html?site=hhi">',
+        '<a href="sponsorships/">': '<a href="under-construction.html?site=sponsorships">',
+        '<a href="sponsorships/?category=Environmental">': '<a href="under-construction.html?site=sponsorships">',
+        '<a href="sponsorships/?category=Arts%20%E2%80%A2%20Theater%20%E2%80%A2%20Film">': '<a href="under-construction.html?site=sponsorships">',
+        '<a class="division" href="news/">': '<a class="division" href="under-construction.html?site=news">',
+        '<a class="division" href="special/">': '<a class="division" href="under-construction.html?site=special">',
     }
     for old, new in swaps.items():
         assert home.count(old) == 1, f'home page menu changed; update the swaps for: {old}'

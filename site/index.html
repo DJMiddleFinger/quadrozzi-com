@@ -15,9 +15,9 @@
       sessionStorage.setItem('q-dropped', '1');
     } catch (e) {}
   </script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800&family=Inter:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://api.fontshare.com">
+  <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,401,500,700,900&display=swap" rel="stylesheet">
   <style>
     :root {
       --yellow: #ffe641;      /* matches the Q logo tile */
@@ -26,15 +26,14 @@
       --stone: rgba(243, 241, 236, .6);
       --line: rgba(243, 241, 236, .16);
       --hazard: repeating-linear-gradient(-45deg, #f6d31c 0 12px, #161616 12px 24px);
-      --display: 'Big Shoulders Display', 'Arial Narrow', Impact, sans-serif;
-      --sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      --font: 'Satoshi', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
       --ease: cubic-bezier(.2, .7, .2, 1);
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html, body { height: 100%; }
     body {
       overflow: hidden; background: var(--yellow); color: var(--smoke);
-      font-family: var(--sans); -webkit-font-smoothing: antialiased;
+      font-family: var(--font); -webkit-font-smoothing: antialiased;
     }
     .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
@@ -99,18 +98,30 @@
     .menu-open .menu { transform: none; }
     .menu-open .scrim { opacity: 1; }
 
-    .ventures { list-style: none; border-top: 1px solid var(--line); }
-    .ventures li { border-bottom: 1px solid var(--line); }
-    .ventures a { display: block; padding: 1.1rem 0 1.3rem; color: inherit; text-decoration: none; }
-    .ventures .name {
-      display: block; font-family: var(--display); font-weight: 800; text-transform: uppercase;
-      font-size: clamp(3.2rem, 10vw, 6.75rem); line-height: .86; letter-spacing: -.005em;
-      transition: color .2s;
+    /* Divisions: an accordion, one open at a time. Companies with no site yet are plain text; links are brighter. */
+    .divisions { border-top: 1px solid var(--line); }
+    .divisions > * { border-bottom: 1px solid var(--line); }
+    .division {
+      display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+      padding: .85rem 0; color: inherit; text-decoration: none; cursor: pointer; list-style: none;
+      font-weight: 900; text-transform: uppercase; letter-spacing: -.02em;
+      font-size: clamp(1.6rem, 7vw, 3.25rem); line-height: 1; transition: color .2s;
     }
-    .ventures .keep-case { text-transform: none; }   /* "Be" is always written Be, never uppercased */
-    .ventures .what { display: block; margin-top: .55rem; font-size: .95rem; color: var(--stone); }
-    .ventures a:hover .name { color: var(--yellow); }
-    .ventures a:focus-visible { outline: 2px solid var(--yellow); outline-offset: 4px; }
+    summary.division::-webkit-details-marker { display: none; }
+    summary.division::after { content: '+'; font-weight: 500; }
+    details[open] > summary.division::after { content: '\2212'; }
+    .division:hover, details[open] > .division { color: var(--yellow); }
+    .division:focus-visible, .inside a:focus-visible { outline: 2px solid var(--yellow); outline-offset: 3px; }
+
+    .inside { padding: .25rem 0 1.5rem; }
+    .inside h2 {
+      margin: 1.1rem 0 .4rem; font-size: .8rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--stone);
+    }
+    .inside h2:first-child { margin-top: 0; }
+    .inside ul { list-style: none; }
+    .inside li { padding: .25rem 0; font-size: clamp(1.05rem, 2.6vw, 1.3rem); font-weight: 900; line-height: 1.25; color: var(--stone); }
+    .inside a { color: var(--ivory); text-underline-offset: 4px; }
+    .inside a:hover { color: var(--yellow); }
 
     .menu-foot { margin-top: auto; padding-top: 2.5rem; font-size: .9rem; line-height: 1.8; color: var(--stone); }
     .menu-foot em { display: block; color: var(--ivory); }
@@ -138,11 +149,73 @@
   <div class="scrim" aria-hidden="true"></div>
 
   <nav class="menu" id="menu" aria-label="Quadrozzi companies" inert>
-    <ul class="ventures">
-      <li><a href="gbx/"><span class="name">GBX</span><span class="what">Gowanus Bay Terminal</span></a></li>
-      <li><a href="https://djmiddlefinger.github.io/be-brooklyn-equine/" target="_blank" rel="noopener"><span class="name keep-case">Be</span><span class="what">Brooklyn Equine ↗<span class="sr-only"> (opens in a new tab)</span></span></a></li>
-      <li><a href="helping-hooves/"><span class="name">Helping Hoof Initiative</span><span class="what">Horses and community in Brooklyn</span></a></li>
-    </ul>
+    <div class="divisions">
+      <details name="division">
+        <summary class="division">Real Estate</summary>
+        <div class="inside">
+          <h2>Industrial</h2>
+          <ul>
+            <li><a href="gbx/terminals/bbx/">BBX™~Barbados Basin Terminal</a></li>
+            <li><a href="gbx/">GBX™~Gowanus Bay Terminal</a></li>
+            <li><a href="gbx/terminals/vbx/">VBX™~Vernam Basin Terminal</a></li>
+          </ul>
+          <h2>Commercial</h2>
+          <ul><li>PPS▪Prospect Park Stable™</li></ul>
+          <h2>Residential</h2>
+          <ul><li>(tbn)</li></ul>
+        </div>
+      </details>
+      <details name="division">
+        <summary class="division">Operations</summary>
+        <div class="inside">
+          <h2>Cement &amp; cementitious materials</h2>
+          <ul><li>Quadro▪cem™ aka NYCEMCO</li></ul>
+          <h2>Concrete</h2>
+          <ul><li>Quadrozzi™Concrete</li></ul>
+          <h2>Rock salt</h2>
+          <ul><li>Quadro▪salt™</li></ul>
+          <h2>Studios</h2>
+          <ul><li>Quadrozzi™Studios</li></ul>
+          <h2>Transportation</h2>
+          <ul><li>Quadro▪trax™</li></ul>
+        </div>
+      </details>
+      <details name="division">
+        <summary class="division">Design</summary>
+        <div class="inside">
+          <ul><li>Quadrozzi™disegno</li></ul>
+        </div>
+      </details>
+      <details name="division">
+        <summary class="division">Recreational</summary>
+        <div class="inside">
+          <h2>Horse care &amp; riding</h2>
+          <ul>
+            <li><a href="https://djmiddlefinger.github.io/be-brooklyn-equine/" target="_blank" rel="noopener">Be™•Brooklyn equine™ ↗<span class="sr-only"> (opens in a new tab)</span></a></li>
+            <li>PPS▪Prospect Park Stable™</li>
+          </ul>
+        </div>
+      </details>
+      <details name="division">
+        <summary class="division">Not-for-profit</summary>
+        <div class="inside">
+          <h2>Equine</h2>
+          <ul><li><a href="helping-hooves/">hhi™•helpinghoof initiative •501(c)(3)</a></li></ul>
+        </div>
+      </details>
+      <details name="division">
+        <summary class="division">Sponsorships</summary>
+        <div class="inside">
+          <ul>
+            <li><a href="sponsorships/">All</a></li>
+            <li><a href="sponsorships/?category=Environmental">Environmental</a></li>
+            <li><a href="sponsorships/?category=Arts%20%E2%80%A2%20Theater%20%E2%80%A2%20Film">Arts • Theater • Film</a></li>
+          </ul>
+        </div>
+      </details>
+      <div><a class="division" href="news/">In the News</a></div>
+      <div><a class="division" href="special/">Special</a></div>
+    </div>
     <p class="menu-foot">
       <em>“We don’t mean business, we make it.”</em>
       <a class="contact" href="contact/">Contact us</a>
@@ -355,7 +428,7 @@
         toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
         menu.inert = !open;
         face.inert = open;
-        if (open) menu.querySelector('a').focus();
+        if (open) menu.querySelector('summary').focus();
       }
       toggle.addEventListener('click', function () { setMenu(!document.body.classList.contains('menu-open')); });
       document.querySelector('.scrim').addEventListener('click', function () { setMenu(false); });

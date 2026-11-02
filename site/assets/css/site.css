@@ -13,8 +13,8 @@
   --line: #dcd8d0;
   --hazard: repeating-linear-gradient(-45deg, var(--yellow) 0 12px, var(--asphalt) 12px 24px);
 
-  --display: 'Big Shoulders Display', 'Arial Narrow', Impact, sans-serif;
-  --sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --display: 'Satoshi', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --sans: 'Satoshi', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
 
   --side: 272px;
   --gutter: clamp(16px, 4vw, 48px);
@@ -42,7 +42,7 @@ a { color: inherit; }
 }
 .side-brand {
   display: block; padding: 0 1.5rem; text-decoration: none;
-  font-family: var(--display); font-weight: 800; text-transform: uppercase; font-size: 2.6rem; line-height: .88;
+  font-family: var(--display); font-weight: 900; text-transform: uppercase; font-size: 2rem; line-height: 1;
 }
 .side-brand small {
   display: block; margin-top: .6rem; font-family: var(--sans); font-weight: 500; text-transform: none;
@@ -51,8 +51,8 @@ a { color: inherit; }
 .side-nav { list-style: none; }
 .side-nav a {
   display: block; padding: .5rem 1.5rem .5rem calc(1.5rem - 4px); border-left: 4px solid transparent;
-  text-decoration: none; font-family: var(--display); font-weight: 700; text-transform: uppercase;
-  font-size: 1.6rem; line-height: 1.05; color: rgba(243, 241, 236, .8);
+  text-decoration: none; font-family: var(--display); font-weight: 900; text-transform: uppercase;
+  font-size: 1.1rem; line-height: 1.2; color: rgba(243, 241, 236, .8);
 }
 .side-nav a:hover { color: var(--concrete); background: rgba(243, 241, 236, .06); }
 .side-nav a.is-here, .side-nav a[aria-current] { color: var(--yellow); border-left-color: var(--yellow); }
@@ -73,15 +73,15 @@ a { color: inherit; }
 .page { flex: 1; width: 100%; max-width: 1160px; padding: clamp(2rem, 5vw, 4rem) var(--gutter) clamp(4rem, 8vw, 6rem); }
 .page > * + * { margin-top: 2rem; }
 .page h1 {
-  font-family: var(--display); font-weight: 800; text-transform: uppercase;
-  font-size: clamp(3rem, 8vw, 6.5rem); line-height: .88; letter-spacing: -.005em; overflow-wrap: anywhere;
+  font-family: var(--display); font-weight: 900; text-transform: uppercase;
+  font-size: clamp(2.2rem, 5.5vw, 4.5rem); line-height: 1; letter-spacing: -.02em; overflow-wrap: anywhere;
 }
 .page h2 {
-  font-family: var(--display); font-weight: 800; text-transform: uppercase;
-  font-size: clamp(2rem, 4vw, 3rem); line-height: .95; margin-top: clamp(3rem, 6vw, 4.5rem);
+  font-family: var(--display); font-weight: 900; text-transform: uppercase;
+  font-size: clamp(1.5rem, 3vw, 2.25rem); line-height: 1.05; margin-top: clamp(3rem, 6vw, 4.5rem);
 }
 .page h2 + * { margin-top: 1.25rem; }
-.page h3 { font-family: var(--display); font-weight: 700; text-transform: uppercase; font-size: 1.6rem; line-height: 1; margin-bottom: .45rem; }
+.page h3 { font-family: var(--display); font-weight: 900; text-transform: uppercase; font-size: 1.2rem; line-height: 1.1; margin-bottom: .45rem; }
 .page > .lead { margin-top: 1.25rem; font-size: clamp(1.15rem, 1.8vw, 1.35rem); line-height: 1.45; max-width: 46ch; }
 .prose { max-width: 62ch; }
 .prose p + p { margin-top: 1rem; }
@@ -107,7 +107,7 @@ figcaption { margin-top: .6rem; font-size: .8rem; color: var(--stone); }
 }
 .lever img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; }
 .lever span { display: flex; flex-direction: column; gap: .35rem; padding: .9rem 1.1rem 1.1rem; }
-.lever b { font-family: var(--display); font-weight: 800; text-transform: uppercase; font-size: 1.75rem; line-height: .95; }
+.lever b { font-family: var(--display); font-weight: 900; text-transform: uppercase; font-size: 1.2rem; line-height: 1.05; }
 .lever small { font-size: .85rem; line-height: 1.4; color: rgba(243, 241, 236, .7); }
 .lever:hover { border-top-color: var(--yellow); }
 .lever:hover b { color: var(--yellow); }
@@ -118,7 +118,7 @@ figcaption { margin-top: .6rem; font-size: .8rem; color: var(--stone); }
 /* ---------- Facts ---------- */
 .facts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.25rem; }
 .facts div { border-top: 3px solid var(--asphalt); padding-top: .9rem; }
-.facts dt { font-family: var(--display); font-weight: 800; font-size: clamp(2.4rem, 4.5vw, 3.75rem); line-height: .9; }
+.facts dt { font-family: var(--display); font-weight: 900; font-size: clamp(1.9rem, 3.5vw, 2.9rem); line-height: 1; }
 .facts dd { margin-top: .5rem; font-size: .9rem; color: var(--stone); }
 
 /* ---------- Lists, quotes, cards ---------- */
@@ -140,7 +140,7 @@ blockquote cite { display: block; margin-top: .9rem; font-style: normal; font-si
 /* ---------- Timeline, gallery, steps ---------- */
 .timeline { list-style: none; max-width: 860px; }
 .timeline li { display: grid; grid-template-columns: 6rem minmax(0, 1fr); gap: 0 2rem; padding: 1.25rem 0; border-top: 1px solid var(--line); }
-.timeline .yr { font-family: var(--display); font-weight: 800; font-size: 2.1rem; line-height: 1; color: var(--orange-ink); }
+.timeline .yr { font-family: var(--display); font-weight: 900; font-size: 1.6rem; line-height: 1.1; color: var(--orange-ink); }
 .timeline h3 { font-size: 1.5rem; }
 .timeline p { color: #3c3a37; max-width: 60ch; }
 
@@ -149,7 +149,7 @@ blockquote cite { display: block; margin-top: .9rem; font-style: normal; font-si
 
 .steps { list-style: none; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.25rem; counter-reset: step; }
 .steps li { border-top: 3px solid var(--asphalt); padding-top: 1rem; counter-increment: step; }
-.steps li::before { content: counter(step); display: block; font-family: var(--display); font-weight: 800; font-size: 2.4rem; line-height: 1; color: var(--orange-ink); margin-bottom: .5rem; }
+.steps li::before { content: counter(step); display: block; font-family: var(--display); font-weight: 900; font-size: 1.9rem; line-height: 1; color: var(--orange-ink); margin-bottom: .5rem; }
 .steps p { color: var(--stone); font-size: .95rem; }
 
 /* ---------- Contact + form ---------- */
