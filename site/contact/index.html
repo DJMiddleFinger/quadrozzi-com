@@ -28,21 +28,12 @@
     p { font-size: clamp(1.05rem, 2.2vw, 1.25rem); line-height: 1.5; }
     a { color: inherit; overflow-wrap: anywhere; }
 
-    /* The site's main address: big and first */
-    .main-email { margin-top: clamp(2.5rem, 6vw, 3.5rem); }
+    /* The site's one address, big */
+    .main-email { margin-top: clamp(1.5rem, 4vw, 2.5rem); }
     .main-email a {
       font-size: clamp(1.7rem, 6vw, 3rem); font-weight: 700; letter-spacing: -.01em;
       text-decoration-thickness: 3px; text-underline-offset: 8px;
     }
-
-    /* Other contacts: smaller, quieter, further down */
-    .more { margin-top: clamp(4rem, 10vw, 6rem); display: grid; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); gap: 2rem; }
-    h2 {
-      margin-bottom: .4rem; font-family: 'Big Shoulders Display', 'Arial Narrow', Impact, sans-serif; font-weight: 800;
-      text-transform: uppercase; font-size: 1.2rem; line-height: 1; letter-spacing: .02em;
-    }
-    .keep-case { text-transform: none; }   /* "Be" is always written Be, never uppercased */
-    .more a { font-size: 1.05rem; font-weight: 500; text-underline-offset: 3px; }
 
     .back { display: inline-block; margin-top: clamp(3.5rem, 8vw, 4.5rem); padding: .9rem 1.6rem; background: var(--smoke); color: var(--yellow); text-decoration: none; font-weight: 600; }
     .back:hover { background: #000; }
@@ -52,12 +43,7 @@
 <body>
   <main>
     <h1>Contact us</h1>
-    <p>Email us and we’ll get back to you, usually within two business days.</p>
     <p class="main-email"><a href="mailto:info@Quadrozzi.com">info@Quadrozzi.com</a></p>
-    <div class="more">
-      <div><h2 class="keep-case">Be</h2><a href="mailto:Be@Quadrozzi.com">Be@Quadrozzi.com</a></div>
-      <div><h2>CTO GBX</h2><a href="mailto:fedor.shot@Quadrozzi.com">fedor.shot@Quadrozzi.com</a></div>
-    </div>
     <a class="back" href="../">Back to Quadrozzi</a>
   </main>
 </body>

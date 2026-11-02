@@ -230,7 +230,7 @@ def terminal(path, label, name, text):
 
 GBX = dict(
     folder='gbx', name='GBX Gowanus Bay Terminal', short='GBX', tagline='Gowanus Bay Terminal, Red Hook',
-    above=[('Quadrozzi', '../')], owner='Quadrozzi', contacts=[('', 'info@Quadrozzi.com'), ('CTO GBX', 'fedor.shot@Quadrozzi.com')],
+    above=[('Quadrozzi', '../')], owner='Quadrozzi', contacts=[('', 'info@Quadrozzi.com')],
     contact_note='Booking the site for a shoot or an event? <a href="{R}book/">Use the booking form</a> so we get your dates and details in one message.',
     pages=[
         dict(path='', nav='Overview', h1='Gowanus Bay Terminal', head=GBX_LD,
@@ -552,7 +552,6 @@ def contact_page(site):
     return dict(path='contact', nav='Contact', h1='Contact us',
                 desc=f'How to reach {site["name"]}.',
                 body=f'''
-      <p class="lead">Email us and we’ll get back to you, usually within two business days.</p>
       {main}
       <div class="prose"><p>{site["contact_note"]}</p></div>{more}''')
 
