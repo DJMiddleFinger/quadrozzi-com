@@ -99,7 +99,7 @@
     .menu-open .menu { transform: none; }
     .menu-open .scrim { opacity: 1; }
 
-    /* Divisions: an accordion, one open at a time. Companies with no site yet are plain text; links are brighter. */
+    /* Divisions: an accordion, any number open at once. Companies with no site yet are plain text; links are brighter. */
     .divisions { border-top: 1px solid var(--line); }
     .divisions > * { border-bottom: 1px solid var(--line); }
     .division {
@@ -117,7 +117,7 @@
     /* Threads, like nested Reddit comments: a line runs down each level with a curved elbow into every row.
        The way to whatever is open or hovered turns yellow. Browsers without :has() just show gray lines. */
     .thread { --elbow: .95rem; list-style: none; margin-left: .55rem; }
-    details[name] > .thread { padding-bottom: 1.25rem; }
+    .divisions > details > .thread { padding-bottom: 1.25rem; }
     .thread > li { position: relative; padding-left: 1.4rem; font-size: 1.15rem; font-weight: 900; line-height: 1.25; color: var(--stone); }
     .thread > li::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; border-left: 2px solid var(--thread); }
     .thread > li:last-child::before { display: none; }
@@ -166,7 +166,7 @@
 
   <nav class="menu" id="menu" aria-label="Quadrozzi companies" inert>
     <div class="divisions">
-      <details name="division">
+      <details>
         <summary class="division">Real Estate</summary>
         <ul class="thread">
           <li><details><summary>Industrial</summary>
@@ -184,7 +184,7 @@
           </details></li>
         </ul>
       </details>
-      <details name="division">
+      <details>
         <summary class="division">Operations</summary>
         <ul class="thread">
           <li><details><summary>Cement &amp; cementitious materials</summary>
@@ -204,11 +204,11 @@
           </details></li>
         </ul>
       </details>
-      <details name="division">
+      <details>
         <summary class="division">Design</summary>
         <ul class="thread"><li><span>Quadrozzi™disegno</span></li></ul>
       </details>
-      <details name="division">
+      <details>
         <summary class="division">Recreational</summary>
         <ul class="thread">
           <li><details><summary>Horse care &amp; riding</summary>
@@ -219,7 +219,7 @@
           </details></li>
         </ul>
       </details>
-      <details name="division">
+      <details>
         <summary class="division">Not-for-profit</summary>
         <ul class="thread">
           <li><details><summary>Equine</summary>
@@ -227,7 +227,7 @@
           </details></li>
         </ul>
       </details>
-      <details name="division">
+      <details>
         <summary class="division">Sponsorships</summary>
         <ul class="thread">
           <li><a href="sponsorships/">All</a></li>
