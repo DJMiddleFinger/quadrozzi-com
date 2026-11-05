@@ -9,8 +9,10 @@
 | Be™ Brooklyn Equine | https://DJMiddleFinger.github.io/be-brooklyn-equine/ |
 | Helping Hoof Initiative | https://djmiddlefinger.github.io/quadrozzi-com/helping-hooves/ |
 
-The home page is a single no-scroll face page: the Q logo drops in from the top of the screen (once per
-browser session), and a four-bar button in the top left opens a side panel. The panel is an accordion of the
+The home page is a single no-scroll face page. The Q is really a mudflap: once per browser session a wireframe
+mixer truck backs up until its flap fills the screen (`site/assets/js/truck-intro.js`, WebGL; open a new tab to replay,
+and check its math with `node tools/test_truck.js`). Its model, `site/assets/truck.bin`, is built from an FBX by
+`python tools/build_truck.py path/to/truck.fbx`. A four-bar button in the top left opens a side panel. The panel is an accordion of the
 company's 8 divisions (Real Estate, Operations, Design, Recreational, Not-for-profit, Sponsorships, In the News,
 Special), from the "Q website v.03.2 categories" brief. Companies with no site yet are plain text; edit them in
 `site/index.html`.
