@@ -3,7 +3,7 @@ const assert = require('assert');
 const fs = require('fs');
 const path = require('path');
 const { framing, cameraAt, flapQuad, quadMatrix, viewProjection, spinMatrix, speed, traveled, pathAt, curveAt, rideAt, poseMatrix, bodyMatrix,
-  partMatrix, wheelAngle, steerAngle, transform, readTruck, FLAP_X, FLAP_Y, FLAP_TOP, FLAP_H, BRAKE, STOP, FILL_END, REAR_Z, WHEELBASE } = require('../site/assets/js/truck-intro.js');
+  partMatrix, wheelAngle, steerAngle, transform, readTruck, groundTexture, FLAP_X, FLAP_Y, FLAP_TOP, FLAP_H, BRAKE, STOP, FILL_END, REAR_Z, WHEELBASE } = require('../site/assets/js/truck-intro.js');
 
 const close = (a, b, msg, within = 1e-6) => assert(Math.abs(a - b) < within, `${msg}: ${a} vs ${b}`);
 
@@ -143,5 +143,24 @@ for (const part of parts.filter(p => p.rate === 0)) {   // at rest, in final pos
       assert(!(at(2) < 0 && Math.abs(at(0) - FLAP_X) < halfW && Math.abs(at(1) - FLAP_Y) < FLAP_H / 2), 'line behind the flap');
     }
   }
+}
+// The tires touch the ground: every wheel's lowest point is within a centimetre above y = 0
+for (const part of parts.filter(p => p.rate < 0)) {
+  let low = Infinity;
+  for (let i = 1; i < part.verts.length; i += 3) low = Math.min(low, part.verts[i] / 1000);
+  assert(low >= 0 && low < 0.01, `wheel floats or sinks: ${low}`);
+}
+
+// The ground's tile is valid premultiplied color, and neither lightens nor darkens the grey much overall
+{
+  const size = 64, tile = groundTexture(size);
+  assert.strictEqual(tile.length, size * size * 4);
+  assert.deepStrictEqual(tile, groundTexture(size), 'same every visit');
+  let light = 0, dark = 0;
+  for (let i = 0; i < tile.length; i += 4) {
+    assert(tile[i] <= tile[i + 3], 'color above alpha');
+    if (tile[i]) light++; else if (tile[i + 3]) dark++;
+  }
+  assert(light > size * size / 5 && dark > size * size / 5, `shades both ways: ${light} light, ${dark} dark`);
 }
 console.log('ok');

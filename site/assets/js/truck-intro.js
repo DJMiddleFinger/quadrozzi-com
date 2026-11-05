@@ -12,6 +12,7 @@
 // front wheels with the tandem rolling straight behind, its wheels roll exactly the distance they cover, and its body rides
 // on simulated springs, so braking squats the rear and the stop itself lets the body rock back.
 // All lines are under the flaps. Nothing sits behind the flap we land on (test_truck.js checks this).
+// It reverses across a concrete yard, a texture generated here so there's no image to load.
 (function () {
   var FLAP_H = 0.84;              // the flap's width comes from the image's shape
   var FLAP_X = -0.97;             // the flap we land on, behind the driver's-side duals; its twin is at -FLAP_X
@@ -38,6 +39,10 @@
   var BRAKE_BITE = 0.3;                     // seconds for air brakes to build up
 
   var DEPTH_NEAR = 0.2, DEPTH_FAR = 60;
+
+  // The yard: concrete at y = 0, where the tires touch, dissolving into the page's grey with distance
+  var GROUND_TILE = 4, GROUND_SIZE = 512;   // one slab in metres, and in pixels (a power of two, so it can repeat)
+  var GROUND_FADE = [12, 40];               // metres from the camera: fully there, fully gone
 
   // Slower machines, in average milliseconds per frame: above SLOW_MS draw at a lower resolution, above GIVE_UP_MS end the shot
   var SLOW_MS = 30, GIVE_UP_MS = 90;
@@ -217,6 +222,32 @@
     return parts;
   }
 
+  // ---------- The ground ----------
+
+  // One slab of concrete as premultiplied RGBA over the page's grey (white lightens it, black darkens it): soft blotches and
+  // aggregate specks that wrap around the edges, and a saw-cut joint along two sides. Seeded, so it looks the same every visit.
+  function groundTexture(size) {
+    var seed = 12345, GRID = 32, blotches = [], data = new Uint8Array(size * size * 4);
+    function rand() { seed = seed * 16807 % 2147483647; return seed / 2147483647; }
+    for (var i = 0; i < GRID * GRID; i++) blotches.push(rand() - 0.5);
+    function blotch(x, y, cells) {    // soft noise, cells wide per tile (a factor of GRID), wrapping around the edges
+      var gx = x / size * cells, gy = y / size * cells, ix = Math.floor(gx), iy = Math.floor(gy), kx = smooth(gx - ix), ky = smooth(gy - iy);
+      function cell(a, b) { return blotches[(b % cells) * GRID + a % cells]; }
+      return lerp(lerp(cell(ix, iy), cell(ix + 1, iy), kx), lerp(cell(ix, iy + 1), cell(ix + 1, iy + 1), kx), ky);
+    }
+    for (var y = 0; y < size; y++) {
+      for (var x = 0; x < size; x++) {
+        var shade = blotch(x, y, 6) * 0.08 + blotch(x, y, GRID) * 0.1 + (rand() - 0.5) * 0.22;
+        if (rand() < 0.03) shade += (rand() - 0.5) * 0.7;
+        if (x < 2 || y < 2) shade = -0.32;
+        var a = Math.min(1, Math.abs(shade)) * 255, v = shade > 0 ? a : 0, at = (y * size + x) * 4;
+        data[at] = data[at + 1] = data[at + 2] = v;
+        data[at + 3] = a;
+      }
+    }
+    return data;
+  }
+
   // ---------- Matrices (column by column, as WebGL wants them) ----------
 
   // Truck coordinates to clip space, matching toScreen exactly so the lines stay registered with the flaps
@@ -311,17 +342,35 @@
   function makeRenderer(canvas, parts, W, H) {
     var gl = canvas.getContext('webgl');
     if (!gl) throw new Error('no WebGL');
-    var program = gl.createProgram();
-    gl.attachShader(program, shader(gl, gl.VERTEX_SHADER, 'attribute vec3 p;uniform mat4 vp,model;void main(){gl_Position=vp*model*vec4(p*.001,1.);}'));
-    gl.attachShader(program, shader(gl, gl.FRAGMENT_SHADER, 'void main(){gl_FragColor=vec4(1.);}'));
-    gl.linkProgram(program);
-    gl.useProgram(program);
-    var at = gl.getAttribLocation(program, 'p'), vp = gl.getUniformLocation(program, 'vp'), model = gl.getUniformLocation(program, 'model');
+    var at = 0;
+    function link(vertex, fragment) {
+      var p = gl.createProgram();
+      gl.attachShader(p, shader(gl, gl.VERTEX_SHADER, vertex));
+      gl.attachShader(p, shader(gl, gl.FRAGMENT_SHADER, fragment));
+      gl.bindAttribLocation(p, at, 'p');
+      gl.linkProgram(p);
+      return p;
+    }
+    var program = link('attribute vec3 p;uniform mat4 vp,model;void main(){gl_Position=vp*model*vec4(p*.001,1.);}', 'void main(){gl_FragColor=vec4(1.);}');
+    var vp = gl.getUniformLocation(program, 'vp'), model = gl.getUniformLocation(program, 'model');
+    var groundProgram = link('attribute vec3 p;uniform mat4 vp;varying vec3 w;void main(){w=p;gl_Position=vp*vec4(p,1.);}',
+      'precision highp float;uniform sampler2D tile;uniform vec3 eye;varying vec3 w;void main(){' +
+      'gl_FragColor=texture2D(tile,w.xz/' + GROUND_TILE.toFixed(1) + ')*(1.-smoothstep(' + GROUND_FADE[0].toFixed(1) + ',' + GROUND_FADE[1].toFixed(1) + ',distance(w,eye)));}');
+    var groundVp = gl.getUniformLocation(groundProgram, 'vp'), groundEye = gl.getUniformLocation(groundProgram, 'eye');
     gl.enableVertexAttribArray(at);
     gl.enable(gl.DEPTH_TEST);
     gl.depthFunc(gl.LEQUAL);
     gl.polygonOffset(1, 1);
     gl.clearColor(0, 0, 0, 0);    // the grey is the page's own background
+    gl.enable(gl.BLEND);
+    gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);   // the canvas and the ground's texture are both premultiplied
+
+    gl.bindTexture(gl.TEXTURE_2D, gl.createTexture());
+    gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, GROUND_SIZE, GROUND_SIZE, 0, gl.RGBA, gl.UNSIGNED_BYTE, groundTexture(GROUND_SIZE));
+    gl.generateMipmap(gl.TEXTURE_2D);   // far away the specks average out instead of shimmering
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR_MIPMAP_LINEAR);
+    var aniso = gl.getExtension('EXT_texture_filter_anisotropic');
+    if (aniso) gl.texParameterf(gl.TEXTURE_2D, aniso.TEXTURE_MAX_ANISOTROPY_EXT, Math.min(8, gl.getParameter(aniso.MAX_TEXTURE_MAX_ANISOTROPY_EXT)));
 
     function upload(target, data) {
       var buffer = gl.createBuffer();
@@ -332,6 +381,7 @@
     parts.forEach(function (part) {
       part.gl = { verts: upload(gl.ARRAY_BUFFER, part.verts), tris: upload(gl.ELEMENT_ARRAY_BUFFER, part.tris), lines: upload(gl.ELEMENT_ARRAY_BUFFER, part.lines) };
     });
+    var groundQuad = upload(gl.ARRAY_BUFFER, new Float32Array([-DEPTH_FAR, 0, -2, DEPTH_FAR, 0, -2, DEPTH_FAR, 0, DEPTH_FAR, -DEPTH_FAR, 0, DEPTH_FAR]));
 
     function pass(kind, mode, count) {
       parts.forEach(function (part) {
@@ -346,14 +396,26 @@
     return function draw(cam, t) {
       gl.viewport(0, 0, canvas.width, canvas.height);
       gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
-      gl.uniformMatrix4fv(vp, false, viewProjection(cam, W, H));
+      var matrix = viewProjection(cam, W, H);
+      gl.useProgram(program);
+      gl.uniformMatrix4fv(vp, false, matrix);
       parts.forEach(function (part) { part.model = partMatrix(part, t); });
-      // Faces into the depth buffer only, pushed back a touch so the lines on them win; then the lines
+      // Faces into the depth buffer only, pushed back a touch so the lines on them win
       gl.colorMask(false, false, false, false);
       gl.enable(gl.POLYGON_OFFSET_FILL);
       pass('tris', gl.TRIANGLES);
       gl.colorMask(true, true, true, true);
       gl.disable(gl.POLYGON_OFFSET_FILL);
+      // The ground, wherever the truck's faces don't hide it; then the lines
+      gl.useProgram(groundProgram);
+      gl.uniformMatrix4fv(groundVp, false, matrix);
+      gl.uniform3fv(groundEye, cam.pos);
+      gl.bindBuffer(gl.ARRAY_BUFFER, groundQuad);
+      gl.vertexAttribPointer(at, 3, gl.FLOAT, false, 0, 0);
+      gl.depthMask(false);
+      gl.drawArrays(gl.TRIANGLE_FAN, 0, 4);
+      gl.depthMask(true);
+      gl.useProgram(program);
       pass('lines', gl.LINES);
     };
   }
@@ -361,7 +423,7 @@
   if (typeof module !== 'undefined') {
     module.exports = { framing: framing, cameraAt: cameraAt, flapQuad: flapQuad, quadMatrix: quadMatrix, viewProjection: viewProjection, spinMatrix: spinMatrix,
       speed: speed, traveled: traveled, pathAt: pathAt, curveAt: curveAt, rideAt: rideAt, poseMatrix: poseMatrix, bodyMatrix: bodyMatrix,
-      partMatrix: partMatrix, wheelAngle: wheelAngle, steerAngle: steerAngle, transform: transform, readTruck: readTruck,
+      partMatrix: partMatrix, wheelAngle: wheelAngle, steerAngle: steerAngle, transform: transform, readTruck: readTruck, groundTexture: groundTexture,
       FLAP_X: FLAP_X, FLAP_Y: FLAP_Y, FLAP_TOP: FLAP_TOP, FLAP_H: FLAP_H, BRAKE: BRAKE, STOP: STOP, FILL_END: FILL_END, REAR_Z: REAR_Z, WHEELBASE: WHEELBASE };
     return;
   }
