@@ -13,6 +13,8 @@
       if (content) content.inert = open;
     };
     toggle.addEventListener('click', function () { setNav(!isOpen()); });
+    // Sidebar links that jump within the page don't navigate, so close the menu for them too
+    sidebar.addEventListener('click', function (e) { if (e.target.closest('a')) setNav(false); });
     document.addEventListener('click', function (e) {
       if (isOpen() && !sidebar.contains(e.target) && !toggle.contains(e.target)) setNav(false);
     });

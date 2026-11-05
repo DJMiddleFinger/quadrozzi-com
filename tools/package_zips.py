@@ -29,17 +29,14 @@ def site_zip():
 def under_construction_zip():
     home = (SITE / 'index.html').read_text(encoding='utf-8')
     swaps = {
-        '<a href="gbx/terminals/bbx/">': '<a href="under-construction.html?site=bbx">',
         '<a href="gbx/">': '<a href="under-construction.html?site=gbx">',
-        '<a href="gbx/terminals/vbx/">': '<a href="under-construction.html?site=vbx">',
+        '<a href="terminals/#bbx">': '<a href="under-construction.html?site=bbx">',
+        '<a href="terminals/#vbx">': '<a href="under-construction.html?site=vbx">',
+        '<a href="terminals/">': '<a href="under-construction.html?site=terminals">',
         '<a href="https://djmiddlefinger.github.io/be-brooklyn-equine/" target="_blank" rel="noopener">': '<a href="under-construction.html?site=be">',
         ' ↗<span class="sr-only"> (opens in a new tab)</span>': '',
         '<a href="helping-hooves/">': '<a href="under-construction.html?site=hhi">',
-        '<a href="sponsorships/">': '<a href="under-construction.html?site=sponsorships">',
-        '<a href="sponsorships/?category=Environmental">': '<a href="under-construction.html?site=sponsorships">',
-        '<a href="sponsorships/?category=Arts%20%E2%80%A2%20Theater%20%E2%80%A2%20Film">': '<a href="under-construction.html?site=sponsorships">',
         '<a class="division" href="news/">': '<a class="division" href="under-construction.html?site=news">',
-        '<a class="division" href="special/">': '<a class="division" href="under-construction.html?site=special">',
     }
     for old, new in swaps.items():
         assert home.count(old) == 1, f'home page menu changed; update the swaps for: {old}'

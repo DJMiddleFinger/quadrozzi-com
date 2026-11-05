@@ -55,7 +55,7 @@ a { color: inherit; }
   font-size: 1.1rem; line-height: 1.2; color: rgba(243, 241, 236, .8);
 }
 .side-nav a:hover { color: var(--concrete); background: rgba(243, 241, 236, .06); }
-.side-nav a.is-here, .side-nav a[aria-current] { color: var(--yellow); border-left-color: var(--yellow); }
+.side-nav a[aria-current] { color: var(--yellow); border-left-color: var(--yellow); }
 
 /* ---------- Breadcrumb bar ---------- */
 .content { margin-left: var(--side); min-height: 100vh; display: flex; flex-direction: column; }
@@ -81,6 +81,7 @@ a { color: inherit; }
   font-size: clamp(1.5rem, 3vw, 2.25rem); line-height: 1.05; margin-top: clamp(3rem, 6vw, 4.5rem);
 }
 .page h2 + * { margin-top: 1.25rem; }
+.page h2[id] { scroll-margin-top: 72px; }  /* clear the sticky breadcrumb bar when jumping to a section */
 .page h3 { font-family: var(--display); font-weight: 900; text-transform: uppercase; font-size: 1.2rem; line-height: 1.1; margin-bottom: .45rem; }
 .page > .lead { margin-top: 1.25rem; font-size: clamp(1.15rem, 1.8vw, 1.35rem); line-height: 1.45; max-width: 46ch; }
 .prose { max-width: 62ch; }
@@ -98,22 +99,18 @@ figcaption { margin-top: .6rem; font-size: .8rem; color: var(--stone); }
 }
 .btn:hover { background: var(--orange-hover); }
 
-/* ---------- Levers: buttons to the pages one level down ---------- */
+/* ---------- Levers: a row of large buttons (Get involved page) ---------- */
 .levers { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr)); gap: 10px; }
 .lever {
   display: flex; flex-direction: column; text-decoration: none;
   background: var(--asphalt); color: var(--concrete); border-top: 6px solid var(--asphalt);
   transition: border-color .2s, background .2s;
 }
-.lever img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; }
 .lever span { display: flex; flex-direction: column; gap: .35rem; padding: .9rem 1.1rem 1.1rem; }
 .lever b { font-family: var(--display); font-weight: 900; text-transform: uppercase; font-size: 1.2rem; line-height: 1.05; }
 .lever small { font-size: .85rem; line-height: 1.4; color: rgba(243, 241, 236, .7); }
 .lever:hover { border-top-color: var(--yellow); }
 .lever:hover b { color: var(--yellow); }
-.lever[aria-current] { background: var(--orange); border-top-color: var(--orange); color: var(--asphalt); }
-.lever[aria-current] b { color: var(--asphalt); }
-.lever[aria-current] small { color: rgba(22, 22, 22, .75); }
 
 /* ---------- Facts ---------- */
 .facts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.25rem; }

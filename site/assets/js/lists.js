@@ -1,11 +1,12 @@
-// Search for the Sponsorships, In the News and Special pages (built by tools/build_site.py).
-// Each page's entries live in assets/data/<list>.json, as an array of objects:
-//   { "date": "2026-10-16", "name": "...", "title": "...", "category": "...", "company": "...", "link": "https://..." }
-// "name" is the organization or media outlet. "title" and "link" are optional.
+// Search for the In the News page (built by tools/build_site.py).
+// Its entries live in assets/data/news.json, as an array of objects:
+//   { "type": "News", "date": "2026-10-16", "name": "...", "title": "...", "category": "...", "company": "...", "link": "https://..." }
+// "type" is News, Sponsorship or Special. "name" is the organization or media outlet. "title" and "link" are optional.
 
 // Dates are ISO strings (YYYY-MM-DD), so they compare correctly as text.
 function matches(entry, f) {
-  return (!f.from || entry.date >= f.from)
+  return (!f.type || entry.type === f.type)
+    && (!f.from || entry.date >= f.from)
     && (!f.to || entry.date <= f.to)
     && (!f.name || entry.name === f.name)
     && (!f.category || entry.category === f.category)
@@ -49,7 +50,7 @@ if (typeof module !== 'undefined') {
           head.textContent = headline;
         }
         var meta = document.createElement('small');
-        meta.textContent = [entry.date, entry.title && entry.name, entry.category, entry.company].filter(Boolean).join(' · ');
+        meta.textContent = [entry.type, entry.date, entry.title && entry.name, entry.category, entry.company].filter(Boolean).join(' · ');
         li.append(head, meta);
         return li;
       }));
@@ -63,9 +64,9 @@ if (typeof module !== 'undefined') {
       entries = data;
       var names = Array.from(new Set(entries.map(function (entry) { return entry.name; }))).filter(Boolean).sort();
       names.forEach(function (name) { addOption(form.elements.name, name); });
-      // Menu links pass ?category=... to open the page filtered
+      // Links can pass ?type=Sponsorship, ?category=... to open the page filtered
       var params = new URLSearchParams(location.search);
-      ['name', 'category', 'company'].forEach(function (key) {
+      ['type', 'name', 'category', 'company'].forEach(function (key) {
         var value = params.get(key);
         if (value && Array.from(form.elements[key].options).some(function (o) { return o.value === value; })) {
           form.elements[key].value = value;

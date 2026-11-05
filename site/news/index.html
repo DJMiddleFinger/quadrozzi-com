@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>In the News | Quadrozzi</title>
-  <meta name="description" content="In the News from Quadrozzi, searchable by date, media, category and company.">
+  <meta name="description" content="News, sponsorships and more from Quadrozzi, searchable by type, date, organization, category and company.">
   <meta name="theme-color" content="#ffe641">
   <link rel="preconnect" href="https://api.fontshare.com">
   <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
@@ -44,10 +44,11 @@
 <body>
   <main>
     <h1>In the News</h1>
-    <form id="filters" data-src="../assets/data/news.json" aria-label="Search In the News">
+    <form id="filters" data-src="../assets/data/news.json" aria-label="Search news, sponsorships and more">
+      <label>Type <select name="type"><option value="">All</option><option>News</option><option>Sponsorship</option><option>Special</option></select></label>
       <label>From <input type="date" name="from"></label>
       <label>To <input type="date" name="to"></label>
-      <label>Media <select name="name"><option value="">All</option></select></label>
+      <label>Organization <select name="name"><option value="">All</option></select></label>
       <label>Category <select name="category"><option value="">All</option><option>Industrial</option><option>Commercial</option><option>Residential</option><option>Cement &amp; cementitious materials</option><option>Concrete</option><option>Rock salt</option><option>Studios</option><option>Transportation</option><option>Design</option><option>Horse care &amp; riding</option><option>Equine</option><option>Environmental</option><option>Arts • Theater • Film</option></select></label>
       <label>Company <select name="company"><option value="">All</option><option>BBX™</option><option>GBX™</option><option>VBX™</option><option>PPS▪Prospect Park Stable™</option><option>Quadro▪cem™</option><option>Quadrozzi™Concrete</option><option>Quadro▪salt™</option><option>Quadrozzi™Studios</option><option>Quadro▪trax™</option><option>Quadrozzi™disegno</option><option>Be™•Brooklyn equine™</option><option>hhi™•helpinghoof initiative</option></select></label>
       <button type="reset">Clear</button>

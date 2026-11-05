@@ -1,14 +1,13 @@
 #!/usr/bin/env python3
-"""Build the GBX and Helping Hoof Initiative sites (site/gbx/, site/helping-hooves/) and the
-search pages (site/sponsorships/, site/news/, site/special/).
+"""Build the GBX, Helping Hoof Initiative and Terminals pages (site/gbx/, site/helping-hooves/,
+site/terminals/) and the search page (site/news/).
 
-Every page shares one shell: a sidebar listing the top-level pages, a breadcrumb bar,
-and a row of buttons ("levers") linking a page to its sub-pages. The page tree and copy
-live in SITES below; photo credits come from tools/credits.json. After editing, run:
+Every page shares one shell: a sidebar listing the site's pages and a breadcrumb bar. The page
+tree and copy live in GBX, HHI and TERMINALS below; photo credits come from tools/credits.json.
+After editing, run:
     python3 tools/build_site.py
 
-In page bodies, {R} is the site's root folder, {A} the shared assets folder, and
-{LEVERS} the buttons for the page's sub-pages (or, on a sub-page, its siblings).
+In page bodies, {R} is the site's root folder and {A} the shared assets folder.
 """
 import datetime
 import html
@@ -43,7 +42,7 @@ def involve(label, kind):
 GBX_FORM = '''
       <div class="split" id="form">
         <div class="aside">
-          <p><a class="btn" href="{R}contact/">Contact us</a></p>
+          <p><a class="btn" href="{R}../contact/">Contact us</a></p>
           <div class="map">
             <iframe title="Map showing Gowanus Bay Terminal in Red Hook, Brooklyn" loading="lazy" referrerpolicy="no-referrer"
               src="https://www.openstreetmap.org/export/embed.html?bbox=-74.0145%2C40.6645%2C-73.9977%2C40.6745&amp;layer=mapnik&amp;marker=40.66944%2C-74.00611"></iframe>
@@ -209,30 +208,24 @@ HHI_LD = '''
   </script>'''
 
 
-def space(path, nav, thumb, alt, blurb, text, area):
-    return dict(path=f'spaces/{path}', nav=nav, h1=nav, thumb=thumb, blurb=blurb,
-                desc=f'{nav} at GBX Gowanus Bay Terminal, Red Hook, Brooklyn. {blurb}',
-                body=plate(thumb, alt) + f'''
+def space(anchor, name, thumb, alt, text, area):
+    return f'''
+      <h2 id="{anchor}">{e(name)}</h2>
+      {plate(thumb, alt)}
       <div class="prose"><p>{text}</p></div>
-      {book('Ask about this space', areas=area)}
-      <h2>All spaces</h2>
-      {{LEVERS}}''')
+      {book('Ask about this space', areas=area)}'''
 
 
-def terminal(path, label, name, text):
-    return dict(path=f'terminals/{path}', nav=label, h1=label, blurb=name,
-                desc=f'{label}, {name}: one of the Quadrozzi waterfront terminals.',
-                body=f'''
+def terminal(anchor, label, name, text):
+    return f'''
+      <h2 id="{anchor}">{e(label)}</h2>
       <p class="lead">{name}</p>
-      <div class="prose"><p>{text}</p></div>
-      <h2>All terminals</h2>
-      {{LEVERS}}''')
+      <div class="prose"><p>{text}</p></div>'''
 
 
 GBX = dict(
     folder='gbx', name='GBX Gowanus Bay Terminal', short='GBX', tagline='Gowanus Bay Terminal, Red Hook',
-    above=[('Quadrozzi', '../'), ('Real Estate', None), ('Industrial', None)], owner='Quadrozzi', contacts=[('', 'info@Quadrozzi.com')],
-    contact_note='Booking the site for a shoot or an event? <a href="{R}book/">Use the booking form</a> so we get your dates and details in one message.',
+    above=[('Quadrozzi', '../')], owner='Quadrozzi', contact='../contact/',
     pages=[
         dict(path='', nav='Overview', h1='Gowanus Bay Terminal', head=GBX_LD,
              title='GBX Gowanus Bay Terminal | Film, events and waterfront in Red Hook',
@@ -251,6 +244,7 @@ GBX = dict(
         <p>Gowanus Bay Terminal, GBX, sits in Red Hook between the mouth of the Gowanus Canal and Erie Basin.</p>
         <p>At its center stands the Red Hook Grain Terminal, the neighborhood’s tallest structure and one of Brooklyn’s most recognizable silhouettes, visible from the Gowanus Expressway and the elevated F and G trains.</p>
         <p>Today GBX is a multi-user maritime and industrial facility. Its piers and yards serve working tenants, while the terminal’s monumental concrete draws filmmakers, photographers, artists and event producers.</p>
+        <p>See the <a href="{R}../terminals/">other Quadrozzi terminals</a>.</p>
       </div>
       <p><a class="btn" href="{R}book/">Book the site</a></p>
       ''' + plate('gbx.jpg', 'The rooftop towers of the Red Hook Grain Terminal against a blue sky', 'The Red Hook Grain Terminal, 2025.')),
@@ -258,24 +252,19 @@ GBX = dict(
         dict(path='spaces', nav='Spaces', h1='Spaces',
              desc='The spaces available at GBX Gowanus Bay Terminal: the Grain Terminal, industrial details, open ground, and the waterfront and piers.',
              body='''
-      <p class="lead">Raw scale that can’t be built on a stage. Every request is reviewed against terminal operations and safety requirements.</p>
-      {LEVERS}'''),
-        space('grain-terminal', 'Grain Terminal', 'gbx/towers.jpg', 'Weathered concrete towers of the grain terminal',
-              'Twelve stories of weathered concrete.',
-              'Twelve stories of weathered concrete behind a 429-foot façade, built for exteriors, wide shots and large-scale projection.',
-              'Grain Terminal exterior'),
-        space('industrial-details', 'Industrial Details', 'gbx/interior-arch.jpg', 'Arched steel-framed windows high on the terminal',
-              'Steel, glass and concrete with a century of texture.',
-              'Steel, glass and concrete with nearly a century of texture. Interior access is by site review only.',
-              'Industrial details / interiors'),
-        space('open-ground', 'Open Ground', 'gbx/park-view.jpg', 'The full length of the grain terminal seen from across an open field',
-              'Level yard space for staging and base camp.',
-              'Wide, level yard space for staging, base camp, parking and large builds, subject to availability.',
-              'Open ground / base camp'),
-        space('waterfront', 'Waterfront & Piers', 'gbx/loujaine.jpg', 'A large ship moored at the terminal pier',
-              'Bay frontage and working piers.',
-              'Bay frontage and working piers, with vessels, tugs and the open harbor as a backdrop.',
-              'Waterfront & piers'),
+      <p class="lead">Raw scale that can’t be built on a stage. Every request is reviewed against terminal operations and safety requirements.</p>''' +
+             space('grain-terminal', 'Grain Terminal', 'gbx/towers.jpg', 'Weathered concrete towers of the grain terminal',
+                   'Twelve stories of weathered concrete behind a 429-foot façade, built for exteriors, wide shots and large-scale projection.',
+                   'Grain Terminal exterior') +
+             space('industrial-details', 'Industrial Details', 'gbx/interior-arch.jpg', 'Arched steel-framed windows high on the terminal',
+                   'Steel, glass and concrete with nearly a century of texture. Interior access is by site review only.',
+                   'Industrial details / interiors') +
+             space('open-ground', 'Open Ground', 'gbx/park-view.jpg', 'The full length of the grain terminal seen from across an open field',
+                   'Wide, level yard space for staging, base camp, parking and large builds, subject to availability.',
+                   'Open ground / base camp') +
+             space('waterfront', 'Waterfront & Piers', 'gbx/loujaine.jpg', 'A large ship moored at the terminal pier',
+                   'Bay frontage and working piers, with vessels, tugs and the open harbor as a backdrop.',
+                   'Waterfront & piers')),
 
         dict(path='film', nav='Film & Photo', h1='Film & Photo',
              desc='Film, TV, commercial and photo shoots at GBX Gowanus Bay Terminal in Red Hook, Brooklyn.',
@@ -318,30 +307,6 @@ GBX = dict(
         <figure><img src="{A}gbx/pier-view.jpg" alt="Archival view southwest from the top of the grain elevator over the terminal pier" loading="lazy"><figcaption>Looking southwest from the elevator. Thomas R. Flagg, HAER.</figcaption></figure>
       </div>'''),
 
-        dict(path='terminals', nav='Terminals', h1='Terminals',
-             desc='The Quadrozzi waterfront terminals in Brooklyn and Queens.',
-             body='''
-      <p class="lead">In 2013, Quadrozzi Enterprises represented seven multi-user waterfront terminals in Brooklyn and Queens: more than 30 acres of industrial land, with “an emphasis on sustainability &amp; community.”</p>
-      {LEVERS}
-      <h2>Land &amp; sea</h2>
-      <div class="prose"><p>With decades of sea-freight experience, Quadrozzi representatives moved bulk cargo from Europe, South America and Mexico up the Eastern Seaboard into New York. On land, trucking skills passed down through generations moved concrete, sand and stone, rubble, rock salt, bulk powders and specialty equipment throughout the city.</p></div>
-      <h2>After Sandy</h2>
-      <div class="prose"><p>After Hurricane Sandy in 2012, the company called for rebuilding smarter in flood zones: keep living space and mechanicals above the flood plain, build with concrete for strength and fire resistance, and replace wooden boardwalks with concrete ones that double as sea walls.</p></div>
-      <h2>Our approach</h2>
-      <blockquote>We do not promote our name using persuasive language or trickery, but rather use our natural creative talents and diverse experience in finding the simplest solutions to each objective.<cite>Quadrozzi Enterprises, 2013</cite></blockquote>'''),
-        terminal('gcx', 'GCX', 'Gowanus Canal Terminal',
-                 'On the Gowanus Canal, beneath the elevated Smith–9th Streets subway station. It appears in a scene from <em>Goodfellas</em>.'),
-        terminal('ncx', 'NCX', 'Newtown Creek Terminal',
-                 'In Long Island City, along the LIRR tracks, with a large bulk silo for cement and fly ash.'),
-        terminal('cicx', 'CICX', 'Coney Island Creek Terminal',
-                 'The first property you see entering Coney Island, marked by its tall coal silos.'),
-        terminal('bbx', 'BBX', 'Barbados Basin Terminal',
-                 'On Jamaica Bay at Rockaway Beach. Once home to the famed Brooklyn Day Camp.'),
-        terminal('vbx', 'VBX', 'Vernon Basin Terminal',
-                 'On Jamaica Bay, across from the Barbados Basin Reserve, with open bay, bridge and Manhattan views.'),
-        terminal('metropolitan-ave', 'Metropolitan Ave', 'Ridgewood, Queens',
-                 '3.69 acres along Newtown Creek, ready for almost anything.'),
-
         dict(path='book', nav='Book', h1='Book the site', foot=inquiry_config('info@Quadrozzi.com', 'GBX inquiry'),
              desc='Book GBX Gowanus Bay Terminal for film and photo shoots, events, and maritime or industrial use.',
              body='''
@@ -358,7 +323,7 @@ GBX = dict(
 HHI = dict(
     folder='helping-hooves', name='Helping Hoof Initiative', short='Helping Hoof Initiative',
     tagline='A program of Helping Hoof, Inc., a 501(c)(3) nonprofit',
-    above=[], owner='Helping Hoof, Inc.', contacts=[('', 'info@hhi.horse')],
+    above=[], owner='Helping Hoof, Inc.', contacts=[('', 'info@hhi.horse')], contact='contact/',
     contact_note='Want to volunteer, donate, partner or enroll a rider? <a href="{R}get-involved/">Use the Get involved form</a>. Riding lessons are at Prospect Park Stable, 51–55 Caton Place, Brooklyn, NY 11218.',
     pages=[
         dict(path='', nav='Overview', h1='Helping Hoof Initiative', head=HHI_LD,
@@ -440,18 +405,55 @@ HHI = dict(
     ],
 )
 
+# anchor, label, name, text
+TERMINAL_ROWS = [
+    ('gbx', 'GBX', 'Gowanus Bay Terminal',
+     'In Red Hook, between the mouth of the Gowanus Canal and Erie Basin. <a href="{R}../gbx/">Visit the GBX site</a>.'),
+    ('bbx', 'BBX', 'Barbadoes Basin Terminal',
+     'On Jamaica Bay at Rockaway Beach. Once home to the famed Brooklyn Day Camp.'),
+    ('vbx', 'VBX', 'Vernam Basin Terminal',
+     'On Jamaica Bay, across from the Barbadoes Basin Reserve, with open bay, bridge and Manhattan views.'),
+    ('gcx', 'GCX', 'Gowanus Canal Terminal',
+     'On the Gowanus Canal, beneath the elevated Smith–9th Streets subway station. It appears in a scene from <em>Goodfellas</em>.'),
+    ('ncx', 'NCX', 'Newtown Creek Terminal',
+     'In Long Island City, along the LIRR tracks, with a large bulk silo for cement and fly ash.'),
+    ('cicx', 'CICX', 'Coney Island Creek Terminal',
+     'The first property you see entering Coney Island, marked by its tall coal silos.'),
+    ('metropolitan-ave', 'Metropolitan Ave', 'Ridgewood, Queens',
+     '3.69 acres along Newtown Creek, ready for almost anything.'),
+]
+
+TERMINALS = dict(
+    folder='terminals', name='Quadrozzi Terminals', short='Terminals', tagline='Waterfront terminals in Brooklyn and Queens',
+    above=[('Quadrozzi', '../')], owner='Quadrozzi', contact='../contact/',
+    side_links=[(label, f'#{anchor}') for anchor, label, _, _ in TERMINAL_ROWS],
+    pages=[
+        dict(path='', nav='Overview', h1='Terminals', title='Terminals | Quadrozzi',
+             desc='The Quadrozzi waterfront terminals in Brooklyn and Queens.',
+             body='''
+      <p class="lead">In 2013, Quadrozzi Enterprises represented seven multi-user waterfront terminals in Brooklyn and Queens: more than 30 acres of industrial land, with “an emphasis on sustainability &amp; community.”</p>''' + ''.join(terminal(*row) for row in TERMINAL_ROWS) + '''
+      <h2>Land &amp; sea</h2>
+      <div class="prose"><p>With decades of sea-freight experience, Quadrozzi representatives moved bulk cargo from Europe, South America and Mexico up the Eastern Seaboard into New York. On land, trucking skills passed down through generations moved concrete, sand and stone, rubble, rock salt, bulk powders and specialty equipment throughout the city.</p></div>
+      <h2>After Sandy</h2>
+      <div class="prose"><p>After Hurricane Sandy in 2012, the company called for rebuilding smarter in flood zones: keep living space and mechanicals above the flood plain, build with concrete for strength and fire resistance, and replace wooden boardwalks with concrete ones that double as sea walls.</p></div>
+      <h2>Our approach</h2>
+      <blockquote>We do not promote our name using persuasive language or trickery, but rather use our natural creative talents and diverse experience in finding the simplest solutions to each objective.<cite>Quadrozzi Enterprises, 2013</cite></blockquote>'''),
+    ],
+)
+
+
 
 def build(site, credits):
-    pages = site['pages'] + [contact_page(site), credits_page(site, credits)]
-    by_path = {p['path']: p for p in pages}
-
-    def kids(parent):
-        return [p for p in pages if parent and p['path'].startswith(parent + '/')
-                and '/' not in p['path'][len(parent) + 1:]]
+    pages = list(site['pages'])
+    if 'contacts' in site:
+        pages.append(contact_page(site))
+    has_credits = site is not TERMINALS  # the terminals page has no photos
+    if has_credits:
+        pages.append(credits_page(site, credits))
 
     for page in pages:
         path = page['path']
-        R = '../' * (path.count('/') + 1 if path else 0)
+        R = '../' if path else ''
         A = R + '../assets/'
 
         def href(target):
@@ -459,33 +461,20 @@ def build(site, credits):
 
         side = []
         for p in pages:
-            if '/' in p['path'] or p['path'] in ('contact', 'credits'):
+            if p['path'] in ('contact', 'credits'):
                 continue
-            if p['path'] == path:
-                attr = ' aria-current="page"'
-            elif p['path'] and path.startswith(p['path'] + '/'):
-                attr = ' class="is-here"'
-            else:
-                attr = ''
+            attr = ' aria-current="page"' if p['path'] == path else ''
             side.append(f'        <li><a href="{href(p["path"])}"{attr}>{e(p["nav"])}</a></li>')
+        side += [f'        <li><a href="{link}">{e(label)}</a></li>' for label, link in site.get('side_links', [])]
 
-        trail = [(label, link and R + link) for label, link in site['above']] + [(site['short'], href(''))]
-        parts = path.split('/') if path else []
-        trail += [(by_path['/'.join(parts[:i + 1])]['nav'], href('/'.join(parts[:i + 1]))) for i in range(len(parts))]
-        crumbs = ''.join(f'<li><a href="{link}">{e(label)}</a></li>' if link else f'<li>{e(label)}</li>' for label, link in trail[:-1])
+        trail = [(label, R + link) for label, link in site['above']] + [(site['short'], href(''))]
+        if path:
+            trail.append((page['nav'], href(path)))
+        crumbs = ''.join(f'<li><a href="{link}">{e(label)}</a></li>' for label, link in trail[:-1])
         crumbs += f'<li><span aria-current="page">{e(trail[-1][0])}</span></li>'
 
-        # Levers: a parent page shows its sub-pages; a sub-page shows its siblings, itself highlighted.
-        parent = path if kids(path) else path.rpartition('/')[0]
-        levers = []
-        for p in kids(parent):
-            current = ' aria-current="page"' if p['path'] == path else ''
-            thumb = f'<img src="{A}{p["thumb"]}" alt="" loading="lazy">' if p.get('thumb') else ''
-            levers.append(f'<a class="lever" href="{href(p["path"])}"{current}>{thumb}'
-                          f'<span><b>{e(p["nav"])}</b><small>{e(p["blurb"])}</small></span></a>')
-        if levers:
-            levers = f'<nav class="levers" aria-label="{e(by_path[parent]["nav"])}">{"".join(levers)}</nav>'
-        body = page['body'].replace('{LEVERS}', levers or '').replace('{R}', R).replace('{A}', A)
+        photo_credits = f'\n      <a href="{href("credits")}">Photo credits</a>' if has_credits else ''
+        body = page['body'].replace('{R}', R).replace('{A}', A)
 
         title = page.get('title') or f'{page["h1"]} | {site["name"]}'
         out = f'''<!DOCTYPE html>
@@ -523,8 +512,7 @@ def build(site, credits):
       <h1>{e(page['h1'])}</h1>{body}
     </main>
     <footer class="page-foot">
-      <a class="btn" href="{href('contact')}">Contact us</a>
-      <a href="{href('credits')}">Photo credits</a>
+      <a class="btn" href="{R}{site['contact']}">Contact us</a>{photo_credits}
       <span>© {YEAR} {e(site['owner'])}</span>
     </footer>
   </div>{page.get('foot', '')}
@@ -586,28 +574,22 @@ COMPANIES = ['BBX™', 'GBX™', 'VBX™', 'PPS▪Prospect Park Stable™', 'Qua
              'Quadrozzi™Studios', 'Quadro▪trax™', 'Quadrozzi™disegno', 'Be™•Brooklyn equine™', 'hhi™•helpinghoof initiative']
 CATEGORIES = ['Industrial', 'Commercial', 'Residential', 'Cement & cementitious materials', 'Concrete', 'Rock salt', 'Studios',
               'Transportation', 'Design', 'Horse care & riding', 'Equine', 'Environmental', 'Arts • Theater • Film']
-# folder and data file, page heading, label of the "name" field, categories
-LISTS = [
-    ('sponsorships', 'Sponsorships', 'Organization', ['Environmental', 'Arts • Theater • Film']),
-    ('news', 'In the News', 'Media', CATEGORIES),
-    ('special', 'Special', 'Organization', CATEGORIES),
-]
+TYPES = ['News', 'Sponsorship', 'Special']
 
 
 def options(values):
     return ''.join(f'<option>{e(v)}</option>' for v in values)
 
 
-def build_lists():
-    # The searchable pages; their entries are in site/assets/data/ and the search is assets/js/lists.js.
-    for folder, h1, name_label, categories in LISTS:
-        out = f'''<!DOCTYPE html>
+def build_news():
+    # The searchable page; its entries are in site/assets/data/news.json and the search is assets/js/lists.js.
+    out = f'''<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{e(h1)} | Quadrozzi</title>
-  <meta name="description" content="{e(h1)} from Quadrozzi, searchable by date, {name_label.lower()}, category and company.">
+  <title>In the News | Quadrozzi</title>
+  <meta name="description" content="News, sponsorships and more from Quadrozzi, searchable by type, date, organization, category and company.">
   <meta name="theme-color" content="#ffe641">
   <link rel="preconnect" href="https://api.fontshare.com">
   <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
@@ -646,12 +628,13 @@ def build_lists():
 </head>
 <body>
   <main>
-    <h1>{e(h1)}</h1>
-    <form id="filters" data-src="../assets/data/{folder}.json" aria-label="Search {e(h1)}">
+    <h1>In the News</h1>
+    <form id="filters" data-src="../assets/data/news.json" aria-label="Search news, sponsorships and more">
+      <label>Type <select name="type"><option value="">All</option>{options(TYPES)}</select></label>
       <label>From <input type="date" name="from"></label>
       <label>To <input type="date" name="to"></label>
-      <label>{name_label} <select name="name"><option value="">All</option></select></label>
-      <label>Category <select name="category"><option value="">All</option>{options(categories)}</select></label>
+      <label>Organization <select name="name"><option value="">All</option></select></label>
+      <label>Category <select name="category"><option value="">All</option>{options(CATEGORIES)}</select></label>
       <label>Company <select name="company"><option value="">All</option>{options(COMPANIES)}</select></label>
       <button type="reset">Clear</button>
     </form>
@@ -663,14 +646,14 @@ def build_lists():
 </body>
 </html>
 '''
-        target = ROOT / 'site' / folder / 'index.html'
-        target.parent.mkdir(exist_ok=True)
-        target.write_text(out, encoding='utf-8')
-    print(f'Wrote {len(LISTS)} search pages')
+    target = ROOT / 'site' / 'news' / 'index.html'
+    target.parent.mkdir(exist_ok=True)
+    target.write_text(out, encoding='utf-8')
+    print('Wrote the news page')
 
 
 if __name__ == '__main__':
     all_credits = json.loads((ROOT / 'tools' / 'credits.json').read_text(encoding='utf-8'))
-    for s in (GBX, HHI):
+    for s in (GBX, HHI, TERMINALS):
         build(s, all_credits)
-    build_lists()
+    build_news()

@@ -112,10 +112,10 @@
     summary.division::after { content: '+'; font-weight: 500; }
     details[open] > summary.division::after { content: '\2212'; }
     .division:hover, details[open] > .division { color: var(--yellow); }
-    .division:focus-visible, .thread a:focus-visible, .thread summary:focus-visible { outline: 2px solid var(--yellow); outline-offset: 3px; }
+    .division:focus-visible, .thread a:focus-visible { outline: 2px solid var(--yellow); outline-offset: 3px; }
 
-    /* Threads, like nested Reddit comments: a line runs down each level with a curved elbow into every row.
-       The way to whatever is open or hovered turns yellow. Browsers without :has() just show gray lines. */
+    /* Threads, like nested Reddit comments: a line runs down the list with a curved elbow into every row.
+       The way to whatever is hovered turns yellow. Browsers without :has() just show gray lines. */
     .thread { --elbow: .95rem; list-style: none; margin-left: .55rem; }
     .divisions > details > .thread { padding-bottom: 1.25rem; }
     .thread > li { position: relative; padding-left: 1.4rem; font-size: 1.15rem; font-weight: 900; line-height: 1.25; color: var(--stone); }
@@ -125,17 +125,9 @@
       content: ''; position: absolute; left: 0; top: 0; width: 1rem; height: var(--elbow);
       border: solid var(--thread); border-width: 0 0 2px 2px; border-bottom-left-radius: .6rem;
     }
-    .thread > li:has(> details[open], > a:hover, > a:focus-visible)::after,
-    .thread > li:has(~ li > details[open], ~ li > a:hover, ~ li > a:focus-visible)::before { border-color: var(--yellow); }
+    .thread > li:has(> a:hover, > a:focus-visible)::after,
+    .thread > li:has(~ li > a:hover, ~ li > a:focus-visible)::before { border-color: var(--yellow); }
     .thread > li > a, .thread > li > span { display: block; padding: .25rem 0; }
-    .thread summary {
-      padding: .4rem 0; cursor: pointer; list-style: none; color: var(--ivory);
-      font-size: .85rem; font-weight: 700; line-height: 1.25; letter-spacing: .1em; text-transform: uppercase; transition: color .2s;
-    }
-    .thread summary::-webkit-details-marker { display: none; }
-    .thread summary::after { content: ' +'; font-weight: 500; }
-    .thread details[open] > summary::after { content: ' \2212'; }
-    .thread summary:hover, .thread details[open] > summary { color: var(--yellow); }
     .thread a { color: var(--ivory); text-underline-offset: 4px; }
     .thread a:hover { color: var(--yellow); }
 
@@ -169,39 +161,20 @@
       <details>
         <summary class="division">Real Estate</summary>
         <ul class="thread">
-          <li><details><summary>Industrial</summary>
-            <ul class="thread">
-              <li><a href="gbx/terminals/bbx/">BBX™~Barbados Basin Terminal</a></li>
-              <li><a href="gbx/">GBX™~Gowanus Bay Terminal</a></li>
-              <li><a href="gbx/terminals/vbx/">VBX™~Vernam Basin Terminal</a></li>
-            </ul>
-          </details></li>
-          <li><details><summary>Commercial</summary>
-            <ul class="thread"><li><span>PPS▪Prospect Park Stable™</span></li></ul>
-          </details></li>
-          <li><details><summary>Residential</summary>
-            <ul class="thread"><li><span>(tbn)</span></li></ul>
-          </details></li>
+          <li><a href="gbx/">GBX™~Gowanus Bay Terminal</a></li>
+          <li><a href="terminals/#bbx">BBX™~Barbadoes Basin Terminal</a></li>
+          <li><a href="terminals/#vbx">VBX™~Vernam Basin Terminal</a></li>
+          <li><a href="terminals/">All terminals</a></li>
         </ul>
       </details>
       <details>
         <summary class="division">Operations</summary>
         <ul class="thread">
-          <li><details><summary>Cement &amp; cementitious materials</summary>
-            <ul class="thread"><li><span>Quadro▪cem™ aka NYCEMCO</span></li></ul>
-          </details></li>
-          <li><details><summary>Concrete</summary>
-            <ul class="thread"><li><span>Quadrozzi™Concrete</span></li></ul>
-          </details></li>
-          <li><details><summary>Rock salt</summary>
-            <ul class="thread"><li><span>Quadro▪salt™</span></li></ul>
-          </details></li>
-          <li><details><summary>Studios</summary>
-            <ul class="thread"><li><span>Quadrozzi™Studios</span></li></ul>
-          </details></li>
-          <li><details><summary>Transportation</summary>
-            <ul class="thread"><li><span>Quadro▪trax™</span></li></ul>
-          </details></li>
+          <li><span>Quadro▪cem™ aka NYCEMCO · Cement</span></li>
+          <li><span>Quadrozzi™Concrete</span></li>
+          <li><span>Quadro▪salt™ · Rock salt</span></li>
+          <li><span>Quadrozzi™Studios</span></li>
+          <li><span>Quadro▪trax™ · Transportation</span></li>
         </ul>
       </details>
       <details>
@@ -211,32 +184,15 @@
       <details>
         <summary class="division">Recreational</summary>
         <ul class="thread">
-          <li><details><summary>Horse care &amp; riding</summary>
-            <ul class="thread">
-              <li><a href="https://djmiddlefinger.github.io/be-brooklyn-equine/" target="_blank" rel="noopener">Be™•Brooklyn equine™ ↗<span class="sr-only"> (opens in a new tab)</span></a></li>
-              <li><span>PPS▪Prospect Park Stable™</span></li>
-            </ul>
-          </details></li>
+          <li><a href="https://djmiddlefinger.github.io/be-brooklyn-equine/" target="_blank" rel="noopener">Be™•Brooklyn equine™ ↗<span class="sr-only"> (opens in a new tab)</span></a></li>
+          <li><span>PPS▪Prospect Park Stable™</span></li>
         </ul>
       </details>
       <details>
         <summary class="division">Not-for-profit</summary>
-        <ul class="thread">
-          <li><details><summary>Equine</summary>
-            <ul class="thread"><li><a href="helping-hooves/">hhi™•helpinghoof initiative •501(c)(3)</a></li></ul>
-          </details></li>
-        </ul>
-      </details>
-      <details>
-        <summary class="division">Sponsorships</summary>
-        <ul class="thread">
-          <li><a href="sponsorships/">All</a></li>
-          <li><a href="sponsorships/?category=Environmental">Environmental</a></li>
-          <li><a href="sponsorships/?category=Arts%20%E2%80%A2%20Theater%20%E2%80%A2%20Film">Arts • Theater • Film</a></li>
-        </ul>
+        <ul class="thread"><li><a href="helping-hooves/">hhi™•helpinghoof initiative •501(c)(3)</a></li></ul>
       </details>
       <div><a class="division" href="news/">In the News</a></div>
-      <div><a class="division" href="special/">Special</a></div>
     </div>
     <p class="menu-foot">
       <em>“We don’t mean business, we make it.”</em>
