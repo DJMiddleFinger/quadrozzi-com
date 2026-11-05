@@ -221,7 +221,7 @@
         toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
         menu.inert = !open;
         face.inert = open;
-        if (open) menu.querySelector('summary').focus();
+        if (open) menu.querySelector('summary, a').focus();  // the under construction package has no summaries
       }
       toggle.addEventListener('click', function () { setMenu(!document.body.classList.contains('menu-open')); });
       document.querySelector('.scrim').addEventListener('click', function () { setMenu(false); });

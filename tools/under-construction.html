@@ -42,8 +42,8 @@
     <p class="mail"><a class="back" href="contact/">Contact us</a></p>
   </main>
   <script>
-    // Menu links pass ?site=GBX etc.; only known names are shown
-    var names = { bbx: 'BBX', gbx: 'GBX', vbx: 'VBX', terminals: 'Terminals', be: 'Be', hhi: 'Helping Hoof Initiative', news: 'In the News' };
+    // Menu buttons pass ?site=real-estate etc.; only known names are shown
+    var names = { 'real-estate': 'Real Estate', operations: 'Operations', design: 'Design', recreational: 'Recreational', 'not-for-profit': 'Not-for-profit', 'in-the-news': 'In the News' };
     var site = names[new URLSearchParams(location.search).get('site')];
     if (site) document.getElementById('name').textContent = site;
   </script>

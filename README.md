@@ -96,5 +96,6 @@ Quadrozzi.com is hosted at Network Solutions, which needs a manual upload. Build
 python3 tools/package_zips.py
 ```
 It writes `Quadrozzi-site-upload.zip` (the whole site) and `Quadrozzi-under-construction.zip` (home page only,
-every menu item opens an "Under construction" page), then deletes any older zips so only the latest 2 remain.
+every menu division is a button, with no dropdowns, that opens an "Under construction" page), then deletes any
+older zips so only the latest 2 remain.
 Extract one into the hosting's `htdocs` folder.
