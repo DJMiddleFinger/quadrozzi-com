@@ -141,6 +141,16 @@
     }
     .menu-foot .contact:hover { background: #fff; }
 
+    /* Touch-first devices (phones, tablets) get smaller menu text, also scaled to screen height for phones held sideways.
+       Mouse and trackpad computers, touchscreen laptops included, keep the full size above. */
+    @media (pointer: coarse) {
+      .menu { padding-top: 76px; }  /* just clears the menu button */
+      .division { font-size: clamp(1.35rem, min(5.5vw, 6vh), 2.25rem); }
+      .thread { --elbow: 1.05rem; }
+      .thread > li { font-size: 1.05rem; }
+      .thread > li > a, .thread > li > span { padding: .4rem 0; }  /* easier to tap */
+    }
+
     @media (prefers-reduced-motion: reduce) { * { transition-duration: 0s !important; } }
   </style>
 </head>
