@@ -1,47 +1,46 @@
 # 02 — Sitemap & Navigation
 
-> **Update (Nov 2026):** the home menu now follows the 8-division structure in the "Q website v.03.2 categories" brief; see `README.md`. Search pages: `/sponsorships/`, `/news/`, `/special/`.
-
-v1 is a **single long page** with anchor navigation, like robertaspizza.com's home page. Sub-pages can
-come later without changing the nav labels.
+Updated Nov 2026. The home menu is simplified from the "Q website v.03.2 categories" brief: at most two levels,
+with Sponsorships and Special folded into the news page as types.
 
 ```
 Quadrozzi.com/
-├── #top          Hero — "Built in Brooklyn"
-├── #holdings     Holdings grid  →  GBX · Brooklyn Equine · Helping Hoof Initiative · Future ventures
-├── #heritage     Family & Red Hook story (split image block)
-├── #community    Helping Hoof Initiative spotlight + initiative links
-├── #figures      By the numbers (stat tiles)
-├── #contact      General / press / leasing inquiries
-├── gbx/          GBX Gowanus Bay Terminal — info + booking page
-│   ├── #terminal   The terminal today (working waterfront)
-│   ├── #spaces     Spaces & settings (terminal, details, open ground, piers)
-│   ├── #film       Film & photo
-│   ├── #events     Events
-│   ├── #history    Timeline 1922 → today + archival photos
-│   └── #inquire    Inquiry form (mailto or form service) + map
-├── helping-hooves/  Helping Hoof Initiative — community work with horses (run by Helping Hoof, Inc., 501(c)(3))
-│   ├── #mission        Four-part mission (second-career horses, therapy, access, safe infrastructure)
-│   ├── #programs       Second careers · therapeutic riding (GallopNYC) · youth programs · community stories
-│   ├── #heritage       Timeline 1917 → today + archival photos
-│   └── #involved       Ways to help + get-involved form (volunteer, donate, partner, enroll)
-├── gbx/credits/, helping-hooves/credits/  Photo credits and licenses
-└── 404.html      Branded not-found page
+├── index.html         Q logo face page + side-panel menu
+├── contact/           info@Quadrozzi.com (Quadrozzi, GBX and Terminals)
+├── news/              In the News: search by type (News, Sponsorship, Special), date, organization, category, company
+├── terminals/         One page: GBX, BBX, VBX, GCX, NCX, CICX, Metropolitan Ave, then company history
+├── gbx/               GBX Gowanus Bay Terminal
+│   ├── (Overview)
+│   ├── spaces/        One page: Grain Terminal, Industrial Details, Open Ground, Waterfront & Piers
+│   ├── film/
+│   ├── events/
+│   ├── history/
+│   ├── book/          Inquiry form + map
+│   └── credits/       Photo credits (footer link)
+├── helping-hooves/    Helping Hoof Initiative (run by Helping Hoof, Inc., 501(c)(3))
+│   ├── (Overview)
+│   ├── programs/
+│   ├── heritage/
+│   ├── get-involved/  Ways to help + form
+│   ├── contact/       info@hhi.horse (footer link)
+│   └── credits/       Photo credits (footer link)
+└── 404.html           Branded not-found page
 ```
 
-## Header nav
-`Quadrozzi` wordmark (hazard-stripe mark) · Holdings · Heritage · Community · Contact · **[Inquiries]** pill (fleet orange)
+## Home menu
+```
+Real Estate      GBX™ · BBX™ · VBX™ · All terminals
+Operations       Quadro▪cem™ · Quadrozzi™Concrete · Quadro▪salt™ · Quadrozzi™Studios · Quadro▪trax™
+Design           Quadrozzi™disegno
+Recreational     Be™•Brooklyn equine™ (its own site) · PPS▪Prospect Park Stable™
+Not-for-profit   hhi™•helpinghoof initiative
+In the News      direct link
+```
+Companies with no site yet are plain text.
 
-On mobile, links collapse into a full-screen overlay menu (large condensed type, same style as the reference site's menu).
+## Page shell
+GBX, Terminals and Helping Hoof Initiative pages have a sidebar, a breadcrumb bar and a footer with "Contact us" and
+photo credits (Terminals has no photos, so no credits link). On Terminals, the sidebar jumps to each terminal.
 
-## Footer
-- The wordmark and a one-line descriptor
-- **Holdings** column: GBX, Brooklyn Equine, Helping Hoof Initiative (outbound links)
-- **Company** column: Heritage, Community, Contact
-- **Connect** column: email and social slots (LinkedIn, Instagram)
-- Legal line: © 2026 Quadrozzi. All rights reserved.
-
-## Possible phase-2 pages
-- ~~`/gbx`: a property overview page~~ — built (Sep 2026)
-- ~~`/community`: the full Helping Hoof Initiative program list~~ — built as `/helping-hooves/` (Sep 2026)
+## Possible later pages
 - `/press`: press kit, logos and approved photos
