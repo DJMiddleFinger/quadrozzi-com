@@ -51,6 +51,8 @@ def under_construction_zip():
         z.write(SITE / 'contact' / 'index.html', 'contact/index.html')
         z.write(SITE / '404.html', '404.html')
         z.write(SITE / 'assets' / 'q-logo.jpg', 'assets/q-logo.jpg')
+        z.write(SITE / 'assets' / 'quadrozzi-wordmark.svg', 'assets/quadrozzi-wordmark.svg')
+        z.write(SITE / 'assets' / 'og.jpg', 'assets/og.jpg')
         z.write(SITE / 'assets' / 'js' / 'truck-intro.js', 'assets/js/truck-intro.js')
         z.write(SITE / 'assets' / 'truck.bin', 'assets/truck.bin')
         z.writestr('.htaccess', HTACCESS)
