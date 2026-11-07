@@ -19,8 +19,12 @@ Quadrozzi.com/
 │   └── credits/       Photo credits (footer link)
 ├── helping-hooves/    Helping Hoof Initiative (run by Helping Hoof, Inc., 501(c)(3))
 │   ├── (Overview)
-│   ├── programs/
-│   ├── heritage/
+│   ├── about/         About, mission in action, three pillars, thesis attribution
+│   ├── heritage/      Our roots timeline
+│   ├── programs/      We serve + programs and activities
+│   ├── experience/    hhi™ Equine Experience (corporate package)
+│   ├── team/          Board, horse and pony ambassadors
+│   ├── shop/          Categories and apparel (orders go through the form)
 │   ├── get-involved/  Ways to help + form
 │   ├── contact/       info@hhi.horse (footer link)
 │   └── credits/       Photo credits (footer link)

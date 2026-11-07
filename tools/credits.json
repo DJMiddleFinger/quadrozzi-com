@@ -37,7 +37,7 @@
   },
   {
     "file": "assets/hooves.jpg",
-    "used": "Helping Hoof Initiative — overview (riding for everyone)",
+    "used": "Helping Hoof Initiative — programs (Horse Hangouts mentoring)",
     "title": "A horse, friend 170318-A-ZG886-251.jpg",
     "artist": "Maj. Michelle Lunato",
     "license": "Public domain",
@@ -108,22 +108,49 @@
     "source": "https://commons.wikimedia.org/wiki/File:Red_Hook_Grain_Terminal_(May_2025)_(4).jpg"
   },
   {
-    "file": "assets/hooves/garden.jpg",
-    "used": "Helping Hoof Initiative — programs (stable to garden)",
-    "title": "Brooklyn Bears Community Garden5.jpg",
-    "artist": "Wil540 art",
-    "license": "CC BY-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-    "source": "https://commons.wikimedia.org/wiki/File:Brooklyn_Bears_Community_Garden5.jpg"
+    "file": "assets/hooves/artist-drawing.jpg",
+    "used": "Helping Hoof Initiative — programs (artist live drawing)",
+    "title": "Students sketching a horse from life",
+    "artist": "Helping Hoof Initiative",
+    "license": "Courtesy of Helping Hoof Initiative (hhi™)",
+    "license_url": "",
+    "source": ""
   },
   {
-    "file": "assets/hooves/hands-on.jpg",
-    "used": "Helping Hoof Initiative — overview (therapy & learning)",
-    "title": "Veterans build resiliency through equine assisted therapy (4244875).jpg",
-    "artist": "U.S. Air Force 310SW by Staff Sgt. Laura Turner",
-    "license": "Public domain",
+    "file": "assets/hooves/bowling-green.jpg",
+    "used": "Helping Hoof Initiative — overview (Bowling Green)",
+    "title": "hhi™ volunteers and a young rider on the Bowling Green",
+    "artist": "Helping Hoof Initiative",
+    "license": "Courtesy of Helping Hoof Initiative (hhi™)",
     "license_url": "",
-    "source": "https://commons.wikimedia.org/wiki/File:Veterans_build_resiliency_through_equine_assisted_therapy_(4244875).jpg"
+    "source": ""
+  },
+  {
+    "file": "assets/hooves/community-outreach.jpg",
+    "used": "Helping Hoof Initiative — programs (community outreach)",
+    "title": "A young rider and hhi™ volunteers on the Bowling Green",
+    "artist": "Helping Hoof Initiative",
+    "license": "Courtesy of Helping Hoof Initiative (hhi™)",
+    "license_url": "",
+    "source": ""
+  },
+  {
+    "file": "assets/hooves/equine-connection.jpg",
+    "used": "Helping Hoof Initiative — overview (equine connection)",
+    "title": "A couple with a bay horse",
+    "artist": "Helping Hoof Initiative",
+    "license": "Courtesy of Helping Hoof Initiative (hhi™)",
+    "license_url": "",
+    "source": ""
+  },
+  {
+    "file": "assets/hooves/fairgrounds-1869.jpg",
+    "used": "Helping Hoof Initiative — heritage",
+    "title": "Prospect Park Fair Grounds, 1869",
+    "artist": "Helping Hoof Initiative",
+    "license": "Courtesy of Helping Hoof Initiative (hhi™)",
+    "license_url": "",
+    "source": ""
   },
   {
     "file": "assets/hooves/hero.jpg",
@@ -135,17 +162,26 @@
     "source": "https://commons.wikimedia.org/wiki/File:Horses_Walking_Prospect_Park_2021.jpg"
   },
   {
-    "file": "assets/hooves/horse-tamers.jpg",
-    "used": "Helping Hoof Initiative — programs (horse parade)",
-    "title": "Prospect Park td (2019-01-27) 003 - Park Circle, Horse Tamers.jpg",
-    "artist": "Tdorante10",
-    "license": "CC BY-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-    "source": "https://commons.wikimedia.org/wiki/File:Prospect_Park_td_(2019-01-27)_003_-_Park_Circle,_Horse_Tamers.jpg"
+    "file": "assets/hooves/horseplay.jpg",
+    "used": "Helping Hoof Initiative — programs (horseplay)",
+    "title": "A horse rolling in a paddock",
+    "artist": "Helping Hoof Initiative",
+    "license": "Courtesy of Helping Hoof Initiative (hhi™)",
+    "license_url": "",
+    "source": ""
+  },
+  {
+    "file": "assets/hooves/lake-ride.jpg",
+    "used": "Helping Hoof Initiative — equine experience",
+    "title": "Riders along the water in Prospect Park",
+    "artist": "Helping Hoof Initiative",
+    "license": "Courtesy of Helping Hoof Initiative (hhi™)",
+    "license_url": "",
+    "source": ""
   },
   {
     "file": "assets/hooves/park-1911.jpg",
-    "used": "Helping Hoof Initiative — overview (safe streets & trails)",
+    "used": "Helping Hoof Initiative — heritage",
     "title": "A view in Prospect Park, Brooklyn, New York City LCCN96512472.jpg",
     "artist": "Library of Congress Prints and Photographs Division",
     "license": "Public domain",
@@ -153,31 +189,31 @@
     "source": "https://commons.wikimedia.org/wiki/File:A_view_in_Prospect_Park,_Brooklyn,_New_York_City_LCCN96512472.jpg"
   },
   {
-    "file": "assets/hooves/second-career.jpg",
-    "used": "Helping Hoof Initiative — overview (second-career horses)",
-    "title": "-mypubliclandsroadtrip 2016- Get Outdoors Baby, Meadowood Special Recreation Area (28782293480).jpg",
-    "artist": "mypubliclands",
-    "license": "Public domain",
+    "file": "assets/hooves/shop/polo.jpg",
+    "used": "Helping Hoof Initiative — shop",
+    "title": "hhi™ apparel product images",
+    "artist": "Helping Hoof Initiative",
+    "license": "Courtesy of Helping Hoof Initiative (hhi™)",
     "license_url": "",
-    "source": "https://commons.wikimedia.org/wiki/File:-mypubliclandsroadtrip_2016-_Get_Outdoors_Baby,_Meadowood_Special_Recreation_Area_(28782293480).jpg"
+    "source": ""
   },
   {
-    "file": "assets/hooves/stable.jpg",
-    "used": "Helping Hoof Initiative — heritage",
-    "title": "Kensington Stables riders jeh.jpg",
-    "artist": "Jim.henderson",
-    "license": "CC0",
-    "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
-    "source": "https://commons.wikimedia.org/wiki/File:Kensington_Stables_riders_jeh.jpg"
+    "file": "assets/hooves/stewardship.jpg",
+    "used": "Helping Hoof Initiative — overview (eco stewardship)",
+    "title": "Tending a community garden",
+    "artist": "Helping Hoof Initiative",
+    "license": "Courtesy of Helping Hoof Initiative (hhi™)",
+    "license_url": "",
+    "source": ""
   },
   {
-    "file": "assets/hooves/therapy-riding.jpg",
-    "used": "Helping Hoof Initiative — programs (therapeutic riding)",
-    "title": "05 01 2022 horseback riding Gallop NYC Bowling Green and Cottage Brooklyn.jpg",
-    "artist": "Wil540 art",
-    "license": "CC BY-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-    "source": "https://commons.wikimedia.org/wiki/File:05_01_2022_horseback_riding_Gallop_NYC_Bowling_Green_and_Cottage_Brooklyn.jpg"
+    "file": "assets/hooves/team/bay-ridge.jpg",
+    "used": "Helping Hoof Initiative — meet the team",
+    "title": "Portraits of the hhi™ board and horse and pony ambassadors",
+    "artist": "Helping Hoof Initiative",
+    "license": "Courtesy of Helping Hoof Initiative (hhi™)",
+    "license_url": "",
+    "source": ""
   },
   {
     "file": "assets/hooves/wallabout.jpg",
@@ -189,8 +225,17 @@
     "source": "https://commons.wikimedia.org/wiki/File:Vast_crowd_of_trucks_and_horse-drawn_carts_at_the_Wallabout_Market,_Brooklyn,_N.Y..jpg"
   },
   {
+    "file": "assets/hooves/youth-care.jpg",
+    "used": "Helping Hoof Initiative — overview (youth care)",
+    "title": "A young rider with an hhi™ volunteer",
+    "artist": "Helping Hoof Initiative",
+    "license": "Courtesy of Helping Hoof Initiative (hhi™)",
+    "license_url": "",
+    "source": ""
+  },
+  {
     "file": "assets/hooves/youth.jpg",
-    "used": "Helping Hoof Initiative — programs (youth programs)",
+    "used": "Helping Hoof Initiative — programs (intergenerational program)",
     "title": "Pony ride at Prospect Park Stable",
     "artist": "Be Brooklyn Equine",
     "license": "Courtesy of Be Brooklyn Equine (site photo)",

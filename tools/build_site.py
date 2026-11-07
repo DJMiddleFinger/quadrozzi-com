@@ -118,10 +118,11 @@ HHI_FORM = '''
         <div class="aside">
           <p><a class="btn" href="{R}contact/">Contact us</a></p>
           <div class="direct">
+            <div><h3>Year-round at</h3><address>Prospect Park’s Bowling Green<br>Brooklyn, NY</address></div>
             <div><h3>The stable</h3><address>Prospect Park Stable<br>51–55 Caton Place, Brooklyn, NY 11218</address></div>
             <div><a href="https://www.google.com/maps/search/?api=1&amp;query=Prospect+Park+Stable+51+Caton+Place+Brooklyn+NY" target="_blank" rel="noopener">Get directions ↗</a></div>
           </div>
-          <p class="nonprofit">Helping Hoof, Inc. is a 501(c)(3) nonprofit organization (EIN 88-3328025). Donations are tax-deductible to the extent allowed by law.</p>
+          <p class="nonprofit">Helping Hoof Initiative (hhi™) is run by Helping Hoof, Inc., a 501(c)(3) nonprofit organization (EIN 88-3328025). Donations are tax-deductible to the extent allowed by law.</p>
         </div>
 
         <form class="form" data-inquiry novalidate>
@@ -131,7 +132,10 @@ HHI_FORM = '''
               <label class="chip"><input type="radio" name="type" value="Volunteer" required><span>Volunteer</span></label>
               <label class="chip"><input type="radio" name="type" value="Donate"><span>Donate</span></label>
               <label class="chip"><input type="radio" name="type" value="Partner"><span>Partner</span></label>
-              <label class="chip"><input type="radio" name="type" value="Enroll a rider"><span>Enroll a rider</span></label>
+              <label class="chip"><input type="radio" name="type" value="Join a Program"><span>Join a program</span></label>
+              <label class="chip"><input type="radio" name="type" value="Book an Experience"><span>Book an experience</span></label>
+              <label class="chip"><input type="radio" name="type" value="Order From the Shop"><span>Order from the shop</span></label>
+              <label class="chip"><input type="radio" name="type" value="Get Updates"><span>Get updates</span></label>
               <label class="chip"><input type="radio" name="type" value="Other"><span>Other</span></label>
             </div>
           </fieldset>
@@ -146,8 +150,8 @@ HHI_FORM = '''
           </div>
 
           <div class="field">
-            <label for="h-message">How would you like to help? <span class="req">*</span></label>
-            <textarea id="h-message" name="message" required placeholder="A few lines about you, your organization or the rider you’d like to enroll."></textarea>
+            <label for="h-message">Your message <span class="req">*</span></label>
+            <textarea id="h-message" name="message" required placeholder="A few lines about you, your organization or your group."></textarea>
           </div>
 
           <div class="form-foot">
@@ -320,86 +324,256 @@ GBX = dict(
     ],
 )
 
+def program(anchor, img, alt, name, text, items, link):
+    lis = ''.join(f'<li>{i}</li>' for i in items)
+    return (f'<article class="card program" id="{anchor}"><img src="{{A}}{img}" alt="{alt}" loading="lazy">'
+            f'<div><h3>{name}</h3><p>{text}</p><ul class="mini">{lis}</ul>{link}</div></article>')
+
+
+def form_link(label, kind):
+    return f'<a class="more" href="{{R}}get-involved/?type={quote(kind)}#form">{label} →</a>'
+
+
+def member(name, role, photo='', extra=''):
+    """One team or ambassador card. No photo file yet: the hhi logo stands in."""
+    img = (f'<img src="{{A}}hooves/team/{photo}.jpg" alt="Portrait of {name}" loading="lazy">' if photo else
+           '<span class="no-photo"><img src="{A}hooves/hhi-logo-200.png" alt="" loading="lazy"></span>')
+    return f'<li class="person">{img}<div><h3>{name}</h3>{role}{extra}</div></li>'
+
+
+def animal(name, breed, photo=None):
+    return member(name, f'<p class="role">{breed}</p>', name.lower().replace(' ', '-') if photo is None else photo)
+
+
+def product(img, alt, name, material, colors):
+    return (f'<article class="card product"><img src="{{A}}hooves/shop/{img}.jpg" alt="{alt}" loading="lazy"><div>'
+            f'<h3><span class="brand">hhi™</span> {name}</h3><p>{material}</p><p>Colors: {colors}</p>'
+            + form_link('Ask to order', 'Order From the Shop') + '</div></article>')
+
+
 HHI = dict(
     folder='helping-hooves', name='Helping Hoof Initiative', short='Helping Hoof Initiative',
-    tagline='A program of Helping Hoof, Inc., a 501(c)(3) nonprofit',
-    above=[], owner='Helping Hoof, Inc.', contacts=[('', 'info@hhi.horse')], contact='contact/',
-    contact_note='Want to volunteer, donate, partner or enroll a rider? <a href="{R}get-involved/">Use the Get involved form</a>. Riding lessons are at Prospect Park Stable, 51–55 Caton Place, Brooklyn, NY 11218.',
+    tagline='humans helping horses helping humans', logo='hooves/hhi-logo-200.png',
+    above=[], owner='Helping Hoof Initiative (hhi™)', contacts=[('', 'info@hhi.horse')], contact='contact/',
+    foot_note='Developed from original thesis research by Shanaz Khan | MSc. Historic Preservation | Pratt Institute NYC, USA',
+    credits_intro='Most photographs on this site are courtesy of Helping Hoof Initiative (hhi™). The others come from Wikimedia Commons, the Library of Congress and Be Brooklyn Equine. Select a linked title to see the original file and its full license.',
+    contact_note='Want to volunteer, donate, partner, join a program, book your hhi™ equine experience or order from the shop? <a href="{R}get-involved/">Use the Get involved form</a>. Riding lessons are at Prospect Park Stable, 51–55 Caton Place, Brooklyn, NY 11218.',
     pages=[
-        dict(path='', nav='Overview', h1='Helping Hoof Initiative', head=HHI_LD,
+        dict(path='', nav='Overview', h1='Building stronger communities through equine connection', head=HHI_LD,
              title='Helping Hoof Initiative | Horses and community in Brooklyn',
-             desc='Helping Hoof Initiative is a community program for horses and people in Brooklyn: second-career horses, therapeutic riding, youth programs and a greener, horse-friendly Brooklyn. Run by Helping Hoof, Inc., a 501(c)(3) nonprofit.',
+             desc='Helping Hoof Initiative (hhi™) is a Brooklyn-based 501(c)(3) nonprofit dedicated to connecting people and horses through education, community and preservation of Prospect Park’s historic equestrian landscape.',
              body='''
-      <p class="lead">Second careers for horses, and a way into riding for Brooklynites of every background and ability.</p>
+      <div class="intro-row">
+        <div>
+          <p class="lead">We improve equine and human public infrastructure in urban environments, with a primary focus on Prospect Park, Brooklyn. Through meaningful programs and experiences, we help humans and horses thrive — together.</p>
+          <p class="actions"><a class="btn" href="{R}programs/">Explore our programs</a> <a class="btn btn--dark" href="{R}get-involved/?type=Get%20Updates#form">Get the horseplay schedule</a></p>
+        </div>
+        <img class="intro-logo" src="{A}hooves/hhi-logo.png" alt="Helping Hoof Initiative (hhi™) logo: humans helping horses helping humans" width="240" height="240">
+      </div>
+      <p class="notice"><a href="{R}programs/#horseplay"><b>New to Helping Hoof Initiative?</b> We operate year-round at Prospect Park’s Bowling Green! Learn about our horseplay &amp; community turnout schedule →</a></p>
       ''' + plate('hooves/hero.jpg', 'Riders on horseback on a tree-lined path in Prospect Park') + '''
-      <dl class="facts">
-        <div><dt>1917</dt><dd>Prospect Park Stable founded</dd></div>
-        <div><dt>2018</dt><dd>Stable restored and renamed</dd></div>
-        <div><dt>3.5 mi</dt><dd>Bridle path through Prospect Park</dd></div>
-        <div><dt>501(c)(3)</dt><dd>Helping Hoof, Inc. nonprofit</dd></div>
+      <dl class="facts facts--words">
+        <div><dt>More horse time</dt><dd>We increase public exposure to horses tenfold.</dd></div>
+        <div><dt>All ages welcome</dt><dd>Inclusive programs for children, youth, adults and seniors.</dd></div>
+        <div><dt>Safe &amp; supervised</dt><dd>Trained representatives ensure safety for all.</dd></div>
+        <div><dt>Sustainable impact</dt><dd>Building a healthier community and environment.</dd></div>
       </dl>
-      <h2>Our mission</h2>
-      <div class="prose"><p>Helping Hoof Initiative is a community program for horses and people. It is carried out by Helping Hoof, Inc., a 501(c)(3) nonprofit, alongside Be•Brooklyn Equine at Prospect Park Stable. The mission has four parts.</p></div>
+      <h2>What we do</h2>
+      ''' + ticks('Equine Assisted Learning (EAL)', 'Community &amp; Intergenerational Impact', 'Sustainable Care for Horses &amp; Our Park') + '''
       <div class="cards">
-        <article class="card"><img src="{A}hooves/second-career.jpg" alt="A child’s hand offering hay to horses through a gate" loading="lazy"><div><h3>Second-career horses</h3><p>Giving horses whose first careers didn’t work out a new start in “healthy, nurturing, loving environments.”</p></div></article>
-        <article class="card"><img src="{A}hooves/hands-on.jpg" alt="Close-up of a calm horse in a teal halter" loading="lazy"><div><h3>Therapy &amp; learning</h3><p>Promoting equine-assisted therapy and assisted learning.</p></div></article>
-        <article class="card"><img src="{A}hooves.jpg" alt="A young rider in a helmet greeting a horse" loading="lazy"><div><h3>Riding for everyone</h3><p>Making riding accessible to people “with physical, emotional, social, or economic challenges.”</p></div></article>
-        <article class="card"><img src="{A}hooves/park-1911.jpg" alt="Archival photo of a tree-lined drive in Prospect Park, 1911" loading="lazy"><div><h3>Safe streets &amp; trails</h3><p>Promoting public infrastructure that lets urban horses live and thrive, safely for horses and people alike.</p></div></article>
+        <article class="card"><img src="{A}hooves/youth-care.jpg" alt="A smiling child in a riding helmet on a horse, walking beside a volunteer in an hhi™ T-shirt" loading="lazy"><div><h3>Youth &amp; intergenerational care</h3><p>Hands-on Equine Assisted Learning (EAL) for children, youth and seniors.</p><a class="more" href="{R}programs/#intergenerational">Learn more →</a></div></article>
+        <article class="card"><img src="{A}hooves/equine-connection.jpg" alt="An older couple gently petting a bay horse in a blue halter" loading="lazy"><div><h3>The science of equine connection</h3><p>The benefits of Equine Assisted Learning (EAL) for emotional, social, physical well-being.</p><a class="more" href="{R}programs/#we-serve">Learn more →</a></div></article>
+        <article class="card"><img src="{A}hooves/stewardship.jpg" alt="Three people tending a flowering community garden" loading="lazy"><div><h3>Community &amp; eco stewardship</h3><p>Caring for our park, horses, &amp; planet through sustainable practices and partnerships.</p><a class="more" href="{R}programs/#community-outreach">Learn more →</a></div></article>
       </div>
-      <p class="source-note">Mission as published by Helping Hoof (<a href="https://www.6sqft.com/where-to-go-horseback-riding-in-nyc/" target="_blank" rel="noopener">6sqft, 2023</a>).</p>
-      <p><a class="btn" href="{R}get-involved/">Get involved</a></p>'''),
+      <h2 id="bowling-green">Year-round at Prospect Park’s Bowling Green</h2>
+      ''' + plate('hooves/bowling-green.jpg', 'hhi™ volunteers in matching T-shirts with a young rider and horse on Prospect Park’s Bowling Green') + '''
+      <div class="prose"><p>A safe, fenced space dedicated to horses, people, and community.</p></div>
+      <p><a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Bowling+Green+Prospect+Park+Brooklyn+NY" target="_blank" rel="noopener">See our location ↗</a></p>
+      <blockquote>There is much we can learn from a friend who happens to be a horse.<cite>Aleksandra Layland</cite></blockquote>'''),
 
-        dict(path='programs', nav='Programs', h1='Programs',
-             desc='Second-career horses, therapeutic riding, youth programs and community work from Helping Hoof Initiative.',
+        dict(path='about', nav='About', h1='Preserving heritage, building community, creating meaningful connections',
+             title='About | Helping Hoof Initiative',
+             desc='Helping Hoof Initiative (hhi™) creates safe, inclusive spaces where horses and humans heal, learn and grow together.',
              body='''
-      <p class="lead">From the riding ring to Red Hook’s community gardens, the work reaches well beyond the barn.</p>
-      <h2>Second-career horses</h2>
-      <div class="prose"><p>Many of the stable’s horses didn’t work out in their first jobs and were resold or rehomed before arriving in Brooklyn. With retraining, focused healthcare and plenty of time with other horses and the people who care for them, each one finds a role that suits its mind and body.</p></div>
-      <blockquote>Some become loyal student horses, some trusty trail horses, and most enjoy both jobs.<cite>Program Director, Be•Brooklyn Equine</cite></blockquote>
-      <h2>Therapeutic riding</h2>
-      ''' + plate('hooves/therapy-riding.jpg', 'A horse and handlers during a therapeutic riding session on Prospect Park’s Bowling Green') + '''
-      <div class="prose"><p>In 2019, Prospect Park Stable began providing horses to GallopNYC, the New York therapeutic riding nonprofit, for sessions on Prospect Park’s Bowling Green. The horses had a month of specialized training to prepare for the program, which serves children and adults with disabilities, including autism.</p></div>
-      ''' + involve('Partner with us', 'Partner') + '''
-      <h2>Youth programs</h2>
-      ''' + plate('hooves/youth.jpg', 'A young rider on a pony led by stable staff') + '''
       <div class="prose">
-        <p>In the summer immersion program, riders ages 6 to 15 spend the whole day at the stable. They get their horse ready, ride in the park, and then learn a different part of horse history, behavior and healthcare each week.</p>
-        <p>After-school and weekend programs teach both riding and complete horse care, from grooming to groundwork.</p>
+        <p>Helping Hoof Initiative (hhi™) creates safe, inclusive spaces where horses and humans heal, learn and grow together. Through equine-assisted learning (EAL) programs and community partnerships, we empower children, youth, adults and seniors — supporting emotional, social, physical well-being.</p>
+        <p>We center our work in Prospect Park, a landscape intentionally designed for horses, and champion the preservation of the equestrian heritage that remains a living part of our city.</p>
       </div>
-      <p><a class="btn" href="https://DJMiddleFinger.github.io/be-brooklyn-equine/" target="_blank" rel="noopener">Enroll with Brooklyn Equine ↗</a></p>
-      <h2>In the community</h2>
+      <p><a class="btn" href="{R}programs/">Explore our programs</a></p>
+      <h2 id="mission">Our mission in action</h2>
+      <ol class="steps steps--three">
+        <li><h3>Preserve</h3><p>Protect the physical infrastructure that allows horses to remain part of Prospect Park. Document, maintain, and advocate for the equestrian landscape and its historic infrastructure.</p></li>
+        <li><h3>Reactivate</h3><p>Bring historic equine spaces and heritage back into public life through programs, events and community access.</p></li>
+        <li><h3>Connect</h3><p>Create opportunities for today’s communities to experience and understand this living heritage — uniting horses, people and the city.</p></li>
+      </ol>
+      <h2>Our three pillars of impact</h2>
       <div class="cards">
-        <article class="card"><img src="{A}hooves/garden.jpg" alt="A brick path through a Brooklyn community garden with red tulips" loading="lazy"><div><h3>From stable to garden</h3><p>Since 2019 the stable’s manure has been composted in Red Hook, under the mentorship of the nonprofit Red Hook Farms, and given to Red Hook community gardens. Bedding comes from wood shavings donated by local Brooklyn woodworkers.</p></div></article>
-        <article class="card"><img src="{A}hooves/horse-tamers.jpg" alt="The Horse Tamers sculptures at Park Circle, Prospect Park" loading="lazy"><div><h3>The horse parade returns</h3><p>In June 2019 the Prospect Park Equine Rally rode from the Horse Tamers statues along the Bridle Path to the riding circle known as “the Q.” It was Brooklyn’s first equestrian parade since the 1930s, with free pony rides for kids.</p></div></article>
-        <article class="card card--plain"><div><h3>Neighbors in need</h3><p>In May 2020, during the pandemic, stable horses pulled carts delivering food and supplies in Red Hook, with stops at Red Hook Farm, Red Hook Houses and the Joseph Miccio Community Center.</p></div></article>
-      </div>'''),
+        <article class="card"><div><h3>Brooklyn community</h3><p>Helping Hoof Initiative (hhi™) creates community connections through equine heritage, youth mentoring, intergenerational programming, and accessible public events in Prospect Park.</p></div></article>
+        <article class="card"><div><h3>Heritage preservation</h3><p>Helping Hoof Initiative (hhi™) seeks to preserve the history of New York’s equestrian culture through partnerships such as Prospect Park Alliance (PPA) while bringing that history back into public life.</p></div></article>
+        <article class="card"><div><h3>People + park + horse</h3><p>Helping Hoof Initiative (hhi™) uses historic equine infrastructure as a platform for youth development, intergenerational connection, environmental stewardship, and meaningful community programming in Prospect Park.</p></div></article>
+      </div>
+      <h2 id="research">Research foundation &amp; thesis attribution</h2>
+      <div class="prose">
+        <p>The historical research presented on this website originates from the 2022 graduate thesis, ‘Where the Horses Roam: Preserving New York’s Equestrian History’, authored by Shanaz Khan, MSc. Historic Preservation from Pratt Institute.</p>
+        <p>All historical research and documentation are copyright Shanaz Khan, courtesy of Pratt Institute Historic Preservation Archives.</p>
+      </div>
+      <p><a class="more" href="https://www.pratt.edu/architecture/graduate-center-for-planning-and-the-environment/historic-preservation-ms/" target="_blank" rel="noopener">Learn more about Pratt’s Historic Preservation Program ↗</a></p>'''),
 
-        dict(path='heritage', nav='Heritage', h1='Heritage',
-             desc='Prospect Park was designed with a bridle path, and Brooklyn once held horse parades hundreds strong.',
+        dict(path='heritage', nav='Heritage', h1='Our roots: a living equestrian history',
+             title='Heritage | Helping Hoof Initiative',
+             desc='From Olmsted and Vaux’s bridle paths to the horses that remain in Prospect Park today.',
              body='''
-      <p class="lead">Prospect Park was designed with a bridle path, and Brooklyn once held horse parades hundreds strong. Helping Hoof Initiative carries that tradition forward.</p>
-      <ol class="timeline">
-        <li><span class="yr">1917</span><div><h3>Prospect Park Stable</h3><p>Prospect Park Stable is founded. It’s the name the stable would get back a century later.</p></div></li>
-        <li><span class="yr">1935</span><div><h3>A parade hundreds strong</h3><p>A parade sponsored by the Brooklyn Daily Eagle and the ASPCA draws 252 horses, some 500 dogs, and a goat pulling a cart.</p></div></li>
-        <li><span class="yr">2018</span><div><h3>A name restored</h3><p>The former Kensington Stables changes hands and gets back its 1917 name, Prospect Park Stable.</p></div></li>
-        <li><span class="yr">2019</span><div><h3>Back in the park</h3><p>The Equine Rally revives Brooklyn’s horse parade, compost from the stable reaches Red Hook’s gardens, and the GallopNYC therapeutic riding partnership begins.</p></div></li>
-        <li><span class="yr">2020</span><div><h3>Neighbors &amp; new riders</h3><p>Horse-drawn deliveries reach Red Hook neighbors during the pandemic, and young riders fill the summer immersion program.</p></div></li>
-        <li><span class="yr">Today</span><div><h3>Helping Hoof Initiative</h3><p>Helping Hoof, Inc., a registered 501(c)(3) nonprofit, carries the mission forward alongside Be•Brooklyn Equine.</p></div></li>
+      <p class="lead">This history comes from Shanaz Khan’s 2022 graduate thesis, <a href="{R}about/#research">‘Where the Horses Roam’</a>.</p>
+      <ol class="timeline timeline--words">
+        <li><span class="yr">1860s</span><div><h3>Prospect Park opens</h3><p>Olmsted and Vaux designed Prospect Park with horses in mind — carriage concourses, bridle paths, and pastoral landscapes were part of the park’s original experience.</p></div></li>
+        <li><span class="yr">Late 19th century</span><div><h3>The horse powered city</h3><p>Horses powered transportation, commerce, emergency services, and recreation across New York City. By 1898, the city had hundreds of stables and thousands of horses.</p></div></li>
+        <li><span class="yr">20th century</span><div><h3>The city changes</h3><p>Automobiles, trucks, buses, and subways replaced much of the horse-powered infrastructure. Stables closed, and equine spaces disappeared or were adapted.</p></div></li>
+        <li><span class="yr">Today</span><div><h3>The horses remain</h3><p>Prospect Park remains one of the few places in NYC where horses are still part of the everyday public life — thanks to the historic infrastructure that still survives.</p></div></li>
+        <li><span class="yr">Tomorrow</span><div><h3>A living heritage</h3><p>hhi works to preserve and reactivate this heritage so that future generations can experience the extraordinary connection between horses, people and the city.</p></div></li>
       </ol>
       <div class="gallery">
+        <figure><img src="{A}hooves/fairgrounds-1869.jpg" alt="Archival print of harness racers at the Prospect Park Fair Grounds" loading="lazy"><figcaption>Prospect Park Fair Grounds, 1869.</figcaption></figure>
+        <figure><img src="{A}hooves/park-1911.jpg" alt="Archival photo of a tree-lined drive in Prospect Park" loading="lazy"><figcaption>A drive in Prospect Park, 1911. Library of Congress.</figcaption></figure>
         <figure><img src="{A}hooves/wallabout.jpg" alt="Archival photo of trucks and horse-drawn carts crowding Brooklyn’s Wallabout Market" loading="lazy"><figcaption>Trucks and horse-drawn carts at Brooklyn’s Wallabout Market, 1940. Library of Congress.</figcaption></figure>
-        <figure><img src="{A}hooves/stable.jpg" alt="Riders on horseback outside the stable on Caton Place" loading="lazy"><figcaption>The stable on Caton Place, then called Kensington Stables, in 2011.</figcaption></figure>
+      </div>'''),
+
+        dict(path='programs', nav='Programs', h1='Our programs',
+             title='Programs | Helping Hoof Initiative',
+             desc='Horseplay turnout, intergenerational programs, mentoring, live drawing and community outreach in Prospect Park.',
+             body='''
+      <p class="lead">All programs take place in Prospect Park and at Prospect Park’s Bowling Green in Brooklyn, NY and are supervised by our trained team of professionals.</p>
+      <h2 id="we-serve">We serve</h2>
+      <ul class="steps steps--plain">
+        <li><h3>Children &amp; young adults</h3><p>Inclusive programs that build empathy, confidence, life skills, and stewardship through Equine Assisted Learning (EAL).</p></li>
+        <li><h3>Victims of trauma</h3><p>Therapeutic interactions and support for individuals experiencing PTSD, veterans, and domestic violence survivors.</p></li>
+        <li><h3>Seniors</h3><p>Outdoor experiences that promote physical wellness, mental stimulation, and social connection in a calm, nurturing environment.</p></li>
+        <li><h3>Horses</h3><p>We provide second career horses with a healthy environment, enriching natural behaviors and social bonds.</p></li>
+      </ul>
+      <h2>Our programs &amp; activities</h2>
+      <div class="cards">
+        ''' + program('horseplay', 'hooves/horseplay.jpg', 'A bay horse rolling on its back in a grassy paddock', 'Horseplay: turnout',
+                      'Scheduled turnout times for the public to observe horses in natural herd behavior — rolling, playing, grazing, and grooming each other.',
+                      ['Increases public exposure to horses', 'Improves equine quality of life', 'Supervised by hhi™ representatives'],
+                      form_link('Get the schedule', 'Get Updates')) + '''
+        ''' + program('intergenerational', 'hooves/youth.jpg', 'A young rider on a pony, led by people of different ages', 'Intergenerational program',
+                      'Bring together different age groups to enrich and benefit all involved.',
+                      ['Equine-Assisted Learning &amp; guided nature walks', 'Fosters intergenerational connections &amp; reduces isolation'],
+                      form_link('Learn more', 'Join a Program')) + '''
+        ''' + program('horse-hangouts', 'hooves.jpg', 'A young person in a riding helmet greeting a horse', 'Horse Hangouts mentoring',
+                      'Bring together different age groups to enrich and benefit all involved.',
+                      ['Hands-on horse care &amp; grooming workshops', 'Equine-assisted activities &amp; guided nature walks'],
+                      form_link('Learn more', 'Join a Program')) + '''
+        ''' + program('artist-live-drawing', 'hooves/artist-drawing.jpg', 'Students sketching a white horse as it grazes on a lawn', 'Artist live drawing',
+                      'Observe and draw horses from life to enrich cultural appreciation and expand public connection.',
+                      ['Casual park sketch sessions', 'Workshops for schools &amp; universities', 'All skill levels welcome'],
+                      form_link('Learn more', 'Join a Program')) + '''
+        ''' + program('community-outreach', 'hooves/community-outreach.jpg', 'A young rider and two volunteers in hhi™ T-shirts walking a horse across the Bowling Green', 'Community outreach',
+                      'Bringing people together through equine driven events and partnerships.',
+                      ['Public events &amp; demonstrations', 'Partnerships with local organizations', 'Volunteering opportunities'],
+                      form_link('Learn more', 'Join a Program')) + '''
+        <article class="card card--plain" id="stay-connected"><div><h3>Stay connected</h3><p>Get updates on horseplay turnout schedules, programs, events, and ways to help.</p>''' + form_link('Sign up', 'Get Updates') + '''</div></article>
+      </div>'''),
+
+        dict(path='experience', nav='Equine Experience', h1='hhi™ Equine Experience',
+             h1_html='<span class="brand">hhi™</span> Equine Experience',
+             title='Equine Experience | Helping Hoof Initiative',
+             desc='A unique team experience in Brooklyn’s Prospect Park: horsemanship, heritage and community. No riding experience necessary.',
+             body='''
+      <p class="lead">Horsemanship. Heritage. Community. A unique team experience in Brooklyn’s Prospect Park.</p>
+      <div class="prose"><p>A hands-on immersive equine experience that ignites connection — with the horse, with each other and with New York’s living equestrian heritage.</p></div>
+      <figure class="plate plate--wide"><img src="{A}hooves/lake-ride.jpg" alt="Four riders on horseback along the water in Prospect Park" loading="lazy"></figure>
+      <h2>Why <span class="brand">hhi™</span>?</h2>
+      <div class="prose"><p>Helping Hoof Initiative (hhi™) is a Brooklyn-based <span class="nb">501(c)(3)</span> nonprofit dedicated to connecting people and horses through education, community and preservation of Prospect Park’s historic equestrian landscape.</p></div>
+      <div class="cards">
+        <article class="card"><div><h3>Brooklyn community</h3><p>We build community through equine heritage, youth mentoring, intergenerational programming and accessible public programming in Prospect Park.</p></div></article>
+        <article class="card"><div><h3>Heritage preservation</h3><p>We honor New York’s equestrian history and Prospect Park’s historic equine infrastructure, bringing that heritage back into public life.</p></div></article>
+        <article class="card"><div><h3>People + park + horse</h3><p>We use historic equestrian spaces as a platform for connection, learning, wellness and stewardship.</p></div></article>
+      </div>
+      <h2>The experience</h2>
+      <div class="prose"><p>A hands-on team building program designed for curiosity, connection and confidence — no riding experience necessary.</p></div>
+      <ol class="run">
+        <li><h3>Welcome &amp; Prospect Park’s equine heritage</h3><p>Introduction to hhi™, our horses and the park’s rich equestrian history.</p></li>
+        <li><h3>Grooming &amp; tack demonstration</h3><p>Learn how we care for the horses and prepare them for work.</p></li>
+        <li><h3>Hands-on grooming &amp; tack</h3><p>Everyone helps groom and tack the horses.</p></li>
+        <li>
+          <h3>Rotation 1</h3><p>Two engaging, simultaneous programs:</p>
+          <div class="groups">
+            <div class="group"><h4>Group A: Trail ride</h4><ul class="mini"><li>Guided ride through Prospect Park’s historic bridle path</li><li>Experience the park from horseback</li><li>Led by experienced hhi™ staff</li></ul></div>
+            <div class="group"><h4>Group B: Groundwork &amp; horsemanship in the arena</h4><ul class="mini"><li>Learn horse communication and body language</li><li>Learn to lead and handle a horse</li><li>Lunge and basic drill</li><li>Navigate a simple obstacle course</li></ul></div>
+          </div>
+        </li>
+        <li><h3>Rotation 2</h3><p>Groups switch so everyone experiences both the trail &amp; groundwork.</p></li>
+        <li><h3>Horse care / untack</h3><p>Remove tack, groom and care for the horses after work.</p></li>
+        <li><h3>Closing &amp; group photo</h3><p>Q&amp;A and your team’s hhi™ impact.</p></li>
+      </ol>
+      <h2>What makes it special</h2>
+      ''' + ticks('Hands-On Horsemanship', 'Iconic Prospect Park Setting', 'Engaging Team Experience', 'Meaningful Community Impact', 'Led by Experienced Equine Professionals') + '''
+      <h2>Your experience creates impact</h2>
+      <div class="prose"><p>A portion of every equine experience directly supports our community programs, helping more New Yorkers — youth, seniors and families — access the transformative connection between horses, people and park.</p><p><b>Experience. Learn. Give back.</b></p></div>
+      <h2 id="package">Corporate package</h2>
+      <div class="package">
+        <p class="price">Contact us for per-person pricing</p>
+        <p>Minimum group: 8 people | Maximum: 14 people</p>
+        <h3>Includes</h3>
+        <ul class="mini">
+          <li>3 hour private hhi™ Equine Experience</li>
+          <li>All instruction, horses and equipment</li>
+          <li>Use of stable, arena and Prospect Park bridle path</li>
+          <li>Contribution to hhi™ community programs</li>
+          <li>Group photos + hhi™ goodie bag!</li>
+        </ul>
+        <p class="tagline">A team experience with purpose</p>
+        ''' + involve('Book your hhi™ equine experience', 'Book an Experience') + '''
+      </div>'''),
+
+        dict(path='team', nav='Meet the Team', h1='Meet the team',
+             title='Meet the Team | Helping Hoof Initiative',
+             desc='The humans and horses behind Helping Hoof Initiative (hhi™).',
+             body='''
+      <p class="lead">The humans and horses behind Helping Hoof Initiative (hhi™). Together, we nurture connection, healing, and community.</p>
+      <h2>Board of directors &amp; leadership</h2>
+      <ul class="people people--leaders">
+        ''' + member('Xiomara Peralta', '<p class="role">Chairman</p>', 'xiomara-peralta') + '''
+        ''' + member('Judith Gruntz', '<p class="role">President &amp; Vice Chairman</p>') + '''
+        ''' + member('Shanaz Khan', '<p class="role">Vice President</p><p class="role">Head of Equine Heritage &amp; Community Programming</p>', 'shanaz-khan',
+                     '<ul class="mini"><li>Fulbright Scholar</li><li>B. Architecture</li><li>MSc. Historic Preservation</li><li>Pakistan National Tent-Pegging Equestrian Team</li></ul>') + '''
+      </ul>
+      <h2>Our horse ambassadors</h2>
+      <ul class="people">
+        ''' + ''.join([animal('Bay Ridge', 'Quarter Horse'), animal('Clinton Hill', 'Arab &amp; Quarter Horse'), animal('Williamsburg', 'Thoroughbred', ''),
+                       animal('Midwood', 'Quarter Horse'), animal('Bushwick', 'Quarter Horse'), animal('Dumbo', 'Draft &amp; Quarter Horse'),
+                       animal('Red Hook', 'Appaloosa'), animal('Texas', 'Appaloosa'), animal('Maximus', 'Mustang')]) + '''
+      </ul>
+      <h2>Our pony ambassadors</h2>
+      <ul class="people">
+        ''' + ''.join([animal('Cavallucci', 'Quarter Horse'), animal('Zeppoli', 'Appaloosa'), animal('Cannoli', 'Quarter Horse')]) + '''
+      </ul>'''),
+
+        dict(path='shop', nav='Shop', h1='Shop with purpose',
+             title='Shop | Helping Hoof Initiative',
+             desc='Every purchase supports equine-assisted programming from Helping Hoof Initiative (hhi™).',
+             body='''
+      <p class="lead">Every purchase supports our mission of providing equine-assisted programming. Wear your support and help us help humans and horses thrive together.</p>
+      <h2>Shop categories</h2>
+      ''' + ticks('Apparel', 'Hats &amp; Headwear', 'Totes &amp; Bags', 'Drinkware') + '''
+      <h2>Apparel</h2>
+      <div class="cards cards--two">
+        ''' + product('polo', 'Front and back of a white polo shirt with pink trim and the hhi™ logo', 'logo polo shirt', '100% Cotton', 'White, Black') + '''
+        ''' + product('tshirt', 'Front and back of a gray T-shirt with the hhi™ logo', 'logo T-shirt', '100% Cotton', 'Gray, Pink, White') + '''
+        ''' + product('hoodie', 'Front and back of a pink hoodie with the hhi™ logo', 'logo hoodie', 'Fleece', 'Gray, Pink, White') + '''
+        ''' + product('crewneck', 'Front and back of a gray crewneck sweatshirt with the hhi™ logo', 'logo crewneck', 'Fleece', 'Gray, Pink, White') + '''
       </div>'''),
 
         dict(path='get-involved', nav='Get Involved', h1='Get involved',
              foot=inquiry_config('info@hhi.horse', 'Helping Hoof Initiative', DONATE),
-             desc='Volunteer, donate, partner with or enroll a rider in Helping Hoof Initiative.',
+             desc='Volunteer, donate, partner, join a program, book an equine experience or order from the Helping Hoof Initiative shop.',
              body='''
-      <p class="lead">Volunteer, donate, partner, or enroll a rider. Choose how you’d like to help and tell us a little about yourself.</p>
+      <p class="lead">Volunteer, donate, partner, join a program, book your hhi™ equine experience or order from the shop. Tell us how you’d like to get involved and we’ll be in touch.</p>
       <nav class="levers" aria-label="Ways to help">
-        <a class="lever" href="./?type=Volunteer#form"><span><b>Volunteer</b><small>Lend a hand at the stable or at community events.</small></span></a>
-        <a class="lever" href="./?type=Donate#form" data-donate><span><b>Donate</b><small>Support second-career horses and access to riding.</small></span></a>
-        <a class="lever" href="./?type=Partner#form"><span><b>Partner</b><small>Schools, therapy programs and community gardens.</small></span></a>
+        <a class="lever" href="./?type=Volunteer#form"><span><b>Volunteer</b><small>Lend a hand at the park or at community events.</small></span></a>
+        <a class="lever" href="./?type=Donate#form" data-donate><span><b>Donate</b><small>Support second career horses and our community programs.</small></span></a>
+        <a class="lever" href="./?type=Partner#form"><span><b>Partner</b><small>Schools, universities and local organizations.</small></span></a>
+        <a class="lever" href="./?type=Book%20an%20Experience#form"><span><b>Book an experience</b><small>A portion of every equine experience supports our community programs.</small></span></a>
         <a class="lever" href="https://DJMiddleFinger.github.io/be-brooklyn-equine/" target="_blank" rel="noopener"><span><b>Ride &amp; learn ↗</b><small>Lessons, trail rides and youth programs with Be•Brooklyn Equine.</small></span></a>
       </nav>''' + HHI_FORM),
     ],
@@ -477,6 +651,12 @@ def build(site, credits):
         body = page['body'].replace('{R}', R).replace('{A}', A)
 
         title = page.get('title') or f'{page["h1"]} | {site["name"]}'
+        icon = logo = note = ''
+        if 'logo' in site:
+            icon = f'\n  <link rel="icon" type="image/png" href="{A}{site["logo"]}">'
+            logo = f'<img class="side-logo" src="{A}{site["logo"]}" alt="" width="104" height="104">'
+        if 'foot_note' in site:
+            note = f' | {e(site["foot_note"])}'
         out = f'''<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -491,13 +671,13 @@ def build(site, credits):
   <link rel="preconnect" href="https://api.fontshare.com">
   <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
   <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,401,500,700,900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="{A}css/site.css">{page.get('head', '')}
+  <link rel="stylesheet" href="{A}css/site.css">{icon}{page.get('head', '')}
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
   <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="sidebar" aria-label="Open menu"><i></i><i></i><i></i><i></i></button>
   <aside class="sidebar" id="sidebar" aria-label="{e(site['name'])}">
-    <a class="side-brand" href="{href('')}">{e(site['short'])}<small>{e(site['tagline'])}</small></a>
+    <a class="side-brand" href="{href('')}">{logo}{e(site['short'])}<small>{e(site['tagline'])}</small></a>
     <nav aria-label="Pages">
       <ul class="side-nav">
 {chr(10).join(side)}
@@ -509,11 +689,11 @@ def build(site, credits):
       <nav class="crumbs" aria-label="Breadcrumb"><ol>{crumbs}</ol></nav>
     </header>
     <main class="page" id="main">
-      <h1>{e(page['h1'])}</h1>{body}
+      <h1>{page.get('h1_html') or e(page['h1'])}</h1>{body}
     </main>
     <footer class="page-foot">
       <a class="btn" href="{R}{site['contact']}">Contact us</a>{photo_credits}
-      <span>© {YEAR} {e(site['owner'])}</span>
+      <span>© {YEAR} {e(site['owner'])}{note}</span>
     </footer>
   </div>{page.get('foot', '')}
   <script src="{A}js/site.js"></script>
@@ -553,19 +733,23 @@ def credits_page(site, credits):
         lic = (f'<a href="{e(c["license_url"])}" target="_blank" rel="noopener">{e(c["license"])}</a>'
                if c.get('license_url') else e(c['license']))
         byline = lic if c['license'].startswith('Courtesy') else f'By {e(c["artist"])}, {lic}'
+        name = e(display_title(c['title']))
+        if c.get('source'):
+            name = f'<a href="{e(c["source"])}" target="_blank" rel="noopener">{name}</a>'
         rows.append(f'''
         <li class="credit">
           <img src="{{A}}{e(c["file"].removeprefix("assets/"))}" alt="" loading="lazy">
           <div>
             <p class="used">{e(c["used"])}</p>
-            <h3><a href="{e(c["source"])}" target="_blank" rel="noopener">{e(display_title(c["title"]))}</a></h3>
+            <h3>{name}</h3>
             <p>{byline}</p>
           </div>
         </li>''')
+    intro = site.get('credits_intro', 'Most photographs on this site come from Wikimedia Commons and are used under the licenses listed below. Public-domain images are courtesy of the Library of Congress and other collections. Select a title to see the original file and its full license.')
     return dict(path='credits', nav='Photo credits', h1='Photo credits',
                 desc='Photo credits and licenses for images used on this site.',
                 body=f'''
-      <p class="lead">Most photographs on this site come from Wikimedia Commons and are used under the licenses listed below. Public-domain images are courtesy of the Library of Congress and other collections. Select a title to see the original file and its full license.</p>
+      <p class="lead">{intro}</p>
       <ul class="credit-list">{"".join(rows)}
       </ul>''')
 

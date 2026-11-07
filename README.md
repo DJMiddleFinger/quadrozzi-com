@@ -64,7 +64,7 @@ filled in. Where messages go is set by `inquiry_config(...)` in `tools/build_sit
 | Page | Inbox |
 |---|---|
 | GBX › Book | info@Quadrozzi.com |
-| Helping Hoof Initiative › Get involved | info@Quadrozzi.com |
+| Helping Hoof Initiative › Get involved | info@hhi.horse |
 
 Each config also takes an `endpoint`: a form service URL (e.g. Formspree) that receives submissions directly,
 with no email app involved. You'll need to create the service account yourself. Links such as
@@ -82,7 +82,7 @@ credits page, the rest on GBX's. After adding or replacing a photo, update that 
 pages are linked from every page footer and meet the attribution requirement of the CC BY-SA photos.
 
 ## Placeholders still to fill
-- **Helping Hoof Initiative:** add a donation link, and swap stand-in photos for the stable's own (see `plans/05-launch-checklist.md`)
+- **Helping Hoof Initiative:** the Corporate Package price, shop prices and a way to buy, team bios, a donation link, the turnout schedule, social links, and full-size originals of the photos cropped from the designs (see `plans/05-launch-checklist.md`)
 
 ## Design
 Colors come from the Quadrozzi truck fleet: orange cabs, yellow drums, black lettering and hazard stripes.

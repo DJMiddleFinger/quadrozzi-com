@@ -16,10 +16,16 @@
 
 ## Helping Hoof Initiative pages
 - [ ] Family review of the page copy, quotes and timeline
-- [x] Inbox for Helping Hoof Initiative messages: info@Quadrozzi.com
+- [x] Rebuilt from the hhi logo and the Home, About, Programs, Corporate Retreat, Meet the Team and Shop designs (Nov 2026)
+- [ ] Confirm info@hhi.horse receives the form messages
+- [ ] Set the Corporate Package price (blank on the flyer; the page says "Contact us for per-person pricing")
+- [ ] Set shop prices and decide how orders work: the shop links open the Get involved form for now, because "Add to Cart" needs a store
+- [ ] Replace the four shop images with real product photos (they look like AI-generated mockups, and two carry a generator mark)
+- [ ] Add bios for Xiomara Peralta and Judith Gruntz, photos of Judith Gruntz and Williamsburg, and the ambassadors' ages and heights (blank on the design)
+- [ ] Confirm the Horse Hangouts mentoring description (the design repeats the Intergenerational program sentence) and the spelling of Cavallucci
+- [ ] Add the Horseplay turnout schedule and the Instagram and LinkedIn links; link helpinghoofinitiative.com once the domain is live
+- [ ] Confirm the photos cropped from the designs are cleared to publish, with consent from anyone pictured, and swap in full-size originals
 - [ ] Add an online donation link in `HOOVES.donate` (or keep donations by email)
-- [ ] Replace stand-in photos (therapy, mission tiles) with the stable's own photos, with consent from anyone pictured, and update `tools/credits.json`
-- [ ] Confirm whether the GallopNYC partnership is still active; the page describes it as starting in 2019
 
 ## Build
 - [x] Photos in place (Wikimedia Commons, credited on each site's `credits/` page)

@@ -259,3 +259,76 @@ blockquote cite { display: block; margin-top: .9rem; font-style: normal; font-si
 @media (prefers-reduced-motion: reduce) {
   * { transition-duration: 0s !important; }
 }
+
+/* ---------- Helping Hoof Initiative ---------- */
+.brand { text-transform: none; }  /* keeps hhi™ lowercase inside uppercase headings */
+.nb { white-space: nowrap; }
+.side-logo { width: 104px; height: 104px; margin-bottom: 1rem; }
+.more { display: inline-block; margin-top: .75rem; font-size: .9rem; font-weight: 700; color: var(--orange-ink); text-underline-offset: 3px; }
+.btn--dark { background: var(--asphalt); color: var(--concrete); }
+.btn--dark:hover { background: #333; }
+.actions { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.5rem; }
+.intro-row { display: grid; grid-template-columns: minmax(0, 1fr) clamp(130px, 18vw, 240px); gap: clamp(1.25rem, 4vw, 3rem); align-items: center; }
+.intro-row .lead { font-size: clamp(1.15rem, 1.8vw, 1.35rem); line-height: 1.45; max-width: 46ch; }
+.intro-logo { width: 100%; height: auto; }
+.notice { padding: .9rem 1.1rem; background: var(--asphalt); color: var(--concrete); font-size: .95rem; }
+.notice a { text-decoration: none; }
+.notice a:hover { color: var(--yellow); }
+.notice b { color: var(--yellow); }
+.facts--words dt { font-size: clamp(1.25rem, 2vw, 1.6rem); line-height: 1.1; text-transform: uppercase; }
+.plate--wide img { aspect-ratio: 1415 / 561; }
+.steps--plain { counter-reset: none; }
+.steps--plain li::before { content: none; }
+.page .mini { list-style: none; display: grid; gap: .35rem; margin-top: .65rem; }
+.mini li { display: flex; gap: .55rem; font-size: .92rem; font-weight: 500; line-height: 1.4; }
+.mini li::before { content: ''; flex: none; width: 8px; height: 8px; margin-top: .42em; background: var(--orange); }
+.card--plain .more { color: var(--yellow); }
+.program { scroll-margin-top: 72px; }
+.program img { aspect-ratio: 2 / 1; }
+#intergenerational img { object-position: center 36%; }
+#horse-hangouts img { object-position: center 28%; }
+.product img { aspect-ratio: 3 / 2; }
+.cards--two { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 860px; }
+
+/* Equine Experience */
+.run { list-style: none; display: grid; gap: 1.4rem; max-width: 860px; counter-reset: run; }
+.run > li { position: relative; padding-left: 3.25rem; counter-increment: run; }
+.run > li::before {
+  content: counter(run); position: absolute; left: 0; top: 0; width: 2.2rem; height: 2.2rem; display: grid; place-items: center;
+  background: var(--orange); color: var(--asphalt); font-family: var(--display); font-weight: 900; font-size: 1.15rem;
+}
+.run p { font-size: .96rem; color: var(--stone); }
+.groups { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin-top: 1rem; }
+.group { background: var(--paper); border: 1px solid var(--line); padding: 1rem 1.15rem 1.2rem; }
+.group h4 { font-family: var(--display); font-weight: 900; text-transform: uppercase; font-size: 1rem; line-height: 1.15; }
+.package { max-width: 620px; background: var(--paper); border: 1px solid var(--line); border-top: 6px solid var(--orange); padding: clamp(1.25rem, 4vw, 2rem); }
+.package .price { font-weight: 700; font-size: 1.25rem; }
+.package h3 { margin-top: 1.25rem; }
+.package .tagline { margin-top: 1.25rem; font-size: .8rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--stone); }
+.package .tagline + p { margin-top: .9rem; }
+
+/* Team */
+.people { list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 270px), 1fr)); gap: 1rem; }
+.person { display: flex; align-items: center; gap: 1rem; background: var(--paper); border: 1px solid var(--line); padding: .75rem; }
+.person > img, .no-photo { flex: none; width: 112px; aspect-ratio: 11 / 10; object-fit: cover; }
+.no-photo { display: grid; place-items: center; background: var(--concrete); }
+.no-photo img { width: 58%; height: auto; }
+.person > div { min-width: 0; }
+.page .person h3 { font-size: 1.05rem; overflow-wrap: anywhere; }
+.person .role { font-size: .9rem; line-height: 1.35; color: var(--stone); }
+.person .mini li { font-size: .85rem; font-weight: 400; }
+.people--leaders { grid-template-columns: minmax(0, 1fr); max-width: 720px; }
+.people--leaders .person { align-items: flex-start; }
+.people--leaders .person > img, .people--leaders .no-photo { width: 120px; aspect-ratio: 1; }
+
+@media (min-width: 961px) {
+  .steps--three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (min-width: 601px) {
+  .timeline--words li { grid-template-columns: 8rem minmax(0, 1fr); }
+}
+@media (max-width: 600px) {
+  .intro-row { grid-template-columns: minmax(0, 1fr); }
+  .intro-logo { order: -1; width: 130px; }
+  .groups, .cards--two { grid-template-columns: minmax(0, 1fr); }
+}
