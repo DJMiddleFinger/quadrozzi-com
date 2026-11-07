@@ -213,6 +213,8 @@ blockquote cite { display: block; margin-top: .9rem; font-style: normal; font-si
 .page-foot a { color: var(--concrete); text-underline-offset: 3px; }
 .page-foot .btn { color: var(--asphalt); padding: .6rem 1.1rem; font-size: .85rem; }
 .page-foot span { margin-left: auto; }
+.page-foot .foot-mark { width: 190px; max-width: 100%; height: auto; margin-left: auto; }
+.page-foot .foot-mark + span { margin-left: 0; }
 
 /* ---------- Menu button (phones): four bars, top left ---------- */
 .menu-toggle {
@@ -254,7 +256,7 @@ blockquote cite { display: block; margin-top: .9rem; font-style: normal; font-si
   .timeline li { grid-template-columns: minmax(0, 1fr); gap: .35rem; }
   .credit { grid-template-columns: 84px minmax(0, 1fr); }
   .credit img { width: 84px; }
-  .page-foot span { margin-left: 0; }
+  .page-foot span, .page-foot .foot-mark { margin-left: 0; }
 }
 @media (prefers-reduced-motion: reduce) {
   * { transition-duration: 0s !important; }

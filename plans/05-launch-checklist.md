@@ -29,7 +29,9 @@
 
 ## Build
 - [x] Photos in place (Wikimedia Commons, credited on each site's `credits/` page)
-- [ ] 1200×630 Open Graph image (`site/assets/og.jpg`) and `og:image` tags (neither exists yet)
+- [x] 1200×630 Open Graph image (`site/assets/og.jpg`) and `og:image` tags on every page except Helping Hoof Initiative
+- [ ] Switch `og:image` to https once quadrozzi.com has a valid certificate (`OG_IMAGE` in `tools/build_site.py`, plus `site/index.html` and `site/contact/index.html`)
+- [ ] Share image for Helping Hoof Initiative
 - [ ] Add a favicon
 
 ## Hosting (GitHub Pages, the same setup as Brooklyn Equine)

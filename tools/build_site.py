@@ -17,6 +17,14 @@ from urllib.parse import quote
 
 ROOT = Path(__file__).resolve().parent.parent
 YEAR = datetime.date.today().year
+# Absolute because social networks need one. http until quadrozzi.com has a valid certificate: https currently fails.
+OG_IMAGE = 'http://www.quadrozzi.com/assets/og.jpg'
+OG_IMAGE_TAGS = f'''
+  <meta property="og:image" content="{OG_IMAGE}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Quadrozzi Q logo and www.Quadrozzi.com">
+  <meta name="twitter:card" content="summary_large_image">'''
 e = html.escape
 
 
@@ -651,7 +659,10 @@ def build(site, credits):
         body = page['body'].replace('{R}', R).replace('{A}', A)
 
         title = page.get('title') or f'{page["h1"]} | {site["name"]}'
-        icon = logo = note = ''
+        icon = logo = note = og_image = wordmark = ''
+        if site is not HHI:  # hhi has its own identity: no Quadrozzi wordmark or share image
+            og_image = OG_IMAGE_TAGS
+            wordmark = f'\n      <img class="foot-mark" src="{A}quadrozzi-wordmark.svg" alt="www.Quadrozzi.com" width="263" height="19">'
         if 'logo' in site:
             icon = f'\n  <link rel="icon" type="image/png" href="{A}{site["logo"]}">'
             logo = f'<img class="side-logo" src="{A}{site["logo"]}" alt="" width="104" height="104">'
@@ -666,7 +677,7 @@ def build(site, credits):
   <meta name="description" content="{e(page['desc'])}">
   <meta property="og:type" content="website">
   <meta property="og:title" content="{e(title)}">
-  <meta property="og:description" content="{e(page['desc'])}">
+  <meta property="og:description" content="{e(page['desc'])}">{og_image}
   <meta name="theme-color" content="#161616">
   <link rel="preconnect" href="https://api.fontshare.com">
   <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
@@ -692,7 +703,7 @@ def build(site, credits):
       <h1>{page.get('h1_html') or e(page['h1'])}</h1>{body}
     </main>
     <footer class="page-foot">
-      <a class="btn" href="{R}{site['contact']}">Contact us</a>{photo_credits}
+      <a class="btn" href="{R}{site['contact']}">Contact us</a>{photo_credits}{wordmark}
       <span>© {YEAR} {e(site['owner'])}{note}</span>
     </footer>
   </div>{page.get('foot', '')}
@@ -774,6 +785,9 @@ def build_news():
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>In the News | Quadrozzi</title>
   <meta name="description" content="News, sponsorships and more from Quadrozzi, searchable by type, date, organization, category and company.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="In the News | Quadrozzi">
+  <meta property="og:description" content="News, sponsorships and more from Quadrozzi, searchable by type, date, organization, category and company.">{OG_IMAGE_TAGS}
   <meta name="theme-color" content="#ffe641">
   <link rel="preconnect" href="https://api.fontshare.com">
   <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>

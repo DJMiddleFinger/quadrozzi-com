@@ -5,6 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Quadrozzi</title>
   <meta name="description" content="Quadrozzi, Brooklyn, New York.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Quadrozzi">
+  <meta property="og:description" content="Quadrozzi, Brooklyn, New York.">
+  <!-- http until quadrozzi.com has a valid certificate; keep in step with OG_IMAGE in tools/build_site.py -->
+  <meta property="og:image" content="http://www.quadrozzi.com/assets/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Quadrozzi Q logo and www.Quadrozzi.com">
+  <meta name="twitter:card" content="summary_large_image">
   <meta name="theme-color" content="#ffe641">
   <script>
     // The truck intro (assets/js/truck-intro.js) plays once per browser session. If it hasn't started after
@@ -132,6 +141,7 @@
     .thread a:hover { color: var(--yellow); }
 
     .menu-foot { margin-top: auto; padding-top: 2.5rem; font-size: .9rem; line-height: 1.8; color: var(--stone); }
+    .menu-foot .wordmark { display: block; width: min(300px, 100%); height: auto; margin-bottom: 1rem; }
     .menu-foot em { display: block; color: var(--ivory); }
     .menu-foot a { color: var(--ivory); text-underline-offset: 3px; }
     .menu-foot a:focus-visible { outline: 2px solid var(--yellow); outline-offset: 3px; }
@@ -205,6 +215,7 @@
       <div><a class="division" href="news/">In the News</a></div>
     </div>
     <p class="menu-foot">
+      <img class="wordmark" src="assets/quadrozzi-wordmark.svg" alt="www.Quadrozzi.com" width="263" height="19">
       <em>“We don’t mean business, we make it.”</em>
       <a class="contact" href="contact/">Contact us</a>
     </p>
