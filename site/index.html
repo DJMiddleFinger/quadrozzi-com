@@ -161,6 +161,30 @@
       .thread > li > a, .thread > li > span { padding: .4rem 0; }  /* easier to tap */
     }
 
+    .thread > li.sub { font-size: .8rem; text-transform: uppercase; letter-spacing: .12em; color: var(--yellow); padding-top: .6rem; }
+    .thread small { display: block; font-weight: 400; font-size: .85rem; font-style: italic; color: var(--stone); padding-bottom: .25rem; }
+    .menu-foot .phone { display: block; font-weight: 900; }
+    /* the Family: a second panel from the right, opened by the button top right */
+    .family-toggle {
+      position: fixed; z-index: 30; top: max(10px, env(safe-area-inset-top)); right: max(10px, env(safe-area-inset-right));
+      height: 56px; padding: 0 12px; border: 0; background: none; color: var(--smoke); cursor: pointer;
+      font: 900 1rem var(--font); text-transform: uppercase; letter-spacing: -.01em; transition: opacity .5s var(--ease);
+    }
+    .drop .family-toggle { opacity: 0; pointer-events: none; }
+    .family-open .family-toggle { color: var(--ivory); }
+    .family {
+      position: fixed; inset: 0 0 0 auto; z-index: 20; width: min(520px, 100%); padding: 104px 2rem 2rem;
+      color: var(--ivory); background: var(--smoke); display: flex; flex-direction: column; gap: 1.25rem; overflow-y: auto;
+      transform: translateX(100%); visibility: hidden; transition: transform .5s cubic-bezier(.7, 0, .2, 1), visibility 0s linear .5s;
+    }
+    .family-open .family { transform: none; visibility: visible; transition-delay: 0s; }
+    .family-open .scrim { opacity: 1; visibility: visible; transition-delay: 0s; }
+    .family h2 { font-size: clamp(1.6rem, 7vw, 3rem); font-weight: 900; text-transform: uppercase; letter-spacing: -.02em; color: var(--yellow); line-height: 1; }
+    .family ul { list-style: none; border-top: 1px solid var(--line); }
+    .family li { padding: .7rem 0; border-bottom: 1px solid var(--line); font-weight: 700; }
+    .family li span { color: var(--stone); font-weight: 400; margin-right: .5rem; }
+    .family p { margin-top: auto; font-style: italic; color: var(--stone); font-size: 1.25rem; }
+
     @media (prefers-reduced-motion: reduce) { * { transition-duration: 0s !important; } }
   </style>
 </head>
@@ -174,49 +198,86 @@
   <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Open menu">
     <i></i><i></i><i></i><i></i>
   </button>
+  <button class="family-toggle" type="button" aria-expanded="false" aria-controls="family">the Family</button>
   <div class="scrim" aria-hidden="true"></div>
+  <aside class="family" id="family" aria-label="la Famiglia (the Family)" inert>
+    <h2>la Famiglia</h2>
+    <ul>
+      <li><span>1st gen</span>Costintino Quadrozzi</li>
+      <li><span>2nd gen</span>John Quadrozzi, Sr.</li>
+      <li><span>2nd gen</span>Willian Quadrozzi, Sr.</li>
+      <li><span>3rd gen</span>John Quadrozzi, Jr.</li>
+      <li><span>4th gen</span>Leonor Quadrozzi</li>
+    </ul>
+    <p>…est 1954</p>
+  </aside>
 
   <nav class="menu" id="menu" aria-label="Quadrozzi companies" inert>
     <div class="divisions">
       <details>
         <summary class="division">Real Estate</summary>
         <ul class="thread">
-          <li><a href="gbx/">GBX™~Gowanus Bay Terminal</a></li>
+          <li class="sub"><span>Industrial</span></li>
           <li><a href="terminals/#bbx">BBX™~Barbadoes Basin Terminal</a></li>
+          <li><a href="gbx/">GBX™~Gowanus Bay Terminal</a></li>
           <li><a href="terminals/#vbx">VBX™~Vernam Basin Terminal</a></li>
-          <li><a href="terminals/">All terminals</a></li>
+          <li class="sub"><span>Commercial</span></li>
+          <li><span>🐴Prospect Park Stable🐴™</span></li>
+          <li><span>coming…</span></li>
         </ul>
       </details>
       <details>
-        <summary class="division">Operations</summary>
+        <summary class="division">Industry</summary>
         <ul class="thread">
-          <li><span>Quadro▪cem™ aka NYCEMCO · Cement</span></li>
-          <li><span>Quadrozzi™Concrete</span></li>
-          <li><span>Quadro▪salt™ · Rock salt</span></li>
-          <li><span>Quadrozzi™Studios</span></li>
-          <li><span>Quadro▪trax™ · Transportation</span></li>
+          <li class="sub"><span>Manufacturing</span></li>
+          <li><span>Quadrozzi™Concrete Corp.</span></li>
+          <li class="sub"><span>Materials</span></li>
+          <li><span>Quadro▪cem™ aka NYCEMCO</span><small>when it comes to quality, there’s no grey area!</small></li>
+          <li><span>Quadro▪salt™</span></li>
+          <li class="sub"><span>Transportation</span></li>
+          <li><span>Quadro▪trax™</span></li>
         </ul>
       </details>
       <details>
-        <summary class="division">Design</summary>
-        <ul class="thread"><li><span>Quadrozzi™disegno</span></li></ul>
+        <summary class="division">Visual Arts</summary>
+        <ul class="thread">
+          <li><span>Quadrozzi™disegno, ink.</span><small>…art design utility reinvented</small></li>
+          <li><span>Quadrozzi™for__</span></li>
+        </ul>
+      </details>
+      <details>
+        <summary class="division">Film ▪ Photo ▪ Events</summary>
+        <ul class="thread">
+          <li><span>Quadrozzi™studios, inc.</span></li>
+          <li><span>🎬 877 Quadro▪s · <a href="tel:+18777823767">877 782 3767</a></span></li>
+        </ul>
       </details>
       <details>
         <summary class="division">Recreational</summary>
         <ul class="thread">
-          <li><a href="https://djmiddlefinger.github.io/be-brooklyn-equine/" target="_blank" rel="noopener">Be™•Brooklyn equine™ ↗<span class="sr-only"> (opens in a new tab)</span></a></li>
-          <li><span>PPS▪Prospect Park Stable™</span></li>
+          <li class="sub"><span>Horse care &amp; riding</span></li>
+          <li><a href="https://djmiddlefinger.github.io/be-brooklyn-equine/" target="_blank" rel="noopener">Be™•Brooklyn equine™ ↗<span class="sr-only"> (opens in a new tab)</span></a><small>…Be™ part of the revival of the urban horse!</small></li>
+          <li class="sub"><span>Not-for-profit</span></li>
+          <li><a href="helping-hooves/">hhi™•helping hoof initiative •501(c)(3)</a></li>
+          <li class="sub"><span>Stables</span></li>
+          <li><span>🐴Prospect Park Stable🐴™</span><small>est. 1917… re-established 2018, 101 years later! NYC’s oldest horse riding stable and the only stable accessible by NYC Subway.</small></li>
         </ul>
       </details>
       <details>
         <summary class="division">Not-for-profit</summary>
-        <ul class="thread"><li><a href="helping-hooves/">hhi™•helpinghoof initiative •501(c)(3)</a></li></ul>
+        <ul class="thread">
+          <li><a href="helping-hooves/">hhi™•helping hoof initiative •501(c)(3)</a><small>“not only therapy for humans, it’s a human &amp; horse symbiosis”</small></li>
+          <li><a href="helping-hooves/">Halloween 🎃 2026 E.8th Street ☠️ NYC Trick-or-Streets 👻</a></li>
+          <li><a href="helping-hooves/">Windsor Terrace quadrant · a community plan</a></li>
+        </ul>
       </details>
       <div><a class="division" href="news/">In the News</a></div>
+      <div><a class="division" href="news/?type=Sponsorship">Sponsorships</a></div>
     </div>
     <p class="menu-foot">
       <img class="wordmark" src="assets/quadrozzi-wordmark.svg" alt="www.Quadrozzi.com" width="263" height="19">
-      <em>“We don’t mean business, we make it.”</em>
+      <em>“we don’t mean business, we make it!”</em>
+      <a class="phone" href="tel:+18777823769">877 Quadro▪z™ · 877 782 3769</a>
       <a class="contact" href="contact/">Contact us</a>
     </p>
   </nav>
@@ -235,9 +296,19 @@
         if (open) menu.querySelector('summary, a').focus();  // the under construction package has no summaries
       }
       toggle.addEventListener('click', function () { setMenu(!document.body.classList.contains('menu-open')); });
-      document.querySelector('.scrim').addEventListener('click', function () { setMenu(false); });
+      var ft = document.querySelector('.family-toggle'), fam = document.getElementById('family');
+      function setFamily(open) {
+        document.body.classList.toggle('family-open', open);
+        ft.setAttribute('aria-expanded', String(open));
+        fam.inert = !open;
+        face.inert = open;
+        if (open) fam.querySelector('h2').setAttribute('tabindex', '-1'), fam.querySelector('h2').focus();
+      }
+      ft.addEventListener('click', function () { setFamily(!document.body.classList.contains('family-open')); });
+      document.querySelector('.scrim').addEventListener('click', function () { setMenu(false); setFamily(false); });
       document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape' && document.body.classList.contains('menu-open')) { setMenu(false); toggle.focus(); }
+        if (e.key === 'Escape' && document.body.classList.contains('family-open')) { setFamily(false); ft.focus(); }
       });
     })();
   </script>
