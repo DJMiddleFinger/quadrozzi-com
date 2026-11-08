@@ -140,6 +140,10 @@
     .thread a { color: var(--ivory); text-underline-offset: 4px; }
     .thread a:hover { color: var(--yellow); }
 
+    .menu-tag { font-size: .9rem; line-height: 1.6; color: var(--stone); margin-bottom: 1.25rem; }
+    .menu-tag strong { color: var(--ivory); }
+    .menu-tag em, .thread em { font-style: italic; font-weight: 500; font-size: .9rem; color: var(--stone); }
+    .thread .sub { font-size: .8rem; text-transform: uppercase; letter-spacing: .08em; color: var(--yellow); }
     .menu-foot { margin-top: auto; padding-top: 2.5rem; font-size: .9rem; line-height: 1.8; color: var(--stone); }
     .menu-foot .wordmark { display: block; width: min(300px, 100%); height: auto; margin-bottom: 1rem; }
     .menu-foot em { display: block; color: var(--ivory); }
@@ -177,42 +181,78 @@
   <div class="scrim" aria-hidden="true"></div>
 
   <nav class="menu" id="menu" aria-label="Quadrozzi companies" inert>
+    <p class="menu-tag">serviced / marketed / developed by <strong>QUE™</strong><br><em>…is creating an urban <b>ec</b>o-<b>sy</b>stem called /<b>ur•ec•sy</b>/™</em><br><em>…consider our world always!</em></p>
     <div class="divisions">
       <details>
         <summary class="division">Real Estate</summary>
         <ul class="thread">
-          <li><a href="gbx/">GBX™~Gowanus Bay Terminal</a></li>
+          <li><span class="sub">Industrial</span></li>
           <li><a href="terminals/#bbx">BBX™~Barbadoes Basin Terminal</a></li>
+          <li><a href="gbx/">GBX™~Gowanus Bay Terminal</a></li>
           <li><a href="terminals/#vbx">VBX™~Vernam Basin Terminal</a></li>
-          <li><a href="terminals/">All terminals</a></li>
+          <li><span class="sub">Commercial</span></li>
+          <li><span>PPS▪Prospect Park Stable™</span></li>
+          <li><span>coming…</span></li>
         </ul>
       </details>
       <details>
-        <summary class="division">Operations</summary>
+        <summary class="division">Industry</summary>
         <ul class="thread">
-          <li><span>Quadro▪cem™ aka NYCEMCO · Cement</span></li>
-          <li><span>Quadrozzi™Concrete</span></li>
-          <li><span>Quadro▪salt™ · Rock salt</span></li>
-          <li><span>Quadrozzi™Studios</span></li>
-          <li><span>Quadro▪trax™ · Transportation</span></li>
+          <li><span class="sub">Manufacturing</span></li>
+          <li><span>Quadrozzi™Concrete Corp.</span></li>
+          <li><span class="sub">Materials</span></li>
+          <li><span>Quadro▪cem™ aka NYCEMCO<br><em>when it comes to quality, there’s no grey area!</em></span></li>
+          <li><span>Quadro▪salt™</span></li>
+          <li><span class="sub">Transportation</span></li>
+          <li><span>Quadro▪trax™</span></li>
         </ul>
       </details>
       <details>
-        <summary class="division">Design</summary>
-        <ul class="thread"><li><span>Quadrozzi™disegno</span></li></ul>
+        <summary class="division">Visual Arts</summary>
+        <ul class="thread">
+          <li><span>Quadrozzi™disegno, ink.<br><em>…art design utility reinvented</em></span></li>
+          <li><span>Member: National Trust for Historic Preservation</span></li>
+          <li><span>Quadrozzi™for__</span></li>
+        </ul>
+      </details>
+      <details>
+        <summary class="division">Film ▪ Photo ▪ Events</summary>
+        <ul class="thread">
+          <li><span>Quadrozzi™studios, inc.</span></li>
+          <li><span>🎬 877 Quadro▪s [877 782 3767]</span></li>
+        </ul>
       </details>
       <details>
         <summary class="division">Recreational</summary>
         <ul class="thread">
-          <li><a href="https://djmiddlefinger.github.io/be-brooklyn-equine/" target="_blank" rel="noopener">Be™•Brooklyn equine™ ↗<span class="sr-only"> (opens in a new tab)</span></a></li>
-          <li><span>PPS▪Prospect Park Stable™</span></li>
+          <li><span class="sub">Horse care &amp; riding</span></li>
+          <li><a href="https://djmiddlefinger.github.io/be-brooklyn-equine/" target="_blank" rel="noopener">Be™•Brooklyn equine™ ↗<span class="sr-only"> (opens in a new tab)</span></a><br><em>…Be™ part of the revival of the urban horse!</em></li>
+          <li><span class="sub">Stables</span></li>
+          <li><span>PPS▪Prospect Park Stable™<br><em>est. 1917…re-established 2018, 101 years later! NYC’s oldest horse riding stable and only stable accessible by NYC Subway</em></span></li>
         </ul>
       </details>
       <details>
         <summary class="division">Not-for-profit</summary>
-        <ul class="thread"><li><a href="helping-hooves/">hhi™•helpinghoof initiative •501(c)(3)</a></li></ul>
+        <ul class="thread">
+          <li><a href="helping-hooves/">hhi™•helping hoof initiative •501(c)(3)</a><br><em>“not only therapy for humans, it’s a human &amp; horse symbiosis”</em></li>
+          <li><span>manure marauders</span></li>
+          <li><span>Halloween 🎃 2026 E.8th Street ☠️ NYC Trick-or-Streets 👻</span></li>
+          <li><span>Windsor Terrace quadrant: a community plan</span></li>
+        </ul>
       </details>
       <div><a class="division" href="news/">In the News</a></div>
+      <div><a class="division" href="news/?type=Sponsorship">Sponsorships</a></div>
+      <details class="family">
+        <summary class="division">la Famiglia</summary>
+        <ul class="thread">
+          <li><span>1st gen • Costantino Quadrozzi</span></li>
+          <li><span>2nd gen • John Quadrozzi, Sr.</span></li>
+          <li><span>2nd gen • William Quadrozzi, Sr.</span></li>
+          <li><span>3rd gen • John Quadrozzi, Jr.</span></li>
+          <li><span>4th gen • Leonor Quadrozzi</span></li>
+          <li><em>…est 1954</em></li>
+        </ul>
+      </details>
     </div>
     <p class="menu-foot">
       <img class="wordmark" src="assets/quadrozzi-wordmark.svg" alt="www.Quadrozzi.com" width="263" height="19">
