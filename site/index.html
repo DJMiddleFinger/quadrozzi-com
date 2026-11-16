@@ -37,7 +37,6 @@
       --stone: rgba(243, 241, 236, .6);
       --line: rgba(243, 241, 236, .16);
       --thread: #5a5955;
-      --hazard: repeating-linear-gradient(-45deg, #f6d31c 0 12px, #161616 12px 24px);
       --font: 'Satoshi', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
       --ease: cubic-bezier(.2, .7, .2, 1);
     }
@@ -66,8 +65,8 @@
     .drop .face figure { visibility: hidden; overflow: hidden; border-radius: 0 0 17.5% 17.5% / 0 0 12% 12%; }
     .drop .face figure::before, .drop .face figure::after { display: none; }
     .drop .menu-toggle { opacity: 0; pointer-events: none; }
+    .drop.parked .menu-toggle { opacity: 1; pointer-events: auto; }   /* the truck has stopped: the shot stays, grey */
     .fx { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
-    .intro-fill { background: var(--yellow); }
 
     /* ---------- Menu button: four bars, top left ---------- */
     .menu-toggle {
@@ -97,10 +96,8 @@
     .menu {
       position: fixed; inset: 0 auto 0 0; z-index: 20; width: min(760px, 100%);
       display: flex; flex-direction: column; overflow-y: auto; overscroll-behavior: contain;
-      padding: 104px calc(clamp(24px, 6vw, 72px) + 10px) calc(2rem + env(safe-area-inset-bottom)) clamp(24px, 6vw, 72px);
-      color: var(--ivory);
-      /* asphalt panel with a hazard-striped right edge */
-      background: linear-gradient(var(--smoke), var(--smoke)) 0 0 / calc(100% - 10px) 100% no-repeat, var(--hazard);
+      padding: 104px clamp(24px, 6vw, 72px) calc(2rem + env(safe-area-inset-bottom));
+      color: var(--ivory); background: var(--smoke);
       transform: translateX(-100%); visibility: hidden;
       transition: transform .5s cubic-bezier(.7, 0, .2, 1), visibility 0s linear .5s;
     }
@@ -121,9 +118,10 @@
     summary.division::after { content: '+'; font-weight: 500; }
     details[open] > summary.division::after { content: '\2212'; }
     .division:hover, details[open] > .division { color: var(--yellow); }
-    .division:focus-visible, .thread a:focus-visible { outline: 2px solid var(--yellow); outline-offset: 3px; }
+    .division:focus-visible, .thread a:focus-visible, .thread summary.sub:focus-visible { outline: 2px solid var(--yellow); outline-offset: 3px; }
 
     /* Threads, like nested Reddit comments: a line runs down the list with a curved elbow into every row.
+       A sub-group's label is a row too, and its items hang from a nested thread one level in.
        The way to whatever is hovered turns yellow. Browsers without :has() just show gray lines. */
     .thread { --elbow: .95rem; list-style: none; margin-left: .55rem; }
     .divisions > details > .thread { padding-bottom: 1.25rem; }
@@ -134,16 +132,19 @@
       content: ''; position: absolute; left: 0; top: 0; width: 1rem; height: var(--elbow);
       border: solid var(--thread); border-width: 0 0 2px 2px; border-bottom-left-radius: .6rem;
     }
-    .thread > li:has(> a:hover, > a:focus-visible)::after,
-    .thread > li:has(~ li > a:hover, ~ li > a:focus-visible)::before { border-color: var(--yellow); }
+    .thread .thread { padding-bottom: .35rem; }
+    .thread > li:has(> a:hover, > a:focus-visible, > details > summary:hover, > details > summary:focus-visible)::after,
+    .thread > li:has(~ li > a:hover, ~ li > a:focus-visible, ~ li > details > summary:hover, ~ li > details > summary:focus-visible)::before { border-color: var(--yellow); }
     .thread > li > a, .thread > li > span { display: block; padding: .25rem 0; }
     .thread a { color: var(--ivory); text-underline-offset: 4px; }
     .thread a:hover { color: var(--yellow); }
 
-    .menu-tag { font-size: .9rem; line-height: 1.6; color: var(--stone); margin-bottom: 1.25rem; }
-    .menu-tag strong { color: var(--ivory); }
-    .menu-tag em, .thread em { font-style: italic; font-weight: 500; font-size: .9rem; color: var(--stone); }
+    .thread em { font-style: italic; font-weight: 500; font-size: .9rem; color: var(--stone); }
     .thread .sub { font-size: .8rem; text-transform: uppercase; letter-spacing: .08em; color: var(--yellow); }
+    .thread summary.sub { display: block; padding: .25rem 0; cursor: pointer; list-style: none; }
+    .thread summary.sub::-webkit-details-marker { display: none; }
+    .thread summary.sub::after { content: '+'; margin-left: .5rem; font-weight: 500; }
+    .thread details[open] > summary.sub::after { content: '\2212'; }
     .menu-foot { margin-top: auto; padding-top: 2.5rem; font-size: .9rem; line-height: 1.8; color: var(--stone); }
     .menu-foot .wordmark { display: block; width: min(300px, 100%); height: auto; margin-bottom: 1rem; }
     .menu-foot em { display: block; color: var(--ivory); }
@@ -162,7 +163,7 @@
       .division { font-size: clamp(1.35rem, min(5.5vw, 6vh), 2.25rem); }
       .thread { --elbow: 1.05rem; }
       .thread > li { font-size: 1.05rem; }
-      .thread > li > a, .thread > li > span { padding: .4rem 0; }  /* easier to tap */
+      .thread > li > a, .thread > li > span, .thread summary.sub { padding: .4rem 0; }  /* easier to tap */
     }
 
     @media (prefers-reduced-motion: reduce) { * { transition-duration: 0s !important; } }
@@ -181,74 +182,75 @@
   <div class="scrim" aria-hidden="true"></div>
 
   <nav class="menu" id="menu" aria-label="Quadrozzi companies" inert>
-    <p class="menu-tag">serviced / marketed / developed by <strong>QUE™</strong><br><em>…is creating an urban <b>ec</b>o-<b>sy</b>stem called /<b>ur•ec•sy</b>/™</em><br><em>…consider our world always!</em></p>
     <div class="divisions">
       <details>
         <summary class="division">Real Estate</summary>
         <ul class="thread">
-          <li><span class="sub">Industrial</span></li>
-          <li><a href="terminals/#bbx">BBX™~Barbadoes Basin Terminal</a></li>
-          <li><a href="gbx/">GBX™~Gowanus Bay Terminal</a></li>
-          <li><a href="terminals/#vbx">VBX™~Vernam Basin Terminal</a></li>
-          <li><span class="sub">Commercial</span></li>
-          <li><span>PPS▪Prospect Park Stable™</span></li>
-          <li><span>coming…</span></li>
+          <li><details class="group"><summary class="sub">Industrial</summary>
+            <ul class="thread">
+              <li><a href="bbx/">BBX</a></li>
+              <li><a href="cicx/">CICX</a></li>
+              <li><a href="gbx/">GBX</a></li>
+              <li><a href="gcx/">GCX</a></li>
+              <li><a href="ncx/">NCX</a></li>
+              <li><a href="vbx/">VBX</a></li>
+              <li><a href="metropolitan-ave/">Metropolitan Ave</a></li>
+            </ul>
+          </details></li>
+          <li><details class="group"><summary class="sub">Commercial</summary>
+            <ul class="thread">
+              <li><a href="https://djmiddlefinger.github.io/be-brooklyn-equine/" target="_blank" rel="noopener">Be™•Brooklyn equine at Prospect Park Stable ↗<span class="sr-only"> (opens in a new tab)</span></a></li>
+            </ul>
+          </details></li>
         </ul>
       </details>
       <details>
         <summary class="division">Industry</summary>
         <ul class="thread">
-          <li><span class="sub">Manufacturing</span></li>
-          <li><span>Quadrozzi™Concrete Corp.</span></li>
-          <li><span class="sub">Materials</span></li>
-          <li><span>Quadro▪cem™ aka NYCEMCO<br><em>when it comes to quality, there’s no grey area!</em></span></li>
-          <li><span>Quadro▪salt™</span></li>
-          <li><span class="sub">Transportation</span></li>
-          <li><span>Quadro▪trax™</span></li>
+          <li><details class="group"><summary class="sub">Manufacturing</summary>
+            <ul class="thread">
+              <li><span>Quadrozzi™Concrete Corp.</span></li>
+            </ul>
+          </details></li>
+          <li><details class="group"><summary class="sub">Materials</summary>
+            <ul class="thread">
+              <li><span>Quadro▪cem™</span></li>
+              <li><span>Quadro▪salt™</span></li>
+            </ul>
+          </details></li>
+          <li><details class="group"><summary class="sub">Transportation</summary>
+            <ul class="thread">
+              <li><span>Quadro▪trax™</span></li>
+            </ul>
+          </details></li>
         </ul>
       </details>
       <details>
-        <summary class="division">Visual Arts</summary>
+        <summary class="division">Arts &amp; Media</summary>
         <ul class="thread">
-          <li><span>Quadrozzi™disegno, ink.<br><em>…art design utility reinvented</em></span></li>
-          <li><span>Member: National Trust for Historic Preservation</span></li>
-          <li><span>Quadrozzi™for__</span></li>
-        </ul>
-      </details>
-      <details>
-        <summary class="division">Film ▪ Photo ▪ Events</summary>
-        <ul class="thread">
+          <li><span>Quadrozzi™disegno, ink.</span></li>
           <li><span>Quadrozzi™studios, inc.</span></li>
-          <li><span>🎬 877 Quadro▪s [877 782 3767]</span></li>
         </ul>
       </details>
       <details>
         <summary class="division">Recreational</summary>
         <ul class="thread">
-          <li><span class="sub">Horse care &amp; riding</span></li>
-          <li><a href="https://djmiddlefinger.github.io/be-brooklyn-equine/" target="_blank" rel="noopener">Be™•Brooklyn equine™ ↗<span class="sr-only"> (opens in a new tab)</span></a><br><em>…Be™ part of the revival of the urban horse!</em>
-            <ul class="thread">
-              <li><span>one-off &amp; packages: pony rider™…; trail rider™…</span></li>
-              <li><span>horse care &amp; riding programs: pony daze™~; eq rider™…; club rider™…</span></li>
-              <li><span>equery™… [registration]</span></li>
-              <li><span>equestions™… [registration]</span></li>
-            </ul></li>
-          <li><span class="sub">Stables</span></li>
-          <li><span>PPS▪Prospect Park Stable™<br><em>est. 1917…re-established 2018, 101 years later! NYC’s oldest horse riding stable and only stable accessible by NYC Subway</em></span></li>
+          <li><a href="https://djmiddlefinger.github.io/be-brooklyn-equine/" target="_blank" rel="noopener">Be™•Brooklyn equine at Prospect Park Stable ↗<span class="sr-only"> (opens in a new tab)</span></a></li>
         </ul>
       </details>
       <details>
         <summary class="division">Not-for-profit</summary>
         <ul class="thread">
-          <li><a href="helping-hooves/">hhi™•helping hoof initiative •501(c)(3)</a><br><em>“not only therapy for humans, it’s a human &amp; horse symbiosis”</em></li>
-          <li><span>say hhi™ [registration]</span></li>
-          <li><span>manure marauders</span></li>
-          <li><span>Halloween 🎃 2026 E.8th Street ☠️ NYC Trick-or-Streets 👻</span></li>
-          <li><span>Windsor Terrace quadrant: a community plan</span></li>
+          <li><a href="helping-hooves/">hhi™•helping hoof initiative •501(c)(3)</a></li>
         </ul>
       </details>
-      <div><a class="division" href="news/">In the News</a></div>
-      <div><a class="division" href="news/?type=Sponsorship">Sponsorships</a></div>
+      <details>
+        <summary class="division">News</summary>
+        <ul class="thread">
+          <li><a href="news/">In the News</a></li>
+          <li><a href="news/?type=Sponsorship">Sponsorships</a></li>
+        </ul>
+      </details>
       <details class="family">
         <summary class="division">la Famiglia</summary>
         <ul class="thread">

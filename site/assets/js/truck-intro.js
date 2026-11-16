@@ -20,7 +20,7 @@
   var FLAP_Y = FLAP_TOP - FLAP_H / 2;
 
   // Timeline, in seconds. The shot opens with the truck already rolling.
-  var BRAKE = 3.4, STOP = 4.5, GLIDE_END = 4, SETTLE = 5.2, FILL_START = 5.05, FILL_END = 5.7;
+  var BRAKE = 3.4, STOP = 4.5, GLIDE_END = 4, SETTLE = 5.2, FILL_END = 5.7;
 
   // Reversing: walking pace, firm braking at a constant pedal, on a path a mixer can steer
   var REVERSE_SPEED = 2.6;              // metres per second
@@ -435,11 +435,11 @@
 
   var face = document.getElementById('main');
   var fig = face.querySelector('figure');
-  var canvas, fill, twin, raf;
+  var canvas, twin, raf;
 
   function finish() {
     cancelAnimationFrame(raf);
-    [canvas, fill, twin].forEach(function (el) { if (el) el.remove(); });
+    [canvas, twin].forEach(function (el) { if (el) el.remove(); });
     fig.removeAttribute('style');
     root.classList.remove('drop');
     ['pointerdown', 'keydown'].forEach(function (type) { removeEventListener(type, finish); });
@@ -466,12 +466,6 @@
     face.insertBefore(canvas, face.firstChild);
     var draw = makeRenderer(canvas, readTruck(buffer), W, H);
 
-    // Yellow spreads from the flap's outline to the edges of the screen; it sits between the lines and the flaps
-    fill = document.createElement('div');
-    fill.className = 'fx intro-fill';
-    fill.style.visibility = 'hidden';
-    face.insertBefore(fill, canvas.nextSibling);
-
     twin = fig.cloneNode(true);
     twin.setAttribute('aria-hidden', 'true');
     twin.querySelector('img').alt = '';
@@ -488,8 +482,7 @@
     var began, frames = -2, mark;
     function tick(now) {
       if (began === undefined) began = now;
-      var t = (now - began) / 1000;
-      if (t >= FILL_END) { finish(); return; }
+      var t = Math.min((now - began) / 1000, FILL_END);
 
       // Every ten frames (the first draw doesn't count: the card is still settling), see if this machine is keeping up
       if (++frames === 0) mark = now;
@@ -512,11 +505,10 @@
       place(fig, cam, FLAP_X, swing, body);
       place(twin, cam, -FLAP_X, swing, body);
 
-      if (t > FILL_START) {
-        var k = smooth((t - FILL_START) / (FILL_END - FILL_START)), left = 1 - k;
-        fill.style.visibility = 'visible';
-        fill.style.clipPath = 'inset(' + rect.top * left + 'px ' + (W - rect.right) * left + 'px ' + (H - rect.bottom) * left + 'px ' + rect.left * left + 'px' +
-          ' round 0 0 ' + rect.width * 0.175 * left + 'px ' + rect.width * 0.175 * left + 'px / 0 0 ' + rect.height * 0.12 * left + 'px ' + rect.height * 0.12 * left + 'px)';   // same corners as the figure's CSS
+      if (t === FILL_END) {   // parked: the last frame stays on the grey, and a click no longer skips anything
+        ['pointerdown', 'keydown'].forEach(function (type) { removeEventListener(type, finish); });
+        root.classList.add('parked');
+        return;
       }
       raf = requestAnimationFrame(tick);
     }

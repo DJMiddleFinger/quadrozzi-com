@@ -32,7 +32,8 @@ def under_construction_home(home):
     def button(name):
         return f'<a class="division" href="under-construction.html?site={name.lower().replace(" ", "-")}">{name}</a>'
 
-    home = re.sub(r'<details>\s*<summary class="division">(.+?)</summary>.*?</details>',
+    home = re.sub(r'<details class="group">.*?</details>', '', home, flags=re.S)  # sub-groups nest inside divisions
+    home = re.sub(r'<details[^>]*>\s*<summary class="division">(.+?)</summary>.*?</details>',
                   lambda m: f'<div>{button(m[1])}</div>', home, flags=re.S)
     home = re.sub(r'<a class="division" href="[^"]*">(.+?)</a>', lambda m: button(m[1]), home)
     # Nothing in the menu may lead anywhere but the under construction page, except Contact us

@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Build the GBX, Helping Hoof Initiative and Terminals pages (site/gbx/, site/helping-hooves/,
-site/terminals/) and the search page (site/news/).
+"""Build the GBX, the other terminals (bbx, vbx, gcx, ncx, cicx, metropolitan-ave) and Helping Hoof Initiative
+pages (site/gbx/, site/bbx/ ... site/helping-hooves/), the /terminals/ redirect stub and the search page (site/news/).
 
 Every page shares one shell: a sidebar listing the site's pages and a breadcrumb bar. The page
-tree and copy live in GBX, HHI and TERMINALS below; photo credits come from tools/credits.json.
+tree and copy live in GBX, TERMINAL_ROWS and HHI below; photo credits come from tools/credits.json.
 After editing, run:
     python3 tools/build_site.py
 
@@ -12,6 +12,7 @@ In page bodies, {R} is the site's root folder and {A} the shared assets folder.
 import datetime
 import html
 import json
+import re
 from pathlib import Path
 from urllib.parse import quote
 
@@ -228,13 +229,6 @@ def space(anchor, name, thumb, alt, text, area):
       {book('Ask about this space', areas=area)}'''
 
 
-def terminal(anchor, label, name, text):
-    return f'''
-      <h2 id="{anchor}">{e(label)}</h2>
-      <p class="lead">{name}</p>
-      <div class="prose"><p>{text}</p></div>'''
-
-
 GBX = dict(
     folder='gbx', name='GBX Gowanus Bay Terminal', short='GBX', tagline='Gowanus Bay Terminal, Red Hook',
     above=[('Quadrozzi', '../')], owner='Quadrozzi', contact='../contact/',
@@ -256,7 +250,6 @@ GBX = dict(
         <p>Gowanus Bay Terminal, GBX, sits in Red Hook between the mouth of the Gowanus Canal and Erie Basin.</p>
         <p>At its center stands the Red Hook Grain Terminal, the neighborhood’s tallest structure and one of Brooklyn’s most recognizable silhouettes, visible from the Gowanus Expressway and the elevated F and G trains.</p>
         <p>Today GBX is a multi-user maritime and industrial facility. Its piers and yards serve working tenants, while the terminal’s monumental concrete draws filmmakers, photographers, artists and event producers.</p>
-        <p>See the <a href="{R}../terminals/">other Quadrozzi terminals</a>.</p>
       </div>
       <p><a class="btn" href="{R}book/">Book the site</a></p>
       ''' + plate('gbx.jpg', 'The rooftop towers of the Red Hook Grain Terminal against a blue sky', 'The Red Hook Grain Terminal, 2025.')),
@@ -317,7 +310,14 @@ GBX = dict(
         <figure><img src="{A}heritage-2.jpg" alt="Archival photo of the grain elevator seen from the northeast" loading="lazy"><figcaption>The grain elevator from the northeast. Historic American Engineering Record.</figcaption></figure>
         <figure><img src="{A}gbx/1922-galleries.jpg" alt="Steel conveyor galleries under construction, 1922" loading="lazy"><figcaption>Conveyor galleries, July 17, 1922.</figcaption></figure>
         <figure><img src="{A}gbx/pier-view.jpg" alt="Archival view southwest from the top of the grain elevator over the terminal pier" loading="lazy"><figcaption>Looking southwest from the elevator. Thomas R. Flagg, HAER.</figcaption></figure>
-      </div>'''),
+      </div>
+      <div class="prose"><p>In 2013, Quadrozzi Enterprises represented seven multi-user waterfront terminals in Brooklyn and Queens, more than 30 acres of industrial land, with “an emphasis on sustainability &amp; community.”</p></div>
+      <h2>Land &amp; sea</h2>
+      <div class="prose"><p>With decades of sea-freight experience, Quadrozzi representatives moved bulk cargo from Europe, South America and Mexico up the Eastern Seaboard into New York. On land, trucking skills passed down through generations moved concrete, sand and stone, rubble, rock salt, bulk powders and specialty equipment throughout the city.</p></div>
+      <h2>After Sandy</h2>
+      <div class="prose"><p>After Hurricane Sandy in 2012, the company called for rebuilding smarter in flood zones: keep living space and mechanicals above the flood plain, build with concrete for strength and fire resistance, and replace wooden boardwalks with concrete ones that double as sea walls.</p></div>
+      <h2>Our approach</h2>
+      <blockquote>We do not promote our name using persuasive language or trickery, but rather use our natural creative talents and diverse experience in finding the simplest solutions to each objective.<cite>Quadrozzi Enterprises, 2013</cite></blockquote>'''),
 
         dict(path='book', nav='Book', h1='Book the site', foot=inquiry_config('info@Quadrozzi.com', 'GBX inquiry'),
              desc='Book GBX Gowanus Bay Terminal for film and photo shoots, events, and maritime or industrial use.',
@@ -590,7 +590,7 @@ HHI = dict(
 # anchor, label, name, text
 TERMINAL_ROWS = [
     ('gbx', 'GBX', 'Gowanus Bay Terminal',
-     'In Red Hook, between the mouth of the Gowanus Canal and Erie Basin. <a href="{R}../gbx/">Visit the GBX site</a>.'),
+     'In Red Hook, between the mouth of the Gowanus Canal and Erie Basin.'),
     ('bbx', 'BBX', 'Barbadoes Basin Terminal',
      'On Jamaica Bay at Rockaway Beach. Once home to the famed Brooklyn Day Camp.'),
     ('vbx', 'VBX', 'Vernam Basin Terminal',
@@ -605,31 +605,43 @@ TERMINAL_ROWS = [
      '3.69 acres along Newtown Creek, ready for almost anything.'),
 ]
 
-TERMINALS = dict(
-    folder='terminals', name='Quadrozzi Terminals', short='Terminals', tagline='Waterfront terminals in Brooklyn and Queens',
-    above=[('Quadrozzi', '../')], owner='Quadrozzi', contact='../contact/',
-    side_links=[(label, f'#{anchor}') for anchor, label, _, _ in TERMINAL_ROWS],
-    pages=[
-        dict(path='', nav='Overview', h1='Terminals', title='Terminals | Quadrozzi',
-             desc='The Quadrozzi waterfront terminals in Brooklyn and Queens.',
-             body='''
-      <p class="lead">In 2013, Quadrozzi Enterprises represented seven multi-user waterfront terminals in Brooklyn and Queens: more than 30 acres of industrial land, with “an emphasis on sustainability &amp; community.”</p>''' + ''.join(terminal(*row) for row in TERMINAL_ROWS) + '''
-      <h2>Land &amp; sea</h2>
-      <div class="prose"><p>With decades of sea-freight experience, Quadrozzi representatives moved bulk cargo from Europe, South America and Mexico up the Eastern Seaboard into New York. On land, trucking skills passed down through generations moved concrete, sand and stone, rubble, rock salt, bulk powders and specialty equipment throughout the city.</p></div>
-      <h2>After Sandy</h2>
-      <div class="prose"><p>After Hurricane Sandy in 2012, the company called for rebuilding smarter in flood zones: keep living space and mechanicals above the flood plain, build with concrete for strength and fire resistance, and replace wooden boardwalks with concrete ones that double as sea walls.</p></div>
-      <h2>Our approach</h2>
-      <blockquote>We do not promote our name using persuasive language or trickery, but rather use our natural creative talents and diverse experience in finding the simplest solutions to each objective.<cite>Quadrozzi Enterprises, 2013</cite></blockquote>'''),
-    ],
-)
+# Every terminal page's sidebar links to the other six. GBX is built above, the rest here, one page each.
+def terminal_links(me):
+    return [(label, f'../{anchor}/') for anchor, label, _, _ in TERMINAL_ROWS if anchor != me]
 
+
+GBX['side_links'] = terminal_links('gbx')
+TERMINAL_SITES = [dict(
+    folder=anchor, name=name, short=label, tagline=name,
+    above=[('Quadrozzi', '../')], owner='Quadrozzi', contact='../contact/', credits=False,  # no photos
+    side_links=terminal_links(anchor),
+    pages=[dict(path='', nav='Overview', h1=name if 'Terminal' in name else label,  # Metropolitan Ave's "name" is its neighborhood
+                title=f'{label} {name} | Quadrozzi',
+                desc=f'{label} {name}, a Quadrozzi waterfront property. {re.sub("<[^>]+>", "", text)}',
+                body=f'''
+      <p class="lead">{label}: {name}, one of the Quadrozzi waterfront terminals.</p>
+      <div class="prose"><p>{text}</p></div>''')],
+) for anchor, label, name, text in TERMINAL_ROWS if anchor != 'gbx']
+
+# Old /terminals/ URLs land on the home page.
+TERMINALS_STUB = '''<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Quadrozzi</title>
+  <meta http-equiv="refresh" content="0; url=../">
+  <link rel="canonical" href="../">
+</head>
+<body><p><a href="../">Go to Quadrozzi</a></p></body>
+</html>
+'''
 
 
 def build(site, credits):
     pages = list(site['pages'])
     if 'contacts' in site:
         pages.append(contact_page(site))
-    has_credits = site is not TERMINALS  # the terminals page has no photos
+    has_credits = site.get('credits', True)
     if has_credits:
         pages.append(credits_page(site, credits))
 
@@ -647,7 +659,7 @@ def build(site, credits):
                 continue
             attr = ' aria-current="page"' if p['path'] == path else ''
             side.append(f'        <li><a href="{href(p["path"])}"{attr}>{e(p["nav"])}</a></li>')
-        side += [f'        <li><a href="{link}">{e(label)}</a></li>' for label, link in site.get('side_links', [])]
+        side += [f'        <li><a href="{R + link}">{e(label)}</a></li>' for label, link in site.get('side_links', [])]
 
         trail = [(label, R + link) for label, link in site['above']] + [(site['short'], href(''))]
         if path:
@@ -852,6 +864,9 @@ def build_news():
 
 if __name__ == '__main__':
     all_credits = json.loads((ROOT / 'tools' / 'credits.json').read_text(encoding='utf-8'))
-    for s in (GBX, HHI, TERMINALS):
+    for s in (GBX, HHI, *TERMINAL_SITES):
         build(s, all_credits)
+    (ROOT / 'site' / 'terminals').mkdir(exist_ok=True)
+    (ROOT / 'site' / 'terminals' / 'index.html').write_text(TERMINALS_STUB, encoding='utf-8')
+    print('Wrote the terminals redirect stub')
     build_news()
