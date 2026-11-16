@@ -48,22 +48,18 @@
     }
     .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
-    /* ---------- Face page: the logo, nothing else ---------- */
-    .face { position: fixed; inset: 0; display: grid; place-items: center; overflow: hidden; }
+    /* ---------- Face page: the Q mudflap on grey, nothing else ---------- */
+    .face { position: fixed; inset: 0; display: grid; place-items: center; overflow: hidden; background: #8e9094; }
     .face h1 { display: contents; }
-    .face figure { position: relative; z-index: 1; height: min(100svh, 100vw * 2000 / 1455); aspect-ratio: 1455 / 2000; }
-    .face img { display: block; width: 100%; height: 100%; object-fit: contain; }
-    /* The logo file has white rounded bottom corners; paint them yellow so the page is one flat field */
-    .face figure::before, .face figure::after {
-      content: ''; position: absolute; bottom: 0; width: 15%; height: 11.5%; background: var(--yellow);
+    /* The logo file has white rounded bottom corners; the flap's real rounded corners clip them off */
+    .face figure {
+      position: relative; z-index: 1; height: min(100svh, 100vw * 2000 / 1455); aspect-ratio: 1455 / 2000;
+      overflow: hidden; border-radius: 0 0 17.5% 17.5% / 0 0 12% 12%;
     }
-    .face figure::before { left: 0; }
-    .face figure::after { right: 0; }
+    .face img { display: block; width: 100%; height: 100%; object-fit: contain; }
 
-    /* Intro: a grey screen where the flaps, with their real rounded corners, are placed by assets/js/truck-intro.js */
-    .drop .face { background: #8e9094; }
-    .drop .face figure { visibility: hidden; overflow: hidden; border-radius: 0 0 17.5% 17.5% / 0 0 12% 12%; }
-    .drop .face figure::before, .drop .face figure::after { display: none; }
+    /* Intro: the flaps are placed by assets/js/truck-intro.js */
+    .drop .face figure { visibility: hidden; }
     .drop .menu-toggle { opacity: 0; pointer-events: none; }
     .drop.parked .menu-toggle { opacity: 1; pointer-events: auto; }   /* the truck has stopped: the shot stays, grey */
     .fx { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
