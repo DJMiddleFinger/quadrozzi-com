@@ -29,7 +29,14 @@
   <link rel="preconnect" href="https://api.fontshare.com">
   <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
   <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,401,500,700,900&display=swap" rel="stylesheet">
+  <link rel="preload" href="assets/fonts/WedgecutStencil-Regular.woff2" as="font" type="font/woff2" crossorigin>
   <style>
+    /* Menu category names. SIL Open Font License, see assets/fonts/OFL.txt */
+    @font-face {
+      font-family: 'Wedgecut Stencil';
+      src: url('assets/fonts/WedgecutStencil-Regular.woff2') format('woff2'), url('assets/fonts/WedgecutStencil-Regular.ttf') format('truetype');
+      font-weight: 400; font-style: normal; font-display: swap;
+    }
     :root {
       --yellow: #ffe641;      /* matches the Q logo tile */
       --smoke: #161616;
@@ -79,10 +86,12 @@
     .menu-toggle i:nth-child(3) { top: 30px; }
     .menu-toggle i:nth-child(4) { top: 38px; }
     .menu-toggle:focus-visible { outline: 3px solid currentColor; outline-offset: -4px; border-radius: 6px; }
-    .menu-open .menu-toggle { color: var(--ivory); }
-    .menu-open .menu-toggle i:nth-child(1), .menu-open .menu-toggle i:nth-child(4) { opacity: 0; }
-    .menu-open .menu-toggle i:nth-child(2) { transform: translateY(5px) rotate(45deg); }
-    .menu-open .menu-toggle i:nth-child(3) { transform: translateY(-5px) rotate(-45deg); }
+    .menu-toggle.right { left: auto; right: max(10px, env(safe-area-inset-right)); }   /* la Famiglia */
+    .menu-toggle.open { color: var(--ivory); }
+    .menu-toggle.open i:nth-child(1), .menu-toggle.open i:nth-child(4) { opacity: 0; }
+    .menu-toggle.open i:nth-child(2) { transform: translateY(5px) rotate(45deg); }
+    .menu-toggle.open i:nth-child(3) { transform: translateY(-5px) rotate(-45deg); }
+    .menu-open .menu-toggle:not(.open) { opacity: 0; pointer-events: none; }   /* one panel at a time */
 
     /* ---------- Side panel ---------- */
     .scrim {
@@ -96,9 +105,12 @@
       color: var(--ivory); background: var(--smoke);
       transform: translateX(-100%); visibility: hidden;
       transition: transform .5s cubic-bezier(.7, 0, .2, 1), visibility 0s linear .5s;
+      scrollbar-width: none;   /* still scrolls, no bar */
     }
-    .menu-open .menu, .menu-open .scrim { visibility: visible; transition-delay: 0s; }
-    .menu-open .menu { transform: none; }
+    .menu::-webkit-scrollbar { display: none; }
+    .menu.right { inset: 0 0 0 auto; transform: translateX(100%); }   /* la Famiglia slides in from the right */
+    .menu.open, .menu-open .scrim { visibility: visible; transition-delay: 0s; }
+    .menu.open { transform: none; }
     .menu-open .scrim { opacity: 1; }
 
     /* Divisions: an accordion, any number open at once. Companies with no site yet are plain text; links are brighter. */
@@ -107,11 +119,12 @@
     .division {
       display: flex; justify-content: space-between; align-items: center; gap: 1rem;
       padding: .85rem 0; color: inherit; text-decoration: none; cursor: pointer; list-style: none;
-      font-weight: 900; text-transform: uppercase; letter-spacing: -.02em;
-      font-size: clamp(1.6rem, 7vw, 3.25rem); line-height: 1; transition: color .2s;
+      font-family: 'Wedgecut Stencil', var(--font); font-weight: 400; font-synthesis: none;
+      text-transform: uppercase; letter-spacing: .01em;
+      font-size: clamp(1.4rem, 5vw, 2.4rem); line-height: 1; transition: color .2s;
     }
     summary.division::-webkit-details-marker { display: none; }
-    summary.division::after { content: '+'; font-weight: 500; }
+    summary.division::after { content: '+'; font-family: var(--font); font-weight: 500; }
     details[open] > summary.division::after { content: '\2212'; }
     .division:hover, details[open] > .division { color: var(--yellow); }
     .division:focus-visible, .thread a:focus-visible, .thread summary.sub:focus-visible { outline: 2px solid var(--yellow); outline-offset: 3px; }
@@ -129,6 +142,9 @@
       border: solid var(--thread); border-width: 0 0 2px 2px; border-bottom-left-radius: .6rem;
     }
     .thread .thread { padding-bottom: .35rem; }
+    /* Entries hanging straight off a division line up with entries inside a sub-group: a longer elbow reaches them. */
+    .divisions > details > .thread > li:not(:has(> details)) { padding-left: 3.35rem; }
+    .divisions > details > .thread > li:not(:has(> details))::after { width: 2.95rem; }
     .thread > li:has(> a:hover, > a:focus-visible, > details > summary:hover, > details > summary:focus-visible)::after,
     .thread > li:has(~ li > a:hover, ~ li > a:focus-visible, ~ li > details > summary:hover, ~ li > details > summary:focus-visible)::before { border-color: var(--yellow); }
     .thread > li > a, .thread > li > span { display: block; padding: .25rem 0; }
@@ -156,7 +172,7 @@
        Mouse and trackpad computers, touchscreen laptops included, keep the full size above. */
     @media (pointer: coarse) {
       .menu { padding-top: 76px; }  /* just clears the menu button */
-      .division { font-size: clamp(1.35rem, min(5.5vw, 6vh), 2.25rem); }
+      .division { font-size: clamp(1.15rem, min(4.5vw, 5vh), 1.75rem); }
       .thread { --elbow: 1.05rem; }
       .thread > li { font-size: 1.05rem; }
       .thread > li > a, .thread > li > span, .thread summary.sub { padding: .4rem 0; }  /* easier to tap */
@@ -173,6 +189,9 @@
   </main>
 
   <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Open menu">
+    <i></i><i></i><i></i><i></i>
+  </button>
+  <button class="menu-toggle right" type="button" aria-expanded="false" aria-controls="family" aria-label="Open la Famiglia">
     <i></i><i></i><i></i><i></i>
   </button>
   <div class="scrim" aria-hidden="true"></div>
@@ -247,18 +266,6 @@
           <li><a href="news/?type=Sponsorship">Sponsorships</a></li>
         </ul>
       </details>
-      <details class="family">
-        <summary class="division">la Famiglia</summary>
-        <ul class="thread">
-          <li><a href="https://ancestors.familysearch.org/en/GHWD-GG6/costantino-quadrozzi-1898" target="_blank" rel="noopener">1st gen • Costantino Quadrozzi (1898) ↗<span class="sr-only"> (opens in a new tab)</span></a></li>
-          <li><span>2nd gen • John Quadrozzi, Sr.</span></li>
-          <li><span>2nd gen • William Quadrozzi, Sr.</span></li>
-          <li><span>2nd gen • Patrick Quadrozzi</span></li>
-          <li><span>3rd gen • John Quadrozzi, Jr.</span></li>
-          <li><span>4th gen • Leonor Quadrozzi</span></li>
-          <li><em>…est 1954</em></li>
-        </ul>
-      </details>
     </div>
     <p class="menu-foot">
       <img class="wordmark" src="assets/quadrozzi-wordmark.svg" alt="www.Quadrozzi.com" width="263" height="19">
@@ -267,23 +274,65 @@
     </p>
   </nav>
 
+  <nav class="menu right" id="family" aria-label="la Famiglia" inert>
+    <div class="divisions">
+      <details class="family" open>
+        <summary class="division">la Famiglia</summary>
+        <ul class="thread">
+          <li><details class="group"><summary class="sub">1st Generation</summary>
+            <ul class="thread">
+              <li><a href="https://ancestors.familysearch.org/en/GHWD-GG6/costantino-quadrozzi-1898" target="_blank" rel="noopener">Costantino Quadrozzi (1898) ↗<span class="sr-only"> (opens in a new tab)</span></a></li>
+            </ul>
+          </details></li>
+          <li><details class="group"><summary class="sub">2nd Generation</summary>
+            <ul class="thread">
+              <li><span>John Quadrozzi, Sr.</span></li>
+              <li><span>William Quadrozzi, Sr.</span></li>
+              <li><span>Patrick Quadrozzi</span></li>
+            </ul>
+          </details></li>
+          <li><details class="group"><summary class="sub">3rd Generation</summary>
+            <ul class="thread">
+              <li><span>John Quadrozzi, Jr.</span></li>
+            </ul>
+          </details></li>
+          <li><details class="group"><summary class="sub">4th Generation</summary>
+            <ul class="thread">
+              <li><span>Leonor Quadrozzi</span></li>
+            </ul>
+          </details></li>
+          <li><em>…est 1954</em></li>
+        </ul>
+      </details>
+    </div>
+  </nav>
+
   <script>
     (function () {
-      var toggle = document.querySelector('.menu-toggle');
-      var menu = document.getElementById('menu');
+      // Two panels: the companies on the left, la Famiglia on the right. One open at a time.
+      var toggles = [].slice.call(document.querySelectorAll('.menu-toggle'));
       var face = document.getElementById('main');
-      function setMenu(open) {
+      var current = null;   // the toggle whose panel is open
+      function setPanel(toggle, open) {
+        var panel = document.getElementById(toggle.getAttribute('aria-controls'));
+        var name = toggle.classList.contains('right') ? 'la Famiglia' : 'menu';
+        if (open && current && current !== toggle) setPanel(current, false);
+        current = open ? toggle : null;
+        toggle.classList.toggle('open', open);
+        panel.classList.toggle('open', open);
         document.body.classList.toggle('menu-open', open);
         toggle.setAttribute('aria-expanded', String(open));
-        toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
-        menu.inert = !open;
+        toggle.setAttribute('aria-label', (open ? 'Close ' : 'Open ') + name);
+        panel.inert = !open;
         face.inert = open;
-        if (open) menu.querySelector('summary, a').focus();  // the under construction package has no summaries
+        if (open) panel.querySelector('summary, a').focus();  // the under construction package has no summaries
       }
-      toggle.addEventListener('click', function () { setMenu(!document.body.classList.contains('menu-open')); });
-      document.querySelector('.scrim').addEventListener('click', function () { setMenu(false); });
+      toggles.forEach(function (toggle) {
+        toggle.addEventListener('click', function () { setPanel(toggle, current !== toggle); });
+      });
+      document.querySelector('.scrim').addEventListener('click', function () { if (current) setPanel(current, false); });
       document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape' && document.body.classList.contains('menu-open')) { setMenu(false); toggle.focus(); }
+        if (e.key === 'Escape' && current) { var t = current; setPanel(t, false); t.focus(); }
       });
     })();
   </script>

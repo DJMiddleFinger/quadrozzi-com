@@ -37,10 +37,12 @@ def under_construction_home(home):
                   lambda m: f'<div>{button(m[1])}</div>', home, flags=re.S)
     home = re.sub(r'<a class="division" href="[^"]*">(.+?)</a>', lambda m: button(m[1]), home)
     # Nothing in the menu may lead anywhere but the under construction page, except Contact us
-    menu = re.search(r'<nav class="menu".*?</nav>', home, re.S)[0]
-    links = re.findall(r'href="([^"]*)"', menu)
-    assert '<details' not in menu and links, 'home page menu changed; update under_construction_home'
-    assert all(link.startswith('under-construction.html?site=') or link == 'contact/' for link in links), links
+    menus = re.findall(r'<nav class="menu[^"]*".*?</nav>', home, re.S)  # the companies on the left, la Famiglia on the right
+    assert len(menus) == 2, 'home page menus changed; update under_construction_home'
+    for menu in menus:
+        links = re.findall(r'href="([^"]*)"', menu)
+        assert '<details' not in menu and links, 'home page menu changed; update under_construction_home'
+        assert all(link.startswith('under-construction.html?site=') or link == 'contact/' for link in links), links
     return home
 
 
@@ -53,6 +55,8 @@ def under_construction_zip():
         z.write(SITE / '404.html', '404.html')
         z.write(SITE / 'assets' / 'q-logo.jpg', 'assets/q-logo.jpg')
         z.write(SITE / 'assets' / 'quadrozzi-wordmark.svg', 'assets/quadrozzi-wordmark.svg')
+        for font in ('WedgecutStencil-Regular.woff2', 'WedgecutStencil-Regular.ttf', 'OFL.txt'):
+            z.write(SITE / 'assets' / 'fonts' / font, f'assets/fonts/{font}')
         z.write(SITE / 'assets' / 'og.jpg', 'assets/og.jpg')
         z.write(SITE / 'assets' / 'js' / 'truck-intro.js', 'assets/js/truck-intro.js')
         z.write(SITE / 'assets' / 'truck.bin', 'assets/truck.bin')
