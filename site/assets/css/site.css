@@ -84,6 +84,8 @@ a { color: inherit; }
 .page > .lead { margin-top: 1.25rem; font-size: clamp(1.15rem, 1.8vw, 1.35rem); line-height: 1.45; max-width: 46ch; }
 .prose { max-width: 62ch; }
 .prose p + p { margin-top: 1rem; }
+.stables { list-style: '\25AA\FE0E\00A0\00A0'; padding-left: 1.4em; margin-top: .35rem; }  /* contact page: one per stable */
+.stables li + li { margin-top: .25rem; }
 .fineprint { font-size: .85rem; color: var(--stone); }
 .source-note { font-size: .8rem; color: var(--stone); }
 

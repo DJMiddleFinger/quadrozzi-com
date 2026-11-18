@@ -365,7 +365,8 @@ HHI = dict(
     above=[], owner='Helping Hoof Initiative (hhi™)', contacts=[('', 'info@hhi.horse')], contact='contact/',
     foot_note='Developed from original thesis research by Shanaz Khan | MSc. Historic Preservation | Pratt Institute NYC, USA',
     credits_intro='Most photographs on this site are courtesy of Helping Hoof Initiative (hhi™). The others come from Wikimedia Commons, the Library of Congress and Be Brooklyn Equine. Select a linked title to see the original file and its full license.',
-    contact_note='Want to volunteer, donate, partner, join a program, book your hhi™ equine experience or order from the shop? <a href="{R}get-involved/">Use the Get involved form</a>.</p><p>Stables: by appointment only<br>▪︎ Prospect Park Stable - 53 Caton Pl., Brooklyn NY',
+    contact_note='Want to volunteer, donate, partner, join a program, book your hhi™ equine experience or order from the shop? <a href="{R}get-involved/">Use the Get involved form</a>.',
+    stables=['Prospect Park Stable - 53 Caton Pl., Brooklyn NY'],  # one bullet per stable on the Contact page
     pages=[
         dict(path='', nav='Overview', h1='Building stronger communities through equine connection', head=HHI_LD,
              title='Helping Hoof Initiative | Horses and community in Brooklyn',
@@ -741,11 +742,13 @@ def contact_page(site):
     main = ''.join(f'<p class="main-email"><a href="mailto:{m}">{m}</a></p>' for h, m in site['contacts'] if not h)
     more = ''.join(f'<div><h2>{e(h)}</h2><a href="mailto:{m}">{m}</a></div>' for h, m in site['contacts'] if h)
     more = f'\n      <div class="more">{more}</div>' if more else ''
+    stables = ''.join(f'<li>{s}</li>' for s in site.get('stables', []))
+    stables = f'<p><strong>Stables:</strong> by appointment only</p><ul class="stables">{stables}</ul>' if stables else ''
     return dict(path='contact', nav='Contact', h1='Contact us',
                 desc=f'How to reach {site["name"]}.',
                 body=f'''
       {main}
-      <div class="prose"><p>{site["contact_note"]}</p></div>{more}''')
+      <div class="prose"><p>{site["contact_note"]}</p>{stables}</div>{more}''')
 
 
 def credits_page(site, credits):
