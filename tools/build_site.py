@@ -122,14 +122,16 @@ GBX_FORM = '''
         </form>
       </div>'''
 
+HHI_STABLES = ['Prospect Park Stable - 53 Caton Pl., Brooklyn NY']  # by appointment only; one bullet each on Contact and Get involved
+
 HHI_FORM = '''
       <div class="split" id="form">
         <div class="aside">
           <p><a class="btn" href="{R}contact/">Contact us</a></p>
           <div class="direct">
             <div><h3>Year-round at</h3><address>Prospect Park’s Bowling Green<br>Brooklyn, NY</address></div>
-            <div><h3>The stable</h3><address>Prospect Park Stable<br>51–55 Caton Place, Brooklyn, NY 11218</address></div>
-            <div><a href="https://www.google.com/maps/search/?api=1&amp;query=Prospect+Park+Stable+51+Caton+Place+Brooklyn+NY" target="_blank" rel="noopener">Get directions ↗</a></div>
+            <div><h3>Stables: by appointment only</h3><ul class="stables">''' + ''.join(f'<li>{s}</li>' for s in HHI_STABLES) + '''</ul></div>
+            <div><a href="https://www.google.com/maps/search/?api=1&amp;query=Prospect+Park+Stable+53+Caton+Place+Brooklyn+NY" target="_blank" rel="noopener">Get directions ↗</a></div>
           </div>
           <p class="nonprofit">Helping Hoof Initiative (hhi™) is run by Helping Hoof, Inc., a 501(c)(3) nonprofit organization (EIN 88-3328025). Donations are tax-deductible to the extent allowed by law.</p>
         </div>
@@ -366,7 +368,7 @@ HHI = dict(
     foot_note='Developed from original thesis research by Shanaz Khan | MSc. Historic Preservation | Pratt Institute NYC, USA',
     credits_intro='Most photographs on this site are courtesy of Helping Hoof Initiative (hhi™). The others come from Wikimedia Commons, the Library of Congress and Be Brooklyn Equine. Select a linked title to see the original file and its full license.',
     contact_note='Want to volunteer, donate, partner, join a program, book your hhi™ equine experience or order from the shop? <a href="{R}get-involved/">Use the Get involved form</a>.',
-    stables=['Prospect Park Stable - 53 Caton Pl., Brooklyn NY'],  # one bullet per stable on the Contact page
+    stables=HHI_STABLES,
     pages=[
         dict(path='', nav='Overview', h1='Building stronger communities through equine connection', head=HHI_LD,
              title='Helping Hoof Initiative | Horses and community in Brooklyn',

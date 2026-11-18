@@ -164,7 +164,8 @@ blockquote cite { display: block; margin-top: .9rem; font-style: normal; font-si
 .split { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.4fr); gap: clamp(2rem, 5vw, 4rem); scroll-margin-top: 72px; }
 .direct { display: grid; gap: 1.25rem; border-top: 3px solid var(--asphalt); padding-top: 1.25rem; }
 .direct h3 { font-family: var(--sans); text-transform: none; font-size: .85rem; font-weight: 600; color: var(--stone); margin-bottom: .2rem; }
-.direct a, .direct address { font-style: normal; font-weight: 500; font-size: 1.05rem; overflow-wrap: anywhere; }
+.direct a, .direct address, .direct .stables { font-style: normal; font-weight: 500; font-size: 1.05rem; overflow-wrap: anywhere; }
+.direct .stables { margin-top: 0; }
 .map { margin-top: 1.75rem; border: 1px solid var(--line); }
 .map iframe { display: block; width: 100%; height: 260px; border: 0; filter: grayscale(.4); }
 .map a { display: block; padding: .7rem 1rem; font-size: .85rem; font-weight: 600; color: var(--orange-ink); border-top: 1px solid var(--line); }
