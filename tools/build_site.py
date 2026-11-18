@@ -355,7 +355,7 @@ def animal(name, breed, photo=None):
 
 def product(img, alt, name, material, colors):
     return (f'<article class="card product"><img src="{{A}}hooves/shop/{img}.jpg" alt="{alt}" loading="lazy"><div>'
-            f'<h3><span class="brand">hhi™</span> {name}</h3><p>{material}</p><p>Colors: {colors}</p>'
+            f'<h3><span class="brand hhi-mark"><span class="h">h</span><span class="hi">hi</span><sup>™</sup></span> {name}</h3><p>{material}</p><p>Colors: {colors}</p>'
             + form_link('Ask to order', 'Order From the Shop') + '</div></article>')
 
 
@@ -365,7 +365,7 @@ HHI = dict(
     above=[], owner='Helping Hoof Initiative (hhi™)', contacts=[('', 'info@hhi.horse')], contact='contact/',
     foot_note='Developed from original thesis research by Shanaz Khan | MSc. Historic Preservation | Pratt Institute NYC, USA',
     credits_intro='Most photographs on this site are courtesy of Helping Hoof Initiative (hhi™). The others come from Wikimedia Commons, the Library of Congress and Be Brooklyn Equine. Select a linked title to see the original file and its full license.',
-    contact_note='Want to volunteer, donate, partner, join a program, book your hhi™ equine experience or order from the shop? <a href="{R}get-involved/">Use the Get involved form</a>. Riding lessons are at Prospect Park Stable, 51–55 Caton Place, Brooklyn, NY 11218.',
+    contact_note='Want to volunteer, donate, partner, join a program, book your hhi™ equine experience or order from the shop? <a href="{R}get-involved/">Use the Get involved form</a>.</p><p>Stables: by appointment only<br>▪︎ Prospect Park Stable - 53 Caton Pl., Brooklyn NY',
     pages=[
         dict(path='', nav='Overview', h1='Building stronger communities through equine connection', head=HHI_LD,
              title='Helping Hoof Initiative | Horses and community in Brooklyn',
@@ -483,14 +483,14 @@ HHI = dict(
       </div>'''),
 
         dict(path='experience', nav='Equine Experience', h1='hhi™ Equine Experience',
-             h1_html='<span class="brand">hhi™</span> Equine Experience',
+             h1_html='<span class="brand hhi-mark"><span class="h">h</span><span class="hi">hi</span><sup>™</sup></span> Equine Experience',
              title='Equine Experience | Helping Hoof Initiative',
              desc='A unique team experience in Brooklyn’s Prospect Park: horsemanship, heritage and community. No riding experience necessary.',
              body='''
       <p class="lead">Horsemanship. Heritage. Community. A unique team experience in Brooklyn’s Prospect Park.</p>
       <div class="prose"><p>A hands-on immersive equine experience that ignites connection — with the horse, with each other and with New York’s living equestrian heritage.</p></div>
       <figure class="plate plate--wide"><img src="{A}hooves/lake-ride.jpg" alt="Four riders on horseback along the water in Prospect Park" loading="lazy"></figure>
-      <h2>Why <span class="brand">hhi™</span>?</h2>
+      <h2>Why <span class="brand hhi-mark"><span class="h">h</span><span class="hi">hi</span><sup>™</sup></span>?</h2>
       <div class="prose"><p>Helping Hoof Initiative (hhi™) is a Brooklyn-based <span class="nb">501(c)(3)</span> nonprofit dedicated to connecting people and horses through education, community and preservation of Prospect Park’s historic equestrian landscape.</p></div>
       <div class="cards">
         <article class="card"><div><h3>Brooklyn community</h3><p>We build community through equine heritage, youth mentoring, intergenerational programming and accessible public programming in Prospect Park.</p></div></article>

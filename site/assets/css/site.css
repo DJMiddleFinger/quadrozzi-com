@@ -262,6 +262,11 @@ blockquote cite { display: block; margin-top: .9rem; font-style: normal; font-si
 
 /* ---------- Helping Hoof Initiative ---------- */
 .brand { text-transform: none; }  /* keeps hhi™ lowercase inside uppercase headings */
+/* hhi™ in a heading, set like the logo: grey italic h, pink hi, small TM. Colors sampled from hooves/hhi-logo.png */
+.hhi-mark { font-family: 'Noto Serif', Georgia, 'Droid Serif', 'Times New Roman', serif; font-weight: 700; letter-spacing: 0; white-space: nowrap; }
+.hhi-mark .h { font-style: italic; color: #8a8a84; }
+.hhi-mark .hi { color: #cc5a8c; }
+.hhi-mark sup { font-family: var(--sans); font-size: .38em; font-weight: 500; color: #8a8a84; vertical-align: top; position: relative; top: .15em; margin-left: .1em; }
 .nb { white-space: nowrap; }
 .side-logo { width: 104px; height: 104px; margin-bottom: 1rem; }
 .more { display: inline-block; margin-top: .75rem; font-size: .9rem; font-weight: 700; color: var(--orange-ink); text-underline-offset: 3px; }
