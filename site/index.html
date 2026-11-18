@@ -99,7 +99,7 @@
       opacity: 0; visibility: hidden; transition: opacity .4s var(--ease), visibility 0s linear .4s;
     }
     .menu {
-      position: fixed; inset: 0 auto 0 0; z-index: 20; width: min(760px, 100%);
+      position: fixed; inset: 0 auto 0 0; z-index: 20; width: min(max(760px, 40vw), 100%);   /* wider on big monitors */
       display: flex; flex-direction: column; overflow-y: auto; overscroll-behavior: contain;
       padding: 104px clamp(24px, 6vw, 72px) calc(2rem + env(safe-area-inset-bottom));
       color: var(--ivory); background: var(--smoke);
@@ -132,28 +132,31 @@
     /* Threads, like nested Reddit comments: a line runs down the list with a curved elbow into every row.
        A sub-group's label is a row too, and its items hang from a nested thread one level in.
        The way to whatever is hovered turns yellow. Browsers without :has() just show gray lines. */
-    .thread { --elbow: .95rem; list-style: none; margin-left: .55rem; }
+    /* Entry and sub-group label sizes grow with the screen: laptop size up to ~1280px wide, larger on big monitors */
+    .thread { --item: clamp(1.15rem, .35rem + 1vw, 1.6rem); --sub: clamp(.8rem, .3rem + .6vw, 1.1rem); --pad: .25rem;
+              list-style: none; margin-left: .55rem; }
     .divisions > details > .thread { padding-bottom: 1.25rem; }
-    .thread > li { position: relative; padding-left: 1.4rem; font-size: 1.15rem; font-weight: 900; line-height: 1.25; color: var(--stone); }
+    .thread > li { position: relative; padding-left: 1.4rem; font-size: var(--item); font-weight: 900; line-height: 1.25; color: var(--stone); }
     .thread > li::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; border-left: 2px solid var(--thread); }
     .thread > li:last-child::before { display: none; }
     .thread > li::after {
-      content: ''; position: absolute; left: 0; top: 0; width: 1rem; height: var(--elbow);
+      content: ''; position: absolute; left: 0; top: 0; width: 1rem; height: calc(var(--pad) + var(--item) * .625);   /* to the middle of the first line */
       border: solid var(--thread); border-width: 0 0 2px 2px; border-bottom-left-radius: .6rem;
     }
+    .thread > li:has(> details)::after { height: calc(var(--pad) + var(--sub) * .625); }
     .thread .thread { padding-bottom: .35rem; }
     /* Entries hanging straight off a division line up with entries inside a sub-group: a longer elbow reaches them. */
     .divisions > details > .thread > li:not(:has(> details)) { padding-left: 3.35rem; }
     .divisions > details > .thread > li:not(:has(> details))::after { width: 2.95rem; }
     .thread > li:has(> a:hover, > a:focus-visible, > details > summary:hover, > details > summary:focus-visible)::after,
     .thread > li:has(~ li > a:hover, ~ li > a:focus-visible, ~ li > details > summary:hover, ~ li > details > summary:focus-visible)::before { border-color: var(--yellow); }
-    .thread > li > a, .thread > li > span { display: block; padding: .25rem 0; }
+    .thread > li > a, .thread > li > span, .thread > li > em { display: block; padding: var(--pad) 0; }
     .thread a { color: var(--ivory); text-underline-offset: 4px; }
     .thread a:hover { color: var(--yellow); }
 
-    .thread em { font-style: italic; font-weight: 500; font-size: .9rem; color: var(--stone); }
-    .thread .sub { font-size: .8rem; text-transform: uppercase; letter-spacing: .08em; color: var(--yellow); }
-    .thread summary.sub { display: block; padding: .25rem 0; cursor: pointer; list-style: none; }
+    .thread em { font-style: italic; font-weight: 500; font-size: .78em; color: var(--stone); }
+    .thread .sub { font-size: var(--sub); text-transform: uppercase; letter-spacing: .08em; color: var(--yellow); }
+    .thread summary.sub { display: block; padding: var(--pad) 0; cursor: pointer; list-style: none; }
     .thread summary.sub::-webkit-details-marker { display: none; }
     .thread summary.sub::after { content: '+'; margin-left: .5rem; font-weight: 500; }
     .thread details[open] > summary.sub::after { content: '\2212'; }
@@ -173,9 +176,7 @@
     @media (pointer: coarse) {
       .menu { padding-top: 76px; }  /* just clears the menu button */
       .division { font-size: clamp(1.15rem, min(4.5vw, 5vh), 1.75rem); }
-      .thread { --elbow: 1.05rem; }
-      .thread > li { font-size: 1.05rem; }
-      .thread > li > a, .thread > li > span, .thread summary.sub { padding: .4rem 0; }  /* easier to tap */
+      .thread { --item: 1.05rem; --sub: .8rem; --pad: .4rem; }  /* --pad: easier to tap */
     }
 
     @media (prefers-reduced-motion: reduce) { * { transition-duration: 0s !important; } }
