@@ -376,7 +376,7 @@ HHI = dict(
              body='''
       <div class="intro-row">
         <div>
-          <p class="lead">We improve equine and human public infrastructure in urban environments, with a primary focus on Prospect Park, Brooklyn. Through meaningful programs and experiences, we help humans and horses thrive — together.</p>
+          <p class="lead">We improve equine and human public infrastructure in urban environments, with an initial focus on Prospect Park, Brooklyn. Through meaningful programs and experiences, we help humans and horses thrive — together.</p>
           <p class="actions"><a class="btn" href="{R}programs/">Explore our programs</a> <a class="btn btn--dark" href="{R}get-involved/?type=Get%20Updates#form">Get the horseplay schedule</a></p>
         </div>
         <img class="intro-logo" src="{A}hooves/hhi-logo.png" alt="Helping Hoof Initiative (hhi™) logo: humans helping horses helping humans" width="240" height="240">
@@ -452,7 +452,7 @@ HHI = dict(
              title='Programs | Helping Hoof Initiative',
              desc='Horseplay turnout, intergenerational programs, mentoring, live drawing and community outreach in Prospect Park.',
              body='''
-      <p class="lead">All programs take place in Prospect Park and at Prospect Park’s Bowling Green in Brooklyn, NY and are supervised by our trained team of professionals.</p>
+      <p class="lead">All programs initially take place at Prospect Park Stable, Prospect Park and <em>PROPOSED</em> at Prospect Park’s Bowling Green in Brooklyn, NY and are supervised by our trained team of professionals.</p>
       <h2 id="we-serve">We serve</h2>
       <ul class="steps steps--plain">
         <li><h3>Children &amp; young adults</h3><p>Inclusive programs that build empathy, confidence, life skills, and stewardship through Equine Assisted Learning (EAL).</p></li>
@@ -485,60 +485,9 @@ HHI = dict(
         <article class="card card--plain" id="stay-connected"><div><h3>Stay connected</h3><p>Get updates on horseplay turnout schedules, programs, events, and ways to help.</p>''' + form_link('Sign up', 'Get Updates') + '''</div></article>
       </div>'''),
 
-        dict(path='experience', nav='Equine Experience', h1='hhi™ Equine Experience',
-             h1_html='<span class="brand hhi-mark"><span class="h">h</span><span class="hi">hi</span><sup>™</sup></span> Equine Experience',
-             title='Equine Experience | Helping Hoof Initiative',
-             desc='A unique team experience in Brooklyn’s Prospect Park: horsemanship, heritage and community. No riding experience necessary.',
-             body='''
-      <p class="lead">Horsemanship. Heritage. Community. A unique team experience in Brooklyn’s Prospect Park.</p>
-      <div class="prose"><p>A hands-on immersive equine experience that ignites connection — with the horse, with each other and with New York’s living equestrian heritage.</p></div>
-      <figure class="plate plate--wide"><img src="{A}hooves/lake-ride.jpg" alt="Four riders on horseback along the water in Prospect Park" loading="lazy"></figure>
-      <h2>Why <span class="brand hhi-mark"><span class="h">h</span><span class="hi">hi</span><sup>™</sup></span>?</h2>
-      <div class="prose"><p>Helping Hoof Initiative (hhi™) is a Brooklyn-based <span class="nb">501(c)(3)</span> nonprofit dedicated to connecting people and horses through education, community and preservation of Prospect Park’s historic equestrian landscape.</p></div>
-      <div class="cards">
-        <article class="card"><div><h3>Brooklyn community</h3><p>We build community through equine heritage, youth mentoring, intergenerational programming and accessible public programming in Prospect Park.</p></div></article>
-        <article class="card"><div><h3>Heritage preservation</h3><p>We honor New York’s equestrian history and Prospect Park’s historic equine infrastructure, bringing that heritage back into public life.</p></div></article>
-        <article class="card"><div><h3>People + park + horse</h3><p>We use historic equestrian spaces as a platform for connection, learning, wellness and stewardship.</p></div></article>
-      </div>
-      <h2>The experience</h2>
-      <div class="prose"><p>A hands-on team building program designed for curiosity, connection and confidence — no riding experience necessary.</p></div>
-      <ol class="run">
-        <li><h3>Welcome &amp; Prospect Park’s equine heritage</h3><p>Introduction to hhi™, our horses and the park’s rich equestrian history.</p></li>
-        <li><h3>Grooming &amp; tack demonstration</h3><p>Learn how we care for the horses and prepare them for work.</p></li>
-        <li><h3>Hands-on grooming &amp; tack</h3><p>Everyone helps groom and tack the horses.</p></li>
-        <li>
-          <h3>Rotation 1</h3><p>Two engaging, simultaneous programs:</p>
-          <div class="groups">
-            <div class="group"><h4>Group A: Trail ride</h4><ul class="mini"><li>Guided ride through Prospect Park’s historic bridle path</li><li>Experience the park from horseback</li><li>Led by experienced hhi™ staff</li></ul></div>
-            <div class="group"><h4>Group B: Groundwork &amp; horsemanship in the arena</h4><ul class="mini"><li>Learn horse communication and body language</li><li>Learn to lead and handle a horse</li><li>Lunge and basic drill</li><li>Navigate a simple obstacle course</li></ul></div>
-          </div>
-        </li>
-        <li><h3>Rotation 2</h3><p>Groups switch so everyone experiences both the trail &amp; groundwork.</p></li>
-        <li><h3>Horse care / untack</h3><p>Remove tack, groom and care for the horses after work.</p></li>
-        <li><h3>Closing &amp; group photo</h3><p>Q&amp;A and your team’s hhi™ impact.</p></li>
-      </ol>
-      <h2>What makes it special</h2>
-      ''' + ticks('Hands-On Horsemanship', 'Iconic Prospect Park Setting', 'Engaging Team Experience', 'Meaningful Community Impact', 'Led by Experienced Equine Professionals') + '''
-      <h2>Your experience creates impact</h2>
-      <div class="prose"><p>A portion of every equine experience directly supports our community programs, helping more New Yorkers — youth, seniors and families — access the transformative connection between horses, people and park.</p><p><b>Experience. Learn. Give back.</b></p></div>
-      <h2 id="package">Corporate package</h2>
-      <div class="package">
-        <p class="price">Contact us for per-person pricing</p>
-        <p>Minimum group: 8 people | Maximum: 14 people</p>
-        <h3>Includes</h3>
-        <ul class="mini">
-          <li>3 hour private hhi™ Equine Experience</li>
-          <li>All instruction, horses and equipment</li>
-          <li>Use of stable, arena and Prospect Park bridle path</li>
-          <li>Contribution to hhi™ community programs</li>
-          <li>Group photos + hhi™ goodie bag!</li>
-        </ul>
-        <p class="tagline">A team experience with purpose</p>
-        ''' + involve('Book your hhi™ equine experience', 'Book an Experience') + '''
-      </div>'''),
-
-        dict(path='team', nav='Meet the Team', h1='Meet the team',
-             title='Meet the Team | Helping Hoof Initiative',
+        dict(path='team', nav='Meet the Team', h1='Say hhi™ to the team',
+             h1_html='Say <span class="brand hhi-mark"><span class="h">h</span><span class="hi">hi</span><sup>™</sup></span> to the team',
+             title='Say hhi™ to the Team | Helping Hoof Initiative',
              desc='The humans and horses behind Helping Hoof Initiative (hhi™).',
              body='''
       <p class="lead">The humans and horses behind Helping Hoof Initiative (hhi™). Together, we nurture connection, healing, and community.</p>
@@ -548,10 +497,12 @@ HHI = dict(
         ''' + member('Judith Gruntz', '<p class="role">President &amp; Vice Chairman</p>') + '''
         ''' + member('Shanaz Khan', '<p class="role">Vice President</p><p class="role">Head of Equine Heritage &amp; Community Programming</p>', 'shanaz-khan',
                      '<ul class="mini"><li>Fulbright Scholar</li><li>B. Architecture</li><li>MSc. Historic Preservation</li><li>Pakistan National Tent-Pegging Equestrian Team</li></ul>') + '''
+        ''' + member('Ann Fraioli', '<p class="role">Board Member</p>', 'ann-fraioli',
+                     '<ul class="mini"><li>Veteran NYC educator and leader in environmental science and outdoor education</li><li>Co-founded both New York Harbor School and Billion Oyster Project, now leads BOP’s teacher and student programming</li><li><span>Ann’s children Theo &amp; Benji are in <b>Brooklyn equine</b> horse care &amp; riding programs</span></li></ul>') + '''
       </ul>
       <h2>Our horse ambassadors</h2>
       <ul class="people">
-        ''' + ''.join([animal('Bay Ridge', 'Quarter Horse'), animal('Clinton Hill', 'Arab &amp; Quarter Horse'), animal('Williamsburg', 'Thoroughbred', ''),
+        ''' + ''.join([animal('Bay Ridge', 'Quarter Horse'), animal('Clinton Hill', 'Arab &amp; Quarter Horse'), animal('Williamsburg', 'Thoroughbred'), animal('Park Slope', 'Palomino'),
                        animal('Midwood', 'Quarter Horse'), animal('Bushwick', 'Quarter Horse'), animal('Dumbo', 'Draft &amp; Quarter Horse'),
                        animal('Red Hook', 'Appaloosa'), animal('Texas', 'Appaloosa'), animal('Maximus', 'Mustang')]) + '''
       </ul>
